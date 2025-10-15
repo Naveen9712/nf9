@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import './NF9.css';
+import './nf9.css';
 
 export default function NF9() {
   const [isLoading, setIsLoading] = useState(true);
