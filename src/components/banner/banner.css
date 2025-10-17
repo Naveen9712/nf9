@@ -198,6 +198,7 @@
 .button-secondary {
     background-color: #fff;
     color: #000;
+    border:solid 1px white;
 }
 
 .button__icon-wrapper {
@@ -229,6 +230,7 @@
 
 .button-secondary:hover {
     background-color: #000;
+    border: solid 1px grey;
 }
 
 .button:hover .button__icon-wrapper {
