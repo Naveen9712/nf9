@@ -195,11 +195,6 @@
     border: solid 1px grey;
 }
 
-.button-secondary {
-    background-color: #fff;
-    color: #000;
-    border:solid 1px white;
-}
 
 .button__icon-wrapper {
     flex-shrink: 0;
@@ -218,24 +213,14 @@
     background-color: #fff;
 }
 
-.button-secondary .button__icon-wrapper {
-    color: #fff;
-    background-color: #000;
-}
-
 .button:hover {
-    background-color: #000;
-    color: #fff;
-}
-
-.button-secondary:hover {
-    background-color: #000;
-    border: solid 1px grey;
+    background-color: #fff;
+    color: #000;
 }
 
 .button:hover .button__icon-wrapper {
-    color: #000;
-    background-color: #fff;
+    color: #fff;
+    background-color: #000;
 }
 
 .button__icon-svg {
