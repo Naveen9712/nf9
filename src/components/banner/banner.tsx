@@ -91,7 +91,7 @@ export default function Banner({ isAnimated, onSmoothScroll }: BannerProps) {
             Ideas. Engineered.
           </h1>
           <p className={isAnimated ? 'animate-in animate-delay-2' : ''}>
-            Since 2023, we've turned ideas into impact — designing, building, and launching digital products that perform with precision, inspire users, and scale with strength.
+            Since 2023, we've turned ideas into impact designing, building, and launching digital products that perform with precision, inspire users, and scale with strength.
           </p>
         </div>
 

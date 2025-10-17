@@ -35,7 +35,7 @@
 .banner h1 {
     font-family: 'Inter', sans-serif;
     font-size: 80px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.1;
     margin-bottom: 30px;
     letter-spacing: -2px;
@@ -63,7 +63,7 @@
     transform: translateY(30px) scale(0.9);
     filter: blur(4px);
     transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    text-align: justify;
+    text-align: center;
 }
 
 .banner p.animate-in {
