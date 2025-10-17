@@ -34,8 +34,8 @@
 
 .banner h1 {
     font-family: 'Inter', sans-serif;
-    font-size: 80px;
-    font-weight: 600;
+    font-size: 100px;
+    font-weight: 700;
     line-height: 1.1;
     margin-bottom: 30px;
     letter-spacing: -2px;
@@ -59,6 +59,7 @@
     color: rgba(255, 255, 255, 0.8);
     max-width: 680px;
     margin: 0 auto 50px;
+    font-weight: 400;
     opacity: 0;
     transform: translateY(30px) scale(0.9);
     filter: blur(4px);
@@ -169,64 +170,89 @@
     transform: translateY(-5px);
 }
 
-.btn {
-    padding: 16px 40px;
-    border-radius: 50px;
+/* New button design */
+.button {
+    line-height: 1;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 16px;
-    transition: all 0.3s ease;
+    display: inline-flex;
+    border: none;
     cursor: pointer;
-    border: 2px solid #fff;
-    position: relative;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 10rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    padding-left: 20px;
+    white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
+.button-primary {
+    background-color: #000;
+    color: #fff;
+    border: solid 1px grey;
 }
 
-.btn:hover::before {
-    width: 300px;
-    height: 300px;
+.button-secondary {
+    background-color: #fff;
+    color: #000;
 }
 
-.btn span {
+.button__icon-wrapper {
+    flex-shrink: 0;
+    width: 25px;
+    height: 25px;
     position: relative;
-    z-index: 1;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.btn-primary {
-    background: #fff;
+.button-primary .button__icon-wrapper {
     color: #000;
+    background-color: #fff;
 }
 
-.btn-primary:hover {
-    background: transparent;
+.button-secondary .button__icon-wrapper {
     color: #fff;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+    background-color: #000;
 }
 
-.btn-secondary {
-    background: transparent;
+.button:hover {
+    background-color: #000;
     color: #fff;
 }
 
-.btn-secondary:hover {
-    background: #fff;
+.button-secondary:hover {
+    background-color: #000;
+}
+
+.button:hover .button__icon-wrapper {
     color: #000;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+    background-color: #fff;
+}
+
+.button__icon-svg {
+    transition: transform 0.3s ease-in-out;
+}
+
+.button__icon-svg--copy {
+    position: absolute;
+    transform: translate(-150%, 150%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.button:hover .button__icon-svg:first-child {
+    transform: translate(150%, -150%);
+}
+
+.button:hover .button__icon-svg--copy {
+    transition: transform 0.3s ease-in-out 0.1s;
+    transform: translate(0);
 }
 
 .grid-pattern {
@@ -256,24 +282,25 @@
     }
 
     .banner h1 {
-        font-size: 35px;
+        font-size: 40px;
         white-space: nowrap;
         letter-spacing: -1px;
     }
 
     .banner p {
-        font-size: 16px;
+        font-size: 14px;
+        font-weight: 400;
         line-height: 1.5;
         max-width: 300px;
     }
 
     .banner-buttons {
         flex-direction: column;
-        width: 100%;
+        width: auto;
         max-width: 300px;
     }
 
-    .btn {
+    .button {
         width: 100%;
         padding: 14px 30px;
         font-size: 15px;
@@ -287,11 +314,15 @@
 
 @media (max-width: 480px) {
     .banner h1 {
-        font-size: 32px;
+        font-size: 40px;
     }
 
     .banner p {
-        font-size: 15px;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.4rem;
+        letter-spacing: 0.02rem;
+        width: 100%;
     }
 
     .glow-orb {
