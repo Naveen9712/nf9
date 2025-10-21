@@ -16,77 +16,69 @@ export default function Header({ onSmoothScroll }: HeaderProps) {
 
   // Close menu and scroll
   const handleMenuClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
     setIsMenuOpen(false);
     document.body.style.overflow = 'auto';
-    onSmoothScroll(e, href);
+    
+    // Add small delay to allow menu to close smoothly before scrolling
+    setTimeout(() => {
+      onSmoothScroll(e, href);
+    }, 150);
   };
 
   return (
     <>
-      {/* Header */}
-      <header>
-        <div className="logo">
-          <img 
-            src="https://res.cloudinary.com/dsb1k3ugo/image/upload/v1760451582/nf9-icon_jcmneo.png" 
-            width="35" 
-            height="35" 
-            alt="NF9 Logo" 
-            style={{ objectFit: 'cover' }} 
-          />
-          <span>NF9</span>
-        </div>
-        <nav>
-          <a href="#services" onClick={(e) => onSmoothScroll(e, '#services')}>Services</a>
-          <a href="#portfolio" onClick={(e) => onSmoothScroll(e, '#portfolio')}>Portfolio</a>
-          <a href="#process" onClick={(e) => onSmoothScroll(e, '#process')}>How it Works</a>
-          <a href="#about" onClick={(e) => onSmoothScroll(e, '#about')}>About</a>
-          <a href="#pricing" onClick={(e) => onSmoothScroll(e, '#pricing')}>Pricing</a>
-        </nav>
-        <a href="#contact" className="cta-button" onClick={(e) => onSmoothScroll(e, '#contact')}>
-          Let's Talk
-        </a>
-
-        {/* Hamburger Menu */}
-        <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </header>
-
       {/* Mobile Menu Overlay */}
       <div className={`mobile-overlay ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}></div>
 
-      {/* Mobile Menu */}
-      <div className={`mobile-menu ${isMenuOpen ? 'active' : ''}`}>
-        <div className="mobile-menu-header">
-          <div className="mobile-menu-logo">
+      {/* Header */}
+      <header className={isMenuOpen ? 'menu-open' : ''}>
+        <div className="header-top">
+          <div className="logo">
             <img 
               src="https://res.cloudinary.com/dsb1k3ugo/image/upload/v1760451582/nf9-icon_jcmneo.png" 
-              width="28" 
-              height="28" 
+              width="35" 
+              height="35" 
               alt="NF9 Logo" 
               style={{ objectFit: 'cover' }} 
             />
             <span>NF9</span>
           </div>
-          <button className="close-button" onClick={toggleMenu} aria-label="Close menu">
-            ✕
-          </button>
+          <nav>
+            <a href="#services" onClick={(e) => onSmoothScroll(e, '#services')}>Services</a>
+            <a href="#portfolio" onClick={(e) => onSmoothScroll(e, '#portfolio')}>Portfolio</a>
+            <a href="#process" onClick={(e) => onSmoothScroll(e, '#process')}>How it Works</a>
+            <a href="#about" onClick={(e) => onSmoothScroll(e, '#about')}>About</a>
+            <a href="#pricing" onClick={(e) => onSmoothScroll(e, '#pricing')}>Pricing</a>
+          </nav>
+          <a href="#contact" className="cta-button" onClick={(e) => onSmoothScroll(e, '#contact')}>
+            Let's Talk
+          </a>
+
+          {/* Hamburger Menu */}
+          <div className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
-        <a href="#services" onClick={(e) => handleMenuClick(e, '#services')}>Services</a>
-        <a href="#portfolio" onClick={(e) => handleMenuClick(e, '#portfolio')}>Portfolio</a>
-        <a href="#process" onClick={(e) => handleMenuClick(e, '#process')}>How it Works</a>
-        <a href="#about" onClick={(e) => handleMenuClick(e, '#about')}>About</a>
-        <a href="#pricing" onClick={(e) => handleMenuClick(e, '#pricing')}>Pricing</a>
-        <a 
-          href="#contact" 
-          className="cta-button" 
-          onClick={(e) => handleMenuClick(e, '#contact')}
-        >
-          Get Started
-        </a>
-      </div>
+
+        {/* Mobile Menu */}
+        <div className={`mobile-menu ${isMenuOpen ? 'active' : ''}`}>
+          <a href="#services" onClick={(e) => handleMenuClick(e, '#services')}>Services</a>
+          <a href="#portfolio" onClick={(e) => handleMenuClick(e, '#portfolio')}>Portfolio</a>
+          <a href="#process" onClick={(e) => handleMenuClick(e, '#process')}>How it Works</a>
+          <a href="#about" onClick={(e) => handleMenuClick(e, '#about')}>About</a>
+          <a href="#pricing" onClick={(e) => handleMenuClick(e, '#pricing')}>Pricing</a>
+          <a 
+            href="#contact" 
+            className="cta-button" 
+            onClick={(e) => handleMenuClick(e, '#contact')}
+          >
+            Let's Talk
+          </a>
+        </div>
+      </header>
     </>
   );
 }

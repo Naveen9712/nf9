@@ -6,8 +6,7 @@ header {
     z-index: 1000;
     padding: 16px 32px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -15,6 +14,18 @@ header {
     max-width: 1200px;
     width: calc(100% - 80px);
     height: auto;
+    transition: border-radius 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+header.menu-open {
+    border-radius: 32px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .logo {
@@ -86,73 +97,27 @@ nav a:hover {
     transform: rotate(-45deg) translate(7px, -7px);
 }
 
-.close-button {
-    display: none;
-}
-
 .mobile-menu {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%) scale(0.95);
-    opacity: 0;
-    pointer-events: none;
-    width: calc(100% - 40px);
-    max-width: 400px;
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 32px;
-    z-index: 1002;
-    padding: 60px 40px 40px;
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 24px;
+    width: 100%;
+    padding: 0;
+    margin-top: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
 }
 
 .mobile-menu.active {
+    display: flex;
+    max-height: 500px;
     opacity: 1;
-    transform: translateX(-50%) scale(1);
+    margin-top: 24px;
+    padding-bottom: 8px;
     pointer-events: auto;
-}
-
-.mobile-menu-header {
-    position: absolute;
-    top: 24px;
-    left: 32px;
-    right: 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.mobile-menu-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 18px;
-    font-weight: 500;
-    color: #fff;
-}
-
-.close-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    color: #fff;
-    font-size: 24px;
-    transition: opacity 0.3s ease;
-}
-
-.close-button:hover {
-    opacity: 0.7;
 }
 
 .mobile-menu a {
@@ -164,6 +129,8 @@ nav a:hover {
     transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(10px);
+    cursor: pointer;
+    pointer-events: auto;
 }
 
 .mobile-menu.active a {
@@ -194,6 +161,11 @@ nav a:hover {
     border: none;
     white-space: nowrap;
     flex-shrink: 0;
+    cursor: pointer;
+    display: inline-block;
+    pointer-events: auto;
+    position: relative;
+    z-index: 10;
 }
 
 .cta-button:hover {
@@ -205,12 +177,14 @@ nav a:hover {
     margin-top: 16px;
     opacity: 0;
     transform: translateY(10px);
+    pointer-events: none;
 }
 
 .mobile-menu.active .cta-button {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0.4s;
+    pointer-events: auto;
 }
 
 .mobile-overlay {
@@ -263,23 +237,6 @@ nav a:hover {
         height: 28px !important;
     }
 
-    .mobile-menu {
-        top: 16px;
-        width: calc(100% - 32px);
-        padding: 56px 32px 32px;
-    }
-
-    .mobile-menu-header {
-        top: 20px;
-        left: 24px;
-        right: 24px;
-    }
-
-    .mobile-menu-logo {
-        font-size: 16px;
-        gap: 10px;
-    }
-
     .mobile-menu a {
         font-size: 17px;
     }
@@ -291,13 +248,14 @@ nav a:hover {
         padding: 10px 20px;
     }
 
-    .mobile-menu {
-        width: calc(100% - 24px);
-        padding: 52px 24px 24px;
-        background-color: #060606f2;
-    }
-    .cta-button{
+    .mobile-menu .cta-button {
         background-color: #000;
         border: solid 1px white;
+        color: #fff;
+    }
+    
+    .mobile-menu .cta-button:hover {
+        background-color: #fff;
+        color: #000;
     }
 }
