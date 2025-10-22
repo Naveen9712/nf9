@@ -33,7 +33,7 @@
 }
 
 .banner h1 {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Satoshi', sans-serif;
     font-size: 100px;
     font-weight: 700;
     line-height: 1.1;
@@ -53,7 +53,7 @@
 }
 
 .banner p {
-    font-family: 'Inter Tight', sans-serif;
+    font-family: 'Satoshi', sans-serif;
     font-size: 20px;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.8);

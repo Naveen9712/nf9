@@ -4,26 +4,59 @@ import Banner from './components/banner/banner';
 import Services from './components/services/services';
 
 function App() {
+  const [loadingProgress, setLoadingProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [isAnimated, setIsAnimated] = useState(false);
+  const [showCurtain, setShowCurtain] = useState(true);
 
-  // Page loader effect
+  // Loading progress counter effect
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-    return () => clearTimeout(timer);
+    const duration = 2000; // 2 seconds
+    const steps = 100;
+    const stepDuration = duration / steps;
+    let currentStep = 0;
+
+    const interval = setInterval(() => {
+      currentStep += 1;
+      
+      // Ease out effect for more natural progression
+      const progress = Math.min(
+        100,
+        Math.floor(currentStep + (100 - currentStep) * 0.1)
+      );
+      
+      setLoadingProgress(progress);
+
+      if (currentStep >= 100) {
+        clearInterval(interval);
+        // Start exit animation after reaching 100%
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 300);
+      }
+    }, stepDuration);
+
+    return () => clearInterval(interval);
   }, []);
+
+  // Curtain reveal effect
+  useEffect(() => {
+    if (!isLoading) {
+      setTimeout(() => {
+        setShowCurtain(false);
+      }, 100);
+    }
+  }, [isLoading]);
 
   // Hero animation sequence
   useEffect(() => {
-    if (!isLoading) {
+    if (!showCurtain) {
       const timer = setTimeout(() => {
         setIsAnimated(true);
-      }, 100);
+      }, 400);
       return () => clearTimeout(timer);
     }
-  }, [isLoading]);
+  }, [showCurtain]);
 
   // Smooth scroll
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -37,10 +70,25 @@ function App() {
   return (
     <>
       {/* Page Loader */}
-      <div className={`page-loader ${!isLoading ? 'hidden' : ''}`}>
+      <div className={`page-loader ${!isLoading ? 'fade-out' : ''}`}>
         <div className="loader-content">
           <div className="loader-logo">NF9</div>
+          <div className="loader-counter">
+            {loadingProgress}%
+          </div>
+          <div className="loader-bar">
+            <div 
+              className="loader-bar-fill" 
+              style={{ width: `${loadingProgress}%` }}
+            />
+          </div>
         </div>
+      </div>
+
+      {/* Curtain Reveal Effect */}
+      <div className={`curtain-overlay ${!showCurtain ? 'reveal' : ''}`}>
+        <div className="curtain-left"></div>
+        <div className="curtain-right"></div>
       </div>
 
       <div className="page-content">
