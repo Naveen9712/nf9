@@ -13,7 +13,7 @@
 }
 
 body {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Inter Tight', sans-serif;
     background: #000;
     color: #fff;
     overflow-x: hidden;
@@ -66,7 +66,7 @@ html {
 .loader-logo {
     font-size: 72px;
     font-weight: 700;
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Inter', sans-serif;
     letter-spacing: -0.02em;
     background: linear-gradient(120deg, #fff, #666, #fff, #666, #fff);
     background-size: 300% 300%;
@@ -90,7 +90,7 @@ html {
 .loader-counter {
     font-size: 18px;
     font-weight: 500;
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: rgba(255, 255, 255, 0.6);
     letter-spacing: 0.1em;
     margin-top: 10px;
@@ -163,7 +163,7 @@ html {
     min-height: 100vh;
     opacity: 0;
     transform: scale(0.95);
-    animation: contentReveal 1s cubic-bezier(0.77, 0, 0.175, 1) 2.5s forwards;
+    animation: contentReveal 1s cubic-bezier(0.77, 0, 0.175, 1) 1.5s forwards;
 }
 
 @keyframes contentReveal {

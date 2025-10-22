@@ -11,7 +11,7 @@ function App() {
 
   // Loading progress counter effect
   useEffect(() => {
-    const duration = 2000; // 2 seconds
+    const duration = 1000; // 1 second - Fast loading
     const steps = 100;
     const stepDuration = duration / steps;
     let currentStep = 0;
