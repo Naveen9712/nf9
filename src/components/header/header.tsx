@@ -72,7 +72,7 @@ export default function Header({ onSmoothScroll }: HeaderProps) {
           <a href="#pricing" onClick={(e) => handleMenuClick(e, '#pricing')}>Pricing</a>
           <a 
             href="#contact" 
-            className="cta-button" 
+            className="cta-button-mobile" 
             onClick={(e) => handleMenuClick(e, '#contact')}
           >
             Let's Talk

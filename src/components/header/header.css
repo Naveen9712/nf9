@@ -173,18 +173,36 @@ nav a:hover {
     transform: translateY(-1px);
 }
 
-.mobile-menu .cta-button {
+.cta-button-mobile {
+    background: #fff;
+    color: #000;
+    padding: 12px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    border: none;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
     margin-top: 16px;
     opacity: 0;
     transform: translateY(10px);
     pointer-events: none;
 }
 
-.mobile-menu.active .cta-button {
+.mobile-menu.active .cta-button-mobile {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0.4s;
     pointer-events: auto;
+}
+
+.cta-button-mobile:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-1px);
 }
 
 .mobile-overlay {
@@ -248,13 +266,13 @@ nav a:hover {
         padding: 10px 20px;
     }
 
-    .mobile-menu .cta-button {
+    .cta-button-mobile {
         background-color: #000;
         border: solid 1px white;
         color: #fff;
     }
     
-    .mobile-menu .cta-button:hover {
+    .cta-button-mobile:hover {
         background-color: #fff;
         color: #000;
     }
