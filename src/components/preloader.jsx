@@ -3,7 +3,6 @@ import { gsap } from 'gsap';
 
 const Preloader = ({ onComplete }) => {
   const [isVisible, setIsVisible] = useState(true);
-  const [showContent, setShowContent] = useState(false);
   
   const preloaderRef = useRef(null);
   const topCurtainRef = useRef(null);
@@ -30,7 +29,11 @@ const Preloader = ({ onComplete }) => {
       }
     });
 
-    /* STEP 1 – Curtains open vertically (top up, bottom down) */
+  // Set initial states for letters and accent so enter/exit use the same units (percent)
+  gsap.set(lettersRef.current, { yPercent: 100, opacity: 0 });
+  gsap.set(accentRef.current, { scaleX: 0, opacity: 0, transformOrigin: 'left center' });
+
+  /* STEP 1 – Curtains open vertically (top up, bottom down) */
     tl.to(topCurtainRef.current, {
       duration: 1.2,
       yPercent: -100,
@@ -43,46 +46,51 @@ const Preloader = ({ onComplete }) => {
       ease: "power3.inOut"
     }, 0);
 
-    /* STEP 2 – Animate letters rising */
+    /* STEP 2 – Animate letters rising when curtain is 80% open (0.8s into animation) */
     tl.to(lettersRef.current, {
-      duration: 0.8,
-      y: 0,
+      duration: 0.7,
+      yPercent: 0,
       opacity: 1,
-      stagger: 0.1,
-      ease: "power3.out"
-    }, "+=0.2");
+      stagger: 0.15,
+      ease: "power2.out"
+    }, 0.8);
 
     /* STEP 3 – Animate accent line */
     tl.to(accentRef.current, {
-      duration: 0.6,
+      duration: 0.5,
       scaleX: 1,
-      opacity: 0.08,
+      opacity: 0.12,
       ease: "power2.out"
-    }, "-=0.4");
+    }, "-=0.3");
 
-    /* STEP 4 – Hold */
+    /* STEP 4 – Brief Hold */
     tl.to({}, {
-      duration: 0.8
+      duration: 0.4
     });
 
-    /* STEP 5 – Fade out center content */
-    tl.to([...lettersRef.current, accentRef.current], {
-      duration: 0.5,
+    /* STEP 5 – Move letters up and fade out quickly */
+    tl.to(lettersRef.current, {
+      duration: 1,
+      yPercent: -140,
       opacity: 0,
-      y: -30,
-      stagger: 0.06,
+      stagger: 0.1,
       ease: "power2.in"
     });
+
+    // animate accent shortly after letters start moving up so it stays close visually
+    tl.to(accentRef.current, {
+      duration: 1.2,
+      scaleX: 0,
+      opacity: 0,
+      ease: "power2.in"
+    }, "-=0.5");
 
     /* STEP 6 – Fade out preloader */
     tl.to(preloaderRef.current, {
       duration: 0.4,
       opacity: 0,
-      ease: "power2.inOut",
-      onStart: () => {
-        setShowContent(true);
-      }
-    }, "-=0.3");
+      ease: "power2.inOut"
+    }, "-=0.2");
 
     // Start animation after a brief delay
     const timer = setTimeout(() => {
@@ -121,28 +129,25 @@ const Preloader = ({ onComplete }) => {
 
       {/* Center Content */}
       <div className="relative flex flex-col items-center justify-center z-20">
-        {/* Brand Letters */}
-        <div className="flex gap-1.5 sm:gap-2 md:gap-3">
-          {['N', 'F', '9'].map((letter, index) => (
-            <span
-              key={index}
-              ref={(el) => (lettersRef.current[index] = el)}
-              className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black opacity-0"
-              style={{
-                fontFamily: '"Arial Black", Arial, sans-serif',
-                transform: 'translateY(60px)'
-              }}
-            >
-              {letter}
-            </span>
-          ))}
+  {/* Box containing letters; overflow hidden so letters rise inside the box */}
+  <div className="preloader-box border-0 rounded-sm h-[40vh] w-full flex items-center justify-center overflow-hidden px-4">
+          <div className="flex gap-0.5 sm:gap-1 md:gap-1.5">
+            {['N', 'F', '9'].map((letter, index) => (
+              <span
+                key={index}
+                ref={(el) => (lettersRef.current[index] = el)}
+                className="preloader-text opacity-0 text-black inline-block"
+              >
+                {letter}
+              </span>
+            ))}
+          </div>
         </div>
 
-        {/* Accent Line */}
+        {/* Accent Line (slightly closer) */}
         <div
           ref={accentRef}
-          className="h-1 w-20 sm:w-24 md:w-28 lg:w-32 mt-5 bg-gray-900 opacity-0"
-          style={{ transform: 'scaleX(0)' }}
+          className="h-1 w-20 sm:w-24 md:w-28 lg:w-32 mt-1 bg-gray-900 opacity-0"
         />
       </div>
     </div>
