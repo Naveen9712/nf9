@@ -35,13 +35,13 @@ const Preloader = ({ onComplete }) => {
 
   /* STEP 1 – Curtains open vertically (top up, bottom down) */
     tl.to(topCurtainRef.current, {
-      duration: 1.2,
+      duration: 1.7,
       yPercent: -100,
       ease: "power3.inOut"
     }, 0);
 
     tl.to(bottomCurtainRef.current, {
-      duration: 1.2,
+      duration: 1.7,
       yPercent: 100,
       ease: "power3.inOut"
     }, 0);
