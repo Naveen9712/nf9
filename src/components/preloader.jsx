@@ -65,7 +65,7 @@ const Preloader = ({ onComplete }) => {
 
     /* STEP 4 – Brief Hold */
     tl.to({}, {
-      duration: 0.4
+      duration: 0.1
     });
 
     /* STEP 5 – Move letters up and fade out quickly */
