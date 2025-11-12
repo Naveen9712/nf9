@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <>
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 flex justify-between items-center px-10 py-5 bg-white backdrop-blur-[10px] z-[1000]">
+      <header className="fixed top-0 left-0 right-0 flex justify-between items-center px-10  bg-white backdrop-blur-[10px] z-[1000]">
         <div className="logo">
           <img 
             src="https://res.cloudinary.com/dsb1k3ugo/image/upload/v1760451582/nf9-icon_jcmneo.png" 
