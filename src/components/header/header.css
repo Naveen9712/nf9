@@ -34,6 +34,10 @@
     font-display: swap;
 }
 
+.main-header {
+    top:-4px;
+}
+
 /* ============================================
    CENTER TEXT
    ============================================ */
@@ -130,7 +134,7 @@
 }
 
 .menu ul li {
-    margin: 15px 0;
+    margin: 0;
     position: relative;
     overflow: hidden;
     opacity: 0;
@@ -171,6 +175,7 @@
     font-size: 60px;
     font-family: 'Aeonik', sans-serif;
     font-weight: 600;
+    line-height: 1.4;
     transition: color 0.3s ease;
     display: block;
     position: relative;
@@ -429,6 +434,7 @@
 
     .menu ul li a {
         font-size: 32px;
+        line-height: 1.1;
         white-space: nowrap;
         display: block;
     }
@@ -522,6 +528,7 @@
         align-items: center;
         list-style: none;
         width: 100%;
+        margin:3rem 0 0 0;
     }
 
     .menu ul li {
@@ -537,6 +544,7 @@
 
     .menu ul li a {
         font-size: 28px;
+        line-height: 1.1;
         white-space: nowrap;
         display: block;
     }
