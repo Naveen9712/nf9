@@ -1,6 +1,6 @@
 /* ============================================
-   HEADER COMPONENT STYLES
-   Matches header.html exactly
+   HEADER COMPONENT STYLES - ENHANCED VERSION
+   Visual Wonder Edition with Stunning Animations
    ============================================ */
 
 /* Font Face Declarations */
@@ -34,16 +34,38 @@
     font-display: swap;
 }
 
+/* ============================================
+   MAIN HEADER WITH ENTRANCE ANIMATION
+   ============================================ */
+
 .main-header {
-    top:-4px;
-    
-    
+    top: -4px;
+    animation: headerSlideDown 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: top;
+    will-change: transform;
+}
+
+@keyframes headerSlideDown {
+    0% {
+        transform: translateY(-100%) scale(0.9);
+        opacity: 0;
+        filter: blur(10px);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+        filter: blur(0);
+    }
 }
 
 
 
+
+
+
+
 /* ============================================
-   CENTER TEXT
+   CENTER TEXT WITH GLITCH & GRADIENT EFFECT
    ============================================ */
 
 .center-text {
@@ -55,18 +77,65 @@
     font-weight: 700;
     color: #000;
     letter-spacing: 4px;
-    transition: color 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: textAppear 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s backwards;
+    cursor: default;
+}
+
+.center-text::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: gradientShift 3s linear infinite;
+}
+
+.center-text:hover::before {
+    opacity: 1;
+}
+
+@keyframes textAppear {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.5);
+        filter: blur(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .main-header.header-active .center-text {
     color: #fff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+                 0 0 40px rgba(255, 255, 255, 0.3);
 }
 
 /* ============================================
-   HAMBURGER MENU
+   MAGNETIC HAMBURGER MENU
    ============================================ */
 
-.hamburger {
+   .hamburger {
     width: 55px;
     height: 35px;
     cursor: pointer;
@@ -74,6 +143,8 @@
     flex-direction: column;
     justify-content: space-between;
     transition: transform 0.3s ease;
+    position: relative;
+    flex-shrink: 0;
 }
 
 .hamburger span {
@@ -82,6 +153,8 @@
     background: #000;
     border-radius: 0px;
     transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    flex-shrink: 0;
 }
 
 .hamburger.active span {
@@ -96,6 +169,7 @@
 .hamburger span:nth-child(3) {
     width: 60%;
     margin-left: auto;
+    transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hamburger:hover span:nth-child(2),
@@ -115,8 +189,9 @@
     transform: translateY(-13px) rotate(-45deg);
 }
 
+
 /* ============================================
-   MENU CONTAINER
+   MENU CONTAINER WITH PARTICLE EFFECT
    ============================================ */
 
 .menu {
@@ -134,19 +209,72 @@
     overflow: visible;
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.3s ease, visibility 0s ease 0.3s;
+    transition: opacity 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+                visibility 0s ease 0.5s,
+                background 0.5s ease;
 }
 
 .menu.active {
-    background: #000;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
     visibility: visible;
     opacity: 1;
-    transition: opacity 0.3s ease, visibility 0s ease;
+    transition: opacity 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+                visibility 0s ease,
+                background 0.5s ease;
+    animation: menuGradient 10s ease-in-out infinite;
 }
+
+@keyframes menuGradient {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Particle Effect Container */
+.menu::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(2px 2px at 60% 70%, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(2px 2px at 80% 10%, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(1px 1px at 90% 60%, rgba(255, 255, 255, 0.2), transparent);
+    background-size: 200% 200%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    animation: particleFloat 20s linear infinite;
+}
+
+.menu.active::before {
+    opacity: 1;
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        background-position: 0% 0%, 100% 100%, 50% 50%, 0% 100%, 100% 0%;
+    }
+    50% {
+        background-position: 100% 100%, 0% 0%, 100% 100%, 100% 0%, 0% 100%;
+    }
+}
+
+/* ============================================
+   MENU ITEMS WITH 3D EFFECT
+   ============================================ */
 
 .menu ul {
     list-style: none;
     overflow: visible;
+    perspective: 1000px;
 }
 
 .menu ul li {
@@ -154,49 +282,29 @@
     position: relative;
     overflow: hidden;
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(50px) translateZ(-100px) rotateX(-15deg);
+    transition: opacity 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+                transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-style: preserve-3d;
 }
 
 .menu.active ul li {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) translateZ(0) rotateX(0);
     overflow: visible;
 }
 
-.menu.active ul li:nth-child(1) {
-    transition-delay: 0.1s;
-}
+/* Staggered Animation */
+.menu.active ul li:nth-child(1) { transition-delay: 0.1s; }
+.menu.active ul li:nth-child(2) { transition-delay: 0.15s; }
+.menu.active ul li:nth-child(3) { transition-delay: 0.2s; }
+.menu.active ul li:nth-child(4) { transition-delay: 0.25s; }
+.menu.active ul li:nth-child(5) { transition-delay: 0.3s; }
+.menu.active ul li:nth-child(6) { transition-delay: 0.35s; }
+.menu.active ul li:nth-child(7) { transition-delay: 0.4s; }
+.menu.active ul li:nth-child(8) { transition-delay: 0.45s; }
 
-.menu.active ul li:nth-child(2) {
-    transition-delay: 0.2s;
-}
-
-.menu.active ul li:nth-child(3) {
-    transition-delay: 0.3s;
-}
-
-.menu.active ul li:nth-child(4) {
-    transition-delay: 0.4s;
-}
-
-.menu.active ul li:nth-child(5) {
-    transition-delay: 0.5s;
-}
-
-.menu.active ul li:nth-child(6) {
-    transition-delay: 0.6s;
-}
-
-.menu.active ul li:nth-child(7) {
-    transition-delay: 0.7s;
-}
-
-.menu.active ul li:nth-child(8) {
-    transition-delay: 0.8s;
-}
-
+/* Menu Link with Gradient Hover */
 .menu ul li a {
     text-decoration: none;
     color: #000;
@@ -204,28 +312,41 @@
     font-family: 'Satoshi', sans-serif;
     font-weight: 500;
     line-height: 65px;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     display: block;
     position: relative;
     z-index: 2;
+    background: linear-gradient(90deg, #fff 0%, #fff 50%, #00ffff 50%, #ff00ff 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-position: 0% 0%;
 }
 
 .menu.active ul li a {
     color: #fff;
+    background: linear-gradient(90deg, #fff 0%, #fff 50%, #00ffff 50%, #ff00ff 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-position: 0% 0%;
 }
 
-.menu ul li a:hover {
-    color: #fffdfd;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
+.menu ul li a::before {
+    display: none;
 }
 
-.menu.active ul li a:hover {
-    color: #fffdfd;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
+.menu ul li:hover a {
+    transform: translateX(20px) scale(1.05);
+    background-position: 100% 0%;
+    text-shadow: 0 0 30px rgba(0, 255, 255, 0.5),
+                 0 0 60px rgba(255, 0, 255, 0.3);
 }
 
 /* ============================================
-   BACKGROUND TEXT ANIMATION
+   ENHANCED BACKGROUND TEXT ANIMATION
    ============================================ */
 
 .menu ul li .background-text {
@@ -239,17 +360,19 @@
     pointer-events: none;
     z-index: 1;
     opacity: 0;
-    transition: opacity 0.4s ease, -webkit-text-stroke 0.3s ease;
+    transition: opacity 0.5s ease, -webkit-text-stroke 0.3s ease;
     top: 80%;
     left: 0;
     transform: translateY(-50%) translateX(100%);
     letter-spacing: 0.05em;
     animation: scrollRightToLeft 60s linear infinite;
     animation-play-state: paused;
+    filter: blur(1px);
 }
 
 .menu.active ul li .background-text {
-    -webkit-text-stroke: 0.2px #fff;
+    -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.3);
+    filter: blur(0);
 }
 
 .menu.active ul li .background-text {
@@ -257,11 +380,9 @@
 }
 
 .menu ul li:hover .background-text {
-    opacity: 1;
-}
-
-.menu.active ul li:hover .background-text {
-    opacity: 1 !important;
+    opacity: 0.8;
+    -webkit-text-stroke: 1px rgba(0, 255, 255, 0.5);
+    filter: blur(0) drop-shadow(0 0 30px rgba(0, 255, 255, 0.5));
 }
 
 .default-background-text {
@@ -276,7 +397,7 @@
     z-index: 1;
     opacity: 0;
     transform: translateY(-50%) translateX(100%);
-    transition: opacity 0.4s ease, -webkit-text-stroke 0.3s ease;
+    transition: opacity 0.5s ease, -webkit-text-stroke 0.3s ease;
     top: 80%;
     left: 0;
     letter-spacing: 0.05em;
@@ -285,7 +406,7 @@
 }
 
 .menu.active .default-background-text {
-    -webkit-text-stroke: 0.2px #fff;
+    -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.2);
 }
 
 .menu.active .default-background-text {
@@ -301,18 +422,16 @@
     0% {
         transform: translateY(-50%) translateX(100%);
     }
-
     50% {
         transform: translateY(-50%) translateX(-50%);
     }
-
     100% {
         transform: translateY(-50%) translateX(100%);
     }
 }
 
 /* ============================================
-   MENU DIVIDER
+   ANIMATED MENU DIVIDER
    ============================================ */
 
 .menu-divider {
@@ -322,24 +441,53 @@
     left: 50%;
     transform: translateX(-50%);
     width: 1px;
-    background: #000;
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        #fff 20%, 
+        #fff 80%, 
+        transparent 100%);
     z-index: 1000;
     opacity: 0;
-    transition: opacity 0.6s ease, background 0.3s ease;
+    transition: opacity 0.8s ease, background 0.3s ease;
     height: 40%;
 }
 
-.menu.active .menu-divider {
+.menu-divider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
     background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    animation: dividerDot 3s ease-in-out infinite;
+}
+
+@keyframes dividerDot {
+    0%, 100% {
+        top: 0%;
+    }
+    50% {
+        top: 100%;
+    }
 }
 
 .menu.active .menu-divider {
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        rgba(0, 255, 255, 0.5) 20%, 
+        rgba(255, 0, 255, 0.5) 50%,
+        rgba(0, 255, 255, 0.5) 80%, 
+        transparent 100%);
     opacity: 1;
     transition-delay: 0.6s;
 }
 
 /* ============================================
-   SOCIAL LINKS
+   SOCIAL LINKS WITH 3D ROTATION
    ============================================ */
 
 .social-links-container {
@@ -349,7 +497,7 @@
     transform: translateY(-50%);
     z-index: 1000;
     opacity: 0;
-    transition: opacity 0.6s ease;
+    transition: opacity 0.8s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -369,16 +517,28 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 10px;
-    transition: color 0.3s ease;
+    transition: all 0.4s ease;
+    background: linear-gradient(90deg, #fff, #00ffff, #ff00ff, #fff);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textGradientFlow 3s linear infinite;
 }
 
-.menu.active .reach-out-text {
-    color: #fff;
+@keyframes textGradientFlow {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .social-links {
     display: flex;
     gap: 20px;
+    perspective: 1000px;
 }
 
 .social-links a {
@@ -390,44 +550,75 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.social-links a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, 
+        rgba(0, 255, 255, 0.3), 
+        rgba(255, 0, 255, 0.3), 
+        rgba(0, 255, 255, 0.3));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: rotate360 3s linear infinite;
+}
+
+@keyframes rotate360 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.social-links a:hover::before {
+    opacity: 1;
 }
 
 .menu.active .social-links a {
     border-color: #fff;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .social-links a:hover {
-    border-color: #000;
-    background: rgba(255, 255, 255, 0.8);
-}
-
-.menu.active .social-links a:hover {
-    border-color: #fff;
-    background: rgba(255, 255, 255, 0.2);
+    transform: rotateY(360deg) scale(1.2);
+    border-color: #00ffff;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5),
+                inset 0 0 20px rgba(0, 255, 255, 0.2);
 }
 
 .social-links a svg {
     width: 30px;
     height: 30px;
     fill: #000;
-    transition: fill 0.3s ease;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
 }
 
 .menu.active .social-links a svg {
     fill: #fff;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
 }
 
 .social-links a:hover svg {
-    fill: #d8d0d0;
-}
-
-.menu.active .social-links a:hover svg {
-    fill: #ccc;
+    fill: #00ffff;
+    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.8));
+    transform: scale(1.2) rotate(5deg);
 }
 
 /* ============================================
-   OVERLAY
+   ENHANCED OVERLAY WITH BLUR
    ============================================ */
 
 .overlay {
@@ -436,14 +627,17 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
     opacity: 0;
     visibility: hidden;
-    transition: none;
+    transition: all 0.5s ease;
     z-index: 998;
 }
 
 .overlay.active {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
     opacity: 1;
     visibility: visible;
 }
@@ -547,8 +741,8 @@
     }
 
     .social-links a {
-        width: 45px; 
-        height: 45px ;
+        width: 45px;
+        height: 45px;
     }
 
     .social-links a svg {
@@ -600,7 +794,7 @@
         align-items: center;
         list-style: none;
         width: 100%;
-        margin:3rem 0 0 0;
+        margin: 3rem 0 0 0;
     }
 
     .menu ul li {
@@ -661,8 +855,34 @@
         height: 40px;
     }
 
+    .social-links a:hover {
+        transform: scale(1.1);
+    }
+
     .social-links a svg {
         width: 18px;
         height: 18px;
+    }
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+.menu, .menu ul li, .hamburger, .social-links a {
+    will-change: transform, opacity;
+}
+
+.menu.active {
+    will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }
