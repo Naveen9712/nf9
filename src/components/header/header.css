@@ -547,8 +547,8 @@
     }
 
     .social-links a {
-        width: 45px;
-        height: 45px;
+        width: 45px; 
+        height: 45px ;
     }
 
     .social-links a svg {
