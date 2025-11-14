@@ -2,6 +2,9 @@ import { useState } from 'react'
 import './App.css'
 import Preloader from './components/preloader'
 import Header from './components/header/header'
+import Hero from './components/hero/hero'
+import About from './components/about/about'
+import Belief from './components/belief/belief'
 
 function App() {
   const [preloaderComplete, setPreloaderComplete] = useState(false)
@@ -18,8 +21,10 @@ function App() {
         <Header />
         
         {/* Main content area - add your content here */}
-        <main className="pt-24">
-          {/* Your page content goes here */}
+        <main>
+          <Hero />
+          <About />
+          <Belief />
         </main>
       </div>
     </>
