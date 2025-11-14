@@ -204,7 +204,7 @@
     font-family: 'Satoshi', sans-serif;
     font-weight: 500;
     line-height: 65px;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
     display: block;
     position: relative;
     z-index: 2;
@@ -215,11 +215,13 @@
 }
 
 .menu ul li a:hover {
-    color: #d8d0d0;
+    color: #fffdfd;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
 }
 
 .menu.active ul li a:hover {
-    color: #ccc;
+    color: #fffdfd;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
 }
 
 /* ============================================
@@ -247,7 +249,7 @@
 }
 
 .menu.active ul li .background-text {
-    -webkit-text-stroke: 2px #fff;
+    -webkit-text-stroke: 0.2px #fff;
 }
 
 .menu.active ul li .background-text {
@@ -283,7 +285,7 @@
 }
 
 .menu.active .default-background-text {
-    -webkit-text-stroke: 2px #fff;
+    -webkit-text-stroke: 0.2px #fff;
 }
 
 .menu.active .default-background-text {
