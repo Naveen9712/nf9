@@ -36,12 +36,12 @@
 
 .main-header {
     top:-4px;
-    background: #fff;
-    transition: background 0.3s ease;
+    
+    
 }
 
 .main-header.header-active {
-    background: #000;
+    
 }
 
 /* ============================================
