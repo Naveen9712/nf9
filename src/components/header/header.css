@@ -5,30 +5,30 @@
 
 /* Font Face Declarations */
 @font-face {
-    font-family: 'Aeonik';
-    src: url('./fonts/Aeonik-Regular.woff2') format('woff2'),
-        url('./fonts/Aeonik-Regular.woff') format('woff'),
-        url('./fonts/Aeonik-Regular.ttf') format('truetype');
+    font-family: 'Satoshi';
+    src: url('./fonts/Satoshi-Regular.woff2') format('woff2'),
+        url('./fonts/Satoshi-Regular.woff') format('woff'),
+        url('./fonts/Satoshi-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Aeonik';
-    src: url('./fonts/Aeonik-Medium.woff2') format('woff2'),
-        url('./fonts/Aeonik-Medium.woff') format('woff'),
-        url('./fonts/Aeonik-Medium.ttf') format('truetype');
+    font-family: 'Satoshi';
+    src: url('./fonts/Satoshi-Medium.woff2') format('woff2'),
+        url('./fonts/Satoshi-Medium.woff') format('woff'),
+        url('./fonts/Satoshi-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Aeonik';
-    src: url('./fonts/Aeonik-Bold.woff2') format('woff2'),
-        url('./fonts/Aeonik-Bold.woff') format('woff'),
-        url('./fonts/Aeonik-Bold.ttf') format('truetype');
+    font-family: 'Satoshi';
+    src: url('./fonts/Satoshi-Bold.woff2') format('woff2'),
+        url('./fonts/Satoshi-Bold.woff') format('woff'),
+        url('./fonts/Satoshi-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -40,9 +40,7 @@
     
 }
 
-.main-header.header-active {
-    
-}
+
 
 /* ============================================
    CENTER TEXT
@@ -53,7 +51,7 @@
     left: 50%;
     transform: translateX(-50%);
     font-size: 50px;
-    font-family: 'Aeonik', sans-serif;
+    font-family: 'Satoshi', sans-serif;
     font-weight: 700;
     color: #000;
     letter-spacing: 4px;
@@ -203,7 +201,7 @@
     text-decoration: none;
     color: #000;
     font-size: 50px;
-    font-family: 'Aeonik', sans-serif;
+    font-family: 'Satoshi', sans-serif;
     font-weight: 500;
     line-height: 65px;
     transition: color 0.3s ease;
@@ -230,7 +228,7 @@
 
 .menu ul li .background-text {
     position: fixed;
-    font-family: 'Aeonik', sans-serif;
+    font-family: 'Satoshi', sans-serif;
     font-weight: 600;
     font-size: 30vw;
     color: transparent;
@@ -266,7 +264,7 @@
 
 .default-background-text {
     position: fixed;
-    font-family: 'Aeonik', sans-serif;
+    font-family: 'Satoshi', sans-serif;
     font-weight: 600;
     font-size: 30vw;
     color: transparent;
@@ -362,7 +360,7 @@
 }
 
 .reach-out-text {
-    font-family: 'Aeonik', sans-serif;
+    font-family: 'Satoshi', sans-serif;
     font-size: 35px;
     font-weight: 500;
     color: #000;
