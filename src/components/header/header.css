@@ -244,7 +244,7 @@
     left: 0;
     transform: translateY(-50%) translateX(0%);
     letter-spacing: 0.05em;
-    animation: scrollLeftToRight 20s linear infinite;
+    animation: scrollLeftToRight 20s linear infinite alternate;
     animation-play-state: paused;
 }
 
@@ -256,11 +256,11 @@
 
 @keyframes scrollLeftToRight {
     0% {
-        transform: translateY(-50%) translateX(0%);
+        transform: translateY(-50%) translateX(0);
     }
 
     100% {
-        transform: translateY(-50%) translateX(-100%);
+        transform: translateY(-50%) translateX(var(--bounce-distance, calc(100vw - 100%)));
     }
 }
 
@@ -402,6 +402,14 @@
 }
 
 /* ============================================
+   RESPONSIVE: TABLET (768px to 1024px)
+   ============================================ */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Add your styles for tablet view here */
+}
+
+/* ============================================
    RESPONSIVE: TABLET (768px and below)
    ============================================ */
 
@@ -520,13 +528,13 @@
     }
 
     .center-text {
-        font-size: 18px;
+        font-size: 25px;
         letter-spacing: 0.5px;
     }
 
     .hamburger {
-        width: 50px;
-        height: 35px;
+        width: 48px;
+        height: 28px;
     }
 
     .hamburger.active span:nth-child(1) {

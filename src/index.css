@@ -10,7 +10,7 @@ body {
 .preloader-text {
   font-size: 300px;
   font-weight: bold;
-  font-family: "Arial Black", Arial, sans-serif;
+  font-family: "Arial Black", Arial, sans-serif!important;
 }
 
 @media (max-width: 768px) {

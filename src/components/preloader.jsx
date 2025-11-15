@@ -160,7 +160,7 @@ const Preloader = ({ onComplete }) => {
         {/* Accent Line (slightly closer) */}
         <div
           ref={accentRef}
-          className="h-1 w-20 sm:w-24 md:w-28 lg:w-32 mt-1 bg-gray-900 opacity-0"
+          className="h-1 w-20 sm:w-24 md:w-28 lg:w-32 mt-4 bg-gray-900 opacity-0"
         />
       </div>
     </div>

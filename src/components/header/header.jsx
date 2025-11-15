@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './header.css';
 
 const Header = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
   const [bgText, setBgText] = useState('NF9');
+  const backgroundTextRef = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuActive(!isMenuActive);
@@ -16,6 +17,33 @@ const Header = () => {
   const handleMouseLeave = () => {
     setBgText('NF9');
   };
+
+  useEffect(() => {
+    const updateBounceDistance = () => {
+      if (backgroundTextRef.current) {
+        const textElement = backgroundTextRef.current;
+        const textWidth = textElement.offsetWidth;
+        if (textWidth > 0) {
+          const viewportWidth = window.innerWidth;
+          const maxTranslateX = viewportWidth - textWidth;
+          textElement.style.setProperty('--bounce-distance', `${maxTranslateX}px`);
+        }
+      }
+    };
+
+    if (isMenuActive) {
+      // Try immediately first
+      updateBounceDistance();
+      // Also try after a short delay to ensure text is fully rendered
+      const timeoutId = setTimeout(updateBounceDistance, 100);
+      window.addEventListener('resize', updateBounceDistance);
+      
+      return () => {
+        clearTimeout(timeoutId);
+        window.removeEventListener('resize', updateBounceDistance);
+      };
+    }
+  }, [isMenuActive, bgText]);
 
   const menuItems = [
     { id: 1, text: 'Work', href: '#home' },
@@ -30,7 +58,7 @@ const Header = () => {
   return (
     <>
       {/* Header */}
-      <header className={`fixed main-header left-0 right-0 flex justify-between items-center px-10 backdrop-blur-[10px] z-[1000] ${isMenuActive ? 'header-active' : ''}`}>
+      <header className={`fixed main-header left-0 right-0 flex justify-between items-center px-5 md:px-10 backdrop-blur-[10px] z-[1000] ${isMenuActive ? 'header-active' : ''}`}>
         <div className="logo">
           <img 
             src="https://res.cloudinary.com/dsb1k3ugo/image/upload/v1760451582/nf9-icon_jcmneo.png" 
@@ -76,7 +104,7 @@ const Header = () => {
           ))}
         </ul>
 
-        <span className="background-text">{bgText}</span>
+        <span ref={backgroundTextRef} className="background-text">{bgText}</span>
 
         <div className="menu-divider"></div>
         
