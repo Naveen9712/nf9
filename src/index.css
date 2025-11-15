@@ -8,7 +8,19 @@ body {
 }
 
 .preloader-text {
-  font-size: clamp(130px, 200px, 300px);
+  font-size: 300px;
   font-weight: bold;
   font-family: "Arial Black", Arial, sans-serif;
+}
+
+@media (max-width: 768px) {
+  .preloader-text {
+    font-size: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .preloader-text {
+    font-size: 130px;
+  }
 }

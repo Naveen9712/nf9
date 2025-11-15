@@ -216,19 +216,19 @@
 
 .menu ul li a:hover {
     color: #fffdfd;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8), 0 0 50px rgba(255, 255, 255, 0.6);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
 }
 
 .menu.active ul li a:hover {
     color: #fffdfd;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8), 0 0 50px rgba(255, 255, 255, 0.6);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
 }
 
 /* ============================================
    BACKGROUND TEXT ANIMATION
    ============================================ */
 
-.menu ul li .background-text {
+.background-text {
     position: fixed;
     font-family: 'Satoshi', sans-serif;
     font-weight: 600;
@@ -239,75 +239,28 @@
     pointer-events: none;
     z-index: 1;
     opacity: 0;
-    transition: opacity 0.4s ease, -webkit-text-stroke 0.3s ease;
+    transition: opacity 0.4s ease, -webkit-text-stroke 0.4s ease;
     top: 80%;
     left: 0;
-    transform: translateY(-50%) translateX(100%);
+    transform: translateY(-50%) translateX(0%);
     letter-spacing: 0.05em;
-    animation: scrollRightToLeft 60s linear infinite;
+    animation: scrollLeftToRight 20s linear infinite;
     animation-play-state: paused;
 }
 
-.menu.active ul li .background-text {
+.menu.active .background-text {
     -webkit-text-stroke: 0.2px #fff;
-}
-
-.menu.active ul li .background-text {
-    animation-play-state: running;
-}
-
-.menu ul li:hover .background-text {
-    opacity: 1;
-}
-
-.menu.active ul li:hover .background-text {
-    opacity: 1 !important;
-}
-
-.default-background-text {
-    position: fixed;
-    font-family: 'Satoshi', sans-serif;
-    font-weight: 600;
-    font-size: 30vw;
-    color: transparent;
-    -webkit-text-stroke: 2px #000;
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0;
-    transform: translateY(-50%) translateX(100%);
-    transition: opacity 0.4s ease, -webkit-text-stroke 0.3s ease;
-    top: 80%;
-    left: 0;
-    letter-spacing: 0.05em;
-    animation: scrollRightToLeft 60s linear infinite;
-    animation-play-state: paused;
-}
-
-.menu.active .default-background-text {
-    -webkit-text-stroke: 0.2px #fff;
-}
-
-.menu.active .default-background-text {
     opacity: 1;
     animation-play-state: running;
 }
 
-.menu.active:has(ul li:hover) .default-background-text {
-    opacity: 0;
-}
-
-@keyframes scrollRightToLeft {
+@keyframes scrollLeftToRight {
     0% {
-        transform: translateY(-50%) translateX(100%);
-    }
-
-    50% {
-        transform: translateY(-50%) translateX(-50%);
+        transform: translateY(-50%) translateX(0%);
     }
 
     100% {
-        transform: translateY(-50%) translateX(100%);
+        transform: translateY(-50%) translateX(-100%);
     }
 }
 
@@ -463,8 +416,8 @@
     }
 
     .hamburger {
-        width: 45px;
-        height: 30px;
+        width: 50px;
+        height: 35px;
     }
 
     .hamburger.active span:nth-child(1) {
@@ -572,8 +525,8 @@
     }
 
     .hamburger {
-        width: 40px;
-        height: 22px;
+        width: 50px;
+        height: 35px;
     }
 
     .hamburger.active span:nth-child(1) {
