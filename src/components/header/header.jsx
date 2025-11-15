@@ -3,9 +3,18 @@ import './header.css';
 
 const Header = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
+  const [bgText, setBgText] = useState('NF9');
 
   const toggleMenu = () => {
     setIsMenuActive(!isMenuActive);
+  };
+
+  const handleMouseEnter = (text) => {
+    setBgText(text);
+  };
+
+  const handleMouseLeave = () => {
+    setBgText('NF9');
   };
 
   const menuItems = [
@@ -55,19 +64,20 @@ const Header = () => {
         <ul>
           {menuItems.map((item) => (
             <li key={item.id}>
-              <a 
+              <a
                 href={item.href}
                 onClick={toggleMenu}
+                onMouseEnter={() => handleMouseEnter(item.text)}
+                onMouseLeave={handleMouseLeave}
               >
                 {item.text}
               </a>
-              <span className="background-text">{item.text}</span>
             </li>
           ))}
         </ul>
-        
-        <span className="default-background-text">NF9</span>
-        
+
+        <span className="background-text">{bgText}</span>
+
         <div className="menu-divider"></div>
         
         <div className="social-links-container">
