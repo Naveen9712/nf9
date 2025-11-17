@@ -1,0 +1,592 @@
+/* ============================================
+/* ============================================
+   HEADER COMPONENT STYLES
+   Matches header.html exactly
+   ============================================ */
+
+/* Font Face Declarations */
+@font-face {
+    font-family: 'Satoshi';
+    src: url('./fonts/Satoshi-Regular.woff2') format('woff2'),
+        url('./fonts/Satoshi-Regular.woff') format('woff'),
+        url('./fonts/Satoshi-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('./fonts/Satoshi-Medium.woff2') format('woff2'),
+        url('./fonts/Satoshi-Medium.woff') format('woff'),
+        url('./fonts/Satoshi-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('./fonts/Satoshi-Bold.woff2') format('woff2'),
+        url('./fonts/Satoshi-Bold.woff') format('woff'),
+        url('./fonts/Satoshi-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+.main-header {
+    top:-4px;
+    
+    
+}
+
+/* ============================================
+   CENTER TEXT
+   ============================================ */
+
+.center-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 50px;
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 700;
+    color: #000;
+    letter-spacing: 4px;
+    transition: color 0.3s ease;
+}
+
+.main-header.header-active .center-text {
+    color: #fff;
+}
+
+/* ============================================
+   HAMBURGER MENU
+   ============================================ */
+
+.hamburger {
+    width: 55px;
+    height: 35px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background: #000;
+    border-radius: 0px;
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hamburger.active span {
+    background: #fff;
+}
+
+.hamburger span:nth-child(1) {
+    height: 4px;
+}
+
+.hamburger span:nth-child(2),
+.hamburger span:nth-child(3) {
+    width: 60%;
+    margin-left: auto;
+}
+
+.hamburger:hover span:nth-child(2),
+.hamburger:hover span:nth-child(3) {
+    width: 100%;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(13px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-13px) rotate(-45deg);
+}
+
+/* ============================================
+   MENU CONTAINER
+   ============================================ */
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #fff;
+    backdrop-filter: blur(20px);
+    padding:180px 0 160px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    height: 100%;
+    overflow: visible;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0s ease 0.3s;
+}
+
+.menu.active {
+    background: #000;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease, visibility 0s ease;
+}
+
+/* ============================================
+   DROPDOWN CONTAINER
+   ============================================ */
+
+.dropdown-container {
+    width: 100%;
+    display: flex;
+    height: 100%;
+}
+
+/* ============================================
+   MENU CONTAINER (LEFT 50%)
+   ============================================ */
+
+.menu-container {
+    flex: 1 0 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ============================================
+   SOCIAL CONTAINER (RIGHT 50%)
+   ============================================ */
+
+.social-container {
+    flex: 1 0 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.social-container h1 {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 35px;
+    font-weight: 400;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    transition: color 0.3s ease, opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.menu.active .social-container h1 {
+    color: #fff;
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.8s;
+}
+
+.menu ul {
+    list-style: none;
+    overflow: visible;
+}
+
+.menu ul li {
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu.active ul li {
+    opacity: 1;
+    transform: translateY(0);
+    overflow: visible;
+}
+
+.menu.active ul li:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.menu.active ul li:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.menu.active ul li:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.menu.active ul li:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.menu.active ul li:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.menu.active ul li:nth-child(6) {
+    transition-delay: 0.6s;
+}
+
+.menu.active ul li:nth-child(7) {
+    transition-delay: 0.7s;
+}
+
+.menu.active ul li:nth-child(8) {
+    transition-delay: 0.8s;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 50px;
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 400;
+    line-height: 65px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+.menu.active ul li a {
+    color: #fff;
+}
+
+.menu ul li a:hover {
+    color: #fffdfdac;
+}
+
+.menu.active ul li a:hover {
+    color: #fffdfdac;
+}
+
+/* ============================================
+   BACKGROUND TEXT ANIMATION
+   ============================================ */
+
+.background-text {
+    position: absolute;
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 600;
+    font-size: 30vw;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.082);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 0.4s ease, -webkit-text-stroke 0.4s ease;
+    top: 110%;
+    left: 0;
+    transform: translateY(-50%) translateX(0%);
+    letter-spacing: 0.05em;
+    animation: scrollLeftToRight 20s linear infinite alternate;
+    animation-play-state: paused;
+}
+
+.menu.active .background-text {
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.199);
+    opacity: 1;
+    animation-play-state: running;
+}
+
+@keyframes scrollLeftToRight {
+    0% {
+        transform: translateY(-50%) translateX(0);
+    }
+
+    100% {
+        transform: translateY(-50%) translateX(var(--bounce-distance, calc(100vw - 100%)));
+    }
+}
+
+/* ============================================
+   MENU DIVIDER
+   ============================================ */
+
+.menu-divider {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 1px;
+    background: #000;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.6s ease, background 0.3s ease;
+    height: 40%;
+}
+
+.menu.active .menu-divider {
+    background: #fff;
+    opacity: 1;
+    transition-delay: 0.6s;
+}
+
+/* ============================================
+   SOCIAL LINKS
+   ============================================ */
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu.active .social-links {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.9s;
+}
+
+.social-links a {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.menu.active .social-links a {
+    border-color: #fff;
+}
+
+.social-links a:hover {
+    border-color: #000;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.menu.active .social-links a:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.social-links a svg {
+    width: 30px;
+    height: 30px;
+    fill: #000;
+    transition: fill 0.3s ease;
+}
+
+.menu.active .social-links a svg {
+    fill: #fff;
+}
+
+.social-links a:hover svg {
+    fill: #d8d0d0;
+}
+
+.menu.active .social-links a:hover svg {
+    fill: #ccc;
+}
+
+/* ============================================
+   OVERLAY
+   ============================================ */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: none;
+    z-index: 998;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ============================================
+   RESPONSIVE: LAPTOP (769px and above)
+   ============================================ */
+
+@media (min-width: 769px) {
+
+    .social-links a {
+        width: 80px;
+        height: 80px;
+    }
+
+    .social-links a svg {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE: TABLET (768px to 1024px)
+   ============================================ */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Add your styles for tablet view here */
+}
+
+
+/* ============================================
+   RESPONSIVE: TABLET (768px to 469px)
+   ============================================ */
+
+@media (min-width: 469px) and (max-width: 768px) {
+    .dropdown-container {
+        flex-direction: row;
+    }
+
+    .menu-container,
+    .social-container {
+        flex: 1 0 50%;
+    }
+
+    .background-text {
+        font-size: 60vw;
+        animation-duration: 15s;
+        top: 120%;
+
+    }
+
+    .menu-divider {
+        width: 1px;
+        height: 40%;
+    }
+
+    .menu ul li a {
+        font-size: 35px;
+        line-height: 50px;
+        font-weight: 400px;
+     }
+
+    .social-container h1 {
+        font-size: 25px;
+    }
+
+    .social-links a {
+        width: 60px;
+        height: 60px;
+    }
+
+    .social-links a svg {
+        width: 30px;
+        height:30px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE: MOBILE (468px and below)
+   ============================================ */
+
+@media (max-width: 468px) {
+    .dropdown-container {
+        flex-direction: column;
+    }
+
+    .menu-container {
+        height: 70vh;
+        width: 100%;
+        flex: none;
+        padding-top: 70px;
+        padding-right: 30px;
+    }
+    .hamburger {
+        width: 48px;
+        height: 28px;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+
+    .menu ul li a {
+        font-size: 35px;
+        font-weight: 400;
+        line-height: 50px;
+        white-space: nowrap;
+        display: block;
+    }
+
+    .social-container {
+        height: 30vh;
+        width: 100%;
+        flex: none;
+    }
+
+    .social-container h1 {
+        font-size: 33px;
+    }
+
+    .background-text {
+        font-size: 100vw;
+        animation-duration: 15s;
+        top: 120%;
+
+    }
+
+    .menu-divider {
+        width: 100%;
+        height: 1px;
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+
+    .menu {
+        padding: 0;
+    }
+    .logo img {
+        width: 40px !important;
+    }
+
+    .center-text {
+        font-size: 30px;
+        letter-spacing: 0.5px;
+    }
+
+
+    .social-links {
+        gap: 15px;
+    }
+
+    .social-links a {
+        width: 80px;
+        height: 80px;
+    }
+
+    .social-links a svg {
+        width: 40px;
+        height: 40px;
+    }
+}

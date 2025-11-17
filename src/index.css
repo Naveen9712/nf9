@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  font-family: 'Satoshi', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.preloader-text {
+  font-size: 300px;
+  font-weight: bold;
+  font-family: "Arial Black", Arial, sans-serif!important;
+}
+
+@media (max-width: 768px) {
+  .preloader-text {
+    font-size: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .preloader-text {
+    font-size: 130px;
+  }
+}
