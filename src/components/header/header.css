@@ -285,18 +285,19 @@
    BACKGROUND TEXT ANIMATION
    ============================================ */
 
-.background-text {
-    position: absolute;
+   .background-text {
+    position: fixed;
     font-family: 'Satoshi', sans-serif;
     font-weight: 600;
     font-size: 30vw;
-    color: rgba(255, 255, 255, 0.3);
+    color: transparent;
+    -webkit-text-stroke: 2px #000;
     white-space: nowrap;
     pointer-events: none;
     z-index: 1;
-    opacity: 1;
-    transition: opacity 0.4s ease, color 0.4s ease;
-    top: 110%;
+    opacity: 0;
+    transition: opacity 0.4s ease, -webkit-text-stroke 0.4s ease;
+    top: 80%;
     left: 0;
     transform: translateY(-50%) translateX(0%);
     letter-spacing: 0.05em;
@@ -309,6 +310,7 @@
     opacity: 1;
     animation-play-state: running;
 }
+
 
 @keyframes scrollLeftToRight {
     0% {
