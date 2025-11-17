@@ -450,8 +450,23 @@
    RESPONSIVE: TABLET (768px to 1024px)
    ============================================ */
 
-@media (min-width: 768px) and (max-width: 1024px) {
-    /* Add your styles for tablet view here */
+@media (max-width: 1024px) {
+
+    .background-text {
+        font-size: 40vw;
+        animation-duration: 20s !important;
+        top: 120%;
+    }
+
+    @keyframes scrollLeftToRight {
+        0% {
+            transform: translateY(-50%) translateX(-15vw);
+        }
+
+        100% {
+            transform: translateY(-50%) translateX(calc(100vw - 100% + 15vw));
+        }
+    }
 }
 
 
@@ -471,7 +486,18 @@
 
     .background-text {
         font-size: 50vw;
-        top: 120% !important;
+        animation-duration: 10s !important;
+
+    }
+
+    @keyframes scrollLeftToRight {
+        0% {
+            transform: translateY(-50%) translateX(-15vw);
+        }
+
+        100% {
+            transform: translateY(-50%) translateX(calc(100vw - 100% + 15vw));
+        }
     }
 
     .menu-divider {
@@ -549,7 +575,7 @@
 
     .background-text {
         font-size: 100vw;
-        animation-duration: 4s;
+        animation-duration: 10s;
         top: 120% !important;
     }
 
@@ -568,6 +594,7 @@
     .logo img {
         width: 40px !important;
     }
+
 
     .center-text {
         font-size: 30px;
