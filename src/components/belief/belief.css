@@ -3,7 +3,7 @@
    Minimal CSS for animations only
    ============================================ */
 
-.belief-content {
+   .belief-content {
     animation: fadeInUp 0.8s ease-out;
 }
 
@@ -17,4 +17,3 @@
         transform: translateY(0);
     }
 }
-
