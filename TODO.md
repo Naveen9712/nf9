@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TODO: Update Menu Dropdown Layout
 
 ## Tasks to Complete
@@ -19,3 +20,6 @@
   - Run the app to verify the dropdown opens correctly.
   - Check layout on desktop (50-50 split) and mobile (stacked vertically).
   - Ensure responsiveness and proper indentation.
+=======
+- [x] Update src/index.css to add responsive font sizes for preloader text (smaller on mobile and tablet)
+>>>>>>> 156dc0369c205c0fa75974c1b524ea759f068402
