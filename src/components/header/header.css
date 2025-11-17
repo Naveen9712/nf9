@@ -41,8 +41,6 @@
     
 }
 
-
-
 /* ============================================
    CENTER TEXT
    ============================================ */
@@ -139,7 +137,7 @@
 }
 
 .menu.active {
-    background: #000;
+    background: #212434;
     visibility: visible;
     opacity: 1;
     transition: opacity 0.3s ease, visibility 0s ease;
@@ -291,13 +289,13 @@
     font-weight: 600;
     font-size: 30vw;
     color: transparent;
-    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.14);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.14);
     white-space: nowrap;
     pointer-events: none;
     z-index: 1;
     opacity: 0;
     transition: opacity 0.4s ease, color 0.4s ease;
-    top: 100%;
+    top: 110%;
     left: 0;
     transform: translateY(-50%) translateX(0%);
     letter-spacing: 0.05em;
@@ -308,7 +306,7 @@
 .menu.active .background-text {
     -webkit-text-stroke: 0.2px #fff;
     opacity: 1;
-    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.14);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.14);
     animation-play-state: running;
 }
 
@@ -471,6 +469,11 @@
         flex: 1 0 50%;
     }
 
+    .background-text {
+        font-size: 50vw;
+        top: 120% !important;
+    }
+
     .menu-divider {
         width: 1px;
         height: 40%;
@@ -547,6 +550,7 @@
     .background-text {
         font-size: 100vw;
         animation-duration: 4s;
+        top: 120% !important;
     }
 
     .menu-divider {
