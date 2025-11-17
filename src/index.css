@@ -10,11 +10,7 @@ body {
 .preloader-text {
   font-size: 300px;
   font-weight: bold;
-<<<<<<< HEAD
-  font-family: "Arial Black", Arial, sans-serif!important;
-=======
   font-family: "Arial Black", Arial, sans-serif;
->>>>>>> 156dc0369c205c0fa75974c1b524ea759f068402
 }
 
 @media (max-width: 768px) {
@@ -27,8 +23,4 @@ body {
   .preloader-text {
     font-size: 130px;
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 156dc0369c205c0fa75974c1b524ea759f068402
