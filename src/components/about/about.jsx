@@ -9,10 +9,10 @@ const About = () => {
     >
       <div className="max-w-4xl w-full mx-auto">
         <div className="text-center about-content">
-          <h2 className="font-bold text-1xl md:text-1xl lg:text-1xl text-black mb-5 tracking-wider uppercase">
+          <h1 className="text-black mb-5 tracking-wider uppercase">
             WE ARE NF9
-          </h2>
-          <p className="font-normal text-base md:text-lg lg:text-xl text-black leading-relaxed max-w-2xl mx-auto">
+          </h1>
+          <p className="text-black leading-relaxed max-w-2xl mx-auto">
             We design and develop websites, apps, and digital
             experiences that help clients grow, innovate, and transform.
             We listen, learn, and understand before we build. Together,

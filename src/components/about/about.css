@@ -7,6 +7,19 @@
     animation: fadeInUp 0.8s ease-out;
 }
 
+.about-content h1 {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Satoshi', sans-serif;
+}
+
+.about-content p {
+    font-size: 24px;
+    font-weight: 500;
+    font-family: 'Satoshi', sans-serif;
+    line-height: 35px;
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
