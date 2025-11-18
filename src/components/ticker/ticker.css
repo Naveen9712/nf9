@@ -1,0 +1,47 @@
+/* ============================================
+   TICKER SECTION STYLES
+   Styles for ultra-smooth horizontal scrolling ticker
+   ============================================ */
+
+.ticker-block {
+  position: relative;
+  overflow: hidden;
+}
+
+.ticker {
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+.ticker__content {
+  flex-shrink: 0;
+  font-family: 'Satoshi', sans-serif;
+  color: #3836362e;
+  box-sizing: border-box;
+  border-width: 0px;
+  border-style: solid;
+  border-color: initial;
+  border-image: initial;
+  margin: 0px;
+  padding: 0px;
+  translate: none;
+  rotate: none;
+  scale: none;
+  transform: translate(-50%, 0%);
+  will-change: transform;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* Ensure the ticker stays pinned and visible */
+.ticker-block.pinned {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+}
