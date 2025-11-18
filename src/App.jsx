@@ -4,7 +4,7 @@ import Preloader from './components/preloader'
 import Header from './components/header/header'
 import Hero from './components/hero/hero'
 import About from './components/about/about'
-import Ticker from './components/ticker/ticker'
+import IndustryFootprint from './components/industry-footprint/industry-footprint'
 import Belief from './components/belief/belief'
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
         <main>
           <Hero />
           <About />
-          <Ticker />
+          <IndustryFootprint />
           <Belief />
         </main>
       </div>

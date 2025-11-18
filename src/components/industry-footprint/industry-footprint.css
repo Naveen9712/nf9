@@ -1,0 +1,63 @@
+.industry-footprint-section {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-container {
+  animation: rotateCarousel 120s linear infinite;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+}
+
+@keyframes rotateCarousel {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Ensure smooth animation and no clipping */
+.industry-footprint-section .relative {
+  overflow: visible;
+}
+
+.industry-footprint-section .flex.h-full.items-center.justify-center {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+/* Fix any potential overflow issues */
+.industry-footprint-section .overflow-hidden {
+  overflow: visible;
+}
+
+/* Ensure the carousel items are properly positioned */
+.industry-footprint-section .absolute.flex.h-fit.items-center.justify-center {
+  backface-visibility: hidden;
+}
+
+/* Smooth hover effects */
+.industry-footprint-section .group:hover .group-hover\:scale-105 {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-out;
+}
+
+/* Navigation dots styling */
+.industry-footprint-section .absolute.bottom-4 {
+  z-index: 50;
+}
+
+.industry-footprint-section button {
+  transition: all 0.7s ease-out;
+}
+
+/* Ensure the ticker doesn't interfere with page scroll */
+.industry-footprint-section {
+  position: relative;
+  z-index: 10;
+}
+
+/* Prevent page scroll until animation completes - but since it's infinite, perhaps not needed */
