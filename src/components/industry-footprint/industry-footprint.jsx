@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './industry-footprint.css';
 
 const IndustryFootprint = () => {
+  const [angle, setAngle] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAngle((prev) => (prev + 20) % 360);
+    }, 2000); // Rotate every 2 seconds by 20 degrees, effectively stopping for 1 second
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="industry-footprint-section">
       <div className="overflow-x-hidden">
@@ -10,12 +20,12 @@ const IndustryFootprint = () => {
             Our Industry Footprint
           </div>
           <div className="flex h-full items-center justify-center [perspective:1200px] [transform-style:preserve-3d]">
-            <div className="carousel-container flex min-h-[200px] cursor-grab active:cursor-grabbing items-center justify-center [transform-style:preserve-3d]" draggable="false" style={{ width: '2800px', transformStyle: 'preserve-3d', touchAction: 'pan-y', userSelect: 'none', transform: 'rotateY(0deg)' }}>
+            <div style={{borderRadius:"20px"}} className="carousel-container flex min-h-[200px] cursor-grab active:cursor-grabbing items-center justify-center [transform-style:preserve-3d]" draggable="false" style={{ width: '2800px', transformStyle: 'preserve-3d', touchAction: 'pan-y', userSelect: 'none', transform: `rotateY(${angle}deg)`, transition: 'transform 1s ease-in-out' }}>
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(0deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Automotive Industry" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%206.png?updatedAt=1756137101694" />
                   <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
-                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Automotive Industry</h3>
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Business</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -24,7 +34,7 @@ const IndustryFootprint = () => {
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Agriculture Field " className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%203.png?updatedAt=1756137101396" />
                   <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
-                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Agriculture Field </h3>
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Education </h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -33,7 +43,7 @@ const IndustryFootprint = () => {
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Infrastructure Equipment" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%205.png?updatedAt=1756137101594" />
                   <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
-                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Infrastructure Equipment</h3>
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Hospital</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -42,7 +52,7 @@ const IndustryFootprint = () => {
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Equipment Manufacturing" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%204.png?updatedAt=1756137101274" />
                   <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
-                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Equipment Manufacturing</h3>
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Restaurant</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -51,7 +61,7 @@ const IndustryFootprint = () => {
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Aerospace" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%207%20(1).png?updatedAt=1757143977979" />
                   <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
-                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Aerospace</h3>
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Government</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -60,7 +70,7 @@ const IndustryFootprint = () => {
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Renewable Energy" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Rectangle%207.png?updatedAt=1756891891322" />
                   <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
-                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Renewable Energy</h3>
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Real Estate</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -69,7 +79,7 @@ const IndustryFootprint = () => {
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Automotive Industry" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%206.png?updatedAt=1756137101694" />
                   <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
-                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Automotive Industry</h3>
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Technology</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -78,7 +88,7 @@ const IndustryFootprint = () => {
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Agriculture Field " className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%203.png?updatedAt=1756137101396" />
                   <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
-                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Agriculture Field </h3>
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">E-Commerce </h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -87,7 +97,7 @@ const IndustryFootprint = () => {
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Infrastructure Equipment" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%205.png?updatedAt=1756137101594" />
                   <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
-                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Infrastructure Equipment</h3>
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Energy</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -96,7 +106,7 @@ const IndustryFootprint = () => {
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Equipment Manufacturing" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%204.png?updatedAt=1756137101274" />
                   <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
-                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Equipment Manufacturing</h3>
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Art & Design</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -105,7 +115,7 @@ const IndustryFootprint = () => {
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Aerospace" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%207%20(1).png?updatedAt=1757143977979" />
                   <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
-                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Aerospace</h3>
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Telecom</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -114,7 +124,7 @@ const IndustryFootprint = () => {
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Renewable Energy" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Rectangle%207.png?updatedAt=1756891891322" />
                   <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
-                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Renewable Energy</h3>
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Tourism</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
