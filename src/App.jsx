@@ -9,7 +9,7 @@ import Belief from './components/belief/belief'
 
 function App() {
   const [preloaderComplete, setPreloaderComplete] = useState(false)
-
+  
   const handlePreloaderComplete = () => {
     setPreloaderComplete(true)
   }

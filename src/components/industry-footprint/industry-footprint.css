@@ -8,6 +8,7 @@
   transform-origin: center;
   transform-style: preserve-3d;
   border-radius: 20px !important;
+  transition: transform 1.5s ease-in-out;
 }
 
 /* Ensure smooth animation and no clipping */
@@ -58,4 +59,11 @@
   width: 100%;
   height: 100%;
 }
+@keyframes spin {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
 
+.carousel-container {
+  animation: none !important;
+}
