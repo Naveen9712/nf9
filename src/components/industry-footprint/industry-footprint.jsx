@@ -20,7 +20,7 @@ const IndustryFootprint = () => {
             Our Industry Footprint
           </div>
           <div className="flex h-full items-center justify-center [perspective:1200px] [transform-style:preserve-3d]">
-            <div style={{borderRadius:"20px"}} className="carousel-container flex min-h-[200px] cursor-grab active:cursor-grabbing items-center justify-center [transform-style:preserve-3d]" draggable="false" style={{ width: '2800px', transformStyle: 'preserve-3d', touchAction: 'pan-y', userSelect: 'none', transform: `rotateY(${angle}deg)`, transition: 'transform 1s ease-in-out' }}>
+            <div className="carousel-container flex min-h-[200px] cursor-grab active:cursor-grabbing items-center justify-center [transform-style:preserve-3d]" draggable="false" style={{ width: '2800px', transformStyle: 'preserve-3d', touchAction: 'pan-y', userSelect: 'none', transform: `rotateY(${angle}deg)`, transition: 'transform 1s ease-in-out' }}>
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(0deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Automotive Industry" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%206.png?updatedAt=1756137101694" />
