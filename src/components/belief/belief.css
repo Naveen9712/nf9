@@ -48,7 +48,7 @@
       white-space: normal;
       word-break: break-word;
     }
-  }
+  } 
   
   /* Desktop: keep text on single line if possible, but allow wrapping if needed */
   @media (min-width: 769px) {
