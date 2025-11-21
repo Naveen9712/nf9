@@ -1,4 +1,5 @@
 /* ============================================
+/* ============================================
    HEADER COMPONENT STYLES
    Matches header.html exactly
    ============================================ */
@@ -39,8 +40,6 @@
     
     
 }
-
-
 
 /* ============================================
    CENTER TEXT
@@ -127,7 +126,7 @@
     width: 100%;
     background: #fff;
     backdrop-filter: blur(20px);
-    padding: 140px 200px 160px;
+    padding:180px 0 160px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     z-index: 999;
     height: 100%;
@@ -138,10 +137,68 @@
 }
 
 .menu.active {
-    background: #000;
+    background: #212434;
     visibility: visible;
     opacity: 1;
     transition: opacity 0.3s ease, visibility 0s ease;
+}
+
+/* ============================================
+   DROPDOWN CONTAINER
+   ============================================ */
+
+.dropdown-container {
+    width: 100%;
+    display: flex;
+    height: 100%;
+}
+
+/* ============================================
+   MENU CONTAINER (LEFT 50%)
+   ============================================ */
+
+.menu-container {
+    flex: 1 0 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ============================================
+   SOCIAL CONTAINER (RIGHT 50%)
+   ============================================ */
+
+.social-container {
+    flex: 1 0 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.social-container h1 {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 35px;
+    font-weight: 400;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    transition: color 0.3s ease, opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.menu.active .social-container h1 {
+    color: #fff;
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.8s;
 }
 
 .menu ul {
@@ -202,7 +259,7 @@
     color: #000;
     font-size: 50px;
     font-family: 'Satoshi', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 65px;
     transition: color 0.3s ease, text-shadow 0.3s ease;
     display: block;
@@ -215,32 +272,30 @@
 }
 
 .menu ul li a:hover {
-    color: #fffdfd;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
+    color: #fffdfdac;
 }
 
 .menu.active ul li a:hover {
-    color: #fffdfd;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
+    color: #fffdfdac;
 }
 
 /* ============================================
    BACKGROUND TEXT ANIMATION
    ============================================ */
 
-.background-text {
-    position: fixed;
+   .background-text {
+    position: absolute;
     font-family: 'Satoshi', sans-serif;
     font-weight: 600;
     font-size: 30vw;
     color: transparent;
-    -webkit-text-stroke: 2px #000;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.14);
     white-space: nowrap;
     pointer-events: none;
     z-index: 1;
     opacity: 0;
-    transition: opacity 0.4s ease, -webkit-text-stroke 0.4s ease;
-    top: 80%;
+    transition: opacity 0.4s ease, color 0.4s ease;
+    top: 110%;
     left: 0;
     transform: translateY(-50%) translateX(0%);
     letter-spacing: 0.05em;
@@ -251,8 +306,10 @@
 .menu.active .background-text {
     -webkit-text-stroke: 0.2px #fff;
     opacity: 1;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.14);
     animation-play-state: running;
 }
+
 
 @keyframes scrollLeftToRight {
     0% {
@@ -269,11 +326,10 @@
    ============================================ */
 
 .menu-divider {
-    position: fixed;
-    top: 220px;
-    bottom: 40px;
+    position: absolute;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-50%);
     width: 1px;
     background: #000;
     z-index: 1000;
@@ -284,9 +340,6 @@
 
 .menu.active .menu-divider {
     background: #fff;
-}
-
-.menu.active .menu-divider {
     opacity: 1;
     transition-delay: 0.6s;
 }
@@ -295,43 +348,18 @@
    SOCIAL LINKS
    ============================================ */
 
-.social-links-container {
-    position: fixed;
-    top: 50%;
-    right: 20%;
-    transform: translateY(-50%);
-    z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.menu.active .social-links-container {
-    opacity: 1;
-    transition-delay: 0.6s;
-}
-
-.reach-out-text {
-    font-family: 'Satoshi', sans-serif;
-    font-size: 35px;
-    font-weight: 500;
-    color: #000;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    transition: color 0.3s ease;
-}
-
-.menu.active .reach-out-text {
-    color: #fff;
-}
-
 .social-links {
     display: flex;
     gap: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu.active .social-links {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.9s;
 }
 
 .social-links a {
@@ -402,136 +430,118 @@
 }
 
 /* ============================================
-   RESPONSIVE: TABLET (768px to 1024px)
+   RESPONSIVE: LAPTOP (769px and above)
    ============================================ */
 
-@media (min-width: 768px) and (max-width: 1024px) {
-    /* Add your styles for tablet view here */
-}
-
-/* ============================================
-   RESPONSIVE: TABLET (768px and below)
-   ============================================ */
-
-@media (max-width: 768px) {
-    .logo img {
-        width: 45px !important;
-    }
-
-    .center-text {
-        font-size: 20px;
-        letter-spacing: 1px;
-    }
-
-    .hamburger {
-        width: 50px;
-        height: 35px;
-    }
-
-    .hamburger.active span:nth-child(1) {
-        transform: translateY(11px) rotate(45deg);
-    }
-
-    .hamburger.active span:nth-child(3) {
-        transform: translateY(-11px) rotate(-45deg);
-    }
-
-    .menu {
-        padding: 80px 30px 30px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    .menu ul {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-        justify-content: center;
-        align-items: center;
-        list-style: none;
-        width: 100%;
-    }
-
-    .menu ul li {
-        margin: 0;
-        transform: none;
-        width: 100%;
-        text-align: center;
-    }
-
-    .menu.active ul li {
-        transform: none;
-    }
-
-    .menu ul li a {
-        font-size: 32px;
-        line-height: 1.1;
-        white-space: nowrap;
-        display: block;
-    }
-
-    .menu ul li .background-text {
-        display: none;
-    }
-
-    .default-background-text {
-        display: none;
-    }
-
-    .menu-divider {
-        display: none;
-    }
-
-    .social-links-container {
-        position: relative;
-        top: auto;
-        right: auto;
-        transform: none;
-        margin-top: 50px;
-        align-items: center;
-        gap: 15px;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .reach-out-text {
-        font-size: 16px;
-        letter-spacing: 1px;
-    }
-
-    .social-links {
-        gap: 15px;
-    }
+@media (min-width: 769px) {
 
     .social-links a {
-        width: 45px; 
-        height: 45px ;
+        width: 80px;
+        height: 80px;
     }
 
     .social-links a svg {
-        width: 20px;
-        height: 20px;
+        width: 40px;
+        height: 40px;
     }
 }
 
 /* ============================================
-   RESPONSIVE: MOBILE (480px and below)
+   RESPONSIVE: TABLET (768px to 1024px)
    ============================================ */
 
-@media (max-width: 480px) {
-    .logo img {
-        width: 40px !important;
+@media (max-width: 1024px) {
+
+    .background-text {
+        font-size: 40vw;
+        animation-duration: 20s !important;
+        top: 120%;
     }
 
-    .center-text {
+    @keyframes scrollLeftToRight {
+        0% {
+            transform: translateY(-50%) translateX(-15vw);
+        }
+
+        100% {
+            transform: translateY(-50%) translateX(calc(100vw - 100% + 15vw));
+        }
+    }
+}
+
+
+/* ============================================
+   RESPONSIVE: TABLET (768px to 469px)
+   ============================================ */
+
+@media (min-width: 469px) and (max-width: 768px) {
+    .dropdown-container {
+        flex-direction: row;
+    }
+
+    .menu-container,
+    .social-container {
+        flex: 1 0 50%;
+    }
+
+    .background-text {
+        font-size: 50vw;
+        animation-duration: 10s !important;
+
+    }
+
+    @keyframes scrollLeftToRight {
+        0% {
+            transform: translateY(-50%) translateX(-15vw);
+        }
+
+        100% {
+            transform: translateY(-50%) translateX(calc(100vw - 100% + 15vw));
+        }
+    }
+
+    .menu-divider {
+        width: 1px;
+        height: 40%;
+    }
+
+    .menu ul li a {
+        font-size: 35px;
+        line-height: 50px;
+        font-weight: 400px;
+     }
+
+    .social-container h1 {
         font-size: 25px;
-        letter-spacing: 0.5px;
     }
 
+    .social-links a {
+        width: 60px;
+        height: 60px;
+    }
+
+    .social-links a svg {
+        width: 30px;
+        height:30px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE: MOBILE (468px and below)
+   ============================================ */
+
+@media (max-width: 468px) {
+    .dropdown-container {
+        flex-direction: column;
+    }
+
+    .menu-container {
+        height: 70vh;
+        width: 100%;
+        flex: none;
+        padding-top: 70px;
+        padding-right: 30px;
+    }
     .hamburger {
         width: 48px;
         height: 28px;
@@ -545,85 +555,64 @@
         transform: translateY(-10px) rotate(-45deg);
     }
 
-    .menu {
-        padding: 70px 20px 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    .menu ul {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        justify-content: center;
-        align-items: center;
-        list-style: none;
-        width: 100%;
-        margin:3rem 0 0 0;
-    }
-
-    .menu ul li {
-        margin: 0;
-        transform: none;
-        width: 100%;
-        text-align: center;
-    }
-
-    .menu.active ul li {
-        transform: none;
-    }
-
     .menu ul li a {
-        font-size: 28px;
-        line-height: 1.1;
+        font-size: 35px;
+        font-weight: 400;
+        line-height: 50px;
         white-space: nowrap;
         display: block;
     }
 
-    .menu ul li .background-text {
-        display: none;
+    .social-container {
+        height: 30vh;
+        width: 100%;
+        flex: none;
     }
 
-    .default-background-text {
-        display: none;
+    .social-container h1 {
+        font-size: 33px;
+    }
+
+    .background-text {
+        font-size: 100vw;
+        animation-duration: 10s;
+        top: 120% !important;
     }
 
     .menu-divider {
-        display: none;
-    }
-
-    .social-links-container {
-        position: relative;
-        top: auto;
-        right: auto;
-        transform: none;
-        margin-top: 40px;
-        align-items: center;
-        gap: 12px;
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        height: 1px;
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
     }
 
-    .reach-out-text {
-        font-size: 14px;
+    .menu {
+        padding: 0;
+    }
+    .logo img {
+        width: 40px !important;
+    }
+
+
+    .center-text {
+        font-size: 30px;
         letter-spacing: 0.5px;
     }
 
+
     .social-links {
-        gap: 12px;
+        gap: 15px;
     }
 
     .social-links a {
-        width: 40px;
-        height: 40px;
+        width: 80px;
+        height: 80px;
     }
 
     .social-links a svg {
-        width: 18px;
-        height: 18px;
+        width: 40px;
+        height: 40px;
     }
 }

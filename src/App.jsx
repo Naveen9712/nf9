@@ -16,10 +16,10 @@ function App() {
   return (
     <>
       {!preloaderComplete && <Preloader onComplete={handlePreloaderComplete} />}
-      
+
       <div style={{ opacity: preloaderComplete ? 1 : 0, transition: 'opacity 0.5s ease-in' }}>
         <Header />
-        
+
         {/* Main content area - add your content here */}
         <main>
           <Hero />

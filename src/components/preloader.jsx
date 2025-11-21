@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 
 const Preloader = ({ onComplete }) => {
   const [isVisible, setIsVisible] = useState(true);
-  
+
   const preloaderRef = useRef(null);
   const topCurtainRef = useRef(null);
   const bottomCurtainRef = useRef(null);
