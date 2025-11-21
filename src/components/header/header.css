@@ -183,7 +183,7 @@
 
 .social-container h1 {
     font-family: 'Satoshi', sans-serif;
-    font-size: 35px;
+    font-size: 40px;
     font-weight: 400;
     color: #000;
     text-transform: uppercase;
@@ -257,7 +257,7 @@
 .menu ul li a {
     text-decoration: none;
     color: #000;
-    font-size: 50px;
+    font-size: 60px;
     font-family: 'Satoshi', sans-serif;
     font-weight: 400;
     line-height: 65px;
@@ -506,13 +506,13 @@
     }
 
     .menu ul li a {
-        font-size: 35px;
+        font-size: 40px;
         line-height: 50px;
         font-weight: 400px;
      }
 
     .social-container h1 {
-        font-size: 25px;
+        font-size: 30px;
     }
 
     .social-links a {
@@ -570,7 +570,9 @@
     }
 
     .social-container h1 {
-        font-size: 33px;
+        font-size: 35px;
+        font-weight: 400;
+        margin-bottom: -10px;
     }
 
     .background-text {
@@ -603,7 +605,7 @@
 
 
     .social-links {
-        gap: 15px;
+        gap: 18px;
     }
 
     .social-links a {

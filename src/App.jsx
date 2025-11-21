@@ -4,11 +4,12 @@ import Preloader from './components/preloader'
 import Header from './components/header/header'
 import Hero from './components/hero/hero'
 import About from './components/about/about'
+import IndustryFootprint from './components/industry-footprint/industry-footprint'
 import Belief from './components/belief/belief'
 
 function App() {
   const [preloaderComplete, setPreloaderComplete] = useState(false)
-
+  
   const handlePreloaderComplete = () => {
     setPreloaderComplete(true)
   }
@@ -24,6 +25,7 @@ function App() {
         <main>
           <Hero />
           <About />
+          <IndustryFootprint />
           <Belief />
         </main>
       </div>
