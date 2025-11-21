@@ -14,10 +14,10 @@ const IndustryFootprint = () => {
   }, []);
 
   return (
-    <section className="industry-footprint-section">
+    <section className="industry-footprint-section bg-black">
       <div className="overflow-x-hidden tha">
         <div className="relative md:h-[900px] h-[800px] w-full overflow-hidden py-20 md:py-20">
-          <div className="font-heading text-[28px] md:text-[64px] md:leading-14 text-center text-black">
+          <div className="font-heading text-[28px] md:text-[64px] md:leading-14 text-center text-white">
             Our Industry Footprint
           </div>
           <div className="flex h-full items-center justify-center [perspective:1200px] [transform-style:preserve-3d]">
