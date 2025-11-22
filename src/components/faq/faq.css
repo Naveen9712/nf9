@@ -1,0 +1,199 @@
+.faq-section {
+  width: 100%;
+  background-color: #efefef;
+  padding: 80px 20px;
+  min-height: 400px;
+}
+
+.faq-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.faq-title {
+  font-size: 52px;
+  font-weight: 600;
+  color: #000;
+  text-align: left;
+  margin-bottom: 60px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.faq-item {
+  width: 100%;
+  border-bottom: 1px solid #000;
+}
+
+.faq-item:first-child {
+  border-top: 1px solid #000;
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.faq-question:hover {
+  opacity: 0.7;
+}
+
+.faq-question-text {
+  font-size: 28px;
+  font-weight: 400;
+  color: #000;
+  flex: 1;
+  padding-right: 40px;
+  line-height: 1.4;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+.faq-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  font-size: 32px;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+
+.faq-question.active .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+  padding: 0;
+}
+
+.faq-answer.open {
+  max-height: 1500px;
+  padding: 0 0 32px 0;
+  transition: max-height 0.5s ease-in, padding 0.5s ease-in;
+}
+
+.faq-answer-text {
+  font-size: 18px;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.7;
+  margin: 0;
+  padding-right: 60px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .faq-title {
+    font-size: 44px;
+    margin-bottom: 50px;
+  }
+
+  .faq-question {
+    padding: 28px 0;
+  }
+
+  .faq-question-text {
+    font-size: 24px;
+    padding-right: 30px;
+  }
+
+  .faq-answer-text {
+    font-size: 17px;
+    padding-right: 40px;
+  }
+
+  .faq-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-section {
+    padding: 60px 20px;
+  }
+
+  .faq-title {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+
+  .faq-question {
+    padding: 24px 0;
+  }
+
+  .faq-question-text {
+    font-size: 20px;
+    padding-right: 20px;
+  }
+
+  .faq-answer-text {
+    font-size: 16px;
+    padding-right: 20px;
+  }
+
+  .faq-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-section {
+    padding: 40px 16px;
+  }
+
+  .faq-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .faq-question {
+    padding: 20px 0;
+  }
+
+  .faq-question-text {
+    font-size: 18px;
+    padding-right: 16px;
+  }
+
+  .faq-answer {
+    padding-bottom: 20px;
+  }
+
+  .faq-answer-text {
+    font-size: 15px;
+    padding-right: 16px;
+  }
+
+  .faq-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+  }
+}

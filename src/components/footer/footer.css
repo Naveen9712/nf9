@@ -1,0 +1,302 @@
+.footer-section {
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 20px 0;
+  min-height: 600px;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px;
+  margin-bottom: 100px;
+  padding-bottom: 60px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-column-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 32px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+.footer-column-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  transition: opacity 0.3s ease;
+  display: inline-block;
+  line-height: 1.6;
+}
+
+.footer-link:hover {
+  opacity: 0.7;
+}
+
+.footer-text {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Office Locations */
+.office-location {
+  margin-bottom: 28px;
+}
+
+.office-location:last-child {
+  margin-bottom: 0;
+}
+
+.office-city {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  margin-bottom: 4px;
+  line-height: 1.6;
+}
+
+.office-address {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  line-height: 1.6;
+}
+
+/* Partners Section */
+.partner-item {
+  margin-bottom: 40px;
+}
+
+.partner-item:last-child {
+  margin-bottom: 0;
+}
+
+.partner-text {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.partner-text.featured {
+  font-weight: 700;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+.partner-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.canva-logo {
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+.canva-text {
+  font-size: 56px;
+  font-weight: 700;
+  font-family: 'Pacifico', cursive, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(90deg, #00C4CC 0%, #7B61FF 45%, #C837AB 70%, #FF006E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  line-height: 1;
+  font-style: italic;
+}
+
+.dan-logo {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dan-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, #00C4CC 0%, #7B61FF 50%, #FF006E 100%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  flex-shrink: 0;
+}
+
+.dan-icon::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: #000;
+}
+
+.dan-icon-text {
+  font-size: 11px;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #00C4CC 0%, #7B61FF 50%, #FF006E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.5px;
+}
+
+.dan-text {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  color: #fff;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.partner-dot {
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-top: 20px;
+  flex-shrink: 0;
+}
+
+/* Large Brand Text at Bottom */
+.footer-brand {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-brand-text {
+  font-size: 320px;
+  font-weight: 700;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  line-height: 0.85;
+  letter-spacing: -12px;
+  margin: 0;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+  }
+
+  .footer-brand-text {
+    font-size: 240px;
+    letter-spacing: -8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-section {
+    padding: 50px 20px 0;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+
+  .footer-brand {
+    height: 150px;
+  }
+
+  .footer-brand-text {
+    font-size: 160px;
+    letter-spacing: -6px;
+  }
+
+  .canva-text {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-brand-text {
+    font-size: 100px;
+    letter-spacing: -4px;
+  }
+
+  .footer-column-title {
+    font-size: 12px;
+    margin-bottom: 24px;
+  }
+
+  .footer-link,
+  .footer-text,
+  .office-address,
+  .office-city,
+  .partner-text {
+    font-size: 15px;
+  }
+
+  .canva-text {
+    font-size: 36px;
+  }
+
+  .dan-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .dan-icon-text {
+    font-size: 9px;
+  }
+
+  .dan-text {
+    font-size: 12px;
+  }
+}
