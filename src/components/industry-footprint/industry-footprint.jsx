@@ -35,7 +35,7 @@ const IndustryFootprint = () => {
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Agriculture Field " className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%203.png?updatedAt=1756137101396" />
                   <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
-                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Education </h3>
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Education & EdTech </h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -62,7 +62,7 @@ const IndustryFootprint = () => {
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Aerospace" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%207%20(1).png?updatedAt=1757143977979" />
                   <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
-                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Government</h3>
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Government & Public Sector</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
