@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './faq.css';
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState(0); // First question open by default
+  const [openIndex, setOpenIndex] = useState(null); // No question open by default
 
   const faqData = [
     {
@@ -45,15 +45,9 @@ const FAQ = () => {
               >
                 <span className="faq-question-text">{faq.question}</span>
                 <span className="faq-icon">
-                  {openIndex === index ? (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  ) : (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  )}
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
                 </span>
               </button>
               <div className={`faq-answer ${openIndex === index ? 'open' : ''}`}>

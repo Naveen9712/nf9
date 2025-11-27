@@ -1,17 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './industry-footprint.css';
 
 const IndustryFootprint = () => {
   const [angle, setAngle] = useState(0);
-  const corousalContainer=document.getElementById("coro")
-  useEffect(() => {
+  const [isHovering, setIsHovering] = useState(false);
+  const intervalRef = useRef(null);
 
-    const interval = setInterval(() => {
-      setAngle((prev) => prev + 20);
-    }, 2000); // Rotate every 2 seconds by 20 degrees, with 1 second transition and 1 second wait
-    console.log(angle);
-    return () => clearInterval(interval);
-  }, []);
+  useEffect(() => {
+    if (!isHovering) {
+      intervalRef.current = setInterval(() => {
+        setAngle((prev) => prev + 20);
+      }, 2000);
+    } else {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isHovering]);
 
   return (
     <section className="industry-footprint-section">
@@ -21,7 +33,7 @@ const IndustryFootprint = () => {
             Our Industry Footprint
           </div>
           <div className="flex h-full items-center justify-center [perspective:1200px] [transform-style:preserve-3d]">
-            <div id='coro' className="carousel-container flex min-h-[200px] cursor-grab active:cursor-grabbing items-center justify-center [transform-style:preserve-3d]" draggable="false" style={{ width: "2800px", userSelect: "none", transform: `rotateY(${angle}deg)` }}>
+            <div id='coro' className="carousel-container flex min-h-[200px] cursor-grab active:cursor-grabbing items-center justify-center [transform-style:preserve-3d]" draggable="false" style={{ width: "2800px", userSelect: "none", transform: `rotateY(${angle}deg)` }} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(0deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Automotive Industry" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%206.png?updatedAt=1756137101694" />
@@ -35,7 +47,7 @@ const IndustryFootprint = () => {
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Agriculture Field " className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%203.png?updatedAt=1756137101396" />
                   <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
-                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Education </h3>
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Education & EdTech </h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -62,7 +74,7 @@ const IndustryFootprint = () => {
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Aerospace" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%207%20(1).png?updatedAt=1757143977979" />
                   <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
-                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Government</h3>
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Government & Public Sector</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -189,7 +201,7 @@ const IndustryFootprint = () => {
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-50">
             <div className="relative w-[500px] h-24 flex items-center justify-center">
               <div className="relative w-full h-full cursor-grab active:cursor-grabbing select-none" style={{ perspective: '1000px', transformStyle: 'preserve-3d' }}>
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transform: 'rotateX(35deg)', transformStyle: 'preserve-3d' }}>
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transform: `rotateX(35deg) rotateY(${-angle}deg)`, transformStyle: 'preserve-3d' }}>
                   <div className="w-80 h-1 rounded-full" style={{ transform: 'translateZ(-40px)' }}></div>
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center" style={{ transform: 'rotateX(35deg)', transformStyle: 'preserve-3d' }}>
@@ -224,7 +236,7 @@ const IndustryFootprint = () => {
                   <button className="absolute transition-all duration-700 ease-out border-none outline-none bg-gray-400 hover:bg-gray-700 rounded-xl" aria-label="Go to slide 2" style={{ transform: 'translate3d(216px, -2.16px, -11.664px) scale(0.3)', opacity: 0.15, width: '3px', height: '45px', cursor: 'pointer', transformStyle: 'preserve-3d', zIndex: -116 }}></button>
                   <button className="absolute transition-all duration-700 ease-out border-none outline-none bg-gray-400 hover:bg-gray-700 rounded-xl" aria-label="Go to slide 3" style={{ transform: 'translate3d(234px, -2.34px, -13.689px) scale(0.3)', opacity: 0.15, width: '3px', height: '45px', cursor: 'pointer', transformStyle: 'preserve-3d', zIndex: -134 }}></button>
                   <button className="absolute transition-all duration-700 ease-out border-none outline-none bg-gray-400 hover:bg-gray-700 rounded-xl" aria-label="Go to slide 4" style={{ transform: 'translate3d(252px, -2.52px, -15.876px) scale(0.3)', opacity: 0.15, width: '3px', height: '45px', cursor: 'pointer', transformStyle: 'preserve-3d', zIndex: -152 }}></button>
-                  <button className="absolute transition-all duration-700 ease-out border-none outline-none bg-gray-400 hover:bg-gray-700 rounded-xl" aria-label="Go to slide 5" style={{ transform: 'translate3d(270px, -2.7px, -18.225px) scale(0.3)', opacity: 0.15, width: '3px', height: '45px', cursor: 'pointer', transformStyle: 'preserve-3d', zIndex: -170 }}></button>
+                  <button classNaaime="absolute transition-all duration-700 ease-out border-none outline-none bg-gray-400 hover:bg-gray-700 rounded-xl" aria-label="Go to slide 5" style={{ transform: 'translate3d(270px, -2.7px, -18.225px) scale(0.3)', opacity: 0.15, width: '3px', height: '45px', cursor: 'pointer', transformStyle: 'preserve-3d', zIndex: -170 }}></button>
                   <button className="absolute transition-all duration-700 ease-out border-none outline-none bg-gray-400 hover:bg-gray-700 rounded-xl" aria-label="Go to slide 6" style={{ transform: 'translate3d(288px, -2.88px, -20.736px) scale(0.3)', opacity: 0.15, width: '3px', height: '45px', cursor: 'pointer', transformStyle: 'preserve-3d', zIndex: -188 }}></button>
                 </div>
               </div>

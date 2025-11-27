@@ -1,7 +1,7 @@
 .faq-section {
   width: 100%;
   background-color: #efefef;
-  padding: 80px 20px;
+  padding: 80px;
   min-height: 400px;
 }
 
@@ -11,12 +11,12 @@
 }
 
 .faq-title {
-  font-size: 52px;
-  font-weight: 600;
+  font-size: 6.75rem;
+  font-weight: 500;
   color: #000;
   text-align: left;
-  margin-bottom: 60px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  margin-bottom: 20px;
+  margin-left: -10px;
   line-height: 1.2;
   letter-spacing: -1px;
 }
@@ -32,8 +32,12 @@
   border-bottom: 1px solid #000;
 }
 
+.faq-item:last-child {
+  border-bottom: none;
+}
+
 .faq-item:first-child {
-  border-top: 1px solid #000;
+  border-top: none;
 }
 
 .faq-question {
@@ -54,13 +58,12 @@
 }
 
 .faq-question-text {
-  font-size: 28px;
-  font-weight: 400;
+  font-size: 30px;
+  font-weight: 500;
   color: #000;
   flex: 1;
   padding-right: 40px;
   line-height: 1.4;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
 }
 
 .faq-icon {
@@ -69,29 +72,30 @@
   justify-content: center;
   color: #000;
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  font-size: 32px;
-  font-weight: 300;
-  transition: transform 0.3s ease;
+  width: 1.25rem;
+  height: 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 700 !important;
   line-height: 1;
 }
 
 .faq-question.active .faq-icon {
-  transform: rotate(45deg);
+  transform: rotate(25deg);
 }
 
 .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+  visibility: hidden;
+  transition: max-height 0.6s ease, padding 0.6s ease, visibility 0.6s ease;
   padding: 0;
 }
 
 .faq-answer.open {
-  max-height: 1500px;
+  max-height: 2000px;
+  visibility: visible;
   padding: 0 0 32px 0;
-  transition: max-height 0.5s ease-in, padding 0.5s ease-in;
+  transition: max-height 0.6s ease, padding 0.6s ease, visibility 0.6s ease;
 }
 
 .faq-answer-text {
@@ -101,14 +105,14 @@
   line-height: 1.7;
   margin: 0;
   padding-right: 60px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
   .faq-title {
-    font-size: 44px;
+    font-size: 7rem;
     margin-bottom: 50px;
+    
   }
 
   .faq-question {
@@ -126,9 +130,9 @@
   }
 
   .faq-icon {
-    width: 28px;
-    height: 28px;
-    font-size: 28px;
+    width: 1.25rem;
+    height: 1.25rem;
+    font-size: 1.25rem;
   }
 }
 
@@ -138,8 +142,12 @@
   }
 
   .faq-title {
-    font-size: 36px;
+    font-size: 6rem;
     margin-bottom: 40px;
+    font-weight: 600;
+    line-height: 90%;
+    margin-left: 0px;
+
   }
 
   .faq-question {
@@ -157,9 +165,9 @@
   }
 
   .faq-icon {
-    width: 24px;
-    height: 24px;
-    font-size: 24px;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
   }
 }
 
@@ -169,8 +177,11 @@
   }
 
   .faq-title {
-    font-size: 28px;
+    font-size: 3.8rem;
     margin-bottom: 30px;
+    font-weight: 600;
+    margin-left: 0px;
+
   }
 
   .faq-question {
@@ -178,12 +189,8 @@
   }
 
   .faq-question-text {
-    font-size: 18px;
+    font-size: 22px;
     padding-right: 16px;
-  }
-
-  .faq-answer {
-    padding-bottom: 20px;
   }
 
   .faq-answer-text {
@@ -192,8 +199,8 @@
   }
 
   .faq-icon {
-    width: 20px;
-    height: 20px;
-    font-size: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
+    font-size: 1.25rem;
   }
 }
