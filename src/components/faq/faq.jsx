@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './faq.css';
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState(0); // First question open by default
+  const [openIndex, setOpenIndex] = useState(null); // All questions closed by default
 
   const faqData = [
     {
@@ -14,7 +14,7 @@ const FAQ = () => {
       answer: "TIC Global Services offers a comprehensive range of digital solutions including web development, web branding, brand identity design, and digital marketing services. We help businesses establish and enhance their online presence through strategic planning, creative design, and innovative technology solutions tailored to meet specific business goals and target audience needs."
     },
     {
-      question: "How long does it take to complete a web development project?",
+      question: "What's the average project duration in TIC Global Services?",
       answer: "The timeline for web development projects varies depending on the complexity and scope of the project. Typically, a standard website can take anywhere from 4-8 weeks, while more complex projects may require 8-12 weeks or longer. We work closely with clients to establish realistic timelines and ensure timely delivery without compromising quality."
     },
     {
@@ -44,22 +44,11 @@ const FAQ = () => {
                 aria-expanded={openIndex === index}
               >
                 <span className="faq-question-text">{faq.question}</span>
-                <span className="faq-icon">
-                  {openIndex === index ? (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  ) : (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  )}
-                </span>
+                <span className="faq-icon">+</span>
               </button>
               <div className={`faq-answer ${openIndex === index ? 'open' : ''}`}>
                 <p className="faq-answer-text">{faq.answer}</p>
               </div>
-              {index < faqData.length - 1 && <div className="faq-divider"></div>}
             </div>
           ))}
         </div>
@@ -69,4 +58,3 @@ const FAQ = () => {
 };
 
 export default FAQ;
-
