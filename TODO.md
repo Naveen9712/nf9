@@ -1,8 +1,6 @@
-# Footer Update Task
-
-## Steps to Complete
-- [x] Create TODO.md file to track progress
-- [x] Update footer.jsx: Add footer-bottom container with two sub-divs (footer-copyright and footer-links)
-- [x] Update footer.css: Add styles for .footer-bottom, .footer-copyright, .footer-links, and responsive adjustments
-- [x] Update footer.css: Adjust .footer padding-bottom for spacing
-- [x] Verify changes and mark task complete
+- [ ] Implement smooth rotation using requestAnimationFrame with delta time for constant speed
+- [ ] Add visibilitychange event listener to pause/resume rotation on tab switch
+- [ ] Fix bottom button aria-labels to correctly number from 1 to 18
+- [ ] Make the bottom navigation responsive by adjusting width and button positions for different screen sizes
+- [ ] Ensure carousel container and card sizes are fully responsive
+- [ ] Test the changes for smoothness, syncing, and responsiveness

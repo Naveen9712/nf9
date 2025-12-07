@@ -1,44 +1,32 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './industry-footprint.css';
 
 const IndustryFootprint = () => {
   const [angle, setAngle] = useState(0);
-  const [isHovering, setIsHovering] = useState(false);
-  const intervalRef = useRef(null);
-
+  const corousalContainer=document.getElementById("coro")
   useEffect(() => {
-    if (!isHovering) {
-      intervalRef.current = setInterval(() => {
-        setAngle((prev) => prev + 20);
-      }, 2000);
-    } else {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-      }
-    }
 
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [isHovering]);
+    const interval = setInterval(() => {
+      setAngle((prev) => prev + 20);
+    }, 2000); // Rotate every 2 seconds by 20 degrees, with 1 second transition and 1 second wait
+    console.log(angle);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="industry-footprint-section">
       <div className="overflow-x-hidden tha">
         <div className="relative md:h-[900px] h-[800px] w-full overflow-hidden py-20 md:py-20">
-          <div className="font-heading text-[80px] font-700 md:leading-14 text-center text-black">
-            Our Core Capabilities
+          <div className="font-heading text-[28px] md:text-[64px] md:leading-14 text-center text-black">
+            Our Industry Footprint
           </div>
           <div className="flex h-full items-center justify-center [perspective:1200px] [transform-style:preserve-3d]">
-            <div id='coro' className="carousel-container flex min-h-[200px] cursor-grab active:cursor-grabbing items-center justify-center [transform-style:preserve-3d]" draggable="false" style={{ width: "2800px", userSelect: "none", transform: `rotateY(${angle}deg)` }} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+            <div id='coro' className="carousel-container flex min-h-[200px] cursor-grab active:cursor-grabbing items-center justify-center [transform-style:preserve-3d]" draggable="false" style={{ width: "2800px", userSelect: "none", transform: `rotateY(${angle}deg)` }}>
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(0deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Automotive Industry" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%206.png?updatedAt=1756137101694" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">CREATIVITY</h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Business</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -46,8 +34,8 @@ const IndustryFootprint = () => {
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(20deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Agriculture Field " className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%203.png?updatedAt=1756137101396" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">DESIGN </h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Education </h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -55,8 +43,8 @@ const IndustryFootprint = () => {
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(40deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Infrastructure Equipment" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%205.png?updatedAt=1756137101594" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">DEVELOPMENT</h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Hospital</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -64,8 +52,8 @@ const IndustryFootprint = () => {
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(60deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Equipment Manufacturing" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%204.png?updatedAt=1756137101274" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">ENGINEERING</h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Restaurant</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -73,8 +61,8 @@ const IndustryFootprint = () => {
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(80deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Aerospace" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%207%20(1).png?updatedAt=1757143977979" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">INNOVATION</h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Government</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -82,8 +70,8 @@ const IndustryFootprint = () => {
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(100deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Renewable Energy" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Rectangle%207.png?updatedAt=1756891891322" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">STRATEGY</h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Real Estate</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -91,8 +79,8 @@ const IndustryFootprint = () => {
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(120deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Automotive Industry" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%206.png?updatedAt=1756137101694" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">OPTIMIZATION</h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Technology</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -100,8 +88,8 @@ const IndustryFootprint = () => {
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(140deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Agriculture Field " className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%203.png?updatedAt=1756137101396" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">ARCHITECHTURE </h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">E-Commerce </h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -109,8 +97,8 @@ const IndustryFootprint = () => {
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(160deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Infrastructure Equipment" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%205.png?updatedAt=1756137101594" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">SCALABILITY</h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Energy</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -118,8 +106,8 @@ const IndustryFootprint = () => {
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(180deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Equipment Manufacturing" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%204.png?updatedAt=1756137101274" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">PERFORMANCE</h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Art & Design</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -127,8 +115,8 @@ const IndustryFootprint = () => {
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(200deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Aerospace" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%207%20(1).png?updatedAt=1757143977979" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">SECURITY</h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Telecom</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -136,8 +124,8 @@ const IndustryFootprint = () => {
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(220deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Renewable Energy" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Rectangle%207.png?updatedAt=1756891891322" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">AUTOMATION</h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Tourism</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -145,8 +133,8 @@ const IndustryFootprint = () => {
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(240deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Automotive Industry" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%206.png?updatedAt=1756137101694" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">INTEGRATION</h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Automotive Industry</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -154,8 +142,8 @@ const IndustryFootprint = () => {
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(260deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Agriculture Field " className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%203.png?updatedAt=1756137101396" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3"> UI/UX S</h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Agriculture Field </h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -163,8 +151,8 @@ const IndustryFootprint = () => {
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(280deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Infrastructure Equipment" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%205.png?updatedAt=1756137101594" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">PRODUCTION</h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Infrastructure Equipment</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -172,8 +160,8 @@ const IndustryFootprint = () => {
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(300deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Equipment Manufacturing" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%204.png?updatedAt=1756137101274" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">DEPLOYMENT</h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Equipment Manufacturing</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -181,8 +169,8 @@ const IndustryFootprint = () => {
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(320deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Aerospace" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%207%20(1).png?updatedAt=1757143977979" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">RELIABILITY</h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Aerospace</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -190,8 +178,8 @@ const IndustryFootprint = () => {
               <div className="group absolute flex h-fit items-center justify-center [backface-visibility:hidden]" style={{ width: '155.556px', transform: 'rotateY(340deg) translateZ(524.275px)' }}>
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Renewable Energy" className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Rectangle%207.png?updatedAt=1756891891322" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">TRANSFORMATION</h3>
+                  <div className="absolute bottom-0 left-0 right-0 pl-4 pt-3.5 pb-3 text-white z-50 select-none">
+                    <h3 className="xl:text-[18px] text-md font-light md:leading-[100%]">Renewable Energy</h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>
@@ -201,7 +189,7 @@ const IndustryFootprint = () => {
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-50">
             <div className="relative w-[500px] h-24 flex items-center justify-center">
               <div className="relative w-full h-full cursor-grab active:cursor-grabbing select-none" style={{ perspective: '1000px', transformStyle: 'preserve-3d' }}>
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transform: `rotateX(35deg) rotateY(${-angle}deg)`, transformStyle: 'preserve-3d' }}>
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transform: 'rotateX(35deg)', transformStyle: 'preserve-3d' }}>
                   <div className="w-80 h-1 rounded-full" style={{ transform: 'translateZ(-40px)' }}></div>
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center" style={{ transform: 'rotateX(35deg)', transformStyle: 'preserve-3d' }}>
