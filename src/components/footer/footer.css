@@ -14,7 +14,7 @@
     background: var(--nf9-bg);
     color: var(--nf9-text);
     font-family: var(--nf9-font);
-    padding: 50px 10rem 50px 80px;  /* top right bottom left */
+    padding: 50px 10rem 20px 80px;  /* top right bottom left */
     overflow: hidden;
     display: flex;
     align-items: stretch;
@@ -74,10 +74,17 @@
   }
   
   /* big nav text on desktop */
+  /* Desktop menu list spacing (PC view) */
   .nf9-footer-col--nav a {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 400;
-  }
+    line-height: 1.1;     /* ↓ reduce vertical spacing */
+}
+
+.nf9-footer-col--nav li + li {
+    margin-top: 0.3rem;   /* ↓ reduce gap between items */
+}
+
   
   .nf9-footer-col a:hover {
     opacity: 0.75;
@@ -153,6 +160,7 @@
     row-gap: 0.6rem;
     column-gap: 2rem;
     font-size: 0.85rem;
+    padding: 50px 0 0 0;
     color: var(--nf9-muted);
   }
   
@@ -310,7 +318,7 @@
     }
   
     .nf9-footer-col--nav a {
-      font-size: 40px;
+      font-size: 36px;
       font-weight: 400;
       line-height: 30px;
     }
@@ -321,7 +329,7 @@
     }
   
     .footer-social-title {
-      font-size: 40px;
+      font-size: 36px;
     }
   
     .footer-social-links {
