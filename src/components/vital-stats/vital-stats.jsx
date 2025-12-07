@@ -1,193 +1,98 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import * as THREE from 'three';
+import React, { useState, useEffect, useRef } from 'react';
 import './vital-stats.css';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const VitalStats = () => {
-  const containerRef = useRef(null);
-  const canvasRef = useRef(null);
-  const sceneRef = useRef(null);
-  const rendererRef = useRef(null);
-  const cameraRef = useRef(null);
-  const sphereRef = useRef(null);
+  const [visibleStats, setVisibleStats] = useState({
+    topLeft: false,
+    topRight: false,
+    bottomLeft: false,
+    bottomRight: false
+  });
+  
+  const sectionRef = useRef(null);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    // Initialize Three.js scene
-    const initThreeJS = () => {
-      const scene = new THREE.Scene();
-      sceneRef.current = scene;
-
-      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      camera.position.z = 5;
-      cameraRef.current = camera;
-
-      const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current, antialias: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      rendererRef.current = renderer;
-
-      // Create sphere geometry
-      const geometry = new THREE.SphereGeometry(1, 32, 32);
-
-      // Load Earth texture
-      const textureLoader = new THREE.TextureLoader();
-      const earthTexture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg');
-
-      const material = new THREE.MeshBasicMaterial({
-        map: earthTexture,
-        transparent: true
-      });
-      const sphere = new THREE.Mesh(geometry, material);
-      scene.add(sphere);
-      sphereRef.current = sphere;
-
-      // Animation loop
-      const animate = () => {
-        requestAnimationFrame(animate);
-        sphere.rotation.y += 0.005; // Slower rotation on Y-axis only
-        renderer.render(scene, camera);
-      };
-      animate();
-    };
-
-    // Initialize GSAP ScrollTrigger
-    const initScrollTrigger = () => {
-      gsap.set(containerRef.current, {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top top',
-          end: 'bottom bottom',
-          scrub: true,
-          pin: true,
-          pinSpacing: true,
-        }
-      });
-
-      // Set initial states for stats
-      gsap.set('.stat-item', { opacity: 0, scale: 0.8, y: 100 });
-
-      // Animate stats appearance in sequence
-      gsap.to('.stat-item-1', {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top center',
-          end: '25% center',
-          scrub: true,
-        }
-      });
-
-      gsap.to('.stat-item-2', {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: '25% center',
-          end: '50% center',
-          scrub: true,
-        }
-      });
-
-      gsap.to('.stat-item-3', {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: '50% center',
-          end: '75% center',
-          scrub: true,
-        }
-      });
-
-      gsap.to('.stat-item-4', {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: '75% center',
-          end: 'bottom center',
-          scrub: true,
-        }
-      });
-    };
-
-    initThreeJS();
-    initScrollTrigger();
-
-    // Handle window resize
-    const handleResize = () => {
-      if (cameraRef.current && rendererRef.current) {
-        cameraRef.current.aspect = window.innerWidth / window.innerHeight;
-        cameraRef.current.updateProjectionMatrix();
-        rendererRef.current.setSize(window.innerWidth, window.innerHeight);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Trigger animation when section is 30% visible and hasn't animated yet
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.3 && !hasAnimated.current) {
+            hasAnimated.current = true;
+            
+            // Sequential animation with delays
+            setTimeout(() => {
+              setVisibleStats(prev => ({ ...prev, topLeft: true }));
+            }, 200);
+            
+            setTimeout(() => {
+              setVisibleStats(prev => ({ ...prev, topRight: true }));
+            }, 600);
+            
+            setTimeout(() => {
+              setVisibleStats(prev => ({ ...prev, bottomLeft: true }));
+            }, 1000);
+            
+            setTimeout(() => {
+              setVisibleStats(prev => ({ ...prev, bottomRight: true }));
+            }, 1400);
+          }
+        });
+      },
+      {
+        threshold: [0.3], // Trigger when 30% of section is visible
+        rootMargin: '0px'
       }
-    };
+    );
 
-    window.addEventListener('resize', handleResize);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-      if (rendererRef.current) {
-        rendererRef.current.dispose();
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
       }
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
 
   return (
-    <section className="vital-stats-section">
-      <div className="pin-spacer">
-        <div className="vital-stats-container" ref={containerRef}>
-          <h1 className="vital-stats-title">Vital Stats</h1>
-          <div className="canvas-container">
-            <div className="canvas-wrapper">
-              <canvas
-                ref={canvasRef}
-                className="threejs-canvas"
-                data-engine="three.js r179"
-              ></canvas>
-            </div>
+    <section className="vital-stats-section" ref={sectionRef}>
+      <div className="vital-stats-container">
+        <h2 className="vital-stats-title">Vital Stats</h2>
+        
+        <div className="vital-stats-content">
+          {/* Top Left Stat */}
+          <div className={`stat-item stat-top-left ${visibleStats.topLeft ? 'visible' : ''}`}>
+            <div className="stat-value">[100+]</div>
+            <div className="stat-label">Transformative Digital Products Launched Globally</div>
           </div>
-          <div className="stats-container">
-            <div className="stat-item stat-item-1">
-              <p className="stat-text">
-                <span className="stat-number">[100+]</span>
-                Transformative Digital Product Launched Globally
-              </p>
-            </div>
-            <div className="stat-item stat-item-2">
-              <p className="stat-text">
-                <span className="stat-number">[30M+ AED]</span>
-                In Client Growth
-              </p>
-            </div>
-            <div className="stat-item stat-item-3">
-              <p className="stat-text">
-                <span className="stat-number">[110+]</span>
-                Successful Projects Executed Across Industries
-              </p>
-            </div>
-            <div className="stat-item stat-item-4">
-              <p className="stat-text">
-                <span className="stat-number">[6+]</span>
-                Years Delivering Innovative Solutions
-              </p>
-            </div>
+
+          {/* Top Right Stat */}
+          <div className={`stat-item stat-top-right ${visibleStats.topRight ? 'visible' : ''}`}>
+            <div className="stat-value">[110+]</div>
+            <div className="stat-label">Successful Projects Executed Across Industries</div>
+          </div>
+
+          {/* Central Globe Image */}
+          <div className="globe-container">
+            <img 
+              src="/images/globe-img.png" 
+              alt="Globe" 
+              className="globe-image"
+            />
+          </div>
+
+          {/* Bottom Left Stat */}
+          <div className={`stat-item stat-bottom-left ${visibleStats.bottomLeft ? 'visible' : ''}`}>
+            <div className="stat-value">[30M+ AED]</div>
+            <div className="stat-label">In Client Growth</div>
+          </div>
+
+          {/* Bottom Right Stat */}
+          <div className={`stat-item stat-bottom-right ${visibleStats.bottomRight ? 'visible' : ''}`}>
+            <div className="stat-value">[6+]</div>
+            <div className="stat-label">Years Delivering Innovative Solutions</div>
           </div>
         </div>
       </div>
