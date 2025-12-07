@@ -18,7 +18,6 @@ const Footer = () => {
         {/* First Div - 50% */}
         <div className="footer-brand">
           <h1 className="footer-logo">NF9</h1>
-          <p className="footer-tagline">Getting your message across, loud and clear</p>
         </div>
 
         {/* Second Div - 30% */}
