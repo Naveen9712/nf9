@@ -320,7 +320,7 @@
     .nf9-footer-col--nav a {
       font-size: 36px;
       font-weight: 400;
-      line-height: 30px;
+      line-height: 35px;
     }
   
     .footer-social {
@@ -351,6 +351,8 @@
     .nf9-footer-bottom {
       justify-items: flex-start;
       text-align: left;
+      padding: 20px 0 0 0;
+
     }
   
     .nf9-footer-bottom-center {
