@@ -4,6 +4,14 @@
   border-radius: 20px !important;
 }
 
+.industry-footprint-h3 {
+  text-align: center;
+  padding: 3px;
+  font-size: 14px !important;
+  font-weight: 400;
+  font-family: 'Satoshi', sans-serif;
+}
+
 .carousel-container {
   transform-origin: center;
   transform-style: preserve-3d;

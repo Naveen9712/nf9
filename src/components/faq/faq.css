@@ -11,8 +11,8 @@
 }
 
 .faq-title {
-  font-size: 6rem;
-  font-weight: bold;
+  font-size: 6.3rem;
+  font-weight: 900;
   color: #000;
   text-align: left;
   margin-bottom: 20px;
@@ -177,7 +177,8 @@
   }
 
   .faq-title {
-    font-size: 3.8rem;
+    font-size: 4.5rem;
+    font-weight: 700;
     margin-bottom: 30px;
     font-weight: 600;
     margin-left: 0px;
