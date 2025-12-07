@@ -167,7 +167,7 @@ const VitalStats = () => {
             <div className="stat-item stat-item-1">
               <p className="stat-text">
                 <span className="stat-number">[100+]</span>
-                Transformative Digital Products Launched Globally
+                Transformative Digital Product Launched Globally
               </p>
             </div>
             <div className="stat-item stat-item-2">
