@@ -28,10 +28,8 @@ function App() {
           <About />
           <IndustryFootprint />
           <VitalStats />
-          <Belief />
           <FAQ />
         </main>
-        <Footer />
       </div>
     </>
   )
