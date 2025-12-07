@@ -272,31 +272,33 @@
   /* <= 480px: a bit tighter */
   @media (max-width: 480px) {
     .nf9-footer-hero {
-      padding: 3rem 5vw 2rem;
+      padding: 2rem 20px 2rem 20px;
     }
   
     .nf9-footer-col--nav a {
-      font-size: 20px;
+      font-size: 40px;
+      line-height: 50px;
     }
   
     .footer-social-title {
-      font-size: 20px;
+      font-size: 40px;
       letter-spacing: 1.2px;
     }
   
     .footer-social-links {
       gap: 8px;
       flex-wrap: wrap;
+      padding-bottom: 30px;
     }
   
     .footer-social-link {
-      width: 46px;
-      height: 46px;
+      width: 90px;
+      height: 90px;
     }
   
     .footer-social-link svg {
-      width: 20px;
-      height: 20px;
+      width: 40px;
+      height: 40px;
     }
   
     .nf9-footer-bottom {
@@ -307,5 +309,15 @@
     .nf9-footer-bottom-center {
       justify-content: flex-start;
     }
+    .nf9-footer-bottom-center a {
+        font-size: 22px;
+        font-weight: 400;
+      }
+      
+      .nf9-footer-bottom-right span {
+        font-size: 20px;
+        font-weight: 400;
+      }
+      
   }
   
