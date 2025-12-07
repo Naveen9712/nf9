@@ -155,7 +155,7 @@ const IndustryFootprint = () => {
                 <div className="relative h-[270px] w-[280px] sm:h-[280px] sm:w-[300px] md:w-[320px] lg:w-[350px] xl:w-[380px] rounded-[15px] overflow-hidden transition-transform duration-300 ease-out group-hover:scale-105">
                   <img alt="Agriculture Field " className="pointer-events-none object-cover w-full h-full select-none" draggable="false" src="https://ik.imagekit.io/99y1fc9mh/BCF/Group%203.png?updatedAt=1756137101396" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 text-white z-50 select-none">
-                    <h3 className="industry-footprint-h3">EXPERIENCE (UI/UX)</h3>
+                    <h3 className="industry-footprint-h3"> UI/UX </h3>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-40"></div>
                 </div>

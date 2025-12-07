@@ -7,6 +7,7 @@ import About from './components/about/about'
 import IndustryFootprint from './components/industry-footprint/industry-footprint'
 import VitalStats from './components/vital-stats/vital-stats'
 import FAQ from './components/faq/faq'
+import Footer from './components/footer/footer'
 
 function App() {
   const [preloaderComplete, setPreloaderComplete] = useState(false)
@@ -30,6 +31,7 @@ function App() {
           <VitalStats />
           <FAQ />
         </main>
+        <Footer />
       </div>
     </>
   )

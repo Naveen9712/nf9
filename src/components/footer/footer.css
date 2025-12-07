@@ -1,0 +1,296 @@
+/* ============================================
+   FOOTER COMPONENT STYLES
+   ============================================ */
+
+/* Font Face Declarations */
+@font-face {
+    font-family: 'Satoshi';
+    src: url('../header/fonts/Satoshi-Regular.woff2') format('woff2'),
+        url('../header/fonts/Satoshi-Regular.woff') format('woff'),
+        url('../header/fonts/Satoshi-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('../header/fonts/Satoshi-Medium.woff2') format('woff2'),
+        url('../header/fonts/Satoshi-Medium.woff') format('woff'),
+        url('../header/fonts/Satoshi-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('../header/fonts/Satoshi-Bold.woff2') format('woff2'),
+        url('../header/fonts/Satoshi-Bold.woff') format('woff'),
+        url('../header/fonts/Satoshi-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ============================================
+   FOOTER CONTAINER
+   ============================================ */
+
+.footer {
+    background: #000;
+    color: #fff;
+    padding: 60px 20px;
+    font-family: 'Satoshi', sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* ============================================
+   FOOTER BRAND (50%)
+   ============================================ */
+
+.footer-brand {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-logo {
+    font-size: 100px;
+    font-weight: 700;
+    margin: 0;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.footer-tagline {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+    color: #ccc;
+    line-height: 1.4;
+}
+
+/* ============================================
+   FOOTER MENU (30%)
+   ============================================ */
+
+.footer-menu {
+    flex: 0 0 30%;
+}
+
+.footer-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-menu-item {
+    margin: 0;
+}
+
+.footer-menu-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.footer-menu-link:hover {
+    color: #ccc;
+}
+
+/* ============================================
+   FOOTER SOCIAL (20%)
+   ============================================ */
+
+.footer-social {
+    flex: 0 0 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.footer-social-title {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social-link {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-social-link:hover {
+    border-color: #ccc;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.footer-social-link svg {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+    transition: fill 0.3s ease;
+}
+
+.footer-social-link:hover svg {
+    fill: #ccc;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .footer-container {
+        gap: 15px;
+    }
+
+    .footer-logo {
+        font-size: 50px;
+    }
+
+    .footer-tagline {
+        font-size: 16px;
+    }
+
+    .footer-menu-link {
+        font-size: 15px;
+    }
+
+    .footer-social-title {
+        font-size: 20px;
+    }
+
+    .footer-social-link {
+        width: 45px;
+        height: 45px;
+    }
+
+    .footer-social-link svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .footer {
+        padding: 40px 20px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-brand {
+        flex: none;
+        width: 100%;
+    }
+
+    .footer-menu {
+        flex: none;
+        width: 100%;
+    }
+
+    .footer-menu-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        max-width: 300px;
+    }
+
+    .footer-social {
+        flex: none;
+        width: 100%;
+        align-items: center;
+    }
+
+    .footer-logo {
+        font-size: 40px;
+    }
+
+    .footer-tagline {
+        font-size: 16px;
+    }
+
+    .footer-menu-link {
+        font-size: 14px;
+    }
+
+    .footer-social-title {
+        font-size: 18px;
+    }
+
+    .footer-social-links {
+        justify-content: center;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .footer {
+        padding: 30px 15px;
+    }
+
+    .footer-container {
+        gap: 20px;
+    }
+
+    .footer-logo {
+        font-size: 32px;
+    }
+
+    .footer-tagline {
+        font-size: 14px;
+    }
+
+    .footer-menu-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .footer-social-link {
+        width: 40px;
+        height: 40px;
+    }
+
+    .footer-social-link svg {
+        width: 18px;
+        height: 18px;
+    }
+}
