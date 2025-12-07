@@ -1,7 +1,8 @@
-# Footer Addition Task
+# Footer Update Task
 
-- [ ] Create src/components/footer/ directory
-- [ ] Create footer.jsx component with basic structure
-- [ ] Create footer.css with full width, 40vh height, black background, and two divs (70% and 30%)
-- [ ] Update App.jsx to import Footer component
-- [ ] Add Footer component below FAQ in App.jsx
+## Steps to Complete
+- [x] Create TODO.md file to track progress
+- [x] Update footer.jsx: Add footer-bottom container with two sub-divs (footer-copyright and footer-links)
+- [x] Update footer.css: Add styles for .footer-bottom, .footer-copyright, .footer-links, and responsive adjustments
+- [x] Update footer.css: Adjust .footer padding-bottom for spacing
+- [x] Verify changes and mark task complete

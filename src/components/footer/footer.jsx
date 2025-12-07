@@ -17,7 +17,7 @@ const Footer = () => {
       <div className="footer-container">
         {/* First Div - 50% */}
         <div className="footer-brand">
-          <h1 className="footer-logo">NF9</h1>
+          <h1 className="footer-logo">NF9!</h1>
         </div>
 
         {/* Second Div - 30% */}
@@ -51,6 +51,13 @@ const Footer = () => {
               </svg>
             </a>
           </div>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <div className="footer-copyright">© 2026 Team NF9! All rights reserved.</div>
+        <div className="footer-links">
+          <a href="#" className="footer-link">Privacy Policy</a>
+          <a href="#" className="footer-link">Terms and Conditions</a>
         </div>
       </div>
     </footer>
