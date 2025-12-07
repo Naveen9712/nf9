@@ -539,8 +539,7 @@
         height: 70vh;
         width: 100%;
         flex: none;
-        padding-top: 70px;
-        padding-right: 30px;
+        padding-top: 50px;
     }
     .hamburger {
         width: 48px;
