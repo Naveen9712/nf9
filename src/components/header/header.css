@@ -567,6 +567,7 @@
         height: 20vh;
         width: 100%;
         flex: none;
+        padding-top: -20px;
     }
 
     .social-container h1 {
