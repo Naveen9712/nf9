@@ -1,66 +1,77 @@
 import React, { useState } from 'react';
 import './faq.css';
 
-const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState(null); // No question open by default
 
-  const faqData = [
-    {
-      question: "How Does TIC Global Services Work?",
-      answer: "TIC Global Services, an expert in web development in Chennai, offers complete solutions for establishing and improving your online presence. We specialize in web branding, brand identity, and digital marketing, uses a strategic approach to understand your company's goals and target audience. From designing user-friendly websites to creating a strong digital footprint through dedicated marketing campaigns, TIC ensures your brand stands out in the competitive online world. TIC Global Services provides solutions that drive business growth and success by combining creativity, cutting-edge technology, and innovative strategies."
-    },
-    {
-      question: "What Services do TIC Global services Offer?",
-      answer: "TIC Global Services offers a comprehensive range of digital solutions including web development, web branding, brand identity design, and digital marketing services. We help businesses establish and enhance their online presence through strategic planning, creative design, and innovative technology solutions tailored to meet specific business goals and target audience needs."
-    },
-    {
-      question: "How long does it take to complete a web development project?",
-      answer: "The timeline for web development projects varies depending on the complexity and scope of the project. Typically, a standard website can take anywhere from 4-8 weeks, while more complex projects may require 8-12 weeks or longer. We work closely with clients to establish realistic timelines and ensure timely delivery without compromising quality."
-    },
-    {
-      question: "Do you provide ongoing support after project completion?",
-      answer: "Yes, TIC Global Services offers comprehensive ongoing support and maintenance services after project completion. This includes regular updates, security patches, performance monitoring, and technical support to ensure your website continues to function optimally and remains up-to-date with the latest technologies and best practices."
-    },
-    {
-      question: "What is your pricing structure for digital marketing services?",
-      answer: "Our digital marketing pricing is customized based on your specific needs, goals, and budget. We offer flexible packages that can include SEO, social media marketing, content marketing, PPC advertising, and more. Contact us for a detailed consultation and personalized quote tailored to your business requirements."
-    }
-  ];
+const faqItems = [
+  {
+    question: "How Does NF9 Work?",
+    answer:
+      "NF9 is a digital studio focused on building smooth, modern, high-performing web experiences. We combine strategy, UX, design, and development to create websites that feel fast, clean, and intuitive on every device.",
+  },
+  {
+    question: "What services does NF9 offer?",
+    answer:
+      "We work on web design, development, rebranding, UI/UX, landing pages, animations, performance optimisation, and ongoing website care. Each project is tailored to your goals and audience.",
+  },
+  {
+    question: "How long does a typical web project take?",
+    answer:
+      "Project timelines depend on scope, but most NF9 projects run between 4–8 weeks. We share clear milestones so you always know what’s happening and when.",
+  },
+  {
+    question: "Do you provide ongoing support after launch?",
+    answer:
+      "Yes. NF9 offers ongoing support, minor updates, performance checks, and design refinements so your site stays sharp and aligned with your brand as it grows.",
+  },
+  {
+    question: "What is your pricing structure?",
+    answer:
+      "We work with transparent, project-based pricing. After understanding your requirements, we share a clear proposal covering scope, timelines, and investment—no hidden costs.",
+  },
+];
 
-  const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+export default function NF9Faq() {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const handleToggle = (index) => {
+    setActiveIndex((prev) => (prev === index ? null : index));
   };
 
   return (
-    <section className="faq-section">
-      <div className="faq-container">
-        <h2 className="faq-title">Frequently Asked Question</h2>
-        <div className="faq-list">
-          {faqData.map((faq, index) => (
-            <div key={index} className="faq-item">
-              <button
-                className={`faq-question ${openIndex === index ? 'active' : ''}`}
-                onClick={() => toggleFAQ(index)}
-                aria-expanded={openIndex === index}
-              >
-                <span className="faq-question-text">{faq.question}</span>
-                <span className="faq-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </span>
-              </button>
-              <div className={`faq-answer ${openIndex === index ? 'open' : ''}`}>
-                <p className="faq-answer-text">{faq.answer}</p>
+    <section className="nf9-faq">
+      <div className="nf9-faq-inner">
+        <h2 className="nf9-faq-title">Frequently Asked Question</h2>
+
+        <div className="nf9-faq-list">
+          {faqItems.map((item, index) => {
+            const isActive = activeIndex === index;
+            return (
+              <div className="nf9-faq-item" key={index}>
+                <button
+                  className="nf9-faq-trigger"
+                  onClick={() => handleToggle(index)}
+                  aria-expanded={isActive}
+                >
+                  <span className="nf9-faq-question">{item.question}</span>
+
+                  <span
+                    className={`nf9-faq-icon ${isActive ? "nf9-faq-icon--open" : ""}`}
+                    aria-hidden="true"
+                  />
+                </button>
+
+                <div
+                  className={`nf9-faq-content ${
+                    isActive ? "nf9-faq-content--open" : ""
+                  }`}
+                >
+                  <p>{item.answer}</p>
+                </div>
               </div>
-              {index < faqData.length - 1 && <div className="faq-divider"></div>}
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
   );
-};
-
-export default FAQ;
-
+}

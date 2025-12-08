@@ -19,7 +19,7 @@ export default function VitalStats() {
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: "+=200%", // scroll distance while pinned
+          end: "+=400%", // scroll distance while pinned
           scrub: 1, // smoother scrub
           pin: true,
           anticipatePin: 1,
@@ -28,30 +28,20 @@ export default function VitalStats() {
 
       // Globe appears + slowly rotates during scroll
       tl.from(".globe-container", {
-        scale: 0.85,
+        scale: 2,
         opacity: 0,
-        duration: 1,
+        duration: 3,
         ease: "power2.out",
       });
-
-      tl.to(
-        ".globe-image",
-        {
-          rotate: 180,
-          ease: "none",
-          duration: 3,
-        },
-        0 // start rotation from the beginning of timeline
-      );
 
       // Reveal each stat one by one as you scroll
       tl.to(items, {
         opacity: 1,
         y: 0,
-        duration: 1,
+        duration: 4,
         ease: "power2.out",
         stagger: {
-          each: 0.6,
+          each: 1,
         },
       });
     }, sectionRef);

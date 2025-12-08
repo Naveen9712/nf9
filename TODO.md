@@ -1,6 +1,4 @@
-- [ ] Implement smooth rotation using requestAnimationFrame with delta time for constant speed
-- [ ] Add visibilitychange event listener to pause/resume rotation on tab switch
-- [ ] Fix bottom button aria-labels to correctly number from 1 to 18
-- [ ] Make the bottom navigation responsive by adjusting width and button positions for different screen sizes
-- [ ] Ensure carousel container and card sizes are fully responsive
-- [ ] Test the changes for smoothness, syncing, and responsiveness
+# TODO for FAQ Section Edit
+
+- [x] Remove the first FAQ item: "How Does NF9 Work?" from faqItems array in src/components/faq/faq.jsx
+- [x] Remove the last FAQ item: "What is your pricing structure?" from faqItems array in src/components/faq/faq.jsx

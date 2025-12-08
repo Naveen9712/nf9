@@ -1,362 +1,208 @@
 :root {
-    --nf9-bg: #000000;
-    --nf9-text: #ffffff;
-    --nf9-muted: #c8ccd8;
-    --nf9-accent: #ff5a1f;
-    --nf9-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      sans-serif;
+  --nf9-bg: #000000;
+  --nf9-text: #ffffff;
+  --nf9-muted: #777777;
+  --nf9-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+/* MAIN WRAPPER */
+.nf9-footer {
+  width: 100vw;
+  max-width: 100%;
+  background: var(--nf9-bg);
+  color: var(--nf9-text);
+  font-family: var(--nf9-font);
+  padding: 50px 60px 20px 60px; /* a bit less bottom padding */
+  box-sizing: border-box;
+}
+
+/* =========================
+   DESKTOP ( > 768px )
+   4 columns in a row
+   ========================= */
+
+.nf9-footer-inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+/* base column */
+.nf9-footer-col {
+  flex: 0 0 15%;                /* about the same feel as reference */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* LOGO BLOCK ---------------------------------------------------- */
+.nf9-footer-logo-block {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nf9-footer-logo-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: #ffffff;
+}
+
+.nf9-footer-logo-text {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* TITLES & LINKS ------------------------------------------------ */
+
+.nf9-footer-col-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--nf9-muted);
+  margin: 0 0 0.75rem;
+}
+
+.nf9-footer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nf9-footer-list li + li {
+  margin-top: 0.3rem; /* tight spacing like the reference */
+}
+
+
+
+/* FORCE 0px LINE HEIGHT FOR ALL LIST LINKS */
+.nf9-footer-list a {
+  line-height: 5px !important;
+  display: block;               /* required when line-height = 0 */
+  padding-top: 6px;             /* control vertical spacing manually */
+  padding-bottom: 6px;          /* looks identical to reference */
+}
+
+
+.nf9-footer-list a:hover {
+  opacity: 0.85;
+  transform: translateX(-2px);
+}
+
+/* META COLUMN --------------------------------------------------- */
+
+.nf9-footer-meta p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* keep copyright on a single line */
+.nf9-footer-meta-muted {
+  color: var(--nf9-muted);
+  margin-top: 0.4rem;
+  white-space: nowrap;
+}
+
+/* ======================================================================
+   RESPONSIVE
+   ====================================================================== */
+
+/* <= 1024px – just tighten a bit */
+@media (max-width: 1024px) {
+  .nf9-footer {
+    padding: 32px 40px 28px;
   }
-  
-  /* MAIN WRAPPER */
-  .nf9-footer-hero {
-    position: relative;
-    width: 100vw;                 /* full viewport width */
-    background: var(--nf9-bg);
-    color: var(--nf9-text);
-    font-family: var(--nf9-font);
-    padding: 50px 10rem 20px 80px;  /* top right bottom left */
-    overflow: hidden;
-    display: flex;
-    align-items: stretch;
-    box-sizing: border-box;
+
+  .nf9-footer-list a {
+    font-size: 18px;
   }
-  
-  /* soft background pattern (optional) */
-  .nf9-footer-bg {
-    position: absolute;
-    inset: -20%;
-    opacity: 0.18;
-    background: radial-gradient(circle at 30% 40%, #151824 0%, transparent 60%),
-      radial-gradient(circle at 70% 60%, #151824 0%, transparent 65%);
-    pointer-events: none;
+
+  .nf9-footer-col {
+    flex-basis: 18%; /* give a bit more width on smaller laptops */
   }
-  
+}
+
+/* <= 768px
+   Row 1: NF9 column | Social column
+   Row 2: Meta       | Logo
+*/
+@media (max-width: 768px) {
+  .nf9-footer {
+    padding: 28px;
+  }
+
   .nf9-footer-inner {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* ------------------ TOP LAYOUT ------------------ */
-  
-  .nf9-footer-top {
     display: grid;
-    grid-template-columns: 60% 20% 20%; /* NF9 / nav / social */
-    column-gap: 2vw;
-    row-gap: 2rem;
-    padding: 0;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "links  social"
+      "meta   logo";
+    row-gap: 28px;
+    column-gap: 28px;
     align-items: flex-start;
   }
-  
-  .nf9-footer-col--headline h1 {
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    font-size: 120px;
+
+  /* reset base */
+  .nf9-footer-col {
+    flex: 0 0 auto;
   }
-  
-  /* Nav list */
-  .nf9-footer-col ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+
+  .nf9-footer-col--links {
+    grid-area: links;
   }
-  
-  .nf9-footer-col li + li {
-    margin-top: 0.6rem;
+
+  .nf9-footer-col--social {
+    grid-area: social;
   }
-  
-  .nf9-footer-col a {
-    color: var(--nf9-text);
-    text-decoration: none;
-    letter-spacing: 0.02em;
+
+  .nf9-footer-col--meta {
+    grid-area: meta;
   }
-  
-  /* big nav text on desktop */
-  /* Desktop menu list spacing (PC view) */
-  .nf9-footer-col--nav a {
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 1.1;     /* ↓ reduce vertical spacing */
+
+  .nf9-footer-col--logo {
+    grid-area: logo;
+    align-items: flex-start;
+    text-align: right;
+  }
+
+  .nf9-footer-logo-block {
+    justify-content: flex-end;
+  }
+
+  .nf9-footer-col-title {
+    font-size: 18px;
+  }
+
+  .nf9-footer-list a {
+    font-size: 16px;
+  }
+
+  .nf9-footer-meta p {
+    font-size: 16px;
+  }
 }
 
-.nf9-footer-col--nav li + li {
-    margin-top: 0.3rem;   /* ↓ reduce gap between items */
+/* <= 480px – same layout, just smaller */
+@media (max-width: 480px) {
+  .nf9-footer {
+    padding: 24px 18px 20px;
+  }
+
+  .nf9-footer-inner {
+    row-gap: 22px;
+    column-gap: 16px;
+  }
+
+  .nf9-footer-list a {
+    font-size: 14px;
+  }
+
+  .nf9-footer-meta p {
+    font-size: 14px;
+    font-weight: 400;
+  }
 }
-
-  
-  .nf9-footer-col a:hover {
-    opacity: 0.75;
-  }
-  
-  /* ------------------ SOCIAL BLOCK ------------------ */
-  
-  .footer-social {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-  }
-  
-  .footer-social-title {
-    font-family: var(--nf9-font);
-    font-size: 28px;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin: 0;
-    white-space: nowrap;
-  }
-  
-  /* icon row */
-  .footer-social-links {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  
-  /* icon circle */
-  .footer-social-link {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
-  }
-  
-  /* SVG icon forced white */
-  .footer-social-link svg {
-    width: 25px;
-    height: 25px;
-    fill: #fff !important;
-    stroke: #fff !important;
-    transition: fill 0.2s ease;
-  }
-  
-  /* hover */
-  .footer-social-link:hover {
-    border-color: #fff;
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
-  }
-  
-  .footer-social-link:hover svg {
-    fill: #fff !important;
-    stroke: #fff !important;
-  }
-  
-  /* ------------------ BOTTOM AREA ------------------ */
-  
-  .nf9-footer-bottom {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    row-gap: 0.6rem;
-    column-gap: 2rem;
-    font-size: 0.85rem;
-    padding: 50px 0 0 0;
-    color: var(--nf9-muted);
-  }
-  
-  .nf9-footer-bottom-center {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 1.4rem;
-  }
-  
-  .nf9-footer-bottom-center a {
-    color: var(--nf9-muted);
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 400;
-  }
-  
-  .nf9-footer-bottom-center a:hover {
-    color: var(--nf9-text);
-  }
-  
-  .nf9-footer-bottom-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.15rem;
-  }
-  
-  .nf9-footer-bottom-right span {
-    font-size: 18px;
-    font-weight: 400;
-  }
-  
-  /* ------------------ RESPONSIVE ------------------ */
-  
-  /* <= 1024px: small tweaks only */
-  @media (max-width: 1024px) {
-    .nf9-footer-hero {
-      padding: 3rem 5vw 2.5rem;
-    }
-  
-    .nf9-footer-top {
-      column-gap: 3vw;
-    }
-  
-    .nf9-footer-bottom {
-      grid-template-columns: 1fr;
-      justify-items: center;
-      text-align: center;
-    }
-  
-    .nf9-footer-bottom-right {
-      align-items: center;
-    }
-  }
-  
-  /* 768px → 469px : NF9 on top, NAV + SOCIAL side-by-side (like design) */
-  @media (max-width: 768px) and (min-width: 469px) {
-    .nf9-footer-hero {
-      padding: 40px 40px 40px 40px;
-    }
-  
-    .nf9-footer-top {
-      grid-template-columns: 1fr 1fr;   /* two equal columns */
-      grid-template-areas:
-        "headline headline"
-        "nav      social";
-      column-gap: 3rem;
-      row-gap: 3rem;
-      align-items: flex-start;
-    }
-  
-    .nf9-footer-col--headline {
-      grid-area: headline;
-    }
-  
-    .nf9-footer-col--nav {
-      grid-area: nav;
-    }
-  
-    .nf9-footer-col--social {
-      grid-area: social;
-    }
-  
-    /* NF9 size on tablet */
-    .nf9-footer-col--headline h1 {
-      font-size: 72px;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.5rem;
-    }
-  
-    /* menu text */
-    .nf9-footer-col--nav a {
-      font-size: 40px;
-      line-height: 1.2;
-      font-weight: 400;
-    }
-  
-    /* Social column aligned like screenshot */
-    .footer-social {
-      align-items: center;
-      text-align: center;
-    }
-  
-    .footer-social-title {
-      font-size: 24px;
-      letter-spacing: 0.25em; /* spaced letters: REACH OUT US */
-    }
-  
-    .footer-social-links {
-      gap: 14px;
-    }
-  
-    .footer-social-link {
-      width: 60px;
-      height: 60px;
-    }
-  
-    .footer-social-link svg {
-      width: 28px;
-      height: 28px;
-    }
-  }
-  
-  /* <= 480px: stack everything, keep things big */
-  @media (max-width: 480px) {
-    .nf9-footer-hero {
-      padding: 2rem 20px 2rem 20px;
-    }
-  
-    .nf9-footer-top {
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        "headline"
-        "nav"
-        "social";
-      row-gap: 2.5rem;
-    }
-  
-    .nf9-footer-col--headline {
-      grid-area: headline;
-    }
-  
-    .nf9-footer-col--nav {
-      grid-area: nav;
-    }
-  
-    .nf9-footer-col--social {
-      grid-area: social;
-    }
-  
-    .nf9-footer-col--headline h1 {
-      font-size: 60px;
-      margin-bottom: 0.5rem;
-    }
-  
-    .nf9-footer-col--nav a {
-      font-size: 36px;
-      font-weight: 400;
-      line-height: 35px;
-    }
-  
-    .footer-social {
-      align-items: flex-start;
-      text-align: left;
-    }
-  
-    .footer-social-title {
-      font-size: 36px;
-    }
-  
-    .footer-social-links {
-      gap: 15px;
-      flex-wrap: wrap;
-      padding-bottom: 30px;
-    }
-  
-    .footer-social-link {
-      width: 80px;
-      height: 80px;
-    }
-  
-    .footer-social-link svg {
-      width: 40px;
-      height: 40px;
-    }
-  
-    .nf9-footer-bottom {
-      justify-items: flex-start;
-      text-align: left;
-      padding: 20px 0 0 0;
-
-    }
-  
-    .nf9-footer-bottom-center {
-      justify-content: flex-start;
-    }
-  }
-  
