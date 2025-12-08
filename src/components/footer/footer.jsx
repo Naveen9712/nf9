@@ -89,7 +89,6 @@ export default function Footer() {
             <a className="nf9-menu-item" href="https://www.x.com" target="_blank" rel="noopener">Twitter</a>
             <a className="nf9-menu-item" href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
             <a className="nf9-menu-item" href="https://www.dribbble.com" target="_blank" rel="noopener">Email</a>
-            <a className="nf9-menu-item" href="https://www.pinterest.com" target="_blank" rel="noopener">Twitter</a>
           </div>
           
         </div>

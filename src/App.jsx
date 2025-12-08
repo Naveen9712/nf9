@@ -8,6 +8,8 @@ import IndustryFootprint from './components/industry-footprint/industry-footprin
 import VitalStats from './components/vital-stats/vital-stats'
 import FAQ from './components/faq/faq'
 import Footer from './components/footer/footer'
+import Together from './components/together/together';
+
 
 
 function App() {
@@ -30,6 +32,7 @@ function App() {
           <About />
           <IndustryFootprint />
           <VitalStats />
+          <Together/>
           <FAQ />
         </main>
         <Footer />
