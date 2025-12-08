@@ -189,7 +189,7 @@
 /* <= 480px – same layout, just smaller */
 @media (max-width: 480px) {
   .nf9-footer {
-    padding: 25px 50px;
+    padding: 25px 50px 0 0;
   }
 
   .nf9-footer-inner {
