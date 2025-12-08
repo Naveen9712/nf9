@@ -32,7 +32,7 @@ const Footer = () => {
           <h4 className="nf9-footer-col-title">Social</h4>
           <ul className="nf9-footer-list">
             <li><a href="#">LinkedIn</a></li>
-            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Mail</a></li>
             <li><a href="#">Twitter</a></li>
           </ul>
         </div>
