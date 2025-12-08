@@ -22,10 +22,6 @@
   font-size: clamp(2.8rem, 8vw, 6.9rem);
 }
 
-/* List + items */
-.nf9-faq-list {
-}
-
 .nf9-faq-item {
   border-bottom: 1px solid #111111;
 }
