@@ -36,10 +36,19 @@
 }
 
 .main-header {
-    top:-4px;
-    
-    
+    margin-top: 10px;
+    background: transparent;
+    mix-blend-mode: difference; /* auto-invert against background */
+    color: #ffffff;             /* base color, will invert visually */
+    transition: color 0.3s ease, mix-blend-mode 0.3s ease;
 }
+
+/* When menu is open, keep it normal white on black */
+.main-header.header-active {
+    mix-blend-mode: normal;
+    color: #ffffff;
+}
+
 
 /* ============================================
    CENTER TEXT
@@ -613,4 +622,195 @@
         width: 45px;
         height: 45px;
     }
+}
+
+/* header basics - fully transparent header (no blur) */
+.main-header {
+    top: -4px;
+    background: transparent; /* fully transparent */
+    box-shadow: none; /* remove shadow if you don't want it */
+    transition: color 0.25s ease, background 0.25s ease;
+    height: 72px;
+  }
+  
+  /* logo circle placeholder */
+  .logo .logo-circle{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    flex-shrink: 0;
+    display: inline-block;
+    border: 2px solid currentColor;
+    background: currentColor; /* will be black or white depending on theme */
+    opacity: 0.95;
+  }
+  
+  /* center text */
+  .center-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 50px;
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 700;
+    letter-spacing: 4px;
+    transition: color 0.25s ease, transform 0.25s ease;
+  }
+  
+  /* hamburger */
+  .hamburger {
+    width: 55px;
+    height: 35px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+  }
+  .hamburger span {
+    width: 100%;
+    height: 3px;
+    border-radius: 0px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* theme classes:
+     - .theme-light -> header sits on dark background, so icons/text should be white
+     - .theme-dark  -> header sits on light background, so icons/text should be black
+  */
+  .main-header.theme-light .center-text,
+  .main-header.theme-light .hamburger span,
+  .main-header.theme-light .logo-circle {
+    color: #fff;
+    background: #fff; /* logo-circle will be white */
+  }
+  .main-header.theme-light .hamburger span {
+    background: #fff;
+  }
+  
+  .main-header.theme-dark .center-text,
+  .main-header.theme-dark .hamburger span,
+  .main-header.theme-dark .logo-circle {
+    color: #000;
+    background: #000; /* logo-circle will be black */
+  }
+  .main-header.theme-dark .hamburger span {
+    background: #000;
+  }
+  
+  /* hamburger active transformations */
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(13px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-13px) rotate(-45deg);
+  }
+  
+  /* ensure smooth color transitions on the center text */
+  .main-header .center-text { color: inherit; }
+  .logo .logo-circle { color: inherit; }
+  
+  /* keep menu styles unchanged but ensure when menu opens header icons/text become white */
+  .main-header.header-active.theme-light .center-text,
+  .main-header.header-active.theme-light .hamburger span,
+  .main-header.header-active.theme-light .logo-circle {
+    color: #fff;
+    background: #fff;
+  }
+  .main-header.header-active.theme-light .hamburger span {
+    background: #fff;
+  }
+  
+  /* you'll still keep existing .menu styles from your file */
+  /* ... rest of your menu css unchanged ... */
+  
+
+
+
+
+
+
+  .center-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 50px;
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 700;
+    color: currentColor; /* <---- key change */
+    letter-spacing: 4px;
+    transition: color 0.3s ease;
+}
+
+/* This is no longer needed, you can delete it or leave it (it’s same as header color):
+.main-header.header-active .center-text {
+    color: #fff;
+}
+*/
+.hamburger {
+    width: 55px;
+    height: 35px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background: currentColor; /* <---- use header color */
+    border-radius: 0px;
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.hamburger span:nth-child(1) {
+    height: 4px;
+}
+
+.hamburger span:nth-child(2),
+.hamburger span:nth-child(3) {
+    width: 60%;
+    margin-left: auto;
+}
+
+.hamburger:hover span:nth-child(2),
+.hamburger:hover span:nth-child(3) {
+    width: 100%;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(13px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-13px) rotate(-45deg);
+}
+.logo-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 9999px;
+    background: currentColor; /* same as NF9 & hamburger */
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* You can give it a tiny hover effect if you like (optional) */
+.logo:hover .logo-circle {
+    transform: scale(1.03);
+}
+@media (max-width: 468px) {
+    .logo-circle {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* existing center-text/hamburger mobile rules stay */
 }

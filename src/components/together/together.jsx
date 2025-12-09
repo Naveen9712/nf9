@@ -88,11 +88,11 @@ const centerScale = lerp(1, CONFIG.CENTER_SCALE, t);
 
 // NOTE: changed base translate Y from -50% to -40% so images start a bit lower
 if (leftRef.current) {
-  leftRef.current.style.transform = `translate(-50%,-10%) translate(${leftX}px, ${leftY}px) rotate(${leftRot}deg) scale(${CONFIG.SIDE_SCALE})`;
+  leftRef.current.style.transform = `translate(-50%,-30%) translate(${leftX}px, ${leftY}px) rotate(${leftRot}deg) scale(${CONFIG.SIDE_SCALE})`;
   leftRef.current.style.opacity = `${t}`;
 }
 if (rightRef.current) {
-  rightRef.current.style.transform = `translate(-50%,-10%) translate(${rightX}px, ${rightY}px) rotate(${rightRot}deg) scale(${CONFIG.SIDE_SCALE})`;
+  rightRef.current.style.transform = `translate(-50%,-20%) translate(${rightX}px, ${rightY}px) rotate(${rightRot}deg) scale(${CONFIG.SIDE_SCALE})`;
   rightRef.current.style.opacity = `${t}`;
 }
 if (centerRef.current) {
