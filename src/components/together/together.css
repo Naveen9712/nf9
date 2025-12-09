@@ -10,12 +10,21 @@
 .together-wrapper {
   width: 100%;
   max-width: 1300px;
-  height: 500px;
+  height: 520px;
   margin: 0 auto;
   position: relative;
 }
 
-/* common img base: absolutely centered using translate(-50%,-50%) */
+/* clones helper (if used later) */
+.together-clone {
+  pointer-events: none;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 22px 80px rgba(0,0,0,0.6);
+  will-change: transform, opacity;
+}
+
+/* common img base: absolutely centered using translate(-50%, ...) */
 .together-wrapper img {
   position: absolute;
   left: 50%;
@@ -31,7 +40,7 @@
 
 /* center image sits on top */
 .center-img {
-  width: 380px;           /* wide center like screenshot */
+  width: 380px;
   height: 450px;
   z-index: 30;
   box-shadow: 0 28px 110px rgba(0,0,0,0.7);
@@ -63,54 +72,87 @@
 }
 .together-title .dot { color: #ff6a00; }
 
-/* responsive */
-@media (max-width: 1200px) {
-  .center-img { width: 340px; height: 400px; }
-  .side-img { width: 180px; height: 220px; }
-  .together-wrapper { height: 500px; }
-  .together-title h1 { font-size: 8rem; }
+/* -------------------------------------------
+   Responsive blocks: tablet, phone adjustments
+   ------------------------------------------- */
+
+/* <= 1024px */
+@media (max-width: 1024px) {
+  .center-img { width: 420px; height: 480px; }
+  .side-img { width: 200px; height: 260px; }
+  .together-wrapper { height: 520px; }
+  .together-title h1 { font-size: 7.2rem; letter-spacing: -4px; }
 }
-@media (max-width: 1100px) {
-  .center-img { width: 300px; height: 350px; }
-  .side-img { width: 160px; height: 200px; }
-  .together-wrapper { height: 450px; }
-  .together-title h1 { font-size: 7rem; }
-}
+
+/* <= 768px (tablet / large phones) */
 @media (max-width: 768px) {
-  .center-img { width: 260px; height: 300px; }
-  .side-img { width: 140px; height: 170px; }
-  .together-wrapper { height: 400px; }
-  .together-title h1 { font-size: 5rem; }
+  .together-wrapper { max-width: 880px; height: 420px; padding-top: 60px; }
+
+  .center-img {
+    width: 260px;
+    height: 320px;
+    transform: translate(-50%,-30%); /* slightly higher so heading is visible */
+    box-shadow: 0 18px 80px rgba(0,0,0,0.6);
+  }
+
+  .side-img {
+    width: 140px;
+    height: 180px;
+    opacity: 1; /* keep visible on smaller screens when revealed */
+    box-shadow: 0 14px 60px rgba(0,0,0,0.45);
+  }
+
+  .side-img.left { transform: translate(-50%,-30%) rotate(-12deg); }
+  .side-img.right { transform: translate(-50%,-30%) rotate(12deg); }
+
+  .together-title h1 { font-size: 4.6rem; letter-spacing: -3px; line-height: 0.92; margin-top: 36px; }
+  .together-title { padding-bottom: 16px; }
 }
-@media (max-width: 640px) {
-  .together-wrapper { height: auto; padding-bottom: 12px; }
+
+/* <= 468px (narrow phones) — STACK layout fallback */
+@media (max-width: 468px) {
+  .together-section { padding: 20px 12px 100px; }
+
+  .together-wrapper {
+    max-width: 100vw;
+    height: 400px !important;
+    height: auto;
+    padding-bottom: 10px;
+  }
+
   .center-img {
     position: relative;
     left: 50%;
-    transform: translate(-50%, 0) !important;
-    width: 88%;
-    height: auto;
-    margin: 40px auto 0;
     top: 0;
+    transform: translate(-50%, 0) !important;
+    width: 50%;
+    height: 50%;
+    margin: 10px auto 6px;
+    box-shadow: 0 18px 60px rgba(0,0,0,0.45);
   }
+
   .side-img {
     position: relative;
     left: auto;
     top: auto;
     transform: none !important;
     opacity: 1 !important;
-    width: 82%;
-    height: auto;
-    margin: 16px auto;
+    width: 82px;
+    height: 107px;
+    margin: 12px auto;
+    display: block;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+    border-radius: 14px;
   }
-  .together-title h1 { font-size: 3rem; margin-top: 10px; }
+
+  .together-title h1 { font-size: 2.8rem; line-height: 1.02; margin-top: 0; }
+  .together-title { padding: 18px 4px 0; }
+
+  .cta-text { font-size: 14px; }
+  .cta-framer { padding: 12px 0; display:block; text-align:center; }
 }
-@media (max-width: 480px) {
-  .center-img { width: 90%; }
-  .side-img { width: 85%; }
-  .together-title h1 { font-size: 2.5rem; }
-  .together-section { padding: 100px 12px 120px; }
-}
+
+/* small tweaks for very narrow phones */
 @media (max-width: 360px) {
   .center-img { width: 95%; }
   .side-img { width: 90%; }
@@ -118,8 +160,7 @@
   .together-section { padding: 80px 10px 100px; }
 }
 
-
-/* CTA container */
+/* CTA styles (kept) */
 .cta-framer {
   display: inline-flex;
   align-items: center;
@@ -130,25 +171,15 @@
   color: #fff;
   padding: 20px 0;
 }
-
-/* Text wrapper */
 .cta-text {
   position: relative;
   font-family: inherit;
-  font-size: 16px; 
+  font-size: 16px;
   font-weight: 500;
   letter-spacing: 1px;
   display: inline-block;
   z-index: 2;
 }
-
-/* GET word underline (initial state) */
-.word-get {
-  position: relative;
-  display: inline-block;
-  padding-right: 6px;
-}
-
 .word-get::after {
   content: "";
   position: absolute;
@@ -160,8 +191,6 @@
   opacity: 1;
   transition: opacity 260ms ease;
 }
-
-/* FULL underline (hidden initially) */
 .underline-full {
   position: absolute;
   left: 0;
@@ -173,41 +202,10 @@
   transform: scaleX(0);
   transition: transform 360ms cubic-bezier(.22,.9,.32,1);
 }
-
-/* Arrow (no background circle) */
-.cta-arrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #ff6a00;
-  transition: transform 360ms cubic-bezier(.22,.9,.32,1);
-}
-
-/* Initial arrow rotation: 45° upward */
 .cta-arrow svg {
   transform: rotate(-45deg);
   transition: transform 360ms cubic-bezier(.22,.9,.32,1);
 }
-
-/* ----------------- HOVER ------------------ */
-
-/* Expand underline fully */
-.cta-framer:hover .underline-full {
-  transform: scaleX(1);
-}
-
-/* Fade out small GET underline */
-.cta-framer:hover .word-get::after {
-  opacity: 0;
-}
-
-/* Arrow: move down + rotate to right (0deg) */
-.cta-framer:hover .cta-arrow svg {
-  transform: translateY(4px) rotate(0deg);
-}
-
-/* Responsive */
-@media (max-width: 640px) {
-  .cta-text { font-size: 16px; }
-  .word-get::after, .underline-full { bottom: -8px; }
-}
+.cta-framer:hover .underline-full { transform: scaleX(1); }
+.cta-framer:hover .word-get::after { opacity: 0; }
+.cta-framer:hover .cta-arrow svg { transform: translateY(4px) rotate(0deg); }

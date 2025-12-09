@@ -10,23 +10,15 @@ export default function Together() {
   // anim state
   const anim = useRef({ current: 0, target: 0, raf: null, visible: false });
 
-  // final transforms (t = 1)
+  // base config (desktop defaults)
   const CONFIG = {
-    // how far horizontally the side images go
     OUT_X: 420,
-    // vertical offsets to create diagonal feel (left goes up, right goes down)
     LEFT_OUT_Y: -70,
     RIGHT_OUT_Y: 40,
-    // rotation degrees at full out
     LEFT_ROT: -18,
     RIGHT_ROT: 18,
-    // side image scale difference
     SIDE_SCALE: 1,
-    // center scale slightly up like Framer
-    CENTER_SCALE: 1.08,
-    // widths
-    CENTER_W: 680,
-    SIDE_W: 360,
+    CENTER_SCALE: 1.08
   };
 
   const lerp = (a, b, t) => a + (b - a) * t;
@@ -72,32 +64,63 @@ export default function Together() {
     // animation loop
     const tick = () => {
       state.current = lerp(state.current, state.target, 0.14); // smoothing
-      const t = state.current; // 0..1
+      const t = Math.max(0, Math.min(1, state.current)); // clamp 0..1
 
-      // compute transforms
-      // inside your animation loop (tick)
-const leftX = lerp(0, -CONFIG.OUT_X, t);
-const leftY = lerp(0, CONFIG.LEFT_OUT_Y, t);
-const leftRot = lerp(0, CONFIG.LEFT_ROT, t);
+      // -------- responsive offsets: compute effective animation values per viewport width --------
+      const vw = window.innerWidth;
+      let effOutX = CONFIG.OUT_X;
+      let effLeftY = CONFIG.LEFT_OUT_Y;
+      let effRightY = CONFIG.RIGHT_OUT_Y;
+      let effCenterScale = CONFIG.CENTER_SCALE;
+      let leftBaseY = -20;
+      let rightBaseY = -30;
 
-const rightX = lerp(0, CONFIG.OUT_X, t);
-const rightY = lerp(0, CONFIG.RIGHT_OUT_Y, t);
-const rightRot = lerp(0, CONFIG.RIGHT_ROT, t);
+      if (vw <= 468) {
+        effOutX = 160;
+        effLeftY = -28;
+        effRightY = 18;
+        effCenterScale = 1.02;
+        leftBaseY = -10;
+        rightBaseY = -10;
+      } else if (vw <= 768) {
+        effOutX = 260;
+        effLeftY = -40;
+        effRightY = 28;
+        effCenterScale = 1.04;
+        leftBaseY = -18;
+        rightBaseY = -22;
+      } else if (vw <= 1024) {
+        effOutX = 340;
+        effLeftY = -55;
+        effRightY = 34;
+        effCenterScale = 1.06;
+        leftBaseY = -20;
+        rightBaseY = -28;
+      }
 
-const centerScale = lerp(1, CONFIG.CENTER_SCALE, t);
+      // compute transforms using responsive values
+      const leftX = lerp(0, -effOutX, t);
+      const leftY = lerp(0, effLeftY, t);
+      const leftRot = lerp(0, CONFIG.LEFT_ROT, t);
 
-// NOTE: changed base translate Y from -50% to -40% so images start a bit lower
-if (leftRef.current) {
-  leftRef.current.style.transform = `translate(-50%,-30%) translate(${leftX}px, ${leftY}px) rotate(${leftRot}deg) scale(${CONFIG.SIDE_SCALE})`;
-  leftRef.current.style.opacity = `${t}`;
-}
-if (rightRef.current) {
-  rightRef.current.style.transform = `translate(-50%,-20%) translate(${rightX}px, ${rightY}px) rotate(${rightRot}deg) scale(${CONFIG.SIDE_SCALE})`;
-  rightRef.current.style.opacity = `${t}`;
-}
-if (centerRef.current) {
-  centerRef.current.style.transform = `translate(-50%,-50%) scale(${centerScale})`;
-}
+      const rightX = lerp(0, effOutX, t);
+      const rightY = lerp(0, effRightY, t);
+      const rightRot = lerp(0, CONFIG.RIGHT_ROT, t);
+
+      const centerScale = lerp(1, effCenterScale, t);
+
+      // apply transforms (use different base translateY for sides on small screens)
+      if (leftRef.current) {
+        leftRef.current.style.transform = `translate(-50%, ${leftBaseY}%) translate(${leftX}px, ${leftY}px) rotate(${leftRot}deg) scale(${CONFIG.SIDE_SCALE})`;
+        leftRef.current.style.opacity = `${t}`;
+      }
+      if (rightRef.current) {
+        rightRef.current.style.transform = `translate(-50%, ${rightBaseY}%) translate(${rightX}px, ${rightY}px) rotate(${rightRot}deg) scale(${CONFIG.SIDE_SCALE})`;
+        rightRef.current.style.opacity = `${t}`;
+      }
+      if (centerRef.current) {
+        centerRef.current.style.transform = `translate(-50%,-50%) scale(${centerScale})`;
+      }
 
       state.raf = requestAnimationFrame(tick);
     };
@@ -112,6 +135,7 @@ if (centerRef.current) {
       if (state.raf) cancelAnimationFrame(state.raf);
       io.disconnect();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -143,25 +167,21 @@ if (centerRef.current) {
       <div className="together-title">
         <h1>LET'S WORK</h1>
         <h1>TOGETHER<span className="dot">.</span></h1>
+
         <a href="/contact" className="cta-framer">
-  <span className="cta-text">
-    <span className="word-get">GET</span>
-    <span className="word-rest"> STARTED TODAY</span>
+          <span className="cta-text">
+            <span className="word-get">GET</span>
+            <span className="word-rest"> STARTED TODAY</span>
 
-    <span className="underline-full"></span>
-  </span>
+            <span className="underline-full"></span>
+          </span>
 
-  <span className="cta-arrow">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-      <path d="M5 12h14M12 5l7 7-7 7" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"/>
-    </svg>
-  </span>
-</a>
-
+          <span className="cta-arrow" aria-hidden>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+        </a>
       </div>
     </section>
   );
