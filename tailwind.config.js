@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Satoshi', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        heading: ['Manrope', 'sans-serif'],
       },
     },
   },

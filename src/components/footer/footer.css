@@ -3,7 +3,6 @@
   --nf9-text: #0b0b0b;
   --nf9-muted: rgba(11,11,11,0.5);
   --nf9-border: rgba(43,43,43,0.15);
-  --nf9-font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
 /* base */
@@ -199,87 +198,65 @@ body { font-family: var(--nf9-font); margin:0; }
    moves content right by --mobile-indent)
    ============================= */
   /* MOBILE: explicit visual separators, hide duplicate lines, indent content */
-@media (max-width: 468px) {
-  :root { --mobile-indent: 36px; } /* change to taste */
+  @media (max-width: 468px) {
 
-  /* stack container visually (flex) and set ordering for visual flow */
-  .nf9-container {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0 !important;
-    width: 100% !important;
-    position: relative !important;
+    /* Grid layout */
+    .nf9-container {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      grid-auto-rows: auto !important;
+      gap: 0 !important;
+      width: 100% !important;
+    }
+  
+    /* ROW 1 */
+    .nf9-col-2 {
+      grid-column: 1 / 2 !important; /* left */
+      grid-row: 1 !important;
+    }
+  
+    .nf9-col-3 {
+      grid-column: 2 / 3 !important; /* right */
+      grid-row: 1 !important;
+    }
+  
+    /* ROW 2 — email CTA directly under connect (same column) */
+    .nf9-col-4 {
+      grid-column: 2 / 3 !important; /* SAME column as col-3 */
+      grid-row: 2 !important;
+    }
+  
+    /* ROW 3 — full width */
+    .nf9-col-1 {
+      grid-column: 1 / -1 !important;
+      grid-row: 3 !important;
+    }
+  
+    /* Clean borders */
+    .nf9-col[data-border] {
+      border-left: none !important;
+    }
+  
+    /* Full-width separators */
+    .nf9-col-4::before,
+    .nf9-col-1::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 1px;
+      background: var(--nf9-border);
+    }
+  
+    /* Padding only (no content change) */
+    .nf9-col {
+      padding: 20px 16px !important;
+      min-height: auto !important;
+    }
   }
-  .nf9-col-2 { order: 1 !important; } /* Menu (visual first) */
-  .nf9-col-3 { order: 2 !important; } /* Connect */
-  .nf9-col-4 { order: 3 !important; } /* Email CTA */
-  .nf9-col-1 { order: 4 !important; } /* Logo / Newsletter / Legal */
 
-  /* remove any per-column left borders so only full-width separators remain */
-  .nf9-col[data-border] { border-left: none !important; border-top: none !important; }
-
-  /* Remove internal newsletter border (duplicate) */
-  .nf9-col-1 .nf9-newsletter-wrap { border-top: none !important; margin-top: 8px !important; padding-top: 0 !important; }
-
-  /* Remove any small rules above labels */
-  .nf9-col-2 .nf9-section-label,
-  .nf9-col-2 .nf9-menu-wrap { border-top: none !important; margin-top: 0 !important; padding-top: 6px !important; }
-
-  /* Indent content to the right while separators remain full-bleed */
-  .nf9-col {
-    padding-right: 20px !important;
-    padding-top: 18px !important;
-    padding-bottom: 18px !important;
-    min-height: auto !important;
-    background-clip: padding-box !important;
-    position: relative; /* keep this to allow pseudo-elements if needed */
-  }
-
-  /* ---- FULL-WIDTH SEPARATORS (explicit for visual order) ----
-     Draw the edge-to-edge line at the top of each visual column except the visual-first (.nf9-col-2).
-     We target the columns that are visually 2..4: nf9-col-3, nf9-col-4, nf9-col-1 */
-  .nf9-col-3::before,
-  .nf9-col-4::before,
-  .nf9-col-1::before {
-    content: "" !important;
-    position: absolute !important;
-    left: 0 !important;           /* edge-to-edge */
-    right: 0 !important;
-    top: 0 !important;
-    height: 1px !important;
-    background: var(--nf9-border) !important;
-    pointer-events: none !important;
-    z-index: 2 !important;
-  }
-
-  /* Ensure no separator above the visual first column (menu) */
-  .nf9-col-2::before { display: none !important; }
-
-  /* Internals ordering for nf9-col-1 */
-  .nf9-col-1 { display: flex !important; flex-direction: column !important; gap: 16px !important; }
-  .nf9-col-1 .nf9-newsletter-wrap { order: 1 !important; }
-  .nf9-col-1 .nf9-legal-wrap      { order: 2 !important; }
-  .nf9-col-1 .nf9-logo-wrap       { order: 3 !important; }
-
-  /* Typography sizing */
-  .nf9-menu-item, .nf9-connect-links .nf9-menu-item {
-    font-size: 36px !important;
-    line-height: 1.05 !important;
-  }
-  .nf9-logo { font-size: 40px !important; margin-top: 8px !important; }
-
-  /* Other tweaks */
-  .nf9-news-copy { max-width: none !important; }
-  .nf9-btn { width: 100% !important; }
-  .nf9-footer { padding: 40px 12px 0 10px !important; }
-}
-
-/* --------------------------
-  Two-column layout: 469px—768px
-  Left:  .nf9-col-1 (logo) above .nf9-col-3 (connect)
-  Right: .nf9-col-2 (menu) above .nf9-col-4 (newsletter+legal)
-  Works with classes OR DOM order (nth-child fallback)
-  -------------------------- */
+  
   @media (min-width:469px) and (max-width:768px) {
     :root {
       --left-w: 50%;

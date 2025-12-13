@@ -267,7 +267,7 @@
     text-decoration: none;
     color: #000;
     font-size: 60px;
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
     line-height: 65px;
     transition: color 0.3s ease, text-shadow 0.3s ease;
@@ -294,7 +294,7 @@
 
    .background-text {
     position: absolute;
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 30vw;
     color: transparent;
