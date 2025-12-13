@@ -76,12 +76,12 @@ export default function Together() {
       let rightBaseY = -30;
 
       if (vw <= 468) {
-        effOutX = 160;
-        effLeftY = -28;
+        effOutX = 120;        // smaller horizontal travel so cards stay visible
+        effLeftY = -24;
         effRightY = 18;
         effCenterScale = 1.02;
-        leftBaseY = -10;
-        rightBaseY = -10;
+        leftBaseY = -6;
+        rightBaseY = -6;
       } else if (vw <= 768) {
         effOutX = 260;
         effLeftY = -40;

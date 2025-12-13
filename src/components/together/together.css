@@ -1,7 +1,7 @@
 .together-section {
   background: #070707;
   color: #fff;
-  padding: 140px 18px 180px;
+  padding: 140px 0 180px 0;
   position: relative;
   overflow: hidden;
 }
@@ -9,7 +9,6 @@
 /* wrapper where all images overlap centered */
 .together-wrapper {
   width: 100%;
-  max-width: 1300px;
   height: 520px;
   margin: 0 auto;
   position: relative;
@@ -78,19 +77,19 @@
 
 /* <= 1024px */
 @media (max-width: 1024px) {
-  .center-img { width: 420px; height: 480px; }
+  .center-img { width: 320px; height: 380px; }
   .side-img { width: 200px; height: 260px; }
-  .together-wrapper { height: 520px; }
+  .together-wrapper { height: 460px; }
   .together-title h1 { font-size: 7.2rem; letter-spacing: -4px; }
 }
 
 /* <= 768px (tablet / large phones) */
 @media (max-width: 768px) {
-  .together-wrapper { max-width: 880px; height: 420px; padding-top: 60px; }
+  .together-wrapper { max-width: 880px; height: 360px; padding-top: 60px; }
 
   .center-img {
-    width: 260px;
-    height: 320px;
+    width: 220px;
+    height: 280px;
     transform: translate(-50%,-30%); /* slightly higher so heading is visible */
     box-shadow: 0 18px 80px rgba(0,0,0,0.6);
   }
@@ -105,48 +104,45 @@
   .side-img.left { transform: translate(-50%,-30%) rotate(-12deg); }
   .side-img.right { transform: translate(-50%,-30%) rotate(12deg); }
 
-  .together-title h1 { font-size: 4.6rem; letter-spacing: -3px; line-height: 0.92; margin-top: 36px; }
+  .together-title h1 { font-size: 4.6rem; letter-spacing: -3px; line-height: 0.92; }
   .together-title { padding-bottom: 16px; }
 }
 
-/* <= 468px (narrow phones) — STACK layout fallback */
+/* <= 468px (narrow phones) — keep ABSOLUTE layout but much smaller sizes so animation works */
 @media (max-width: 468px) {
-  .together-section { padding: 20px 12px 100px; }
+  .together-section { padding: 60px 10px 90px; }
 
+  /* keep a fixed-ish height so scroll-driven animation has room */
   .together-wrapper {
     max-width: 100vw;
-    height: 400px !important;
-    height: auto;
-    padding-bottom: 10px;
+    height: 240px;
+    padding-bottom: 0;
   }
 
   .center-img {
-    position: relative;
-    left: 50%;
-    top: 0;
-    transform: translate(-50%, 0) !important;
-    width: 50%;
-    height: 50%;
-    margin: 10px auto 6px;
+    width: 120px;
+    height: 180px;
+    z-index: 30;
+    transform: translate(-50%,-20%);
+    border-radius: 14px;
     box-shadow: 0 18px 60px rgba(0,0,0,0.45);
   }
 
   .side-img {
-    position: relative;
-    left: auto;
-    top: auto;
-    transform: none !important;
-    opacity: 1 !important;
-    width: 82px;
-    height: 107px;
-    margin: 12px auto;
-    display: block;
+    width: 90px;
+    height: 110px;
+    z-index: 20;
+    opacity: 0; /* JS will animate opacity in */
     box-shadow: 0 10px 40px rgba(0,0,0,0.35);
-    border-radius: 14px;
+    border-radius: 12px;
   }
 
-  .together-title h1 { font-size: 2.8rem; line-height: 1.02; margin-top: 0; }
-  .together-title { padding: 18px 4px 0; }
+  /* initial small offsets so they appear behind center at start */
+  .side-img.left { transform: translate(-50%,-40%) rotate(-8deg); }
+  .side-img.right { transform: translate(-50%,-40%) rotate(8deg); }
+
+  .together-title h1 { font-size: 2.6rem; line-height: 1.02; }
+  .together-title { padding: 14px 6px 0; }
 
   .cta-text { font-size: 14px; }
   .cta-framer { padding: 12px 0; display:block; text-align:center; }
@@ -154,10 +150,10 @@
 
 /* small tweaks for very narrow phones */
 @media (max-width: 360px) {
-  .center-img { width: 95%; }
-  .side-img { width: 90%; }
-  .together-title h1 { font-size: 2rem; }
-  .together-section { padding: 80px 10px 100px; }
+  .center-img { width: 160px; height: 200px; }
+  .side-img { width: 82px; height: 100px; }
+  .together-title h1 { font-size: 2.0rem; }
+  .together-section { padding: 60px 8px 80px; }
 }
 
 /* CTA styles (kept) */
@@ -169,7 +165,7 @@
   text-decoration: none;
   cursor: pointer;
   color: #fff;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 .cta-text {
   position: relative;
