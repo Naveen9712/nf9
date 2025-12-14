@@ -50,9 +50,8 @@ const Header = () => {
     { id: 2, text: 'Services', href: '#about' },
     { id: 3, text: 'Work', href: '#services' },
     { id: 4, text: 'About us', href: '#portfolio' },
-    { id: 5, text: 'Why us', href: '#news' },
-    { id: 6, text: 'Careers', href: '#careers' },
-    { id: 7, text: 'Contact Us', href: '#contact' }
+    { id: 5, text: 'Careers', href: '#careers' },
+    { id: 6, text: 'Contact Us', href: '#contact' }
   ];
 
   return (

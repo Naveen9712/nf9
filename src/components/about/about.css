@@ -87,6 +87,6 @@
   }
 
   .tr-heading {
-    font-size: clamp(20px, 7vw, 32px);
+    font-size: clamp(20px, 7vw, 36px);
   }
 }
