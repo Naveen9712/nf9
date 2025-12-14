@@ -538,7 +538,8 @@
     }
 
     .menu-container {
-        height: 60vh;
+        height: 65vh;
+        height: 65vh;
         width: 100%;
         flex: none;
         padding-top: 70px;
@@ -558,7 +559,7 @@
     }
 
     .menu ul li a {
-        font-size: 26px;
+        font-size: 36px;
         font-weight: 400;
         line-height: 45px;
         white-space: nowrap;
@@ -573,7 +574,7 @@
     }
 
     .social-container h1 {
-        font-size: 40px;
+        font-size: 36px;
         font-weight: 400;
         margin-bottom: -10px;
     }
@@ -597,7 +598,7 @@
 
 
     .center-text {
-        font-size: 30px;
+        font-size: 20px;
         letter-spacing: 0.5px;
     }
 
