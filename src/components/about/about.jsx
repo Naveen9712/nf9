@@ -19,7 +19,7 @@ const About = () => {
       // Same look, but a bit lighter for performance
       gsap.set(chars, {
         opacity: 0,
-        filter: "blur(6px)",      // was 10px
+        filter: "blur(6px)",
         force3D: true,
       });
 
@@ -28,7 +28,7 @@ const About = () => {
           trigger: sectionRef.current,
           start: "top top",
           end: "+=800%",          // keep your distance
-          scrub: 0.8,             // <— smooths the scroll → animation link
+          scrub: 0.6,             // <— smooths the scroll → animation link
           pin: true,
           anticipatePin: 1,
         },
@@ -38,7 +38,7 @@ const About = () => {
       tl.to(chars, {
         opacity: 1,
         filter: "blur(0px)",
-        duration: 0.16,           // was 0.2
+        duration: 0.16,          
         stagger: {
           each: 0.12,
           ease: "power1.out",

@@ -1,7 +1,8 @@
 /* Wrapper */
 .nf9-faq {
   width: 100%;
-  background: #ffffff;
+  background: #ffffff
+  ;
   color: #111111;
   font-family: 'Satoshi', sans-serif;
 }

@@ -1,103 +1,92 @@
 .tr-section {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    overflow: hidden;
-    background: #000;
-  }
-  
-  
-  .tr-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    /* optional bg image */
-    /* background-image: url("/your/background.jpg"); */
-    opacity: 0.35;
-  }
-  
-  .tr-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.1), #000);
-    pointer-events: none;
-  }
-  
-  .tr-inner {
-    position: relative;
-    z-index: 1;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 60px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .tr-label {
-    font-size: 20px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 32px;
-    color: rgba(255, 255, 255, 0.7);
-    font-weight: 600;
-  }
-  
-  .tr-heading {
-    color: #fff;
+  position: relative;
+  width: 100%;
+  min-height: 100svh; /* mobile safe viewport height */
+  display: grid;
+  place-items: center; /* perfect center (x + y) */
+  overflow: hidden;
+  background: #000;
+  padding-block: clamp(40px, 6vh, 80px); /* equal top & bottom */
+  padding-inline: 0;
+}
+
+/* background image layer */
+.tr-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+}
+
+/* overlay */
+.tr-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.1), #000);
+  pointer-events: none;
+}
+
+/* inner content */
+.tr-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  width: 100%;
+  padding-inline: clamp(16px, 4vw, 60px);
+  text-align: center;
+}
+
+/* label */
+.tr-label {
+  font-size: 18px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+}
+
+/* heading */
+.tr-heading {
+  color: #fff;
   font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: clamp(32px, 5vw, 80px);
-    line-height: 1;
-    letter-spacing: -0.05em;
-    text-align: center;
-    white-space: pre-wrap;
-  }
-  
-  .tr-word {
-    display: inline-block;
-    white-space: nowrap;
-  }
-  
-  .tr-space {
-    display: inline-block;
-    white-space: pre;
-  }
-  
-  .tr-char {
-    display: inline-block;
-    will-change: filter, opacity;
-    backface-visibility: hidden;
-  }
-  
-  
-  
-  @media (max-width: 768px) {
-    .tr-inner {
-      padding: 80px 16px;
-    }
+  font-weight: 500;
+  font-size: clamp(32px, 5vw, 60px);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  white-space: pre-wrap;
+}
 
-    .tr-heading {
-      font-size: clamp(24px, 6vw, 40px);
-    }
+/* animation helpers */
+.tr-word,
+.tr-char {
+  display: inline-block;
+  white-space: nowrap;
+  will-change: opacity, filter;
+}
+
+.tr-space {
+  display: inline-block;
+  white-space: pre;
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media (max-width: 768px) {
+  .tr-heading {
+    font-size: clamp(24px, 6vw, 40px);
+  }
+}
+
+@media (max-width: 480px) {
+  .tr-label {
+    font-size: 16px;
+    margin-bottom: 24px;
   }
 
-  @media (max-width: 480px) {
-    .tr-inner {
-      padding: 60px 12px;
-    }
-
-    .tr-label {
-      font-size: 16px;
-      margin-bottom: 24px;
-    }
-
-    .tr-heading {
-      font-size: clamp(20px, 7vw, 32px);
-    }
+  .tr-heading {
+    font-size: clamp(20px, 7vw, 32px);
   }
-  
+}
