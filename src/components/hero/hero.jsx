@@ -6,12 +6,12 @@ const Hero = () => {
     <section className="hero-section" id="home">
       <div className="hero-container">
         <div className="hero-content">
-          <h1 className="hero-title">
-            Welcome to NF9
+        <h1 className="hero-title">
+            NF9
           </h1>
-          <p className="hero-subtitle">
-            Transforming ideas into digital excellence
-          </p>
+          <h1 className="hero-title">
+            Ideas. Engineered.
+          </h1>
           <div className="hero-buttons">
             <button className="hero-btn hero-btn-primary">
               Get Started

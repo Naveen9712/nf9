@@ -49,7 +49,7 @@ const Header = () => {
     { id: 1, text: 'Home', href: '#home' },
     { id: 2, text: 'Services', href: '#about' },
     { id: 3, text: 'Work', href: '#services' },
-    { id: 4, text: 'About us', href: '#portfolio' },
+    { id: 4, text: 'About NF9', href: '#portfolio' },
     { id: 5, text: 'Careers', href: '#careers' },
     { id: 6, text: 'Contact Us', href: '#contact' }
   ];
