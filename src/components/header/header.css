@@ -35,7 +35,7 @@
 }
 
 :root {
-  --font-primary: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-primary: 'Inter',sans-serif;
 }
 
 body {
@@ -69,6 +69,7 @@ body {
 .center-text {
   position: absolute;
   left: 50%;
+  font-family: var(--font-primary);
   transform: translateX(-50%);
   font-size: 40px;
   font-weight: 700;
@@ -152,7 +153,7 @@ body {
   width: 0;
   background: #000;
   z-index: 0;
-  transition: width 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .menu::before {
@@ -236,6 +237,7 @@ body {
   font-size: 50px;
   font-weight: 400;
   line-height: 60px;
+  font-family: var(--font-primary);
   color: #000;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -276,19 +278,19 @@ body {
 ============================================ */
 
 .social-container h1 {
-  font-family: 'Satoshi', sans-serif;
-  font-size: 35px;
-  font-weight: 400;
-  padding-bottom: 10px;
-  color: #000;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin: 0;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: color 0.3s ease,
-              opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--font-primary);
+    font-size: 35px;
+    font-weight: 400;
+    padding-bottom: 10px;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: color 0.3s ease,
+                opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .menu.active .social-container h1 {
@@ -363,29 +365,29 @@ body {
 ============================================ */
 
 .background-text {
-  position: absolute;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 30vw;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.276);
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.4s ease, color 0.4s ease;
-  top: 80%;
-  left: 0;
-  transform: translateY(-50%) translateX(0%);
-  letter-spacing: 0.05em;
-  animation: scrollLeftToRight 20s linear infinite alternate;
-  animation-play-state: paused;
+    position: absolute;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 30vw;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.276);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.4s ease, color 0.4s ease;
+    top: 85%;
+    left: 0;
+    transform: translateY(-50%) translateX(0%);
+    letter-spacing: 0.05em;
+    animation: scrollLeftToRight 20s linear infinite alternate;
+    animation-play-state: paused;
 }
 
 .menu.active .background-text {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.14);
-  opacity: 1;
-  animation-play-state: running;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.14);
+    opacity: 1;
+    animation-play-state: running;
 }
 
 @keyframes scrollLeftToRight {
@@ -403,21 +405,21 @@ body {
 ============================================ */
 
 .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  visibility: hidden;
-  transition: none;
-  z-index: 998;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: none;
+    z-index: 998;
 }
 
 .overlay.active {
-  opacity: 1;
-  visibility: visible;
+    opacity: 1;
+    visibility: visible;
 }
 
 /* ============================================
@@ -534,13 +536,13 @@ body {
   .menu ul li a {
     font-size: 40px;
     font-weight: 400;
-    line-height: 45px;
+    line-height: 50px;
     white-space: nowrap;
     display: block;
   }
 
   .social-container {
-    height: 20vh;
+    height: 30vh;
     width: 100%;
     flex: none;
     padding-top: -20px;
@@ -572,16 +574,16 @@ body {
   }
 
   .social-links {
-    gap: 18px;
+    gap: 15px;
   }
 
   .social-links a {
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
   }
 
   .social-links a svg {
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
   }
 }
