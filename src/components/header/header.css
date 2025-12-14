@@ -538,7 +538,7 @@
     }
 
     .menu-container {
-        height: auto;
+        height: 60vh;
         width: 100%;
         flex: none;
         padding-top: 70px;
@@ -566,7 +566,7 @@
     }
 
     .social-container {
-        height: auto;
+        height: 20vh;
         width: 100%;
         flex: none;
         padding-top: -20px;
