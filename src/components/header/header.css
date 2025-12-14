@@ -563,7 +563,6 @@
   }
   
     .menu-container {
-      height: 65vh;
       width: 100%;
       flex: none;
       justify-items: center;
@@ -591,11 +590,11 @@
     }
   
     .social-container {
-      height: 30vh;
       width: 100%;
       flex: none;
       justify-items: center;
       padding-bottom: 20px;
+      margin-top: -150px;
     }
   
     .social-container h1 {
