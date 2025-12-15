@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import "./vital-stats.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Purple3DLoader from "./Purple3DLoader";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,39 +11,31 @@ export default function VitalStats() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const section = sectionRef.current;
-      if (!section) return;
+      const stats = gsap.utils.toArray(".stat-item");
 
-      const items = gsap.utils.toArray(".stat-item");
+      // Initial hidden state
+      gsap.set(stats, { opacity: 0, y: 40 });
 
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: section,
+          trigger: sectionRef.current,
           start: "top top",
-          end: "+=400%", // scroll distance while pinned
-          scrub: 1, // smoother scrub
+          end: "+=300%",
+          scrub: true,
           pin: true,
-          anticipatePin: 1,
         },
       });
 
-      // Globe appears + slowly rotates during scroll
-      tl.from(".globe-container", {
-        scale: 2,
-        opacity: 0,
-        duration: 3,
-        ease: "power2.out",
-      });
+      // 🔵 Phase 1 — Loader only
+      tl.to({}, { duration: 1 });
 
-      // Reveal each stat one by one as you scroll
-      tl.to(items, {
+      // 🟣 Phase 2 — Stats reveal on scroll
+      tl.to(stats, {
         opacity: 1,
         y: 0,
-        duration: 4,
-        ease: "power2.out",
-        stagger: {
-          each: 1,
-        },
+        stagger: 0.35,
+        ease: "power3.out",
+        duration: 1.5,
       });
     }, sectionRef);
 
@@ -50,46 +43,36 @@ export default function VitalStats() {
   }, []);
 
   return (
-    <section
-      className="vital-stats-section"
-      id="vital-stats"
-      ref={sectionRef}
-    >
-      <div className="vital-stats-container">
-        <h2 className="vital-stats-title">Vital Stats</h2>
+    <section className="vital-stats-section" ref={sectionRef}>
+      {/* BACKGROUND LOADER */}
+      <div className="loader-bg">
+        <div className="loader-3d-wrapper">
+          <Purple3DLoader />
+        </div>
+      </div>
 
-        <div className="vital-stats-content">
-          {/* Center globe */}
-          <div className="globe-container">
-            <img src="/globe.png" alt="Global Reach" className="globe-image" />
+      {/* STATS LAYER */}
+      <div className="stats-layer">
+        <div className="stat-item stat-top-left">
+          <div className="stat-value">100+</div>
+          <div className="stat-label">
+            Transformative Digital Products Launched
           </div>
+        </div>
 
-          {/* Stat Items */}
-          <div className="stat-item stat-top-left">
-            <div className="stat-value">100+</div>
-            <div className="stat-label">
-              Transformative Digital Products Launched Globally
-            </div>
-          </div>
+        <div className="stat-item stat-top-right">
+          <div className="stat-value">30M+ AED</div>
+          <div className="stat-label">Client Growth Generated</div>
+        </div>
 
-          <div className="stat-item stat-top-right">
-            <div className="stat-value">30M+ AED</div>
-            <div className="stat-label">In Client Growth</div>
-          </div>
+        <div className="stat-item stat-bottom-left">
+          <div className="stat-value">110+</div>
+          <div className="stat-label">Successful Projects Delivered</div>
+        </div>
 
-          <div className="stat-item stat-bottom-left">
-            <div className="stat-value">110+</div>
-            <div className="stat-label">
-              Successful Projects Executed Across Industries
-            </div>
-          </div>
-
-          <div className="stat-item stat-bottom-right">
-            <div className="stat-value">6+</div>
-            <div className="stat-label">
-              Years Delivering Innovative Solutions
-            </div>
-          </div>
+        <div className="stat-item stat-bottom-right">
+          <div className="stat-value">6+</div>
+          <div className="stat-label">Years of Innovation</div>
         </div>
       </div>
     </section>
