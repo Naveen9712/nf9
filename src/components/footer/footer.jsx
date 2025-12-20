@@ -1,113 +1,87 @@
-import React from "react";
 import "./footer.css";
+
+/* Arrow SVG */
+function Arrow() {
+  return (
+    <svg className="nf9-arrow" viewBox="0 0 10 11" aria-hidden="true">
+      <path
+        d="M1.498 0.795V1.445C1.498 1.523 1.53 1.598 1.585 1.654
+        C1.64 1.709 1.715 1.74 1.794 1.74H7.883
+        L0.086 9.537C0.031 9.592 0 9.667 0 9.745
+        C0 9.824 0.031 9.899 0.087 9.954
+        L0.546 10.414C0.661 10.529 0.848 10.529 0.964 10.414
+        L8.76 2.617V8.707Z"
+        fill="currentColor"
+        opacity="0.3"
+      />
+    </svg>
+  );
+}
 
 export default function Footer() {
   return (
-    <footer className="nf9-footer" role="contentinfo">
+    <footer className="nf9-footer">
       <div className="nf9-container">
-        {/* Column 1 */}
-        <div className="nf9-col nf9-col-1" data-border>
-          <div className="nf9-logo-wrap">
-            <h2 className="nf9-logo">NF9</h2>
-            <p className="nf9-small-label">Ideas. Engineered.</p>
+
+        {/* ================= TOP ================= */}
+        <div className="nf9-top">
+
+          <div className="nf9-contact">
+            <span className="nf9-plus">+</span>
+            <p className="nf9-phone">+91 xxxx xxx xxx</p>
+            <a href="mailto:support@nf9.com" className="nf9-email">
+              <span className="nf9-plus-circle">+</span>
+              <span className="nf9-email-text">support@nf9.com</span>
+            </a>
           </div>
 
-          <div className="nf9-newsletter-wrap" data-border>
-            <p className="nf9-small-label">STAY CONNECTED</p>
-
-            <div className="nf9-news-copy">
-              Subscribe to our Newsletter for the latest news from Deformo.
+          <div className="nf9-nav">
+            <span className="nf9-plus">+</span>
+            <p className="nf9-label">Navigation</p>
+            <div className="nf9-social-row">
+            <a href="#">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Our Work</a>
+            <a href="#">About NF9</a>
+            <a href="#">Careers</a>
+            <a href="#">Contact us</a>
             </div>
-
-            <form className="nf9-news-form" onSubmit={(e) => e.preventDefault()}>
-              <label className="nf9-input-label">
-                <div className="nf9-input-wrapper">
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="Enter your email address*"
-                    className="nf9-input"
-                  />
-                </div>
-              </label>
-
-              <div className="nf9-submit-wrap">
-                <button
-                  type="submit"
-                  className="nf9-btn nf9-btn-primary"
-                  aria-label="Subscribe"
-                >
-                  <span className="nf9-btn-text">Subscribe</span>
-                </button>
-              </div>
-
-              <input type="text" name="website" style={{ position: "absolute", transform: "scale(0)" }} />
-              <input type="text" name="company" style={{ position: "absolute", transform: "scale(0)" }} />
-            </form>
           </div>
 
-          <div className="nf9-legal-wrap">
-            <div className="nf9-legal-title">Legal</div>
-            <div className="nf9-legal-links">
-              <a href="#" className="nf9-legal-link">Terms of Service</a>
-              <a href="#" className="nf9-legal-link">Privacy Policy</a>
+          <div className="nf9-social">
+            <span className="nf9-plus">+</span>
+            <p className="nf9-label">Social</p>
+            <div className="nf9-social-row">
+              <a href="#" className="nf9-social-link">
+                Twitter <Arrow />
+              </a>
+              <a href="#" className="nf9-social-link">
+                Instagram <Arrow />
+              </a>
+              <a href="#" className="nf9-social-link">
+                LinkedIn <Arrow />
+              </a>
             </div>
-            <div className="nf9-legal-copy">@2026 NF9® - All rights reserved.</div>
-          </div>
-        </div>
-        
-
-        {/* Column 2 */}
-        <div className="nf9-col nf9-col-2" data-border>
-          <div className="nf9-menu-wrap">
-            <div className="nf9-section-label">Menu</div>
-
-            <nav className="nf9-menu-links" aria-label="Footer menu">
-              <a className="nf9-menu-item" href="#">Home</a>
-              <a className="nf9-menu-item" href="#">Services</a>
-              <a className="nf9-menu-item" href="#">Work</a>
-              <a className="nf9-menu-item" href="#">About us</a>
-              <a className="nf9-menu-item" href="#">Why us</a>
-              <a className="nf9-menu-item" href="#">Careers</a>
-              <a className="nf9-menu-item" href="#">Contact us</a>
-            </nav>
           </div>
 
-          <div className="nf9-decor-wrapper" aria-hidden="true">
-            <div className="nf9-decor nf9-decor-1" />
-            <div className="nf9-decor nf9-decor-2" />
-            <div className="nf9-decor nf9-decor-3" />
-            <div className="nf9-decor nf9-decor-4" />
-          </div>
         </div>
 
-        {/* Column 3 */}
-        <div className="nf9-col nf9-col-3" data-border>
-          <div className="nf9-section-label">Connect</div>
-          <div className="nf9-connect-links">
-            <a className="nf9-menu-item" href="https://www.x.com" target="_blank" rel="noopener">Twitter</a>
-            <a className="nf9-menu-item" href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
-            <a className="nf9-menu-item" href="https://www.dribbble.com" target="_blank" rel="noopener">Email</a>
-          </div>
-          
+        {/* ================= LOGO ================= */}
+        <div className="nf9-logo">
+          <h1>NF9</h1>
         </div>
 
-        {/* Column 4 */}
-        <div className="nf9-col nf9-col-4" data-border>
-          <div className="nf9-email-cta-wrap">
-            <a className="nf9-email-cta" href="mailto:hi@deformo.com">support@nf9.com</a>
-          </div>
-
-          <div className="nf9-big-decor" aria-hidden="true">
-            <div className="nf9-big-layer nf9-big-1" />
-            <div className="nf9-big-layer nf9-big-2" />
-            <div className="nf9-big-layer nf9-big-3" />
-            <div className="nf9-big-layer nf9-big-4" />
-            <div className="nf9-big-layer nf9-big-5" />
+        {/* ================= BOTTOM ================= */}
+        <div className="nf9-bottom">
+          <div className="nf9-bottom-left">
+            © 2025 NF9 Studio. All rights reserved.
+            </div>
+          <div className="nf9-bottom-right">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
           </div>
         </div>
-      </div>      
+      </div>
     </footer>
   );
 }

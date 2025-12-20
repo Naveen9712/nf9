@@ -1,372 +1,273 @@
-:root{
-  --nf9-bg: #ffffff;
-  --nf9-text: #0b0b0b;
-  --nf9-muted: rgba(11,11,11,0.5);
-  --nf9-border: rgba(43,43,43,0.15);
+@font-face {
+  font-family: "Daykid";
+  src: url("./assets/fonts/Daykid-Regular.woff2") format("woff2"),
+       url("./assets/fonts/Daykid-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-/* base */
-*{box-sizing:border-box}
-body { font-family: var(--nf9-font); margin:0; }
 
-/* FOOTER wrapper */
-.nf9-footer{
-  width: 100vw;              /* requested */
-  background: var(--nf9-bg);
-  color: var(--nf9-text);
-  padding: 60px 60px 10px 60px;             /* requested */
-  overflow-x: hidden;
+/* ================= ROOT ================= */
+:root {
+  --bg: #ffffff;
+  --text: #0a0a0a;
+  --muted: rgba(10, 10, 10, 0.3);
+  --border: rgba(10, 10, 10, 0.15);
 }
 
-/* grid container - explicit percentages */
-.nf9-container{
-  display:grid;
-  grid-template-columns: 23% 25% 23% 25%; /* requested widths */
-  gap:0;
-  align-items:start;
-  width:100%;
+/* ================= RESET ================= */
+* {
+  box-sizing: border-box;
 }
 
-/* column base */
-.nf9-col{
-  padding: 10px 10px 20px 24px;
-  min-height: 320px;
-  position:relative;
+body {
+  margin: 0;
 }
 
-/* left border on elements that need it */
-.nf9-col[data-border]{
-  border-left: 1px solid var(--nf9-border);
+/* ================= FOOTER ================= */
+.nf9-footer {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
 }
 
-/* Column 1 */
-.nf9-logo-wrap{ padding-bottom: 26px; }
-.nf9-logo{
-  margin:0;
-  font-size:100px;
-  letter-spacing:0.10em;
-  font-weight:900;
-  text-transform:uppercase;
-  color:var(--nf9-text);
+/* MAIN CONTAINER (TOP + LOGO ONLY) */
+.nf9-container {
+  width: 100%;
+  padding: 60px 60px 0 60px;
 }
 
-/* newsletter */
-.nf9-newsletter-wrap{
-  border-top: 1px solid var(--nf9-border);
-  padding-top:18px;
-  margin-top:6px;
-}
-.nf9-small-label{
-  font-size:14px;
-  color:var(--nf9-muted);
-  text-transform:uppercase;
-  letter-spacing:2px;
-  margin:0 0 12px 0;
-}
-.nf9-news-copy{
-  font-size:18px;
-  color:var(--nf9-text);
-  margin-bottom:14px;
-  line-height:1.35;
-  max-width:320px;
+/* ================= TOP ================= */
+.nf9-top {
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
+  grid-template-areas: "contact nav social";
 }
 
-.nf9-news-form{ display:flex; flex-direction:column; gap:12px; position:relative; }
-.nf9-input-wrapper{
-  --border-color: rgba(0,0,0,0.2);
-  border-bottom:1px solid var(--nf9-border);
-  padding-bottom:10px;
+.nf9-contact {
+  grid-area: contact;
 }
-.nf9-input{
-  width:100%;
-  border:none;
-  background:transparent;
-  padding:8px 4px;
-  font-size:15px;
-  color:var(--nf9-text);
-  outline:none;
-}
-.nf9-input::placeholder{ color:rgba(43,43,43,0.45); }
 
-.nf9-submit-wrap{ margin-top:6px; }
-.nf9-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:4px;
-  padding:10px 14px;
-  cursor:pointer;
-  border:0;
+.nf9-nav {
+  grid-area: nav;
 }
-.nf9-btn-primary{
+
+.nf9-social {
+  grid-area: social;
+}
+
+/* ================= CONTACT ================= */
+.nf9-plus {
+  font-size: 40px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.nf9-phone {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+/* EMAIL ROW */
+.nf9-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  font-family: "Manrope";
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* UNDERLINE ONLY EMAIL TEXT */
+.nf9-email-text {
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.nf9-email-text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+}
+
+/* PLUS CIRCLE */
+.nf9-plus-circle {
+  width: 20px;
+  height: 20px;
   background: #000;
-  color: var(--nf9-bg);
-  font-weight:700;
-  text-transform:uppercase;
-  font-size:12px;
-  letter-spacing:0.04em;
+  color: #fff;
+  border-radius: 50%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+
+  flex-shrink: 0;
 }
 
-/* legal */
-.nf9-legal-wrap{
-  margin-top:22px;
-  padding-top:18px;
-}
-.nf9-legal-title{ color:var(--nf9-muted); font-size:12px; margin-bottom:12px; text-transform:uppercase; letter-spacing:2px; }
-.nf9-legal-links{ display:flex; flex-direction:column; gap:8px; margin-bottom:8px; }
-.nf9-legal-link{ color:var(--nf9-text); opacity:0.65; text-decoration:none; font-size:15px; }
-.nf9-legal-copy{ color:var(--nf9-text); opacity:0.5; font-size:14px; margin-top:8px; }
-
-/* Column 2 menu */
-.nf9-menu-wrap{ padding-top:6px; }
-.nf9-section-label{ color:var(--nf9-muted); font-size:12px; text-transform:uppercase; letter-spacing:2px; margin-bottom:12px; }
-.nf9-menu-links{ display:flex; flex-direction:column; gap:14px; }
-
-/* big stacked menu items — hover moves right slightly */
-.nf9-menu-item{
-  display:inline-block;
-  font-size:64px;
-  line-height:1.1;
-  font-weight:500;
-  color:var(--nf9-text);
-  text-decoration:none;
-  letter-spacing:-0.05em;
-  transition: transform 180ms cubic-bezier(.2,.8,.2,1), opacity 180ms;
-  will-change: transform;
-}
-.nf9-menu-item:hover,
-.nf9-menu-item:focus{
-  transform: translateX(8px);   /* small right shift on hover */
-  opacity: 0.95;
+/* ================= NAV + SOCIAL ================= */
+.nf9-label {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 18px;
 }
 
-/* decorative bars */
-.nf9-decor-wrapper{ margin-top:18px; display:flex; gap:8px; flex-direction:column; }
-.nf9-decor{ height:24px; background:#000; opacity:0.12; border-radius:4px; }
-.nf9-decor-1{ opacity:0.1; width:100% }
-.nf9-decor-2{ opacity:0.3; width:100% }
-.nf9-decor-3{ opacity:0.5; width:100% }
-.nf9-decor-4{ opacity:0.7; width:100% }
+.nf9-nav a,
+.nf9-social-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 
-/* Column 3 connect (same hover behavior) */
-.nf9-connect-links{ display:flex; flex-direction:column; gap:14px; margin-top:6px; }
-.nf9-connect-links .nf9-menu-item{ font-size:64px; color:var(--nf9-text); text-decoration:none; }
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  margin-bottom: 6px;
 
-/* Column 4 email CTA */
-.nf9-email-cta-wrap{ padding-top:6px; }
-.nf9-email-cta{
-  font-size:48px;
-  text-decoration:none;
-  color:var(--nf9-text);
-  display:inline-block;
-  font-weight:500;
-  letter-spacing:-0.05em;
-  margin-bottom:18px;
+  transition: transform 0.3s ease;
 }
 
-/* big decorative stacked dark groups */
-.nf9-big-decor{ display:flex; flex-direction:column; gap:10px; margin-top:8px; }
-.nf9-big-layer{ height:18px; background:#000; border-radius:4px; opacity:0.95; }
-.nf9-big-1{ opacity:0.1 }
-.nf9-big-2{ opacity:0.3 }
-.nf9-big-3{ opacity:0.5 }
-.nf9-big-4{ opacity:0.7 }
-.nf9-big-5{ opacity:0.9 }
-
-/* Responsive adjustments */
-@media (max-width:1200px){
-  .nf9-menu-item, .nf9-connect-links .nf9-menu-item { font-size:48px; }
-  .nf9-logo{ font-size:48px; }
-  .nf9-container{ grid-template-columns: 1fr 1fr; }
-}
-@media (max-width:900px){
-  .nf9-menu-item, .nf9-connect-links .nf9-menu-item { font-size:40px; }
-  .nf9-logo{ font-size:40px; }
-}
-@media (max-width:768px){
-  .nf9-container{ grid-template-columns: 1fr; }
-  .nf9-logo{ font-size:36px; }
-  .nf9-menu-item, .nf9-connect-links .nf9-menu-item { font-size:28px; }
-  .nf9-email-cta{ font-size:20px; }
+/* DOT (hidden) */
+.nf9-nav a::before,
+.nf9-social-link::before {
+  content: "•";
+  position: absolute;
+  left: -20px;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Mobile stacking & custom order (apply at whatever breakpoint you prefer) */
-/* Mobile stacking & custom order (replace your existing mobile block) */
-/* =============================
-   Mobile layout fixes — DROP THIS AT BOTTOM OF footer.css
-   (forces stacking, full-width separators, removes duplicate lines,
-   moves content right by --mobile-indent)
-   ============================= */
-  /* MOBILE: explicit visual separators, hide duplicate lines, indent content */
-  @media (max-width: 468px) {
+/* HOVER EFFECT */
+.nf9-nav a:hover,
+.nf9-social-link:hover {
+  transform: translateX(8px);
+}
 
-    /* Grid layout */
-    .nf9-container {
-      display: grid !important;
-      grid-template-columns: 1fr 1fr !important;
-      grid-auto-rows: auto !important;
-      gap: 0 !important;
-      width: 100% !important;
-    }
-  
-    /* ROW 1 */
-    .nf9-col-2 {
-      grid-column: 1 / 2 !important; /* left */
-      grid-row: 1 !important;
-    }
-  
-    .nf9-col-3 {
-      grid-column: 2 / 3 !important; /* right */
-      grid-row: 1 !important;
-    }
-  
-    /* ROW 2 — email CTA directly under connect (same column) */
-    .nf9-col-4 {
-      grid-column: 2 / 3 !important; /* SAME column as col-3 */
-      grid-row: 2 !important;
-    }
-  
-    /* ROW 3 — full width */
-    .nf9-col-1 {
-      grid-column: 1 / -1 !important;
-      grid-row: 3 !important;
-    }
-  
-    /* Clean borders */
-    .nf9-col[data-border] {
-      border-left: none !important;
-    }
-  
-    /* Full-width separators */
-    .nf9-col-4::before,
-    .nf9-col-1::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      height: 1px;
-      background: var(--nf9-border);
-    }
-  
-    /* Padding only (no content change) */
-    .nf9-col {
-      padding: 20px 16px !important;
-      min-height: auto !important;
-    }
+.nf9-nav a:hover::before,
+.nf9-social-link:hover::before {
+  opacity: 1;
+  transform: translateX(6px);
+}
+
+/* SOCIAL LIST */
+.nf9-social-row {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ARROW */
+.nf9-arrow {
+  width: 14px;
+  height: 10px;
+  opacity: 0.4;
+}
+
+/* ================= LOGO ================= */
+.nf9-logo h1 {
+  font-family: "Daykid", "Manrope", sans-serif;
+  font-size: 8rem;
+  font-weight: bold;              /* Daykid looks best lighter */
+  letter-spacing: 0.2em;       /* tighter for logo */
+  margin: 0;
+}
+
+
+/* ================= BOTTOM (FULL BLEED) ================= */
+.nf9-bottom {
+  width: 100vw;
+  background: #000;
+  color: rgba(255, 255, 255, 0.7);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 50px 60px;
+
+  /* FULL WIDTH ESCAPE */
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.nf9-bottom-left {
+  width: 50%;
+  font-size: 14px;
+}
+
+.nf9-bottom-right {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 50px;
+}
+
+.nf9-bottom-right a {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+  .nf9-container {
+    padding: 40px 20px 0 20px;
   }
 
-  
-  @media (min-width:469px) and (max-width:768px) {
-    :root {
-      --left-w: 50%;
-      --right-w: 50%;
-      --panel-indent: 36px;
-      --sep-color: var(--nf9-border);
-    }
-  
-    /* two-column grid container */
-    .nf9-footer .nf9-container {
-      display: grid !important;
-      grid-template-columns: var(--left-w) var(--right-w) !important;
-      grid-auto-rows: auto !important;
-      gap: 0 !important;
-      width: 100% !important;
-      position: relative !important;
-      align-items: start !important;
-    }
-  
-    /* Primary: use classes if present */
-    .nf9-footer .nf9-col-1 { grid-column: 1 !important; grid-row: 1 !important; }
-    .nf9-footer .nf9-col-3 { grid-column: 1 !important; grid-row: 2 !important; }
-    .nf9-footer .nf9-col-2 { grid-column: 2 !important; grid-row: 1 !important; }
-    .nf9-footer .nf9-col-4 { grid-column: 2 !important; grid-row: 2 !important; }
-  
-    /* Fallback: if classes not present, place by DOM order */
-    .nf9-footer .nf9-container > .nf9-col:nth-child(1) { grid-column: 1 !important; grid-row: 1 !important; } /* left top */
-    .nf9-footer .nf9-container > .nf9-col:nth-child(2) { grid-column: 2 !important; grid-row: 1 !important; } /* right top */
-    .nf9-footer .nf9-container > .nf9-col:nth-child(3) { grid-column: 1 !important; grid-row: 2 !important; } /* left bottom */
-    .nf9-footer .nf9-container > .nf9-col:nth-child(4) { grid-column: 2 !important; grid-row: 2 !important; } /* right bottom */
-  
-    /* remove per-column left borders (we draw our own full-height divider) */
-    .nf9-footer .nf9-container > .nf9-col[data-border] { border-left: none !important; border-top: none !important; }
-  
-    /* vertical divider between left and right */
-    .nf9-footer .nf9-container::after {
-      content: "" !important;
-      position: absolute !important;
-      top: 0 !important;
-      bottom: 0 !important;
-      left: calc(var(--left-w) - 0.5px) !important;
-      width: 1px !important;
-      background: var(--sep-color) !important;
-      z-index: 3 !important;
-      pointer-events: none !important;
-    }
-  
-    /* full-width horizontal separators above lower blocks in each column
-       (left lower: .nf9-col-3 / nth-child(3), right lower: .nf9-col-4 / nth-child(4)) */
-    .nf9-footer .nf9-col-3::before,
-    .nf9-footer .nf9-col-4::before,
-    .nf9-footer .nf9-container > .nf9-col:nth-child(3)::before,
-    .nf9-footer .nf9-container > .nf9-col:nth-child(4)::before {
-      content: "" !important;
-      position: absolute !important;
-      left: 0 !important;
-      right: 0 !important;
-      top: 0 !important;
-      height: 1px !important;
-      background: var(--sep-color) !important;
-      z-index: 4 !important;
-      pointer-events: none !important;
-    }
-  
-    /* remove small internal rule above the menu label in right-top column */
-    .nf9-footer .nf9-col-2 .nf9-section-label,
-    .nf9-footer .nf9-col-2 .nf9-menu-wrap,
-    .nf9-footer .nf9-container > .nf9-col:nth-child(2) .nf9-section-label,
-    .nf9-footer .nf9-container > .nf9-col:nth-child(2) .nf9-menu-wrap {
-      border-top: none !important;
-      margin-top: 0 !important;
-      padding-top: 6px !important;
-      background: transparent !important;
-    }
-  
-    /* hide duplicated newsletter internal border so only the full-width separator shows */
-    .nf9-footer .nf9-col-4 .nf9-newsletter-wrap,
-    .nf9-footer .nf9-col-1 .nf9-newsletter-wrap,
-    .nf9-footer .nf9-container > .nf9-col:nth-child(4) .nf9-newsletter-wrap,
-    .nf9-footer .nf9-container > .nf9-col:nth-child(1) .nf9-newsletter-wrap {
-      border-top: none !important;
-      margin-top: 10px !important;
-      padding-top: 0 !important;
-    }
-  
-    /* indent content to the right while separators remain full-bleed */
-    .nf9-footer .nf9-container > .nf9-col {
-      padding-left: var(--panel-indent) !important;
-      padding-right: 32px !important;
-      padding-top: 24px !important;
-      padding-bottom: 24px !important;
-      position: relative !important;
-      min-height: auto !important;
-      background-clip: padding-box !important;
-    }
-  
-    /* typography tweaks */
-    .nf9-footer .nf9-logo { font-size: 64px !important; line-height: 1 !important; margin: 6px 0 10px !important; }
-    .nf9-footer .nf9-menu-item,
-    .nf9-footer .nf9-connect-links .nf9-menu-item {
-      font-size: 64px !important;
-      line-height: 1.05 !important;
-      letter-spacing: -0.05em !important;
-    }
-  
-    .nf9-footer .nf9-news-copy { max-width: none !important; font-size: 18px !important; }
-    .nf9-footer .nf9-btn { width: auto !important; display: inline-flex !important; }
-    .nf9-footer { padding: 40px 36px 20px 36px !important; }
-  
-    /* safety override */
-    .nf9-footer .nf9-container > .nf9-col { box-shadow: none !important; }
+  .nf9-top {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "contact contact"
+      "nav social";
+    gap: 64px;
+  }
+
+  .nf9-logo {
+    display: flex;
+    justify-content: center;
   }
   
+  .nf9-logo h1,
+  .nf9-logo span {
+    text-align: center;
+  }
+  
+  .nf9-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 32px 20px;
+  }
+
+  .nf9-bottom-left,
+  .nf9-bottom-right {
+    width: 100%;
+  }
+  
+  .nf9-bottom-left {
+    font-size: 14px;
+
+  }
+
+  .nf9-bottom-right {
+    flex-direction: column;   /* stack links */
+    gap: 12px;                /* vertical spacing */
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}
