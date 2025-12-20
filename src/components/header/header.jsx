@@ -46,7 +46,7 @@ const Header = () => {
   }, [isMenuActive, bgText]);
 
   const menuItems = [
-    { id: 1, text: 'Begin The Journey', href: '#home' },
+    { id: 1, text: 'Start Here', href: '#home' },
     { id: 2, text: 'Services', href: '#about' },
     { id: 3, text: 'Our Work', href: '#services' },
     { id: 4, text: 'About NF9', href: '#portfolio' },
