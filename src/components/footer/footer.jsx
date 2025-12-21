@@ -77,8 +77,8 @@ export default function Footer() {
             © 2025 NF9 Studio. All rights reserved.
             </div>
           <div className="nf9-bottom-right">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
+            <a href="#" className="nf9-social-link">Privacy Policy</a>
+            <a href="#" className="nf9-social-link">Terms of Service</a>
           </div>
         </div>
       </div>

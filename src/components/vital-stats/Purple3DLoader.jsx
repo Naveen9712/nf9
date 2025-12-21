@@ -108,8 +108,8 @@ export default function Purple3DLoader() {
 
       {/* INNER RING — smallest & slowest */}
       <FlatRing
-        outerRadius={1.7}
-        innerRadius={1.5}
+        outerRadius={1.3}
+        innerRadius={1.1}
         thickness={0.6}
         rotation={[Math.PI / 2.1, 0, 0]}
         speed={[0.35, 0.45, 0.2]}   // ⬅ slow
@@ -117,8 +117,8 @@ export default function Purple3DLoader() {
 
       {/* MIDDLE RING — medium size & speed */}
       <FlatRing
-        outerRadius={2.1}
-        innerRadius={1.9}
+        outerRadius={1.7}
+        innerRadius={1.4}
         thickness={0.6}
         rotation={[0, Math.PI / 2.1, 0]}
         speed={[0.45, 0.55, 0.2]}   // ⬅ medium
@@ -126,8 +126,8 @@ export default function Purple3DLoader() {
 
       {/* OUTER RING — biggest & fastest */}
       <FlatRing
-        outerRadius={2.5}
-        innerRadius={2.3}
+        outerRadius={2.1}
+        innerRadius={1.9}
         thickness={0.6}
         rotation={[0, 0, 0]}
         speed={[0.65, 0.65, 0.2]}   // ⬅ fast

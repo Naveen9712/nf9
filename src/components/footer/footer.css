@@ -1,11 +1,4 @@
-@font-face {
-  font-family: "Daykid";
-  src: url("./assets/fonts/Daykid-Regular.woff2") format("woff2"),
-       url("./assets/fonts/Daykid-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
+
 
 
 /* ================= ROOT ================= */
@@ -29,7 +22,7 @@ body {
 .nf9-footer {
   background: var(--bg);
   color: var(--text);
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", "Inter Placeholder", sans-serif;
 }
 
 /* MAIN CONTAINER (TOP + LOGO ONLY) */
@@ -75,7 +68,7 @@ body {
   align-items: center;
   gap: 12px;
 
-  font-family: "Manrope";
+  font-family: "Inter", "Inter Placeholder", sans-serif;
   font-size: 32px;
   font-weight: 700;
   line-height: 1;
@@ -122,7 +115,7 @@ body {
 /* ================= NAV + SOCIAL ================= */
 .nf9-label {
   font-size: 14px;
-  color: var(--muted);
+  color: var(--text);
   margin-bottom: 18px;
 }
 
@@ -133,8 +126,9 @@ body {
   align-items: center;
   gap: 6px;
 
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 510;
+  line-height: 26px !important;
   color: var(--text);
   text-decoration: none;
   margin-bottom: 6px;
@@ -173,14 +167,14 @@ body {
 /* ARROW */
 .nf9-arrow {
   width: 14px;
-  height: 10px;
-  opacity: 0.4;
+  height: 14px;
+  opacity: 0.8;
 }
 
 /* ================= LOGO ================= */
 .nf9-logo h1 {
-  font-family: "Daykid", "Manrope", sans-serif;
-  font-size: 8rem;
+  font-family: "Inter", "Inter Placeholder", sans-serif;
+  font-size: 5.5rem;
   font-weight: bold;              /* Daykid looks best lighter */
   letter-spacing: 0.05em;
   text-align: center;       /* tighter for logo */
@@ -198,7 +192,7 @@ body {
   justify-content: space-between;
   align-items: center;
 
-  padding: 50px 60px;
+  padding: 40px 60px;
 
   /* FULL WIDTH ESCAPE */
   margin-left: calc(50% - 50vw);
@@ -208,6 +202,7 @@ body {
 .nf9-bottom-left {
   width: 50%;
   font-size: 14px;
+
 }
 
 .nf9-bottom-right {
@@ -245,7 +240,7 @@ body {
   
   .nf9-logo h1,
   .nf9-logo span {
-    font-size: 34px;
+    font-size: 70px;
     text-align: center;
     padding: 20px 0 10px 0;
   }
@@ -269,8 +264,19 @@ body {
 
   .nf9-bottom-right {
     flex-direction: column;   /* stack links */
-    gap: 12px;                /* vertical spacing */
+    gap: 0;                /* vertical spacing */
     justify-content: flex-start;
     align-items: flex-start;
   }
+}
+
+@media (max-width: 468px) {
+
+  .nf9-logo h1,
+  .nf9-logo span {
+    font-size: 34px;
+    text-align: center;
+    padding: 20px 0 10px 0;
+  }
+
 }
