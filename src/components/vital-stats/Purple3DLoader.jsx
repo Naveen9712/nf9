@@ -1,7 +1,7 @@
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useEffect, useState } from "react";
 
 /* =====================================================
    FLAT METAL RING (SIZE + SPEED CONTROLLABLE)
@@ -9,9 +9,9 @@ import { useMemo, useRef } from "react";
 function FlatRing({
   rotation,
   speed,
-  outerRadius,   // ⬅ ring size (bigger = outer ring)
-  innerRadius,   // ⬅ hole size (controls band width)
-  thickness      // ⬅ ring height / breadth
+  outerRadius,
+  innerRadius,
+  thickness,
 }) {
   const ref = useRef();
 
@@ -24,7 +24,7 @@ function FlatRing({
     shape.holes.push(hole);
 
     return new THREE.ExtrudeGeometry(shape, {
-      depth: thickness,        // 🔧 BREADTH (smaller = flatter)
+      depth: thickness,
       bevelEnabled: true,
       bevelThickness: 0.02,
       bevelSize: 0.02,
@@ -32,7 +32,6 @@ function FlatRing({
     });
   }, [outerRadius, innerRadius, thickness]);
 
-  /* ROTATION SPEED */
   useFrame((_, d) => {
     ref.current.rotation.x += d * speed[0];
     ref.current.rotation.y += d * speed[1];
@@ -42,7 +41,7 @@ function FlatRing({
   return (
     <mesh ref={ref} rotation={rotation} geometry={geometry}>
       <meshPhysicalMaterial
-        color="#7c3aed"         // 🎨 BASE COLOR (physically shaded)
+        color="#7c3aed"
         metalness={0.65}
         roughness={0.25}
         clearcoat={1}
@@ -58,7 +57,8 @@ function FlatRing({
 function Core() {
   return (
     <mesh>
-      <sphereGeometry args={[0.42, 64, 64]} />
+      {/* Reduced ball size */}
+      <sphereGeometry args={[0.2, 64, 64]} />
       <meshPhysicalMaterial
         color="#7c3aed"
         metalness={0.3}
@@ -67,6 +67,26 @@ function Core() {
       />
     </mesh>
   );
+}
+
+/* =====================================================
+   RESPONSIVE SCALE WRAPPER
+===================================================== */
+function ResponsiveScale({ children }) {
+  const { size } = useThree();
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    if (size.width <= 468) {
+      setScale(0.55); // 📱 very small devices
+    } else if (size.width <= 768) {
+      setScale(0.7); // 📱 tablets
+    } else {
+      setScale(1); // 🖥 desktop
+    }
+  }, [size.width]);
+
+  return <group scale={scale}>{children}</group>;
 }
 
 /* =====================================================
@@ -90,51 +110,50 @@ export default function Purple3DLoader() {
       {/* ================= LIGHTING ================= */}
       <ambientLight intensity={0.2} />
 
-      {/* Key light (main highlight) */}
       <directionalLight
         position={[6, 10, 6]}
         intensity={2.2}
         color="#ffffff"
       />
 
-      {/* Fill light (purple bounce) */}
       <directionalLight
         position={[-6, -4, -6]}
         intensity={0.6}
         color="#7c3aed"
       />
 
-      {/* ================= RINGS ================= */}
+      {/* ================= LOADER OBJECT ================= */}
+      <ResponsiveScale>
+        {/* INNER RING */}
+        <FlatRing
+          outerRadius={0.5}
+          innerRadius={0.4}
+          thickness={0.3}
+          rotation={[Math.PI / 2.1, 0, 0]}
+          speed={[0.45, 0.65, 0.1]}
+        />
 
-      {/* INNER RING — smallest & slowest */}
-      <FlatRing
-        outerRadius={1.3}
-        innerRadius={1.1}
-        thickness={0.6}
-        rotation={[Math.PI / 2.1, 0, 0]}
-        speed={[0.35, 0.45, 0.2]}   // ⬅ slow
-      />
+        {/* MIDDLE RING */}
+        <FlatRing
+          outerRadius={0.7}
+          innerRadius={0.6}
+          thickness={0.3}
+          rotation={[0, Math.PI / 2.1, 0]}
+          speed={[0.55, 0.75, 0.15]}
+        />
 
-      {/* MIDDLE RING — medium size & speed */}
-      <FlatRing
-        outerRadius={1.7}
-        innerRadius={1.4}
-        thickness={0.6}
-        rotation={[0, Math.PI / 2.1, 0]}
-        speed={[0.45, 0.55, 0.2]}   // ⬅ medium
-      />
+        {/* OUTER RING */}
+        <FlatRing
+          outerRadius={0.9}
+          innerRadius={0.8}
+          thickness={0.3}
+          rotation={[0, 0, 0]}
+          speed={[0.75, 0.95, 0.2]}
+        />
 
-      {/* OUTER RING — biggest & fastest */}
-      <FlatRing
-        outerRadius={2.1}
-        innerRadius={1.9}
-        thickness={0.6}
-        rotation={[0, 0, 0]}
-        speed={[0.65, 0.65, 0.2]}   // ⬅ fast
-      />
-
-      {/* CENTER BALL */}
-      <Core />
+        {/* CENTER BALL */}
+        <Core />
+      </ResponsiveScale>
 
       <OrbitControls enableZoom={false} enableRotate={false} />
     </Canvas>

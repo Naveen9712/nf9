@@ -20,23 +20,28 @@ export default function VitalStats() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=300%",
-          scrub: true,
+          end: "+=250%",
+          scrub: 1,
           pin: true,
+          anticipatePin: 1,
         },
       });
 
-      // 🔵 Phase 1 — Loader only
+      // Phase 1 – loader alone
       tl.to({}, { duration: 1 });
 
-      // 🟣 Phase 2 — Stats reveal on scroll
-      tl.to(stats, {
-        opacity: 1,
-        y: 0,
-        stagger: 0.35,
-        ease: "power3.out",
-        duration: 1.5,
-      });
+      // Phase 2 – stats overlay reveal
+      tl.to(
+        stats,
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.25,
+          ease: "power3.out",
+          duration: 1.2,
+        },
+        ">-0.2"
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -44,14 +49,12 @@ export default function VitalStats() {
 
   return (
     <section className="vital-stats-section" ref={sectionRef}>
-      {/* BACKGROUND LOADER */}
+      {/* FULL BG LOADER */}
       <div className="loader-bg">
-        <div className="loader-3d-wrapper">
-          <Purple3DLoader />
-        </div>
+        <Purple3DLoader />
       </div>
 
-      {/* STATS LAYER */}
+      {/* STATS OVERLAY */}
       <div className="stats-layer">
         <div className="stat-item stat-top-left">
           <div className="stat-value">100+</div>
