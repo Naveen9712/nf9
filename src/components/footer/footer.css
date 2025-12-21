@@ -182,7 +182,8 @@ body {
   font-family: "Daykid", "Manrope", sans-serif;
   font-size: 8rem;
   font-weight: bold;              /* Daykid looks best lighter */
-  letter-spacing: 0.2em;       /* tighter for logo */
+  letter-spacing: 0.05em;
+  text-align: center;       /* tighter for logo */
   margin: 0;
 }
 
@@ -244,7 +245,9 @@ body {
   
   .nf9-logo h1,
   .nf9-logo span {
+    font-size: 34px;
     text-align: center;
+    padding: 20px 0 10px 0;
   }
   
   .nf9-bottom {

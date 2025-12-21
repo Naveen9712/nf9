@@ -6,7 +6,7 @@
   place-items: center; /* perfect center (x + y) */
   overflow: hidden;
   background: #000;
-  padding-block: clamp(40px, 6vh, 80px); /* equal top & bottom */
+  padding-block: clamp(40px, 6vh, 60px); /* equal top & bottom */
   padding-inline: 0;
 }
 

@@ -68,7 +68,7 @@ export default function Footer() {
 
         {/* ================= LOGO ================= */}
         <div className="nf9-logo">
-          <h1>NF9</h1>
+          <h1>NEXT FRONTIER 9</h1>
         </div>
 
         {/* ================= BOTTOM ================= */}
