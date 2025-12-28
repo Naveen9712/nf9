@@ -233,7 +233,7 @@ body {
   }
 
   .together-title {
-    margin-top: -60px; /* BIG FIX: text moves UP */
+    margin-top: -20px; /* BIG FIX: text moves UP */
   }
 
   .together-title h1 {
