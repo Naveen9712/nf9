@@ -1,13 +1,13 @@
 
-
-
 /* ================= ROOT ================= */
-:root {
-  --bg: #ffffff;
-  --text: #0a0a0a;
-  --muted: rgba(10, 10, 10, 0.3);
-  --border: rgba(10, 10, 10, 0.15);
-}
+  :root {
+    --col1: #000000;
+    --col2: #ffffff;
+    --muted: rgba(251, 249, 249, 0.264);
+    --font-heading: "Satoshi", sans-serif;
+    --font-body: "Inter", sans-serif;
+  }
+
 
 /* ================= RESET ================= */
 * {
@@ -16,18 +16,22 @@
 
 body {
   margin: 0;
+  font-family: var(--font-body);
+  color: var(--col2);
+  background: var(--col1);
 }
 
 /* ================= FOOTER ================= */
 .nf9-footer {
-  background: var(--bg);
-  color: var(--text);
-  font-family: "Inter", "Inter Placeholder", sans-serif;
+  background: var(--col1);
+  color: var(--col2);
+  font-family: var(--font-body);
 }
 
 /* MAIN CONTAINER (TOP + LOGO ONLY) */
 .nf9-container {
   width: 100%;
+  margin: 0 auto;
   padding: 60px 60px 0 60px;
 }
 
@@ -38,17 +42,9 @@ body {
   grid-template-areas: "contact nav social";
 }
 
-.nf9-contact {
-  grid-area: contact;
-}
-
-.nf9-nav {
-  grid-area: nav;
-}
-
-.nf9-social {
-  grid-area: social;
-}
+.nf9-contact { grid-area: contact; }
+.nf9-nav { grid-area: nav; }
+.nf9-social { grid-area: social; }
 
 /* ================= CONTACT ================= */
 .nf9-plus {
@@ -68,12 +64,12 @@ body {
   align-items: center;
   gap: 12px;
 
-  font-family: "Inter", "Inter Placeholder", sans-serif;
+  font-family: var(--font-body);
   font-size: 32px;
   font-weight: 700;
   line-height: 1;
 
-  color: var(--text);
+  color: var(--col2);
   text-decoration: none;
 }
 
@@ -90,15 +86,15 @@ body {
   bottom: 0;
   width: 100%;
   height: 2px;
-  background: var(--text);
+  background: var(--col2);
 }
 
 /* PLUS CIRCLE */
 .nf9-plus-circle {
   width: 20px;
   height: 20px;
-  background: #000;
-  color: #fff;
+  background: var(--col2);
+  color: var(--col1);
   border-radius: 50%;
 
   display: inline-flex;
@@ -108,14 +104,13 @@ body {
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
-
   flex-shrink: 0;
 }
 
 /* ================= NAV + SOCIAL ================= */
 .nf9-label {
   font-size: 14px;
-  color: var(--text);
+  color: var(--col2);
   margin-bottom: 18px;
 }
 
@@ -126,10 +121,12 @@ body {
   align-items: center;
   gap: 6px;
 
+  font-family: var(--font-body);
   font-size: 20px;
-  font-weight: 510;
-  line-height: 26px !important;
-  color: var(--text);
+  font-weight: 500;
+  line-height: 26px;
+
+  color: var(--col2);
   text-decoration: none;
   margin-bottom: 6px;
 
@@ -173,20 +170,19 @@ body {
 
 /* ================= LOGO ================= */
 .nf9-logo h1 {
-  font-family: "Inter", "Inter Placeholder", sans-serif;
-  font-size: 5.5rem;
-  font-weight: bold;              /* Daykid looks best lighter */
+  font-family: var(--font-heading);
+  font-size: 100px;
+  font-weight: 900;
   letter-spacing: 0.05em;
-  text-align: center;       /* tighter for logo */
+  text-align: center;
   margin: 0;
 }
-
 
 /* ================= BOTTOM (FULL BLEED) ================= */
 .nf9-bottom {
   width: 100vw;
-  background: #000;
-  color: rgba(255, 255, 255, 0.7);
+  background: var(--col1);
+  color: var(--muted);
 
   display: flex;
   justify-content: space-between;
@@ -194,7 +190,6 @@ body {
 
   padding: 40px 60px;
 
-  /* FULL WIDTH ESCAPE */
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 }
@@ -202,7 +197,7 @@ body {
 .nf9-bottom-left {
   width: 50%;
   font-size: 14px;
-
+  font-family: var(--font-body);
 }
 
 .nf9-bottom-right {
@@ -214,7 +209,8 @@ body {
 
 .nf9-bottom-right a {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-body);
+  color: var(--col2);
   text-decoration: none;
 }
 
@@ -237,14 +233,12 @@ body {
     display: flex;
     justify-content: center;
   }
-  
-  .nf9-logo h1,
-  .nf9-logo span {
+
+  .nf9-logo h1 {
     font-size: 70px;
-    text-align: center;
     padding: 20px 0 10px 0;
   }
-  
+
   .nf9-bottom {
     flex-direction: column;
     align-items: flex-start;
@@ -256,27 +250,15 @@ body {
   .nf9-bottom-right {
     width: 100%;
   }
-  
-  .nf9-bottom-left {
-    font-size: 14px;
-
-  }
 
   .nf9-bottom-right {
-    flex-direction: column;   /* stack links */
-    gap: 0;                /* vertical spacing */
-    justify-content: flex-start;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 0;
   }
 }
 
 @media (max-width: 468px) {
-
-  .nf9-logo h1,
-  .nf9-logo span {
+  .nf9-logo h1 {
     font-size: 34px;
-    text-align: center;
-    padding: 20px 0 10px 0;
   }
-
 }

@@ -1,16 +1,28 @@
+
+/* ================= ROOT ================= */
+:root {
+  /* Colors */
+  --bg: #000000;
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.7);
+
+  /* Fonts (SYSTEM TOKENS) */
+  --font-heading: "Satoshi", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+/* ================= SECTION ================= */
 .tr-section {
   position: relative;
   width: 100%;
-  min-height: 100svh; /* mobile safe viewport height */
+  min-height: 100svh;              /* mobile-safe viewport height */
   display: grid;
-  place-items: center; /* perfect center (x + y) */
+  place-items: center;             /* perfect center (x + y) */
   overflow: hidden;
-  background: #000;
-  padding-block: clamp(40px, 6vh, 60px); /* equal top & bottom */
-  padding-inline: 0;
+  background: var(--bg);
 }
 
-/* background image layer */
+/* ================= BACKGROUND IMAGE ================= */
 .tr-section::before {
   content: "";
   position: absolute;
@@ -20,46 +32,56 @@
   opacity: 0.35;
 }
 
-/* overlay */
+/* ================= OVERLAY ================= */
 .tr-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(0,0,0,0.1), #000);
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0.1),
+    #000
+  );
   pointer-events: none;
 }
 
-/* inner content */
+/* ================= MAIN CONTAINER ================= */
+/* EXACTLY AS REQUESTED */
 .tr-inner {
   position: relative;
   z-index: 1;
-  max-width: 100%;
+
   width: 100%;
-  padding-inline: clamp(16px, 4vw, 60px);
+  margin: 0 auto;
+  padding: 60px;
+
   text-align: center;
 }
 
-/* label */
+/* ================= LABEL ================= */
 .tr-label {
+  font-family: var(--font-heading);
   font-size: 18px;
+  font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   margin-bottom: 30px;
-  color: rgba(255,255,255,0.7);
-  font-weight: 500;
+  color: var(--tr-muted);
 }
 
-/* heading */
+/* ================= HEADING ================= */
 .tr-heading {
-  color: #fff;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
+  color: var(--text);
+
   font-weight: 500;
   font-size: clamp(32px, 5vw, 60px);
   line-height: 1;
   letter-spacing: -0.05em;
+
   white-space: pre-wrap;
 }
 
-/* animation helpers */
+/* ================= ANIMATION HELPERS ================= */
 .tr-word,
 .tr-char {
   display: inline-block;
@@ -72,9 +94,12 @@
   white-space: pre;
 }
 
-/* ---------------- MOBILE ---------------- */
-
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
+  .tr-inner {
+    padding: 40px 20px;
+  }
+
   .tr-heading {
     font-size: clamp(24px, 6vw, 40px);
   }

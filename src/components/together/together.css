@@ -1,29 +1,41 @@
+
+/* ================= ROOT ================= */
+:root {
+  --col1: #000000;
+  --col2: #ffffff;
+  --muted: rgba(251, 249, 249, 0.264);
+  --accent: #ff6a00;
+  --font-heading: "Satoshi", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+/* ================= BASE ================= */
+body {
+  background: var(--col1);
+  color: var(--col2);
+  font-family: var(--font-body);
+}
+
+/* ================= TOGETHER SECTION ================= */
+
 .together-section {
-  background: #070707;
-  color: #fff;
-  padding: 140px 0 180px 0;
+  background: var(--col1);
+  color: var(--col2);
+  padding: 140px 18px 180px;
   position: relative;
   overflow: hidden;
 }
 
-/* wrapper where all images overlap centered */
+/* wrapper */
 .together-wrapper {
   width: 100%;
+  max-width: 1300px;
   height: 520px;
   margin: 0 auto;
   position: relative;
 }
 
-/* clones helper (if used later) */
-.together-clone {
-  pointer-events: none;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 22px 80px rgba(0,0,0,0.6);
-  will-change: transform, opacity;
-}
-
-/* common img base: absolutely centered using translate(-50%, ...) */
+/* common image base */
 .together-wrapper img {
   position: absolute;
   left: 50%;
@@ -37,7 +49,7 @@
   pointer-events: none;
 }
 
-/* center image sits on top */
+/* center image */
 .center-img {
   width: 380px;
   height: 450px;
@@ -46,162 +58,197 @@
   border-radius: 20px;
 }
 
-/* side images smaller, start centered and hidden (opacity:0) */
+/* side images */
 .side-img {
   width: 200px;
   height: 250px;
   z-index: 20;
   opacity: 0;
   box-shadow: 0 22px 80px rgba(0,0,0,0.6);
-  border-radius: 18px;
 }
 
-/* title under images */
+/* ================= TITLE ================= */
+
 .together-title {
   max-width: 1200px;
-  margin: 0 auto 0;
+  margin: 0 auto;
   text-align: center;
   line-height: 0.88;
 }
+
 .together-title h1 {
   margin: 0;
+  font-family: var(--font-heading);
   font-size: 9rem;
   font-weight: 900;
   letter-spacing: -6px;
 }
-.together-title .dot { color: #ff6a00; }
 
-/* -------------------------------------------
-   Responsive blocks: tablet, phone adjustments
-   ------------------------------------------- */
+.together-title .dot {
+  color: var(--accent);
+}
+
+/* ================= CTA ================= */
+
+.cta-framer {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--col2);
+  padding: 20px 0;
+}
+
+/* CTA text */
+.cta-text {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  display: inline-block;
+}
+
+/* GET word */
+.word-get {
+  position: relative;
+  display: inline-block;
+  padding-right: 6px;
+}
+
+/* underline only for GET (default) */
+.word-get::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 2px;
+  background: var(--col2);
+  transition: opacity 260ms ease;
+}
+
+/* full underline (hidden initially) */
+.underline-full {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 2px;
+  background: var(--col2);
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 360ms cubic-bezier(.22,.9,.32,1);
+}
+
+/* arrow */
+.cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.cta-arrow svg {
+  transform: rotate(-45deg);
+  transition: transform 360ms cubic-bezier(.22,.9,.32,1);
+}
+
+/* hover behavior */
+.cta-framer:hover .underline-full {
+  transform: scaleX(1);
+}
+
+.cta-framer:hover .word-get::after {
+  opacity: 0;
+}
+
+.cta-framer:hover .cta-arrow svg {
+  transform: translateY(4px) rotate(0deg);
+}
+
+/* ================= RESPONSIVE ================= */
 
 /* <= 1024px */
 @media (max-width: 1024px) {
-  .center-img { width: 320px; height: 380px; }
-  .side-img { width: 200px; height: 260px; }
-  .together-wrapper { height: 460px; }
-  .together-title h1 { font-size: 7.2rem; letter-spacing: -4px; }
+  .center-img { width: 340px; height: 400px; }
+  .side-img { width: 180px; height: 220px; }
+  .together-wrapper { height: 480px; }
+  .together-title h1 { font-size: 7.5rem; letter-spacing: -4px; }
 }
 
-/* <= 768px (tablet / large phones) */
+/* <= 768px */
 @media (max-width: 768px) {
-  .together-wrapper { max-width: 880px; height: 360px; padding-top: 60px; }
+  .together-wrapper {
+    height: 420px;
+    padding-top: 40px;
+  }
 
   .center-img {
-    width: 220px;
-    height: 280px;
-    transform: translate(-50%,-30%); /* slightly higher so heading is visible */
-    box-shadow: 0 18px 80px rgba(0,0,0,0.6);
+    width: 260px;
+    height: 320px;
+    transform: translate(-50%, -30%);
   }
 
   .side-img {
     width: 140px;
     height: 180px;
-    opacity: 1; /* keep visible on smaller screens when revealed */
-    box-shadow: 0 14px 60px rgba(0,0,0,0.45);
+    opacity: 1;
   }
 
-  .side-img.left { transform: translate(-50%,-30%) rotate(-12deg); }
-  .side-img.right { transform: translate(-50%,-30%) rotate(12deg); }
-
-  .together-title h1 { font-size: 4.6rem; letter-spacing: -3px; line-height: 0.92; }
-  .together-title { padding-bottom: 16px; }
+  .together-title h1 {
+    font-size: 4.8rem;
+    letter-spacing: -3px;
+  }
 }
 
-/* <= 468px (narrow phones) — keep ABSOLUTE layout but much smaller sizes so animation works */
+/* <= 468px (mobile – KEEP SCROLL EFFECT WORKING) */
 @media (max-width: 468px) {
-  .together-section { padding: 60px 10px 90px; }
+  .together-section {
+    padding: 80px 12px 120px;
+  }
 
-  /* keep a fixed-ish height so scroll-driven animation has room */
   .together-wrapper {
-    max-width: 100vw;
-    height: 240px;
-    padding-bottom: 0;
+    height: 360px;
   }
 
   .center-img {
-    width: 120px;
-    height: 180px;
-    z-index: 30;
-    transform: translate(-50%,-20%);
-    border-radius: 14px;
-    box-shadow: 0 18px 60px rgba(0,0,0,0.45);
+    width: 220px;
+    height: 260px;
+    transform: translate(-50%, -40%);
   }
 
   .side-img {
-    width: 90px;
-    height: 110px;
-    z-index: 20;
-    opacity: 0; /* JS will animate opacity in */
-    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
-    border-radius: 12px;
+    width: 120px;
+    height: 150px;
   }
 
-  /* initial small offsets so they appear behind center at start */
-  .side-img.left { transform: translate(-50%,-40%) rotate(-8deg); }
-  .side-img.right { transform: translate(-50%,-40%) rotate(8deg); }
+  .together-title h1 {
+    font-size: 3.2rem;
+    letter-spacing: -2px;
+    line-height: 1;
+  }
 
-  .together-title h1 { font-size: 2.6rem; line-height: 1.02; }
-  .together-title { padding: 14px 6px 0; }
-
-  .cta-text { font-size: 14px; }
-  .cta-framer { padding: 12px 0; display:block; text-align:center; }
+  .cta-text {
+    font-size: 14px;
+  }
 }
 
-/* small tweaks for very narrow phones */
+/* <= 360px */
 @media (max-width: 360px) {
-  .center-img { width: 160px; height: 200px; }
-  .side-img { width: 82px; height: 100px; }
-  .together-title h1 { font-size: 2.0rem; }
-  .together-section { padding: 60px 8px 80px; }
-}
+  .center-img {
+    width: 200px;
+    height: 240px;
+  }
 
-/* CTA styles (kept) */
-.cta-framer {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  position: relative;
-  text-decoration: none;
-  cursor: pointer;
-  color: #fff;
-  padding: 10px 0;
+  .side-img {
+    width: 110px;
+    height: 140px;
+  }
+
+  .together-title h1 {
+    font-size: 2.6rem;
+  }
 }
-.cta-text {
-  position: relative;
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  display: inline-block;
-  z-index: 2;
-}
-.word-get::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 100%;
-  bottom: -10px;
-  height: 2px;
-  background: #fff;
-  opacity: 1;
-  transition: opacity 260ms ease;
-}
-.underline-full {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -10px;
-  height: 2px;
-  background: #fff;
-  transform-origin: left center;
-  transform: scaleX(0);
-  transition: transform 360ms cubic-bezier(.22,.9,.32,1);
-}
-.cta-arrow svg {
-  transform: rotate(-45deg);
-  transition: transform 360ms cubic-bezier(.22,.9,.32,1);
-}
-.cta-framer:hover .underline-full { transform: scaleX(1); }
-.cta-framer:hover .word-get::after { opacity: 0; }
-.cta-framer:hover .cta-arrow svg { transform: translateY(4px) rotate(0deg); }
