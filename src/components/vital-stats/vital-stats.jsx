@@ -20,7 +20,7 @@ export default function VitalStats() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=250%",
+          end: "+=350%",
           scrub: 1,
           pin: true,
           anticipatePin: 1,
@@ -57,25 +57,25 @@ export default function VitalStats() {
       {/* STATS OVERLAY */}
       <div className="stats-layer">
         <div className="stat-item stat-top-left">
-          <div className="stat-value">100+</div>
+          <div className="stat-value">∞</div>
           <div className="stat-label">
-            Transformative Digital Products Launched
+          Ideas Engineered for the Future
           </div>
         </div>
 
         <div className="stat-item stat-top-right">
-          <div className="stat-value">30M+ AED</div>
-          <div className="stat-label">Client Growth Generated</div>
+          <div className="stat-value">01</div>
+          <div className="stat-label">Year of Relentless Focus</div>
         </div>
 
         <div className="stat-item stat-bottom-left">
-          <div className="stat-value">110+</div>
-          <div className="stat-label">Successful Projects Delivered</div>
+          <div className="stat-value">03</div>
+          <div className="stat-label">Builds Shipped</div>
         </div>
 
         <div className="stat-item stat-bottom-right">
-          <div className="stat-value">6+</div>
-          <div className="stat-label">Years of Innovation</div>
+          <div className="stat-value">100+</div>
+          <div className="stat-label">Client Satisfaction Rate</div>
         </div>
       </div>
     </section>

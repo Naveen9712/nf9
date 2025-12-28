@@ -58,7 +58,7 @@ function Core() {
   return (
     <mesh>
       {/* Reduced ball size */}
-      <sphereGeometry args={[0.2, 64, 64]} />
+      <sphereGeometry args={[0.2, 20, 20]} />
       <meshPhysicalMaterial
         color="#7c3aed"
         metalness={0.3}
@@ -126,29 +126,29 @@ export default function Purple3DLoader() {
       <ResponsiveScale>
         {/* INNER RING */}
         <FlatRing
-          outerRadius={0.5}
-          innerRadius={0.4}
-          thickness={0.3}
+          outerRadius={0.4}
+          innerRadius={0.35}
+          thickness={0.2}
           rotation={[Math.PI / 2.1, 0, 0]}
-          speed={[0.45, 0.65, 0.1]}
+          speed={[0.45, 0.75, 0.1]}
         />
 
         {/* MIDDLE RING */}
         <FlatRing
-          outerRadius={0.7}
-          innerRadius={0.6}
-          thickness={0.3}
+          outerRadius={0.55}
+          innerRadius={0.5}
+          thickness={0.2}
           rotation={[0, Math.PI / 2.1, 0]}
-          speed={[0.55, 0.75, 0.15]}
+          speed={[0.55, 0.95, 0.15]}
         />
 
         {/* OUTER RING */}
         <FlatRing
-          outerRadius={0.9}
-          innerRadius={0.8}
-          thickness={0.3}
+          outerRadius={0.70}
+          innerRadius={0.65}
+          thickness={0.2}
           rotation={[0, 0, 0]}
-          speed={[0.75, 0.95, 0.2]}
+          speed={[0.95, 1.15, 0.2]}
         />
 
         {/* CENTER BALL */}
