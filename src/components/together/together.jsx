@@ -1,0 +1,196 @@
+import React, { useEffect, useRef } from "react";
+import "./together.css";
+
+export default function Together() {
+  const sectionRef = useRef(null);
+  const leftRef = useRef(null);
+  const rightRef = useRef(null);
+  const centerRef = useRef(null);
+
+  const anim = useRef({
+    current: 0,
+    target: 0,
+    raf: null,
+    visible: false,
+  });
+
+  const CONFIG = {
+    OUT_X: 420,
+    LEFT_OUT_Y: -70,
+    RIGHT_OUT_Y: 40,
+    LEFT_ROT: -18,
+    RIGHT_ROT: 18,
+    CENTER_SCALE: 1.08,
+  };
+
+  const lerp = (a, b, t) => a + (b - a) * t;
+
+  useEffect(() => {
+    const state = anim.current;
+
+    /* ---------- VISIBILITY ---------- */
+    const io = new IntersectionObserver(
+      ([entry]) => (state.visible = entry.isIntersecting),
+      { threshold: 0.35 }
+    );
+    sectionRef.current && io.observe(sectionRef.current);
+
+    /* ---------- INPUT ---------- */
+    const onWheel = (e) => {
+      if (!state.visible) return;
+      state.target = e.deltaY > 0 ? 1 : 0;
+      startRAF();
+    };
+
+    let lastY = null;
+    const onTouchStart = (e) => (lastY = e.touches[0].clientY);
+    const onTouchMove = (e) => {
+      if (!state.visible || lastY === null) return;
+      const diff = lastY - e.touches[0].clientY;
+      if (Math.abs(diff) > 14) {
+        state.target = diff > 0 ? 1 : 0;
+        startRAF();
+        lastY = e.touches[0].clientY;
+      }
+    };
+    const onTouchEnd = () => (lastY = null);
+
+    window.addEventListener("wheel", onWheel, { passive: true });
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    window.addEventListener("touchend", onTouchEnd, { passive: true });
+
+    /* ---------- RAF ---------- */
+    const startRAF = () => {
+      if (!state.raf) state.raf = requestAnimationFrame(tick);
+    };
+    const stopRAF = () => {
+      cancelAnimationFrame(state.raf);
+      state.raf = null;
+    };
+
+    /* ---------- ANIMATION ---------- */
+    const tick = () => {
+      state.current = lerp(state.current, state.target, 0.12);
+      const t = Math.max(0, Math.min(1, state.current));
+      const vw = window.innerWidth;
+
+      let outX = CONFIG.OUT_X;
+      let leftY = CONFIG.LEFT_OUT_Y;
+      let rightY = CONFIG.RIGHT_OUT_Y;
+      let centerScale = CONFIG.CENTER_SCALE;
+      let baseY = -26;
+
+      if (vw <= 768) {
+        outX = 260;
+        leftY = -40;
+        rightY = 28;
+        centerScale = 1.04;
+        baseY = -22;
+      }
+
+      if (vw <= 468) {
+        outX = 140;
+        leftY = -30;
+        rightY = -10;
+        centerScale = 1.02;
+        baseY = -10;
+      }
+
+      const leftX = lerp(0, -outX, t);
+      const rightX = lerp(0, outX, t);
+
+      if (leftRef.current) {
+        leftRef.current.style.transform = `
+          translate(-50%, ${baseY}%)
+          translate(${leftX}px, ${lerp(0, leftY, t)}px)
+          rotate(${lerp(0, CONFIG.LEFT_ROT, t)}deg)
+        `;
+        leftRef.current.style.opacity = t;
+      }
+
+      if (rightRef.current) {
+        rightRef.current.style.transform = `
+          translate(-50%, ${baseY}%)
+          translate(${rightX}px, ${lerp(0, rightY, t)}px)
+          rotate(${lerp(0, CONFIG.RIGHT_ROT, t)}deg)
+        `;
+        rightRef.current.style.opacity = t;
+      }
+
+      if (centerRef.current) {
+        centerRef.current.style.transform = `
+          translate(-50%, -50%)
+          scale(${lerp(1, centerScale, t)})
+        `;
+      }
+
+      if (Math.abs(state.current - state.target) > 0.001) {
+        state.raf = requestAnimationFrame(tick);
+      } else {
+        stopRAF();
+      }
+    };
+
+    return () => {
+      io.disconnect();
+      stopRAF();
+      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
+    };
+  }, []);
+
+  return (
+    <section className="together-section" ref={sectionRef}>
+      <div className="together-wrapper">
+        <img
+          ref={leftRef}
+          className="side-img"
+          src="https://res.cloudinary.com/dzwm5v9gy/image/upload/v1765214808/lpcjuyknXEzXalpC07Z4IhsSwXU_uu3xzl.avif"
+          alt=""
+        />
+        <img
+          ref={rightRef}
+          className="side-img"
+          src="https://res.cloudinary.com/dzwm5v9gy/image/upload/v1765214808/3GZ80fDYAmP4JFvmOKKzh2e7fVo_gcgous.avif"
+          alt=""
+        />
+        <img
+          ref={centerRef}
+          className="center-img"
+          src="https://res.cloudinary.com/dzwm5v9gy/image/upload/v1765214808/7sAfDH9xTZEcsX8HVwaznXFOPHw_tzmaxh.avif"
+          alt=""
+        />
+      </div>
+
+      <div className="together-title">
+        <h1>LET&apos;S WORK</h1>
+        <h1>
+          TOGETHER<span className="dot">.</span>
+        </h1>
+
+        <a href="/contact" className="cta-framer">
+          <span className="cta-text">
+            <span className="word-get">GET</span>
+            <span className="word-rest"> STARTED TODAY</span>
+            <span className="underline-full" />
+          </span>
+
+          <span className="cta-arrow" aria-hidden>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M5 12h14M12 5l7 7-7 7"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+        </a>
+      </div>
+    </section>
+  );
+}

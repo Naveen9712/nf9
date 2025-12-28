@@ -1,0 +1,117 @@
+
+/* ================= ROOT ================= */
+:root {
+  /* Colors */
+  --col1: #000000;
+  --col2: #ffffff;
+  --muted: rgba(255, 255, 255, 0.7);
+
+  /* Fonts (SYSTEM TOKENS) */
+  --font-heading: "Satoshi", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+/* ================= SECTION ================= */
+.tr-section {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;              /* mobile-safe viewport height */
+  display: grid;
+  place-items: center;             /* perfect center (x + y) */
+  overflow: hidden;
+  background: var(--col1);
+}
+
+/* ================= BACKGROUND IMAGE ================= */
+.tr-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+}
+
+/* ================= OVERLAY ================= */
+.tr-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0.1),
+    #000
+  );
+  pointer-events: none;
+}
+
+/* ================= MAIN CONTAINER ================= */
+/* EXACTLY AS REQUESTED */
+.tr-inner {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  margin: 0 auto;
+  padding: 60px;
+
+  text-align: center;
+}
+
+/* ================= LABEL ================= */
+.tr-label {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  color: var(--muted);
+}
+
+/* ================= HEADING ================= */
+.tr-heading {
+  font-family: var(--font-body);
+  color: var(--col2);
+
+  font-weight: 400;
+  font-size: clamp(32px, 5vw, 60px);
+  line-height: 1;
+  letter-spacing: -0.05em;
+
+  white-space: pre-wrap;
+}
+
+/* ================= ANIMATION HELPERS ================= */
+.tr-word,
+.tr-char {
+  display: inline-block;
+  white-space: nowrap;
+  will-change: opacity, filter;
+}
+
+.tr-space {
+  display: inline-block;
+  white-space: pre;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .tr-inner {
+    padding: 40px 20px;
+  }
+
+  .tr-heading {
+    font-size: clamp(24px, 6vw, 40px);
+  }
+}
+
+@media (max-width: 480px) {
+  .tr-label {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  .tr-heading {
+    font-size: clamp(20px, 7vw, 36px);
+  }
+}
