@@ -1,6 +1,4 @@
-/* =========================
-   ROOT VARIABLES
-========================= */
+/* ================= ROOT ================= */
 
 :root {
   --col1: #000000;
@@ -11,113 +9,62 @@
   --font-body: "Inter", sans-serif;
 }
 
-/* =========================
-   HERO WRAPPER
-========================= */
+/* ================= WRAPPER ================= */
 
 .homeWrap {
   width: 100%;
+  height: 100vh;
   overflow: hidden;
 }
 
-/* =========================
-   HERO SECTION
-========================= */
+/* ================= HERO ================= */
 
 .hero {
   position: relative;
   width: 100%;
   height: 100vh;
-  min-height: 100svh;
-  overflow: hidden;
 }
 
-/* =========================
-   VIDEO BACKGROUND
-========================= */
+/* ================= VIDEO ================= */
 
-.hero .video {
+.heroVideo {
   position: absolute;
   inset: 0;
-  z-index: 0;
-}
-
-.hero .video video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+  z-index: 0;
 }
 
-/* =========================
-   CONTENT OVERLAY
-========================= */
+/* ================= CONTENT ================= */
 
-.hero .inner {
+.heroContent {
   position: relative;
   z-index: 2;
   height: 100%;
-  width: 100%;
   display: grid;
   place-items: center;
   text-align: center;
+  pointer-events: none;
 }
 
-/* =========================
-   HERO TEXT BLOCK
-========================= */
-
-.heroText {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-/* SUBTEXT — SAME VISUAL WIDTH */
 .heroSubtitle {
   margin: 0;
   font-family: var(--font-body);
-  font-weight: 800;
-  letter-spacing: 0.02em;
+  font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: 0.18em;
   color: var(--col2);
-  font-size: clamp(6rem, 2.2vw, 2.4rem);
-
-  /* key part */
-  width: 100%;
-  text-align: center;
+  font-size: clamp(2.2rem, 6vw, 5rem);
 }
 
-/* =========================
-   SUBTLE OVERLAY
-========================= */
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.25);
-  z-index: 1;
-}
-
-/* =========================
-   RESPONSIVE TWEAKS
-========================= */
+/* ================= MOBILE ================= */
 
 @media (max-width: 768px) {
-
   .heroSubtitle {
-    font-size: 5rem;
-    letter-spacing: 0.1em;
-  }
-}
-
-@media (max-width: 480px) {
-
-  .heroSubtitle {
+    font-size: 2rem;
     padding: 0 20px;
-    font-size: 3rem;
-    font-weight: bold;
+    letter-spacing: 0.14em;
   }
 }
