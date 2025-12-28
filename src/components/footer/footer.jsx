@@ -1,23 +1,5 @@
 import "./footer.css";
 
-/* Arrow SVG */
-function Arrow() {
-  return (
-    <svg className="nf9-arrow" viewBox="0 0 10 11" aria-hidden="true">
-      <path
-        d="M1.498 0.795V1.445C1.498 1.523 1.53 1.598 1.585 1.654
-        C1.64 1.709 1.715 1.74 1.794 1.74H7.883
-        L0.086 9.537C0.031 9.592 0 9.667 0 9.745
-        C0 9.824 0.031 9.899 0.087 9.954
-        L0.546 10.414C0.661 10.529 0.848 10.529 0.964 10.414
-        L8.76 2.617V8.707Z"
-        fill="currentColor"
-        opacity="0.3"
-      />
-    </svg>
-  );
-}
-
 export default function Footer() {
   return (
     <footer className="nf9-footer">
@@ -53,13 +35,13 @@ export default function Footer() {
             <p className="nf9-label">Social</p>
             <div className="nf9-social-row">
               <a href="#" className="nf9-social-link">
-                Twitter <Arrow />
+                Twitter
               </a>
               <a href="#" className="nf9-social-link">
-                Instagram <Arrow />
+                Instagram 
               </a>
               <a href="#" className="nf9-social-link">
-                LinkedIn <Arrow />
+                LinkedIn 
               </a>
             </div>
           </div>
