@@ -1,4 +1,3 @@
-
 /* ================= ROOT ================= */
 :root {
   --col1: #000000;
@@ -17,16 +16,15 @@ body {
 }
 
 /* ================= TOGETHER SECTION ================= */
-
 .together-section {
   background: var(--col1);
   color: var(--col2);
-  padding: 140px 18px 180px;
+  padding: 120px 18px 160px; /* reduced vertical padding */
   position: relative;
   overflow: hidden;
 }
 
-/* wrapper */
+/* ================= IMAGE WRAPPER ================= */
 .together-wrapper {
   width: 100%;
   max-width: 1300px;
@@ -40,40 +38,35 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -20%);
+  transform: translate(-50%, -24%); /* moved slightly UP */
   border-radius: 18px;
   object-fit: cover;
   display: block;
-  transition: transform 520ms cubic-bezier(.22,.9,.32,1), opacity 420ms ease;
   will-change: transform, opacity;
   pointer-events: none;
 }
 
-/* center image */
+/* ================= IMAGES ================= */
 .center-img {
   width: 380px;
   height: 450px;
   z-index: 30;
-  box-shadow: 0 28px 110px rgba(0,0,0,0.7);
   border-radius: 20px;
 }
 
-/* side images */
 .side-img {
   width: 200px;
   height: 250px;
   z-index: 20;
   opacity: 0;
-  box-shadow: 0 22px 80px rgba(0,0,0,0.6);
 }
 
 /* ================= TITLE ================= */
-
 .together-title {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: -30px auto 0; /* pull text UP */
   text-align: center;
-  line-height: 0.88;
+  line-height: 0.9;
 }
 
 .together-title h1 {
@@ -89,7 +82,6 @@ body {
 }
 
 /* ================= CTA ================= */
-
 .cta-framer {
   display: inline-flex;
   align-items: center;
@@ -98,7 +90,7 @@ body {
   text-decoration: none;
   cursor: pointer;
   color: var(--col2);
-  padding: 20px 0;
+  padding: 16px 0;
 }
 
 /* CTA text */
@@ -108,17 +100,15 @@ body {
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 1px;
-  display: inline-block;
 }
 
-/* GET word */
+/* GET underline */
 .word-get {
   position: relative;
   display: inline-block;
   padding-right: 6px;
 }
 
-/* underline only for GET (default) */
 .word-get::after {
   content: "";
   position: absolute;
@@ -130,7 +120,7 @@ body {
   transition: opacity 260ms ease;
 }
 
-/* full underline (hidden initially) */
+/* full underline */
 .underline-full {
   position: absolute;
   left: 0;
@@ -156,7 +146,7 @@ body {
   transition: transform 360ms cubic-bezier(.22,.9,.32,1);
 }
 
-/* hover behavior */
+/* hover */
 .cta-framer:hover .underline-full {
   transform: scaleX(1);
 }
@@ -173,30 +163,36 @@ body {
 
 /* <= 1024px */
 @media (max-width: 1024px) {
-  .center-img { width: 340px; height: 400px; }
-  .side-img { width: 180px; height: 220px; }
-  .together-wrapper { height: 480px; }
-  .together-title h1 { font-size: 7.5rem; letter-spacing: -4px; }
+  .center-img {
+    width: 340px;
+    height: 400px;
+  }
+
+  .side-img {
+    width: 180px;
+    height: 220px;
+  }
+
+  .together-wrapper {
+    height: 480px;
+  }
+
+  .together-title h1 {
+    font-size: 7.5rem;
+    letter-spacing: -4px;
+  }
 }
 
 /* <= 768px */
 @media (max-width: 768px) {
   .together-wrapper {
     height: 420px;
-    padding-top: 40px;
   }
-
-
-  .center-img,
-  .side-img {
-    box-shadow: none; 
-  }
-  
 
   .center-img {
     width: 260px;
     height: 320px;
-    transform: translate(-50%, -30%);
+    transform: translate(-50%, -34%);
   }
 
   .side-img {
@@ -205,31 +201,39 @@ body {
     opacity: 1;
   }
 
+  .together-title {
+    margin-top: -40px;
+  }
+
   .together-title h1 {
     font-size: 4.8rem;
     letter-spacing: -3px;
   }
 }
 
-/* <= 468px (mobile – KEEP SCROLL EFFECT WORKING) */
+/* <= 468px (mobile) */
 @media (max-width: 468px) {
   .together-section {
-    padding: 80px 12px 120px;
+    padding: 70px 12px 100px;
   }
 
   .together-wrapper {
-    height: 360px;
+    height: 300px;
   }
 
   .center-img {
     width: 140px;
     height: 160px;
-    transform: translate(-50%, -40%);
+    transform: translate(-50%, -45%);
   }
 
   .side-img {
     width: 80px;
     height: 100px;
+  }
+
+  .together-title {
+    margin-top: -60px; /* BIG FIX: text moves UP */
   }
 
   .together-title h1 {
@@ -240,5 +244,6 @@ body {
 
   .cta-text {
     font-size: 14px;
+    margin-top: -20px;
   }
 }

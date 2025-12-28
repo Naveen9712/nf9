@@ -28,29 +28,14 @@ export default function Together() {
   useEffect(() => {
     const state = anim.current;
 
-    /* ---------------- VISIBILITY ---------------- */
+    /* ---------- VISIBILITY ---------- */
     const io = new IntersectionObserver(
-      ([entry]) => {
-        state.visible = entry.isIntersecting;
-      },
+      ([entry]) => (state.visible = entry.isIntersecting),
       { threshold: 0.35 }
     );
+    sectionRef.current && io.observe(sectionRef.current);
 
-    if (sectionRef.current) io.observe(sectionRef.current);
-
-    /* ---------------- RAF CONTROL ---------------- */
-    const startRAF = () => {
-      if (!state.raf) state.raf = requestAnimationFrame(tick);
-    };
-
-    const stopRAF = () => {
-      if (state.raf) {
-        cancelAnimationFrame(state.raf);
-        state.raf = null;
-      }
-    };
-
-    /* ---------------- INPUT ---------------- */
+    /* ---------- INPUT ---------- */
     const onWheel = (e) => {
       if (!state.visible) return;
       state.target = e.deltaY > 0 ? 1 : 0;
@@ -61,7 +46,6 @@ export default function Together() {
     const onTouchStart = (e) => (lastY = e.touches[0].clientY);
     const onTouchMove = (e) => {
       if (!state.visible || lastY === null) return;
-
       const diff = lastY - e.touches[0].clientY;
       if (Math.abs(diff) > 14) {
         state.target = diff > 0 ? 1 : 0;
@@ -76,7 +60,16 @@ export default function Together() {
     window.addEventListener("touchmove", onTouchMove, { passive: true });
     window.addEventListener("touchend", onTouchEnd, { passive: true });
 
-    /* ---------------- ANIMATION ---------------- */
+    /* ---------- RAF ---------- */
+    const startRAF = () => {
+      if (!state.raf) state.raf = requestAnimationFrame(tick);
+    };
+    const stopRAF = () => {
+      cancelAnimationFrame(state.raf);
+      state.raf = null;
+    };
+
+    /* ---------- ANIMATION ---------- */
     const tick = () => {
       state.current = lerp(state.current, state.target, 0.12);
       const t = Math.max(0, Math.min(1, state.current));
@@ -86,30 +79,22 @@ export default function Together() {
       let leftY = CONFIG.LEFT_OUT_Y;
       let rightY = CONFIG.RIGHT_OUT_Y;
       let centerScale = CONFIG.CENTER_SCALE;
+      let baseY = -26;
 
-      // base vertical offsets
-      let leftBaseY = -26;
-      let rightBaseY = -26;
-
-      /* -------- TABLET -------- */
       if (vw <= 768) {
         outX = 260;
         leftY = -40;
         rightY = 28;
         centerScale = 1.04;
-        leftBaseY = -22;
-        rightBaseY = -22;
+        baseY = -22;
       }
 
-      /* -------- MOBILE (≤468px) -------- */
       if (vw <= 468) {
-        outX = 120;
-        leftY = -44;
-        rightY = 30;
+        outX = 140;
+        leftY = -30;
+        rightY = -10;
         centerScale = 1.02;
-
-        leftBaseY = -6;   // left stays lower
-        rightBaseY = -48; // ✅ RIGHT IMAGE MOVES UP
+        baseY = -10;
       }
 
       const leftX = lerp(0, -outX, t);
@@ -117,7 +102,7 @@ export default function Together() {
 
       if (leftRef.current) {
         leftRef.current.style.transform = `
-          translate(-50%, ${leftBaseY}%)
+          translate(-50%, ${baseY}%)
           translate(${leftX}px, ${lerp(0, leftY, t)}px)
           rotate(${lerp(0, CONFIG.LEFT_ROT, t)}deg)
         `;
@@ -126,7 +111,7 @@ export default function Together() {
 
       if (rightRef.current) {
         rightRef.current.style.transform = `
-          translate(-50%, ${rightBaseY}%)
+          translate(-50%, ${baseY}%)
           translate(${rightX}px, ${lerp(0, rightY, t)}px)
           rotate(${lerp(0, CONFIG.RIGHT_ROT, t)}deg)
         `;
@@ -162,13 +147,13 @@ export default function Together() {
       <div className="together-wrapper">
         <img
           ref={leftRef}
-          className="side-img left"
+          className="side-img"
           src="https://res.cloudinary.com/dzwm5v9gy/image/upload/v1765214808/lpcjuyknXEzXalpC07Z4IhsSwXU_uu3xzl.avif"
           alt=""
         />
         <img
           ref={rightRef}
-          className="side-img right"
+          className="side-img"
           src="https://res.cloudinary.com/dzwm5v9gy/image/upload/v1765214808/3GZ80fDYAmP4JFvmOKKzh2e7fVo_gcgous.avif"
           alt=""
         />
@@ -192,7 +177,18 @@ export default function Together() {
             <span className="word-rest"> STARTED TODAY</span>
             <span className="underline-full" />
           </span>
-          <span className="cta-arrow">↗</span>
+
+          <span className="cta-arrow" aria-hidden>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M5 12h14M12 5l7 7-7 7"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
         </a>
       </div>
     </section>
