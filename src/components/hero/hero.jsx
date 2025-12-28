@@ -26,11 +26,8 @@ const Hero = () => {
         <div className="inner">
           <div className="message">
             <div className="heroText">
-              <p>
-                LET’S INSPIRE YOUR
-                <br />
-                GUESTS TOGETHER
-              </p>
+              <h1> NF9</h1>
+              <p>IDEAS. ENGINEERED.</p>
             </div>
           </div>
         </div>

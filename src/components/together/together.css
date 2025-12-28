@@ -186,6 +186,13 @@ body {
     padding-top: 40px;
   }
 
+
+  .center-img,
+  .side-img {
+    box-shadow: none; 
+  }
+  
+
   .center-img {
     width: 260px;
     height: 320px;
@@ -215,14 +222,14 @@ body {
   }
 
   .center-img {
-    width: 220px;
-    height: 260px;
+    width: 140px;
+    height: 160px;
     transform: translate(-50%, -40%);
   }
 
   .side-img {
-    width: 120px;
-    height: 150px;
+    width: 80px;
+    height: 100px;
   }
 
   .together-title h1 {
@@ -233,22 +240,5 @@ body {
 
   .cta-text {
     font-size: 14px;
-  }
-}
-
-/* <= 360px */
-@media (max-width: 360px) {
-  .center-img {
-    width: 200px;
-    height: 240px;
-  }
-
-  .side-img {
-    width: 110px;
-    height: 140px;
-  }
-
-  .together-title h1 {
-    font-size: 2.6rem;
   }
 }
