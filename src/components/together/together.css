@@ -241,9 +241,12 @@ body {
     letter-spacing: -2px;
     line-height: 1;
   }
+  .cta-framer {
+    margin-top: -20px;
+
+  }
 
   .cta-text {
     font-size: 14px;
-    margin-top: -20px;
   }
 }

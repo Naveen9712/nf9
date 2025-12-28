@@ -551,7 +551,7 @@
     .menu-container {
       width: 100%;
       flex: none;
-      justify-items: center;
+      margin-left: -50px;
     }
 
     .menu:not(.active)::before,
