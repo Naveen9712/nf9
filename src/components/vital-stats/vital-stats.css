@@ -88,3 +88,27 @@
     font-size: 12px;
   }
 }
+
+
+@media (max-width: 468px) {
+  .stat-top-left {
+    top: 15%;
+    left: 15%;
+  }
+  
+  .stat-top-right {
+    top: 15%;
+    right: 15%;
+  }
+  
+  .stat-bottom-left {
+    bottom: 15%;
+    left: 15%;
+  }
+  
+  .stat-bottom-right {
+    bottom: 15%;
+    right: 15%;
+  }
+
+}
