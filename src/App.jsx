@@ -4,7 +4,7 @@ import Preloader from './components/preloader'
 import Header from './components/header/header'
 import Hero from './components/hero/hero'
 import About from './components/about/about'
-import IndustryFootprint from './components/industry-footprint/industry-footprint'
+import Services from './components/services/services'
 import VitalStats from './components/vital-stats/vital-stats'
 import FAQ from './components/faq/faq'
 import Footer from './components/footer/footer'
@@ -30,7 +30,7 @@ function App() {
         <main>
           <Hero />
           <About />
-          <IndustryFootprint />
+          <Services />
           <VitalStats />
           <Together/>
           <FAQ />
