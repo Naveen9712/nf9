@@ -64,14 +64,14 @@
   z-index: 2;
   max-width: 250px;
   
-  /* Initial hidden state with smooth transition */
+  /* Initial hidden state - envelope style */
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(100%);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-/* Visible state when scrolled into view */
-.stat-item.visible {
+/* Visible state - letter slides out of envelope */
+.stat-item.stat-visible {
   opacity: 1;
   transform: translateY(0);
 }
