@@ -4,11 +4,13 @@ import Preloader from './components/preloader'
 import Header from './components/header/header'
 import Hero from './components/hero/hero'
 import About from './components/about/about'
-import IndustryFootprint from './components/industry-footprint/industry-footprint'
+import Services from './components/services/services'
 import VitalStats from './components/vital-stats/vital-stats'
 import FAQ from './components/faq/faq'
-import Belief from './components/belief/belief'
 import Footer from './components/footer/footer'
+import Together from './components/together/together';
+
+
 
 function App() {
   const [preloaderComplete, setPreloaderComplete] = useState(false)
@@ -28,9 +30,9 @@ function App() {
         <main>
           <Hero />
           <About />
-          <IndustryFootprint />
+          <Services />
           <VitalStats />
-          <Belief />
+          <Together/>
           <FAQ />
         </main>
         <Footer />

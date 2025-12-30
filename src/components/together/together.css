@@ -1,0 +1,253 @@
+/* ================= ROOT ================= */
+:root {
+  --col1: #000000;
+  --col2: #ffffff;
+  --muted: rgba(251, 249, 249, 0.264);
+  --accent: #ff6a00;
+  --font-heading: "Satoshi", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+/* ================= BASE ================= */
+body {
+  background: var(--col1);
+  color: var(--col2);
+  font-family: var(--font-body);
+}
+
+/* ================= TOGETHER SECTION ================= */
+.together-section {
+  background: var(--col1);
+  color: var(--col2);
+  padding: 120px 18px 160px; /* reduced vertical padding */
+  position: relative;
+  overflow: hidden;
+}
+
+/* ================= IMAGE WRAPPER ================= */
+.together-wrapper {
+  width: 100%;
+  max-width: 1300px;
+  height: 520px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* common image base */
+.together-wrapper img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -24%); /* moved slightly UP */
+  border-radius: 18px;
+  object-fit: cover;
+  display: block;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+/* ================= IMAGES ================= */
+.center-img {
+  width: 380px;
+  height: 450px;
+  z-index: 30;
+  border-radius: 20px;
+}
+
+.side-img {
+  width: 200px;
+  height: 250px;
+  z-index: 20;
+  opacity: 0;
+}
+
+/* ================= TITLE ================= */
+.together-title {
+  max-width: 1200px;
+  margin: 0 auto 0; /* pull text UP */
+  text-align: center;
+  line-height: 0.9;
+}
+
+.together-title h1 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 9rem;
+  font-weight: 900;
+  letter-spacing: -6px;
+}
+
+.together-title .dot {
+  color: var(--accent);
+}
+
+/* ================= CTA ================= */
+.cta-framer {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--col2);
+  padding: 16px 0;
+}
+
+/* CTA text */
+.cta-text {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* GET underline */
+.word-get {
+  position: relative;
+  display: inline-block;
+  padding-right: 6px;
+}
+
+.word-get::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 2px;
+  background: var(--col2);
+  transition: opacity 260ms ease;
+}
+
+/* full underline */
+.underline-full {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 2px;
+  background: var(--col2);
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 360ms cubic-bezier(.22,.9,.32,1);
+}
+
+/* arrow */
+.cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -10px;
+  color: var(--accent);
+}
+
+.cta-arrow svg {
+  transform: rotate(-45deg);
+  transition: transform 360ms cubic-bezier(.22,.9,.32,1);
+}
+
+/* hover */
+.cta-framer:hover .underline-full {
+  transform: scaleX(1);
+}
+
+.cta-framer:hover .word-get::after {
+  opacity: 0;
+}
+
+.cta-framer:hover .cta-arrow svg {
+  transform: translateY(4px) rotate(0deg);
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* <= 1024px */
+@media (max-width: 1024px) {
+  .center-img {
+    width: 340px;
+    height: 400px;
+  }
+
+  .side-img {
+    width: 180px;
+    height: 220px;
+  }
+
+  .together-wrapper {
+    height: 480px;
+  }
+
+  .together-title h1 {
+    font-size: 7.5rem;
+    letter-spacing: -4px;
+  }
+}
+
+/* <= 768px */
+@media (max-width: 768px) {
+  .together-wrapper {
+    height: 420px;
+  }
+
+  .center-img {
+    width: 260px;
+    height: 320px;
+    transform: translate(-50%, -34%);
+  }
+
+  .side-img {
+    width: 140px;
+    height: 180px;
+    opacity: 1;
+  }
+
+  .together-title {
+    margin-top: -40px;
+  }
+
+  .together-title h1 {
+    font-size: 4.8rem;
+    letter-spacing: -3px;
+  }
+}
+
+/* <= 468px (mobile) */
+@media (max-width: 468px) {
+  .together-section {
+    padding: 70px 12px 100px;
+  }
+
+  .together-wrapper {
+    height: 300px;
+  }
+
+  .center-img {
+    width: 140px;
+    height: 160px;
+    transform: translate(-50%, -45%);
+  }
+
+  .side-img {
+    width: 80px;
+    height: 100px;
+  }
+
+  .together-title {
+    margin-top: -20px; /* BIG FIX: text moves UP */
+  }
+
+  .together-title h1 {
+    font-size: 3.2rem;
+    letter-spacing: -2px;
+    line-height: 1;
+  }
+  .cta-framer {
+    margin-top: -20px;
+
+  }
+
+  .cta-text {
+    font-size: 14px;
+  }
+}

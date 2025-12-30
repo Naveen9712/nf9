@@ -1,17 +1,84 @@
 @import "tailwindcss";
 
+/* ================= GOOGLE FONT (INTER ONLY) ================= */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+/* ================= SATOSHI (LOCAL) ================= */
+@font-face {
+  font-family: "Satoshi";
+  src: url("./assets/fonts/Satoshi-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("./assets/fonts/Satoshi-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("./assets/fonts/Satoshi-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("./assets/fonts/Satoshi-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ================= ROOT TOKENS ================= */
+:root {
+  --col1: #000;
+  --col2: #fff;
+  --muted: rgba(255, 255, 255, 0.6);
+  --accent: #ff6a00;
+
+  --font-heading: "Satoshi", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+/* ================= BASE ================= */
 body {
   margin: 0;
-  font-family: 'Satoshi', sans-serif;
+  background: var(--col1);
+  color: var(--col2);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Headings = SATOSHI */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* ================= BASE ================= */
+body {
+  margin: 0;
+  background: var(--col1);
+  color: var(--text);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ================= PRELOADER ================= */
 .preloader-text {
   font-size: 300px;
-  font-weight: bold;
-  font-family: "Arial Black", Arial, sans-serif!important;
-  font-family: "Arial Black", Arial, sans-serif;
+  font-weight: 900;
+  font-family: var(--font-body);
+  line-height: 1;
 }
 
 @media (max-width: 768px) {
@@ -25,4 +92,3 @@ body {
     font-size: 140px;
   }
 }
-

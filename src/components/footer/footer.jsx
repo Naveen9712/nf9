@@ -1,92 +1,69 @@
-import React from 'react';
-import './footer.css';
+import "./footer.css";
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="footer-section">
-      <div className="footer-container">
-        <div className="footer-content">
-          {/* CONTACT Column */}
-          <div className="footer-column">
-            <h3 className="footer-column-title">CONTACT</h3>
-            <div className="footer-column-content">
-              <a href="mailto:contact@likelode.com" className="footer-link">
-                contact@likelode.com
+    <footer className="nf9-footer">
+      <div className="nf9-container">
+
+        {/* ================= TOP ================= */}
+        <div className="nf9-top">
+
+          <div className="nf9-contact">
+            <span className="nf9-plus">+</span>
+            <p className="nf9-phone">+91 xxxx xxx xxx</p>
+            <a href="mailto:support@nf9.com" className="nf9-email">
+              <span className="nf9-plus-circle">+</span>
+              <span className="nf9-email-text">support@nf9.com</span>
+            </a>
+          </div>
+
+          <div className="nf9-nav">
+            <span className="nf9-plus">+</span>
+            <p className="nf9-label">Navigation</p>
+            <div className="nf9-social-row">
+            <a href="#">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Our Work</a>
+            <a href="#">About NF9</a>
+            <a href="#">Careers</a>
+            <a href="#">Contact us</a>
+            </div>
+          </div>
+
+          <div className="nf9-social">
+            <span className="nf9-plus">+</span>
+            <p className="nf9-label">Social</p>
+            <div className="nf9-social-row">
+              <a href="#" className="nf9-social-link">
+                Twitter
               </a>
-              <a href="tel:+493061658431" className="footer-link">
-                +493061658431
+              <a href="#" className="nf9-social-link">
+                Instagram 
+              </a>
+              <a href="#" className="nf9-social-link">
+                LinkedIn 
               </a>
             </div>
           </div>
 
-          {/* OFFICE Column */}
-          <div className="footer-column">
-            <h3 className="footer-column-title">OFFICE</h3>
-            <div className="footer-column-content">
-              <div className="office-location">
-                <div className="office-city">BERLIN</div>
-                <div className="office-address">Brunnenstr.39</div>
-                <div className="office-address">10115 Berlin</div>
-              </div>
-              <div className="office-location">
-                <div className="office-city">MUNICH</div>
-                <div className="office-address">Müllerstr. 44</div>
-                <div className="office-address">80469 Munich</div>
-              </div>
-              <div className="office-location">
-                <div className="office-city">SYDNEY</div>
-                <div className="office-address">39 Merton Street</div>
-                <div className="office-address">Rozelle 2039</div>
-              </div>
-            </div>
-          </div>
+        </div>
 
-          {/* PARTNERS Column */}
-          <div className="footer-column">
-            <h3 className="footer-column-title">PARTNERS</h3>
-            <div className="footer-column-content">
-              <div className="partner-item">
-                <p className="partner-text">Official Canva partner for Germany</p>
-                <div className="partner-logo canva-logo">
-                  <span className="canva-text">Canva</span>
-                </div>
-              </div>
-              <div className="partner-item">
-                <p className="partner-text featured">FEATURED ON</p>
-                <div className="partner-logo dan-logo">
-                  <div className="dan-icon">
-                    <span className="dan-icon-text">DAN</span>
-                  </div>
-                  <span className="dan-text">DIGITAL AGENCY NETWORK</span>
-                </div>
-                <div className="partner-dot"></div>
-              </div>
-            </div>
-          </div>
+        {/* ================= LOGO ================= */}
+        <div className="nf9-logo">
+          <h1>NEXT FRONTIER 9</h1>
+        </div>
 
-          {/* LEGAL Column */}
-          <div className="footer-column">
-            <h3 className="footer-column-title">LEGAL</h3>
-            <div className="footer-column-content">
-              <p className="footer-text">2025 ©</p>
-              <a href="#" className="footer-link">PRIVACY POLICY</a>
-              <a href="#" className="footer-link">IMPRINT</a>
-              <p className="footer-text">LODE GmbH | Jules Webster, Malte Pott</p>
-              <p className="footer-text">Amtsgericht Berlin Charlottenburg</p>
-              <p className="footer-text">HRB Nr. 149793</p>
-              <p className="footer-text">EU-Vat: DE289357915</p>
-              <p className="footer-text">---</p>
+        {/* ================= BOTTOM ================= */}
+        <div className="nf9-bottom">
+          <div className="nf9-bottom-left">
+            © 2025 NF9 Studio. All rights reserved.
             </div>
+          <div className="nf9-bottom-right">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
           </div>
         </div>
       </div>
-      
-      {/* Large NF9 Text at Bottom */}
-      <div className="footer-brand">
-        <h1 className="footer-brand-text">NF9</h1>
-      </div>
     </footer>
   );
-};
-
-export default Footer;
+}

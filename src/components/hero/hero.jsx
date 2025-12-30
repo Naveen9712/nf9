@@ -1,25 +1,28 @@
-import React from 'react';
-import './hero.css';
+import React from "react";
+import "./hero.css";
 
 const Hero = () => {
   return (
-    <section className="hero-section" id="home">
-      <div className="hero-container">
-        <div className="hero-content">
-          <h1 className="hero-title">
-            Welcome to NF9
-          </h1>
-          <p className="hero-subtitle">
-            Transforming ideas into digital excellence
-          </p>
-          <div className="hero-buttons">
-            <button className="hero-btn hero-btn-primary">
-              Get Started
-            </button>
-            <button className="hero-btn hero-btn-secondary">
-              Learn More
-            </button>
-          </div>
+    <section className="homeWrap">
+      <div className="hero">
+        {/* Video Background */}
+        <video
+          className="heroVideo"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        >
+          <source
+            src="https://res.cloudinary.com/dzwm5v9gy/video/upload/v1767013689/NF9_Hero_z7mh1v.mov"
+            type="video/mp4"
+          />
+        </video>
+
+        {/* Overlay Text */}
+        <div className="heroContent">
+          <p className="heroSubtitle">IDEAS. ENGINEERED.</p>
         </div>
       </div>
     </section>
@@ -27,4 +30,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

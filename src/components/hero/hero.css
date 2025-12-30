@@ -1,137 +1,74 @@
-/* ============================================
-   HERO SECTION STYLES
-   ============================================ */
+/* ================= ROOT ================= */
 
-.hero-section {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 120px 20px 80px;
-    position: relative;
-    overflow: hidden;
-    background: #fff;
+:root {
+  --col1: #000000;
+  --col2: #ffffff;
+  --font-heading: "Satoshi", sans-serif;
+  --font-body: "Inter", sans-serif;
 }
 
-.hero-container {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
+/* ================= WRAPPER ================= */
+
+.homeWrap {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.hero-content {
-    text-align: center;
-    animation: fadeInUp 1s ease-out;
+/* ================= HERO ================= */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #000;
 }
 
-.hero-title {
-    font-family: 'Satoshi', sans-serif;
-    font-size: clamp(48px, 8vw, 120px);
-    font-weight: 700;
-    line-height: 1.1;
-    color: #000;
-    margin-bottom: 30px;
-    letter-spacing: -2px;
+/* ================= VIDEO ================= */
+
+.heroVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
 }
 
+/* ================= CONTENT ================= */
 
-.hero-subtitle {
-    font-family: 'Satoshi', sans-serif;
-    font-size: clamp(18px, 2.5vw, 32px);
-    font-weight: 400;
-    color: #666;
-    margin-bottom: 50px;
-    line-height: 1.6;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+.heroContent {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  pointer-events: none;
 }
 
-.hero-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
+/* ================= AUTO COLOR TEXT ================= */
+
+.heroSubtitle {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: clamp(2.2rem, 6vw, 5rem);
+
+  /* 🔥 MAGIC LINE */
+  color: white;
+  mix-blend-mode: difference;
 }
 
-.hero-btn {
-    font-family: 'Satoshi', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 16px 40px;
-    border: 2px solid #000;
-    background: transparent;
-    color: #000;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    position: relative;
-    overflow: hidden;
-}
-
-
-.hero-btn-primary {
-    background: #000;
-    color: #fff;
-}
-
-
-
-/* ============================================
-   RESPONSIVE: TABLET (768px and below)
-   ============================================ */
+/* ================= MOBILE ================= */
 
 @media (max-width: 768px) {
-    .hero-section {
-        padding: 100px 20px 60px;
-        min-height: 90vh;
-    }
-
-    .hero-title {
-        margin-bottom: 20px;
-    }
-
-    .hero-subtitle {
-        margin-bottom: 40px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hero-btn {
-        width: 100%;
-        max-width: 300px;
-    }
+  .heroSubtitle {
+    font-size: 2rem;
+    padding: 0 20px;
+    letter-spacing: 0.14em;
+  }
 }
-
-/* ============================================
-   RESPONSIVE: MOBILE (480px and below)
-   ============================================ */
-
-@media (max-width: 480px) {
-    .hero-section {
-        padding: 80px 15px 40px;
-        min-height: 85vh;
-    }
-
-    .hero-title {
-        margin-bottom: 15px;
-    }
-
-    .hero-subtitle {
-        margin-bottom: 30px;
-        font-size: 16px;
-    }
-
-    .hero-btn {
-        padding: 14px 30px;
-        font-size: 14px;
-    }
-}
-
