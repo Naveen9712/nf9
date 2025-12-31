@@ -13,31 +13,31 @@ const services = [
   {
     title: "Website Design & Development",
     image:
-      "https://res.cloudinary.com/dzwm5v9gy/image/upload/v1761918540/main-sample.png",
+      "https://framerusercontent.com/images/TlvPA50zhT5k8DxWWkYnT1FShQ.png?width=1065&height=501",
     gif: "https://media.giphy.com/media/l0HlNaQ6gWfllcjDO/giphy.gif",
   },
   {
     title: "eCommerce & SaaS Development",
     image:
-      "https://res.cloudinary.com/dzwm5v9gy/image/upload/v1761918539/cld-sample-4.jpg",
+      "https://framerusercontent.com/images/36wvwfIbrnOBnFSzVzIZ4BEv9ms.jpeg",
     gif: "https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif",
   },
   {
     title: "Application Development",
     image:
-      "https://res.cloudinary.com/dzwm5v9gy/image/upload/v1761918540/main-sample.png",
+      "https://framerusercontent.com/images/0QA97ljjOh94L1MVp3DrlG8Ymf4.jpg?scale-down-to=2048",
     gif: "https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif",
   },
   {
     title: "Cloud, DevOps & Server Management",
     image:
-      "https://res.cloudinary.com/dzwm5v9gy/image/upload/v1761918539/cld-sample-4.jpg",
+      "https://framerusercontent.com/images/sVc2HPffpGxiK2VXYhRbRHcsQ.png?scale-down-to=1024&width=1356&height=1002",
     gif: "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
   },
   {
     title: "Branding, SEO & Digital Marketing",
     image:
-      "https://res.cloudinary.com/dzwm5v9gy/image/upload/v1761918540/main-sample.png",
+      "https://framerusercontent.com/images/TyFSPIg890Pg77AH4aAHbfet6k0.jpeg",
     gif: "https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif",
   },
 ];
@@ -53,21 +53,30 @@ export default function Services() {
         const cards = gsap.utils.toArray(".service-card");
 
         cards.forEach((card, index) => {
-          const direction = index % 2 === 0 ? 200 : -200; // Even: right, Odd: left (increased distance)
+          const direction = index % 2 === 0 ? 300 : -300; // Even: right, Odd: left
+          const rotation = index % 2 === 0 ? -10 : 10; // Even: rotate left, Odd: rotate right
 
           gsap.fromTo(
             card,
-            { x: direction, opacity: 0, force3D: true },
+            {
+              x: direction,
+              scale: 0.8,
+              rotation: rotation,
+              opacity: 0,
+              force3D: true
+            },
             {
               x: 0,
+              scale: 1,
+              rotation: 0,
               opacity: 1,
-              duration: 1.5, // increased duration
+              duration: 2, // longer duration for smooth effect
               ease: "power2.out",
               scrollTrigger: {
                 trigger: card,
-                start: "top 90%", // adjusted start
-                end: "bottom 10%", // adjusted end
-                scrub: 0.5, // smoother scrub
+                start: "top 85%",
+                end: "bottom 15%",
+                scrub: 0.4, // smoother scrub
                 toggleActions: "play none none reverse",
               },
             }
