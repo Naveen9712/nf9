@@ -3,220 +3,213 @@
 ============================== */
 
 :root {
-    --col1: #000000;
-    --col2: #ffffff;
-    --muted: rgba(251, 249, 249, 0.264);
-    --font-heading: "Satoshi", sans-serif;
-    --font-body: "Inter", sans-serif;
-  }
-  
-  /* ==============================
-     SERVICES SECTION
-  ============================== */
-  
-  .services {
-    padding: 120px 60px;
-    background: var(--col1);
-    color: var(--col2);
-    font-family: var(--font-body);
-  }
-  
-  /* ==============================
-     HEADER
-  ============================== */
-  
-  .services-header {
-    max-width: 1400px;
-    margin: 0 auto 60px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .services-header h2 {
-    font-family: var(--font-heading);
-    font-size: 100px;
-    font-weight: 400;
-    line-height: 1;
-  }
-  
-  /* ==============================
-     BUTTON
-  ============================== */
-  
-  .services-button {
-    max-width: 1400px;
-    margin: 40px auto 0;
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .services-btn {
-    background: transparent;
-    color: var(--col2);
-    border: 1px solid var(--col2);
-    padding: 14px 28px;
-    border-radius: 999px;
-    font-size: 14px;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .services-btn:hover {
-    color: var(--muted);
-    border-color: var(--muted);
-  }
-  
-  /* ==============================
-     GRID
-  ============================== */
-  
+  --col1: #000000;
+  --col2: #ffffff;
+  --muted: rgba(251, 249, 249, 0.264);
+  --font-heading: "Satoshi", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --accent: #ff6017;
+}
+
+/* ==============================
+   SERVICES SECTION
+============================== */
+
+.services {
+  padding: 140px 60px;
+  background: var(--col1);
+  color: var(--col2);
+  font-family: var(--font-body);
+}
+
+/* ==============================
+   HEADER
+============================== */
+
+.services-header {
+  max-width: 1400px;
+  margin: 0 auto 20px;
+}
+
+.services-header h2 {
+  font-family: var(--font-heading);
+  font-size: 64px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+/* ==============================
+   GRID
+============================== */
+
+.services-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* ==============================
+   CARD
+============================== */
+
+.service-card {
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+}
+
+/* ==============================
+   MEDIA
+============================== */
+
+.service-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #111;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.45s ease, transform 0.6s ease;
+}
+
+.media.static {
+  opacity: 1;
+}
+
+.media.gif {
+  opacity: 0;
+  transform: scale(1.06);
+}
+
+.service-card:hover .media.static {
+  opacity: 0;
+}
+
+.service-card:hover .media.gif {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ==============================
+   TEXT
+============================== */
+
+.service-info {
+  margin-top: 18px;
+}
+
+.service-info h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ==============================
+   CTA WRAP
+============================== */
+
+.services-cta-wrap {
+  max-width: 1400px;
+  margin: 110px auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* ==============================
+   FRAMER STYLE CTA (NO DOT)
+============================== */
+
+.framer-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+
+  text-decoration: none;
+  color: var(--col2);
+
+  font-family: var(--font-heading);
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* TEXT */
+.cta-label {
+  position: relative;
+  z-index: 2;
+}
+
+/* LINE */
+.cta-line {
+  position: absolute;
+  left: 0;
+  bottom: -14px;
+  width: 48px;
+  height: 2px;
+  background: var(--col2);
+  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ARROW */
+.cta-arrow {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  transform: rotate(45deg);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-arrow svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--accent);
+}
+
+/* HOVER */
+.framer-cta:hover .cta-line {
+  width: 100%;
+}
+
+.framer-cta:hover .cta-arrow {
+  transform: translateX(6px) rotate(45deg);
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 1024px) {
   .services-grid {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  /* ==============================
-     CARD
-  ============================== */
-  
-  .service-card {
-    position: relative;
-    cursor: pointer;
-    perspective: 1000px;
+
+  .services-header h2 {
+    font-size: 48px;
   }
-  
-  .service-card:hover {
-    z-index: 20;
+}
+
+@media (max-width: 640px) {
+  .services {
+    padding: 100px 20px;
   }
-  
-  /* ==============================
-     STATIC IMAGE
-  ============================== */
-  
-  .service-image {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    border-radius: 20px;
-    overflow: hidden;
-    background: #111;
+
+  .services-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .static-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: filter 0.3s ease;
+
+  .services-cta-wrap {
+    justify-content: flex-start;
+    margin-top: 80px;
   }
-  
-  .service-card:hover .static-img {
-    filter: brightness(0.8);
-  }
-  
-  /* ==============================
-     CURSOR FOLLOW GIF (3D)
-  ============================== */
-  
-  .hover-gif {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 85%;
-    height: 75%;
-    opacity: 0;
-    pointer-events: none;
-    transform-style: preserve-3d;
-    border-radius: 26px;
-  
-    box-shadow:
-      0 60px 120px rgba(0, 0, 0, 0.6),
-      0 0 60px rgba(255, 140, 50, 0.25);
-  
-    transition:
-      opacity 0.25s ease,
-      transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  
-  .service-card:hover .hover-gif {
-    opacity: 1;
-  }
-  
-  /* ==============================
-     VIEW BADGE
-  ============================== */
-  
-  .view-badge {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.65);
-    padding: 10px 18px;
-    border-radius: 999px;
-    font-size: 14px;
-    letter-spacing: 1px;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-  
-  .service-card:hover .view-badge {
-    opacity: 1;
-  }
-  
-  /* ==============================
-     TEXT
-  ============================== */
-  
-  .service-info {
-    margin-top: 18px;
-  }
-  
-  .service-info h3 {
-    font-size: 18px;
-    font-weight: 600;
-  }
-  
-  /* ==============================
-     RESPONSIVE
-  ============================== */
-  
-  @media (max-width: 1024px) {
-    .services-grid {
-      grid-template-columns: repeat(2, 1fr); /* ✅ FIXED */
-    }
-  
-    .services-header h2 {
-      font-size: 72px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .services {
-      padding: 80px 20px;
-    }
-  
-    .services-header {
-      justify-content: center;
-      text-align: center;
-    }
-  
-    .services-header h2 {
-      font-size: 48px;
-    }
-  
-    .services-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .services-button {
-      justify-content: center;
-    }
-  
-    .hover-gif {
-      display: none;
-    }
-  }
-  
+}
