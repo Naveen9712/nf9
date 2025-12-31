@@ -35,6 +35,20 @@
   }
   
   /* ============================================
+     LOGO
+  ============================================ */
+  
+  .logo {
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .logo img {
+    display: block;
+  }
+  
+  /* ============================================
      CENTER TEXT
   ============================================ */
   
@@ -48,6 +62,12 @@
     letter-spacing: 4px;
     color: currentColor;
     transition: color 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .center-text:hover {
+    color: currentColor;
   }
   
   /* ============================================
@@ -214,7 +234,9 @@
     transition-delay: 0.6s;
   }
   
-  .menu ul li a {
+  .menu ul li a,
+  .menu ul li a:link,
+  .menu ul li a:visited {
     font-size: 50px;
     font-weight: 400;
     line-height: 60px;
@@ -222,14 +244,19 @@
     color: var(--bg);
     text-decoration: none;
     transition: color 0.3s ease;
+    display: block;
   }
   
-  .menu.active ul li a {
+  .menu.active ul li a,
+  .menu.active ul li a:link,
+  .menu.active ul li a:visited {
     color: var(--text);
   }
   
-  .menu ul li a:hover {
+  .menu ul li a:hover,
+  .menu ul li a:active {
     color: var(--muted);
+    text-decoration: none;
   }
   
   /* ============================================

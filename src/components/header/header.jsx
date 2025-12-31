@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './header.css';
 
 const Header = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
   const [bgText, setBgText] = useState('NF9');
   const backgroundTextRef = useRef(null);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuActive(!isMenuActive);
@@ -46,29 +48,29 @@ const Header = () => {
   }, [isMenuActive, bgText]);
 
   const menuItems = [
-    { id: 1, text: 'Start Here', href: '#home' },
-    { id: 2, text: 'Services', href: '#about' },
-    { id: 3, text: 'Our Work', href: '#services' },
-    { id: 4, text: 'About NF9', href: '#portfolio' },
-    { id: 5, text: 'Careers', href: '#careers' },
-    { id: 6, text: 'Contact Us', href: '#contact' }
+    { id: 1, text: 'Start Here', href: '/', isLink: true },
+    { id: 2, text: 'Services', href: '/services', isLink: true },
+    { id: 3, text: 'Our Work', href: '#services', isLink: false },
+    { id: 4, text: 'About NF9', href: '#portfolio', isLink: false },
+    { id: 5, text: 'Careers', href: '/careers', isLink: true },
+    { id: 6, text: 'Contact Us', href: '/contact', isLink: true }
   ];
 
   return (
     <>
       {/* Header */}
       <header className={`fixed main-header left-0 right-0 flex justify-between items-center px-5 md:px-10  z-[1000] ${isMenuActive ? 'header-active' : ''}`}>
-        <div className="logo">
+        <Link to="/" className="logo" onClick={() => setIsMenuActive(false)}>
           <img
             src="https://res.cloudinary.com/dsb1k3ugo/image/upload/v1760451582/nf9-icon_jcmneo.png"
             width="60"
             alt="NF9 Logo"
           />
-        </div>
+        </Link>
 
-        <div className="center-text">
+        <Link to="/" className="center-text" onClick={() => setIsMenuActive(false)}>
           NF9
-        </div>
+        </Link>
 
         <div
           className={`hamburger ${isMenuActive ? 'active' : ''}`}
@@ -94,14 +96,31 @@ const Header = () => {
               <ul>
                 {menuItems.map((item) => (
                   <li key={item.id}>
-                    <a
-                      href={item.href}
-                      onClick={toggleMenu}
-                      onMouseEnter={() => handleMouseEnter(item.text)}
-                      onMouseLeave={handleMouseLeave}
-                    >
-                      {item.text}
-                    </a>
+                    {item.isLink ? (
+                      <Link
+                        to={item.href}
+                        onClick={() => {
+                          toggleMenu();
+                          if (item.href !== location.pathname) {
+                            // Close menu when navigating to a different page
+                            setTimeout(() => setIsMenuActive(false), 300);
+                          }
+                        }}
+                        onMouseEnter={() => handleMouseEnter(item.text)}
+                        onMouseLeave={handleMouseLeave}
+                      >
+                        {item.text}
+                      </Link>
+                    ) : (
+                      <a
+                        href={item.href}
+                        onClick={toggleMenu}
+                        onMouseEnter={() => handleMouseEnter(item.text)}
+                        onMouseLeave={handleMouseLeave}
+                      >
+                        {item.text}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
