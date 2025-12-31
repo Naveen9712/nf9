@@ -202,6 +202,13 @@
   }
 }
 
+@media (max-width: 768px) {
+  .service-card {
+    width: 100%;
+    height: 300px;
+  }
+}
+
 @media (max-width: 640px) {
   .services {
     padding: 100px 20px;
