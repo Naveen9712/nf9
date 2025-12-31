@@ -1,4 +1,7 @@
 import "./services.css";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const services = [
   {
@@ -40,8 +43,44 @@ const services = [
 ];
 
 export default function Services() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    if (window.innerWidth <= 768) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const ctx = gsap.context(() => {
+        const cards = gsap.utils.toArray(".service-card");
+
+        cards.forEach((card, index) => {
+          const direction = index % 2 === 0 ? 200 : -200; // Even: right, Odd: left (increased distance)
+
+          gsap.fromTo(
+            card,
+            { x: direction, opacity: 0, force3D: true },
+            {
+              x: 0,
+              opacity: 1,
+              duration: 1.5, // increased duration
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 90%", // adjusted start
+                end: "bottom 10%", // adjusted end
+                scrub: 0.5, // smoother scrub
+                toggleActions: "play none none reverse",
+              },
+            }
+          );
+        });
+      }, sectionRef);
+
+      return () => ctx.revert();
+    }
+  }, []);
+
   return (
-    <section className="services">
+    <section className="services" ref={sectionRef}>
       {/* Header */}
       <div className="services-header">
         <h2>Services</h2>
