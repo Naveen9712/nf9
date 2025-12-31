@@ -81,3 +81,4 @@ export default function VitalStats() {
     </section>
   );
 }
+

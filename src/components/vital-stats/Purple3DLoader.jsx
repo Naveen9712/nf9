@@ -159,3 +159,4 @@ export default function Purple3DLoader() {
     </Canvas>
   );
 }
+
