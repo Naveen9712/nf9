@@ -112,7 +112,7 @@
   display: inline-flex;
   width: 25px;
   height: 25px;
-  transform: rotate(60deg);
+  transform: rotate(45deg);
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 

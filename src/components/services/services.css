@@ -47,8 +47,11 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+
+  column-gap: 10px;   /* left–right spacing */
+  row-gap: 40px;      /* 👈 bottom space between rows */
 }
+
 
 /* ==============================
    CARD
@@ -69,7 +72,7 @@
 .service-media {
   position: relative;
   aspect-ratio: 16 / 10;
-  border-radius: 14px;
+  border-radius: 10px;
   overflow: hidden;
   background: #111;
 }
