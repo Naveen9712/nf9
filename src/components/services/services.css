@@ -1,134 +1,141 @@
 /* =====================================================
-   ROOT VARIABLES
+   ROOT VARIABLES (NF9 SYSTEM)
 ===================================================== */
 :root {
+  --col1: #000000;
+  --col2: #ffffff;
+  --muted: rgba(0, 0, 0, 0.35);
   --font-heading: "Satoshi", sans-serif;
   --font-body: "Inter", sans-serif;
-
-  --text-active: #000000;
-  --text-inactive: #0f0e0e;
-  --bg: #ffffff;
-
-  --services-padding-y: 220px;
 }
 
 /* =====================================================
-   MAIN SECTION
+   SERVICES SECTION (MAIN CONTAINER)
+   Controls OUTER left / right padding
 ===================================================== */
-.nf9-services {
+.nf9-services-section {
   position: relative;
-  background: var(--bg);
-  padding: var(--services-padding-y) 80px;
+  background: var(--col2);
+  padding: 180px 20px; /* ✅ desktop default */
   overflow: hidden;
   font-family: var(--font-body);
 }
 
-/* =====================================================
-   WHAT WE DO LABEL
-===================================================== */
-.nf9-svc-label {
+/* ---------------- SECTION LABEL ---------------- */
+.nf9-services-label {
   position: absolute;
   top: 120px;
-  right: 80px;
-  font-size: 18px;
-  color: var(--text-active);
-  z-index: 10;
+  right: 20px;
+  font-size: 24px;
+  color: var(--col1);
+  z-index: 5;
 }
 
 /* =====================================================
-   GRID (ALWAYS 2 COLUMNS)
+   GRID LAYOUT
+   30% IMAGE | 70% TEXT
 ===================================================== */
-.nf9-svc-row {
+.nf9-services-grid {
   max-width: 1400px;
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: 420px 1fr;
-  column-gap: 140px;
+  grid-template-columns: 30% 70%;
+  column-gap: clamp(40px, 6vw, 140px); /* ✅ balanced gap */
+  align-items: start;
 }
 
 /* =====================================================
    IMAGE COLUMN
+   Controls image horizontal placement
 ===================================================== */
-.nf9-svc-image-col {
+.nf9-services-image-col {
   position: relative;
+  padding-left: 20px; /* ✅ pulls image slightly right */
 }
 
-.nf9-svc-image-stage {
+.nf9-services-image-stage {
   position: relative;
   height: 100%;
 }
 
-.nf9-svc-image-wrap {
+.nf9-services-image-wrap {
   position: absolute;
   top: 0;
   left: 0;
 
-  width: 280px;
-  height: 360px;
+  width: 260px;
+  height: 320px;
 
+  opacity: 0;
   perspective: 900px;
   will-change: transform;
 }
 
-.nf9-svc-image {
+.nf9-services-image {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 28px;
+  border-radius: 26px;
 
   opacity: 0;
-  transform: scale(0.96);
+  transform: scale(0.95);
 }
 
 /* =====================================================
    TEXT COLUMN
+   Controls list alignment & breathing room
 ===================================================== */
-.nf9-svc-list-col {
+.nf9-services-list {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 10px;
+
   text-align: right;
+  padding-right: 80px; /* ✅ key spacing like reference */
 }
 
-.nf9-svc-item {
+.nf9-services-item {
   font-family: var(--font-heading);
-  font-size: clamp(96px, 10vw, 160px);
-  line-height: 0.75;
-
-  color: var(--text-inactive);
+  font-size: clamp(150px, 10vw, 160px);
+  line-height: 1;
+  color: var(--col1);
+  opacity: 0.35;
   white-space: nowrap;
 }
 
 /* =====================================================
    SCROLL BUFFER
 ===================================================== */
-.nf9-svc-spacer {
-  height: 40vh;
+.nf9-services-spacer {
+  height: 35vh;
 }
 
 /* =====================================================
    1440px ↓ (LAPTOP)
 ===================================================== */
 @media (max-width: 1440px) {
-  :root {
-    --services-padding-y: 200px;
+  .nf9-services-section {
+    padding: 180px 20px;
   }
 
-  .nf9-svc-row {
-    grid-template-columns: 360px 1fr;
-    column-gap: 120px;
+  .nf9-services-image-col {
+    padding-left: 12px;
   }
 
-  .nf9-svc-image-wrap {
-    width: 260px;
-    height: 330px;
+  .nf9-services-list {
+    padding-right: 60px;
   }
 
-  .nf9-svc-item {
-    font-size: clamp(84px, 9vw, 140px);
+  .nf9-services-image-wrap {
+    width: 240px;
+    height: 300px;
+  }
+
+  .nf9-services-item {
+    font-size: clamp(120px, 9vw, 150px);
   }
 }
 
@@ -136,33 +143,29 @@
    1024px ↓ (TABLET LANDSCAPE)
 ===================================================== */
 @media (max-width: 1024px) {
-  :root {
-    --services-padding-y: 160px;
+  .nf9-services-section {
+    padding: 160px 10px; /* ✅ requested */
   }
 
-  .nf9-services {
-    padding: var(--services-padding-y) 48px;
-  }
-
-  .nf9-svc-row {
-    grid-template-columns: 300px 1fr;
+  .nf9-services-grid {
     column-gap: 80px;
   }
 
-  .nf9-svc-image-wrap {
+  .nf9-services-image-col {
+    padding-left: 8px;
+  }
+
+  .nf9-services-list {
+    padding-right: 40px;
+  }
+
+  .nf9-services-image-wrap {
     width: 220px;
     height: 280px;
   }
 
-  .nf9-svc-item {
-    font-size: clamp(64px, 8vw, 110px);
-    line-height: 0.85;
-  }
-
-  .nf9-svc-label {
-    right: 48px;
-    top: 80px;
-    font-size: 16px;
+  .nf9-services-item {
+    font-size: clamp(80px, 8vw, 120px);
   }
 }
 
@@ -170,32 +173,32 @@
    768px ↓ (TABLET PORTRAIT)
 ===================================================== */
 @media (max-width: 768px) {
-  :root {
-    --services-padding-y: 140px;
+  .nf9-services-section {
+    padding: 140px 10px;
   }
 
-  .nf9-services {
-    padding: var(--services-padding-y) 32px;
+  .nf9-services-grid {
+    grid-template-columns: 35% 65%;
+    column-gap: 24px;
   }
 
-  .nf9-svc-row {
-    grid-template-columns: 220px 1fr;
-    column-gap: 48px;
+  .nf9-services-image-col {
+    padding-left: 6px;
   }
 
-  .nf9-svc-image-wrap {
+  .nf9-services-list {
+    gap: 6px;
+    padding-right: 24px;
+  }
+
+  .nf9-services-image-wrap {
     width: 180px;
     height: 230px;
   }
 
-  .nf9-svc-item {
-    font-size: clamp(48px, 7vw, 84px);
+  .nf9-services-item {
+    font-size: 56px;
     line-height: 0.95;
-  }
-
-  .nf9-svc-label {
-    right: 32px;
-    font-size: 14px;
   }
 }
 
@@ -203,32 +206,31 @@
    468px ↓ (MOBILE)
 ===================================================== */
 @media (max-width: 468px) {
-  :root {
-    --services-padding-y: 120px;
+  .nf9-services-section {
+    padding: 120px 10px;
   }
 
-  .nf9-services {
-    padding: var(--services-padding-y) 20px;
+  .nf9-services-grid {
+    grid-template-columns: 40% 60%;
+    column-gap: 16px;
   }
 
-  .nf9-svc-row {
-    grid-template-columns: 140px 1fr;
-    column-gap: 24px;
+  .nf9-services-image-col {
+    padding-left: 4px;
   }
 
-  .nf9-svc-image-wrap {
+  .nf9-services-list {
+    gap: 10px;
+    padding-right: 20px;
+  }
+
+  .nf9-services-image-wrap {
     width: 120px;
     height: 160px;
-    border-radius: 20px;
   }
 
-  .nf9-svc-item {
-    font-size: 36px;
-    line-height: 1.05;
-  }
-
-  .nf9-svc-label {
-    right: 20px;
-    font-size: 12px;
+  .nf9-services-item {
+    font-size: 38px;
+    line-height: 1;
   }
 }
