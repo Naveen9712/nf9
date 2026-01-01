@@ -1,73 +1,74 @@
-/* =========================
+/* =====================================================
    ROOT VARIABLES
-========================= */
+===================================================== */
 :root {
-  --col1: #000000;
-  --col2: #ffffff;
-  --muted: rgba(0, 0, 0, 0.25);
-  --accent: #ff6a00;
   --font-heading: "Satoshi", sans-serif;
   --font-body: "Inter", sans-serif;
+
+  --text-active: #000000;
+  --text-inactive: #0f0e0e;
+  --bg: #ffffff;
+
+  --services-padding-y: 220px;
 }
 
-/* =========================
-   SECTION
-========================= */
+/* =====================================================
+   MAIN SECTION
+===================================================== */
 .nf9-services {
   position: relative;
-  background: #ffffff;
-  padding: 200px 80px;
+  background: var(--bg);
+  padding: var(--services-padding-y) 80px;
+  overflow: hidden;
   font-family: var(--font-body);
 }
 
-/* CENTER THE CONTENT */
-.nf9-services::before {
-  content: "";
-  display: block;
-}
-
-/* =========================
-   LABEL
-========================= */
+/* =====================================================
+   WHAT WE DO LABEL
+===================================================== */
 .nf9-svc-label {
   position: absolute;
-  top: 100px;
+  top: 120px;
   right: 80px;
   font-size: 18px;
+  color: var(--text-active);
+  z-index: 10;
 }
 
-/* =========================
-   GRID (FIXED)
-========================= */
+/* =====================================================
+   GRID (ALWAYS 2 COLUMNS)
+===================================================== */
 .nf9-svc-row {
-  max-width: 1400px;      /* 🔑 CONSTRAIN WIDTH */
-  margin: 0 auto;         /* 🔑 CENTER */
+  max-width: 1400px;
+  margin: 0 auto;
+
   display: grid;
-  grid-template-columns: 360px 1fr;
-  align-items: flex-start;
-  column-gap: 120px;
+  grid-template-columns: 420px 1fr;
+  column-gap: 140px;
 }
 
-/* =========================
+/* =====================================================
    IMAGE COLUMN
-========================= */
+===================================================== */
 .nf9-svc-image-col {
   position: relative;
 }
 
-
-/* STICKY HOLDER */
-.nf9-svc-image-sticky {
-  position: sticky;
-  top: 50%;
-  transform: translateY(-50%);
+.nf9-svc-image-stage {
+  position: relative;
+  height: 100%;
 }
 
-/* ANIMATED IMAGE */
-.nf9-svc-image-inner {
-  width: 260px;
-  height: 320px;
-  position: relative;
+.nf9-svc-image-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 280px;
+  height: 360px;
+
+  perspective: 900px;
+  will-change: transform;
 }
 
 .nf9-svc-image {
@@ -77,119 +78,137 @@
   height: 100%;
   object-fit: cover;
   border-radius: 28px;
+
   opacity: 0;
+  transform: scale(0.96);
 }
 
-/* =========================
-   TEXT COLUMN (FIXED)
-========================= */
+/* =====================================================
+   TEXT COLUMN
+===================================================== */
 .nf9-svc-list-col {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-
+  gap: 28px;
   text-align: right;
-  padding-right: 40px;     /* 🔑 KEEP TEXT IN VIEW */
 }
 
-/* TEXT */
 .nf9-svc-item {
   font-family: var(--font-heading);
-  font-size: clamp(96px, 10vw, 160px); /* 🔑 SLIGHTLY REDUCED */
+  font-size: clamp(96px, 10vw, 160px);
   line-height: 0.75;
-  color: #111;
-  opacity: 0.2;
-  white-space: nowrap;     /* 🔑 PREVENT WRAP JUMPS */
+
+  color: var(--text-inactive);
+  white-space: nowrap;
 }
 
-/* SCROLL BUFFER */
+/* =====================================================
+   SCROLL BUFFER
+===================================================== */
 .nf9-svc-spacer {
-  height: 60vh;
+  height: 40vh;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* =====================================================
+   1440px ↓ (LAPTOP)
+===================================================== */
 @media (max-width: 1440px) {
+  :root {
+    --services-padding-y: 200px;
+  }
+
   .nf9-svc-row {
-    grid-template-columns: 320px 1fr;
-    column-gap: 100px;
+    grid-template-columns: 360px 1fr;
+    column-gap: 120px;
+  }
+
+  .nf9-svc-image-wrap {
+    width: 260px;
+    height: 330px;
   }
 
   .nf9-svc-item {
-    font-size: clamp(90px, 9vw, 130px);
-  }
-
-  .nf9-svc-image-inner {
-    width: 240px;
-    height: 300px;
+    font-size: clamp(84px, 9vw, 140px);
   }
 }
 
-
-
+/* =====================================================
+   1024px ↓ (TABLET LANDSCAPE)
+===================================================== */
 @media (max-width: 1024px) {
+  :root {
+    --services-padding-y: 160px;
+  }
+
   .nf9-services {
-    padding: 140px 40px;
-  }
-  .nf9-svc-row {
-    grid-template-columns: 320px 1fr;
-    column-gap: 100px;
-  }
-
-  .nf9-svc-item {
-    font-size: clamp(90px, 9vw, 130px);
-  }
-
-  .nf9-svc-image-inner {
-    width: 240px;
-    height: 300px;
-  }
-
-  .nf9-svc-list-col {
-    text-align: left;
-    padding-right: 0;
-  }
-
-  .nf9-svc-image-sticky {
-    position: relative;
-    transform: none;
-    display: flex;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .nf9-services {
-    padding: 120px 24px;
+    padding: var(--services-padding-y) 48px;
   }
 
   .nf9-svc-row {
-    grid-template-columns: 200px 1fr;
-    column-gap: 40px;
+    grid-template-columns: 300px 1fr;
+    column-gap: 80px;
+  }
+
+  .nf9-svc-image-wrap {
+    width: 220px;
+    height: 280px;
   }
 
   .nf9-svc-item {
-    font-size: clamp(44px, 7vw, 64px);
-    line-height: 1.05;
-  }
-
-  .nf9-svc-image-inner {
-    width: 180px;
-    height: 240px;
+    font-size: clamp(64px, 8vw, 110px);
+    line-height: 0.85;
   }
 
   .nf9-svc-label {
-    top: 40px;
-    right: 24px;
+    right: 48px;
+    top: 80px;
+    font-size: 16px;
+  }
+}
+
+/* =====================================================
+   768px ↓ (TABLET PORTRAIT)
+===================================================== */
+@media (max-width: 768px) {
+  :root {
+    --services-padding-y: 140px;
+  }
+
+  .nf9-services {
+    padding: var(--services-padding-y) 32px;
+  }
+
+  .nf9-svc-row {
+    grid-template-columns: 220px 1fr;
+    column-gap: 48px;
+  }
+
+  .nf9-svc-image-wrap {
+    width: 180px;
+    height: 230px;
+  }
+
+  .nf9-svc-item {
+    font-size: clamp(48px, 7vw, 84px);
+    line-height: 0.95;
+  }
+
+  .nf9-svc-label {
+    right: 32px;
     font-size: 14px;
   }
 }
 
-
+/* =====================================================
+   468px ↓ (MOBILE)
+===================================================== */
 @media (max-width: 468px) {
+  :root {
+    --services-padding-y: 120px;
+  }
+
   .nf9-services {
-    padding: 100px 16px;
+    padding: var(--services-padding-y) 20px;
   }
 
   .nf9-svc-row {
@@ -197,17 +216,19 @@
     column-gap: 24px;
   }
 
-  .nf9-svc-item {
-    font-size: 36px;
-    line-height: 1.1;
-  }
-
-  .nf9-svc-image-inner {
+  .nf9-svc-image-wrap {
     width: 120px;
     height: 160px;
+    border-radius: 20px;
+  }
+
+  .nf9-svc-item {
+    font-size: 36px;
+    line-height: 1.05;
   }
 
   .nf9-svc-label {
+    right: 20px;
     font-size: 12px;
   }
 }
