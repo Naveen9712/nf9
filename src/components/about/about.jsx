@@ -133,7 +133,7 @@ const About = () => {
       {/* CONTENT */}
       <div className="about-content">
         <div ref={labelRef} className="about-label">
-          About NF9 <span>↴</span>
+          Our NF9 <span>↴</span>
         </div>
 
         <h2 ref={titleRef} className="about-title">
