@@ -41,7 +41,7 @@ function FlatRing({
   return (
     <mesh ref={ref} rotation={rotation} geometry={geometry}>
       <meshPhysicalMaterial
-        color="#d9d9d9"
+        color="#d4af37"
         metalness={0.65}
         roughness={0.25}
         clearcoat={1}
@@ -60,7 +60,7 @@ function Core() {
       {/* Reduced ball size */}
       <sphereGeometry args={[0.2, 20, 20]} />
       <meshPhysicalMaterial
-        color="#d9d9d9"
+        color="#d4af37"
         metalness={0.3}
         roughness={0.1}
         clearcoat={1}
@@ -119,7 +119,7 @@ export default function Purple3DLoader() {
       <directionalLight
         position={[-6, -4, -6]}
         intensity={0.6}
-        color="#d9d9d9"
+        color="#d4af37"
       />
 
       {/* ================= LOADER OBJECT ================= */}
