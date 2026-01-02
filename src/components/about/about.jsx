@@ -137,7 +137,7 @@ const About = () => {
         </div>
 
         <h2 ref={titleRef} className="about-title">
-          {splitWords("A bunch of misfits with an eye for beauty")}
+          {splitWords("Listening First. Designing Smart. Building What Works.")}
         </h2>
 
         <p ref={descRef} className="about-description">

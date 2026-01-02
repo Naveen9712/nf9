@@ -43,13 +43,13 @@
   width: 160px;
   height: 220px;
   top: 30%;
-  left: 20px;
+  left: 2%;
 }
 
 /* Top Right */
 .img-2 {
-  width: 200px;
-  height: 280px;
+  width: 190px;
+  height: 250px;
   top: 20%;
   right: 40px;
 }
@@ -59,7 +59,7 @@
   width: 260px;
   height: 320px;
   bottom: 10%;
-  left: 55%;
+  left: 50%;
   transform: translateX(-50%);
   opacity: 0.85;
 }
@@ -68,16 +68,16 @@
 .img-4 {
   width: 160px;
   height: 220px;
-  bottom: 35%;
-  right: 60px;
+  bottom: 30%;
+  right: 5%;
 }
 
 /* Bottom Left */
 .img-5 {
-  width: 160px;
-  height: 220px;
+  width: 180px;
+  height: 240px;
   bottom: 30%;
-  left: 5%;
+  left: 10%;
 }
 
 /* Top Center (Small) */
@@ -96,7 +96,7 @@
   z-index: 5;
   max-width: 860px;
   margin: 0 auto;
-  padding-top: 220px;
+  padding-top: 250px;
   padding-bottom: 260px;
   text-align: center;
 }
@@ -113,7 +113,7 @@
 
 .about-title {
   font-family: var(--font-heading);
-  font-size: 120px;
+  font-size: 100px;
   font-weight: 400;
   line-height: 100px;
   margin-bottom: 40px;
@@ -125,7 +125,7 @@
   font-weight: 400;
   line-height: 38px;
   color: var(--text);
-  margin-top: 120px;
+  margin-top: 50px;
 }
 
 /* Animation helpers */
@@ -143,6 +143,7 @@
 
   .about-content {
     max-width: 780px;
+    margin-top: 30%;
     padding: 200px 24px; /* ⬅ SAME TOP & BOTTOM */
   }
 
@@ -239,14 +240,14 @@
 
 @media (max-width: 468px) {
   .about-section {
-    min-height: 200vh;
+    min-height: 180vh;
     align-items: center;      /* vertical centering */
     justify-content: center;  /* horizontal centering */
   }
 
   .about-content {
     max-width: 100%;
-    margin-top: 70%;
+    margin-top: 110%;
     padding: 80px 20px;       /* breathing space only */
     text-align: center;
   }
@@ -263,7 +264,7 @@
 
   .about-description {
     font-size: 16px;
-    margin-top: 60px;
+    margin-top: 10px;
     line-height: 1.6;
   }
 
@@ -285,7 +286,7 @@
   .img-6 {
     width: 120px;
     height: 160px;
-    top: 15%;
+    top: 12%;
     left: 40%;
     transform: translateX(-50%);
   }
