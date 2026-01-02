@@ -5,6 +5,7 @@ import Header from './components/header/header'
 import Hero from './components/hero/hero'
 import About from './components/about/about'
 import Services from './components/services/services'
+import Works from './components/works/works'
 import VitalStats from './components/vital-stats/vital-stats'
 import FAQ from './components/faq/faq'
 import Footer from './components/footer/footer'
@@ -31,6 +32,7 @@ function App() {
           <Hero />
           <About />
           <Services />
+          <Works />
           <VitalStats />
           <Together/>
           <FAQ />
@@ -42,4 +44,3 @@ function App() {
 }
 
 export default App
-

@@ -1,6 +1,3 @@
-/* =====================================================
-   ROOT VARIABLES (NF9 SYSTEM)
-===================================================== */
 :root {
   --col1: #000000;
   --col2: #ffffff;
@@ -8,50 +5,27 @@
   --font-heading: "Satoshi", sans-serif;
   --font-body: "Inter", sans-serif;
 }
-
-/* =====================================================
-   SERVICES SECTION (MAIN CONTAINER)
-   Controls OUTER left / right padding
-===================================================== */
+/* SECTION */
 .nf9-services-section {
-  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  padding-top: 200px;
   background: var(--col2);
-  padding: 180px 20px; /* ✅ desktop default */
-  overflow: hidden;
   font-family: var(--font-body);
+  overflow: hidden;
 }
 
-/* ---------------- SECTION LABEL ---------------- */
-.nf9-services-label {
-  position: absolute;
-  top: 120px;
-  right: 20px;
-  font-size: 24px;
-  color: var(--col1);
-  z-index: 5;
-}
-
-/* =====================================================
-   GRID LAYOUT
-   30% IMAGE | 70% TEXT
-===================================================== */
+/* GRID */
 .nf9-services-grid {
   max-width: 1400px;
   margin: 0 auto;
-
   display: grid;
   grid-template-columns: 30% 70%;
-  column-gap: clamp(40px, 6vw, 140px); /* ✅ balanced gap */
-  align-items: start;
 }
 
-/* =====================================================
-   IMAGE COLUMN
-   Controls image horizontal placement
-===================================================== */
+/* IMAGE */
 .nf9-services-image-col {
   position: relative;
-  padding-left: 20px; /* ✅ pulls image slightly right */
 }
 
 .nf9-services-image-stage {
@@ -61,15 +35,14 @@
 
 .nf9-services-image-wrap {
   position: absolute;
-  top: 0;
-  left: 0;
-
+  top: -100px; /* 🔼 move image slightly up */
+  left: 35%;
+  transform: translateX(-50%);
   width: 260px;
   height: 320px;
-
-  opacity: 0;
+  border-radius: 20px;
+  overflow: hidden;
   perspective: 900px;
-  will-change: transform;
 }
 
 .nf9-services-image {
@@ -78,159 +51,75 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 26px;
-
+  border-radius: inherit;
   opacity: 0;
-  transform: scale(0.95);
+  transform: scale(0.96);
 }
 
-/* =====================================================
-   TEXT COLUMN
-   Controls list alignment & breathing room
-===================================================== */
+/* TEXT */
+.nf9-services-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 180px);
+}
+
+.nf9-services-label {
+  text-align: right;
+  font-size: 24px;
+  color: var(--col1);
+  margin-bottom: 30px;
+  padding-right: 20px;
+}
+
 .nf9-services-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-
-  text-align: right;
-  padding-right: 80px; /* ✅ key spacing like reference */
+  align-items: flex-end;   /* 🔥 REAL right alignment */
 }
 
 .nf9-services-item {
   font-family: var(--font-heading);
-  font-size: clamp(150px, 10vw, 160px);
+  font-size: clamp(160px, 10vw, 180px);
   line-height: 1;
+  white-space: nowrap;
   color: var(--col1);
   opacity: 0.35;
-  white-space: nowrap;
 }
 
-/* =====================================================
-   SCROLL BUFFER
-===================================================== */
+/* SPACER */
 .nf9-services-spacer {
   height: 35vh;
 }
 
-/* =====================================================
-   1440px ↓ (LAPTOP)
-===================================================== */
-@media (max-width: 1440px) {
-  .nf9-services-section {
-    padding: 180px 20px;
-  }
 
-  .nf9-services-image-col {
-    padding-left: 12px;
-  }
-
-  .nf9-services-list {
-    padding-right: 60px;
-  }
-
-  .nf9-services-image-wrap {
-    width: 240px;
-    height: 300px;
-  }
-
-  .nf9-services-item {
-    font-size: clamp(120px, 9vw, 150px);
-  }
-}
-
-/* =====================================================
-   1024px ↓ (TABLET LANDSCAPE)
-===================================================== */
+/* BREAKPOINTS */
 @media (max-width: 1024px) {
-  .nf9-services-section {
-    padding: 160px 10px; /* ✅ requested */
-  }
-
-  .nf9-services-grid {
-    column-gap: 80px;
-  }
-
-  .nf9-services-image-col {
-    padding-left: 8px;
-  }
-
+  .nf9-services-image-wrap { width: 220px; height: 280px; }
+  .nf9-services-item { font-size: 100px; line-height: 100px; }
+  .nf9-services-label,
+  .nf9-services-list { padding-right: 30px; }
   .nf9-services-list {
-    padding-right: 40px;
-  }
-
-  .nf9-services-image-wrap {
-    width: 220px;
-    height: 280px;
-  }
-
-  .nf9-services-item {
-    font-size: clamp(80px, 8vw, 120px);
+    text-align: right;
   }
 }
 
-/* =====================================================
-   768px ↓ (TABLET PORTRAIT)
-===================================================== */
 @media (max-width: 768px) {
-  .nf9-services-section {
-    padding: 140px 10px;
-  }
-
-  .nf9-services-grid {
-    grid-template-columns: 35% 65%;
-    column-gap: 24px;
-  }
-
-  .nf9-services-image-col {
-    padding-left: 6px;
-  }
-
-  .nf9-services-list {
-    gap: 6px;
-    padding-right: 24px;
-  }
-
-  .nf9-services-image-wrap {
-    width: 180px;
-    height: 230px;
-  }
-
-  .nf9-services-item {
-    font-size: 56px;
-    line-height: 0.95;
-  }
+  .nf9-services-grid { grid-template-columns: 35% 65%; }
+  .nf9-services-image-wrap { width: 180px; height: 230px; }
+  .nf9-services-item { font-size: 80px; line-height: 1; white-space: nowrap; text-align: right; }
+  .nf9-services-label,
+  .nf9-services-list { padding-right: 24px;}
 }
 
-/* =====================================================
-   468px ↓ (MOBILE)
-===================================================== */
+
 @media (max-width: 468px) {
-  .nf9-services-section {
-    padding: 120px 10px;
-  }
-
-  .nf9-services-grid {
-    grid-template-columns: 40% 60%;
-    column-gap: 16px;
-  }
-
-  .nf9-services-image-col {
-    padding-left: 4px;
-  }
-
-  .nf9-services-list {
-    gap: 10px;
-    padding-right: 20px;
-  }
-
-  .nf9-services-image-wrap {
-    width: 120px;
-    height: 160px;
-  }
-
-  .nf9-services-item {
-    font-size: 38px;
-    line-height: 1;
-  }
+  .nf9-services-section { padding-top: 120px; }
+  .nf9-services-grid { grid-template-columns: 40% 60%; }
+  .nf9-services-image-wrap { width: 100px; height: 140px; }
+  .nf9-services-content { min-height: calc(100vh - 120px); }
+  .nf9-services-label { font-size: 18px; padding-right: 20px; }
+  .nf9-services-list { padding-right: 20px; }
+  .nf9-services-item { font-size: 40px; }
+  .nf9-services-spacer { height: 20vh; }
 }
