@@ -12,7 +12,7 @@
 .together-section {
   background: var(--col1);
   color: var(--col2);
-  padding: 120px 18px 160px;
+  padding: 150px 50px;
   position: relative;
   overflow: hidden;
 }

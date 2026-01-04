@@ -1,63 +1,83 @@
-import React, { useState } from "react";
+import { useRef } from "react";
 import "./works.css";
 
-const projects = [
-  { name: "Highflyers", year: "2025" },
-  { name: "Verkos", year: "2025" },
-  { name: "ZScore", year: "2025" },
-  { name: "Diamante", year: "2025" },
-  { name: "Jet Games", year: "2025" },
-  { name: "iMeshh", year: "2025" },
+const PROJECTS = [
+  {
+    title: "Tabasque",
+    subtitle: "Classy cocktails for modern age",
+    image: "https://framerusercontent.com/images/atcXOmc4RccZDvf4CJnL76IfNwg.jpg",
+    color: "#ffcc96",
+  },
+  {
+    title: "Sensaya",
+    subtitle: "Memories in the making",
+    image: "https://framerusercontent.com/images/uK2BpwnizijFTL9zd5gnyiD2i0U.png",
+    color: "#aab8ff",
+  },
+  {
+    title: "Le Blink",
+    subtitle: "Skincare for the future",
+    image: "https://framerusercontent.com/images/rzoORZnzNHiRX63g8X4x3iR2PnE.png",
+    color: "#fce7d6",
+  },
 ];
 
-const PREVIEW_IMAGE =
-  "https://framerusercontent.com/images/36wvwfIbrnOBnFSzVzIZ4BEv9ms.jpeg";
-
-const Works = () => {
-  const [active, setActive] = useState(false);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-
-  const handleMove = (e) => {
-    setPos({
-      x: e.clientX,
-      y: e.clientY,
-    });
-  };
-
+export default function Works() {
   return (
-    <section className="nf9-works-section" id="works">
+    <section className="nf9-projects">
+      <header className="nf9-projects-header">
+        <h1>
+          Our Projects <sup>{PROJECTS.length}</sup>
+        </h1>
+      </header>
 
-      {/* ===== CENTER TITLE ===== */}
-      <h1 className="nf9-works-title">Our Works</h1>
+      <div className="nf9-layout">
+        {/* ROW 1 */}
+        <ProjectCard {...PROJECTS[0]} />
 
-      {/* ===== PROJECT LIST ===== */}
-      <div className="nf9-works-list">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="nf9-work-row"
-            onMouseEnter={() => setActive(true)}
-            onMouseLeave={() => setActive(false)}
-            onMouseMove={handleMove}
-          >
-            <span className="nf9-work-name">{project.name}</span>
-            <span className="nf9-work-meta">Design, Framer, 3D</span>
-            <span className="nf9-work-year">{project.year}</span>
-          </div>
-        ))}
-      </div>
-
-      {/* ===== FLOATING PREVIEW ===== */}
-      <div
-        className={`nf9-work-preview ${active ? "visible" : ""}`}
-        style={{
-          transform: `translate3d(${pos.x}px, ${pos.y}px, 0)`,
-        }}
-      >
-        <img src={PREVIEW_IMAGE} alt="Project Preview" />
+        {/* ROW 2 */}
+        <div className="nf9-row-two">
+          <ProjectCard {...PROJECTS[1]} />
+          <ProjectCard {...PROJECTS[2]} />
+        </div>
       </div>
     </section>
   );
-};
+}
 
-export default Works;
+function ProjectCard({ title, subtitle, image, color }) {
+  const imgRef = useRef(null);
+
+  const onMove = (e) => {
+    if (window.innerWidth < 769) return;
+
+    const rect = imgRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 14;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 14;
+
+    imgRef.current.style.transform = `scale(1.06) translate(${x}px, ${y}px)`;
+  };
+
+  const onLeave = () => {
+    if (imgRef.current) imgRef.current.style.transform = "";
+  };
+
+  return (
+    <article className="nf9-card">
+      <div
+        className="nf9-image-wrap"
+        onMouseMove={onMove}
+        onMouseLeave={onLeave}
+        style={{ "--arrow": color }}
+      >
+        <img ref={imgRef} src={image} alt={title} />
+        <div className="nf9-arrow">↗</div>
+      </div>
+
+      <div className="nf9-info">
+        <p className="title">{title}</p>
+        <p className="subtitle">{subtitle}</p>
+      </div>
+    </article>
+  );
+}

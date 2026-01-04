@@ -6,27 +6,27 @@ const faqItems = [
   {
     question: "How Does NF9 Work?",
     answer:
-      "NF9 is a digital studio focused on building smooth, modern, high-performing web experiences. We combine strategy, UX, design, and development to create websites that feel fast, clean, and intuitive on every device.",
+      "NF9 is a digital studio dedicated to creating smooth, modern, and high- performing web experiences. We blend strategy, user experience, design, and development to build websites that are fast, intuitive, and visually refined across every device. Our approach is thoughtful and collaborative-focused on solving real business problems through smart digital execution."
   },
   {
     question: "What services does NF9 offer?",
     answer:
-      "We work on web design, development, rebranding, UI/UX, landing pages, animations, performance optimisation, and ongoing website care. Each project is tailored to your goals and audience.",
+      "We deliver end-to-end web solutions, including web design and development, rebranding, Ul/UX design, landing pages, animations, performance optimization, and ongoing website care. Every project is carefully tailored to your brand, audience, and goals-ensuring results that are both impactful and sustainable.",
   },
   {
     question: "How long does a typical web project take?",
     answer:
-      "Project timelines depend on scope, but most NF9 projects run between 4–8 weeks. We share clear milestones so you always know what’s happening and when.",
+      "Timelines vary based on project scope, but most NF9 projects are completed within 4- 8 weeks. We define clear milestones from the start and maintain transparent communication throughout, so you always know what to expect and when.",
   },
   {
     question: "Do you provide ongoing support after launch?",
     answer:
-      "Yes. NF9 offers ongoing support, minor updates, performance checks, and design refinements so your site stays sharp and aligned with your brand as it grows.",
+      "Yes. Launch i s only the beginning. NF9 provides ongoing support, updates, performance monitoring, and design refinements to ensure your website continues to evolve alongside your business.",
   },
   {
     question: "What is your pricing structure?",
     answer:
-      "We work with transparent, project-based pricing. After understanding your requirements, we share a clear proposal covering scope, timelines, and investment—no hidden costs.",
+      "We offer transparent, project-based pricing. Once we understand your requirements, w e provide a clear proposal outlining scope, timelines, and investment -ensuring complete clarity with no hidden costs.",
   },
 ];
 
