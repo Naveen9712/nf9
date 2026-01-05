@@ -41,14 +41,17 @@
   .center-text {
     position: absolute;
     left: 50%;
-    font-family: var(--font-primary);
     transform: translateX(-50%);
-    font-size: 40px;
-    font-weight: 700;
-    letter-spacing: 4px;
+    font-family: var(--font-brand); 
+    font-size: 50px;
+    font-weight: 600;
+    letter-spacing: 6px;
+    text-transform: uppercase;
     color: currentColor;
     transition: color 0.3s ease;
+    pointer-events: none; 
   }
+  
   
   /* ============================================
      HAMBURGER
@@ -61,7 +64,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  
+    /* 👇 ADD ONLY THIS */
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
   }
+  
   
   .hamburger span {
     width: 100%;
@@ -552,27 +562,29 @@
     .menu-container {
       width: 100%;
       flex: none;
-      margin-left: -50px;
+      margin-left: -45px;
     }
 
     .menu:not(.active)::before,
     .menu:not(.active)::after {
       transition-delay: 0.1s;
     }
-  
+
     .hamburger {
       width: 48px;
       height: 28px;
+      right: 10px;
+
     }
-  
+
     .hamburger.active span:nth-child(1) {
       transform: translateY(10px) rotate(45deg);
     }
-  
+
     .hamburger.active span:nth-child(3) {
       transform: translateY(-10px) rotate(-45deg);
     }
-  
+
     .menu ul li a {
       font-size: 35px;
       font-weight: 400;
@@ -580,7 +592,7 @@
       white-space: nowrap;
       display: block;
     }
-  
+
     .social-container {
       width: 100%;
       flex: none;
@@ -588,40 +600,42 @@
       padding-bottom: 20px;
       margin-top: -30px;
     }
-  
+
     .social-container h1 {
       font-size: 35px;
       font-weight: 400;
     }
-  
+
     .background-text {
       font-size: 100vw;
       animation-duration: 10s;
       top: 85% !important;
     }
-  
+
     .menu-divider {
       visibility: hidden;
     }
-  
+
     .menu {
       padding: 0;
     }
-  
+
     .center-text {
-      font-size: 20px;
+      left: 10px;
+      transform: none;
+      font-size: 30px;
       letter-spacing: 0.5px;
     }
-  
+
     .social-links {
       gap: 20px;
     }
-  
+
     .social-links a {
       width: 80px;
       height: 80px;
     }
-  
+
     .social-links a svg {
       width: 40px;
       height: 40px;
