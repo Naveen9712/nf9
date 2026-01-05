@@ -38,8 +38,8 @@
   top: -100px; /* 🔼 move image slightly up */
   left: 35%;
   transform: translateX(-50%);
-  width: 260px;
-  height: 320px;
+  width: 200px;
+  height: 280px;
   border-radius: 20px;
   overflow: hidden;
   perspective: 900px;
@@ -95,7 +95,7 @@
 
 /* BREAKPOINTS */
 @media (max-width: 1024px) {
-  .nf9-services-image-wrap { width: 220px; height: 280px; }
+  .nf9-services-image-wrap { width: 200px; height: 280px; }
   .nf9-services-item { font-size: 100px; line-height: 100px; }
   .nf9-services-label,
   .nf9-services-list { padding-right: 30px; }
@@ -106,7 +106,7 @@
 
 @media (max-width: 768px) {
   .nf9-services-grid { grid-template-columns: 35% 65%; }
-  .nf9-services-image-wrap { width: 180px; height: 230px; }
+  .nf9-services-image-wrap { width: 180px; height: 240px; }
   .nf9-services-item { font-size: 80px; line-height: 1; white-space: nowrap; text-align: right; }
   .nf9-services-label,
   .nf9-services-list { padding-right: 24px;}
