@@ -117,17 +117,35 @@
 
 .about-title {
   font-family: var(--font-heading);
-  font-size: 100px;
-  font-weight: 400;
+  font-size: 90px;
+  font-weight: 500;
   line-height: 100px;
   margin-bottom: 40px;
 }
 
+/* ===== STEP TITLE ===== */
+.about-title.steps {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-title.steps span {
+  display: block;
+}
+
+/* NF9 SIGNATURE */
+.about-description .nf9-sign {
+  display: block;
+  margin-top: 24px;
+  font-weight: 500;
+}
+
+
 .about-description {
   font-family: var(--font-body);
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 400;
-  line-height: 38px;
+  line-height: 35px;
   color: var(--text);
   margin-top: 50px;
 }
@@ -168,13 +186,18 @@
 
 
 @media (max-width: 768px) {
+    .about-label {
+      font-size: 18px;
+    }
+
+
     .about-section {
       min-height: 240vh;
     }
   
     .about-title {
       font-size: 36px;
-      line-height: 36px;
+      line-height: 40px;
     }
   
     .about-description {

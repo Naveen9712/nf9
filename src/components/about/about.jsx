@@ -19,57 +19,67 @@ const About = () => {
     const ctx = gsap.context(() => {
   
       /* ================= INITIAL STATE ================= */
-      gsap.set(labelRef.current, {
-        opacity: 0,
-        filter: "blur(4px)"
-      });
-  
-      gsap.set(
-        [
-          ...titleRef.current.querySelectorAll("span"),
-          ...descRef.current.querySelectorAll("span")
-        ],
-        {
+        gsap.set(labelRef.current, {
           opacity: 0,
-          filter: "blur(8px)"
-        }
-      );
-  
-      /* ================= FAST FRAMER REVEAL ================= */
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%",
-          toggleActions: "play none none none"
-        }
-      });
-  
-      // Label (quick hint)
-      tl.to(labelRef.current, {
-        opacity: 1,
-        filter: "blur(0px)",
-        duration: 0.25,
-        ease: "power1.out"
-      });
-  
-      // Title + Description TOGETHER
-      tl.to(
-        [
-          ...titleRef.current.querySelectorAll("span"),
-          ...descRef.current.querySelectorAll("span")
-        ],
-        {
+          filter: "blur(4px)",
+        });
+
+        gsap.set(
+          [
+            ...titleRef.current.children,
+            ...descRef.current.children,
+          ],
+          {
+            opacity: 0,
+            y: 20,
+            filter: "blur(6px)",
+          }
+        );
+
+        /* ================= FAST FRAMER REVEAL ================= */
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 75%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        // Label
+        tl.to(labelRef.current, {
           opacity: 1,
           filter: "blur(0px)",
-          duration: 0.6,
-          stagger: {
-            each: 0.008,
-            from: "start"
+          duration: 0.25,
+          ease: "power1.out",
+        });
+
+        // STEP TITLE (ONE BY ONE)
+        tl.to(
+          titleRef.current.children,
+          {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: 0.5,
+            stagger: 0.25,
+            ease: "power2.out",
           },
-          ease: "power1.out"
-        },
-        "-=0.1"
-      );
+          "-=0.1"
+        );
+
+        // DESCRIPTION (ALL TOGETHER)
+        tl.to(
+          descRef.current.children,
+          {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: 0.6,
+            ease: "power2.out",
+          },
+          "-=0.2"
+        );
+
   
       /* ================= IMAGE PARALLAX (UNCHANGED) ================= */
       imagesRef.current.forEach((img, i) => {
@@ -125,21 +135,31 @@ const About = () => {
       </div>
 
       {/* CONTENT */}
-      <div className="about-content">
-        <div ref={labelRef} className="about-label">
-          Our NF9 <span>↴</span>
-        </div>
+      {/* CONTENT */}
+<div className="about-content">
+  <div ref={labelRef} className="about-label">
+    Our NF9 <span>↴</span>
+  </div>
 
-        <h2 ref={titleRef} className="about-title">
-          {splitWords("Listening First. Designing Smart. Building What Works.")}
-        </h2>
+  {/* STEP TITLE */}
+  <h2 ref={titleRef} className="about-title steps">
+    <span>We Listen.</span>
+    <span>We Design.</span>
+    <span>We Deliver Results.</span>
+  </h2>
 
-        <p ref={descRef} className="about-description">
-          {splitWords(
-            "We design and develop websites, apps, and digital experiences that help clients grow, innovate, and transform. We listen, learn, and understand before we build. Together, we define goals and use our expertise to find the sweet spot of realistic and impactful. We’re NF9."
-          )}
-        </p>
-      </div>
+  {/* DESCRIPTION */}
+  <p ref={descRef} className="about-description">
+    <span>
+      We design and develop websites, apps, and digital experiences that help
+      clients grow, innovate, and transform. We listen, learn, and understand
+      before we build. Together, we define goals and use our expertise to find
+      the sweet spot of realistic and impactful.
+    </span>
+    <span className="nf9-sign">We’re NF9!</span>
+  </p>
+</div>
+
     </section>
   );
 };
