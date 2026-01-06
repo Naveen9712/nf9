@@ -1,6 +1,11 @@
-# Services Section Fix Plan
+# Create Pages and Routing Setup
 
-- [x] Update JSX: Split titles and label into spans for each letter with initial inactive styles
-- [x] Update CSS: Add classes for inactive (opacity 0.001, blur 2px) and active (opacity 1, no blur, will-change: transform) spans
-- [x] Modify GSAP: Animate spans with stagger effects instead of whole elements
-- [x] Test animations and adjust if needed
+- [x] Install react-router-dom
+- [x] Create src/pages/Home.jsx with preloader, header, Outlet, footer
+- [x] Create src/pages/MainContent.jsx with hero, about, services, works, together, faq
+- [x] Create src/pages/ContactUs.jsx with Together component
+- [x] Create src/pages/ServicesPage.jsx with Services component
+- [x] Update src/main.jsx to wrap App with BrowserRouter
+- [x] Update src/App.jsx to set up nested routes: Home as parent, MainContent as index, ContactUs and ServicesPage as children
+- [x] Add navigation links in header and footer using React Router Link
+- [ ] Test the application to ensure routing and navigation work correctly

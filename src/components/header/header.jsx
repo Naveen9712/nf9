@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './header.css';
 
 const Header = () => {
@@ -46,12 +47,12 @@ const Header = () => {
   }, [isMenuActive, bgText]);
 
   const menuItems = [
-    { id: 1, text: 'Start Here', href: '#home' },
-    { id: 2, text: 'Services', href: '#about' },
+    { id: 1, text: 'Start Here', href: '/' },
+    { id: 2, text: 'Services', href: '/services' },
     { id: 3, text: 'Our Work', href: '#services' },
     { id: 4, text: 'About NF9', href: '#portfolio' },
     { id: 5, text: 'Careers', href: '#careers' },
-    { id: 6, text: 'Contact Us', href: '#contact' }
+    { id: 6, text: 'Contact Us', href: '/contact-us' }
   ];
 
   return (
@@ -87,14 +88,14 @@ const Header = () => {
               <ul>
                 {menuItems.map((item) => (
                   <li key={item.id}>
-                    <a
-                      href={item.href}
+                    <Link
+                      to={item.href}
                       onClick={toggleMenu}
                       onMouseEnter={() => handleMouseEnter(item.text)}
                       onMouseLeave={handleMouseLeave}
                     >
                       {item.text}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
