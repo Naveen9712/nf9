@@ -49,7 +49,12 @@
     text-transform: uppercase;
     color: currentColor;
     transition: color 0.3s ease;
-    pointer-events: none; 
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .center-text:hover {
+    opacity: 0.8;
   }
   
   
