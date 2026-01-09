@@ -28,14 +28,12 @@ export default function Together() {
   useEffect(() => {
     const state = anim.current;
 
-    /* ---------- VISIBILITY ---------- */
     const io = new IntersectionObserver(
       ([entry]) => (state.visible = entry.isIntersecting),
       { threshold: 0.35 }
     );
     sectionRef.current && io.observe(sectionRef.current);
 
-    /* ---------- INPUT ---------- */
     const onWheel = (e) => {
       if (!state.visible) return;
       state.target = e.deltaY > 0 ? 1 : 0;
@@ -60,7 +58,6 @@ export default function Together() {
     window.addEventListener("touchmove", onTouchMove, { passive: true });
     window.addEventListener("touchend", onTouchEnd, { passive: true });
 
-    /* ---------- RAF ---------- */
     const startRAF = () => {
       if (!state.raf) state.raf = requestAnimationFrame(tick);
     };
@@ -69,7 +66,6 @@ export default function Together() {
       state.raf = null;
     };
 
-    /* ---------- ANIMATION ---------- */
     const tick = () => {
       state.current = lerp(state.current, state.target, 0.12);
       const t = Math.max(0, Math.min(1, state.current));
@@ -171,22 +167,13 @@ export default function Together() {
           TOGETHER<span className="dot">.</span>
         </h1>
 
-        <a href="/contact" className="cta-framer">
-          <span className="cta-text">
-            <span className="word-get">GET</span>
-            <span className="word-rest"> STARTED TODAY</span>
-            <span className="underline-full" />
-          </span>
-
-          <span className="cta-arrow" aria-hidden>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M5 12h14M12 5l7 7-7 7"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+        {/* NEW CTA */}
+        <a href="/contact" className="framer-cta">
+          <span className="cta-label">GET STARTED TODAY</span>
+          <span className="cta-line"></span>
+          <span className="cta-arrow">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" />
             </svg>
           </span>
         </a>

@@ -1,98 +1,167 @@
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./services.css";
-import { useRef } from "react";
 
-const services = [
-  {
-    title: "UI/UX Design",
-    image: "https://res.cloudinary.com/dzwm5v9gy/image/upload/v1765214774/1duOVcilpl3cJsg3KzVgMJtYicM_vc81tz.avif",
-    gif: "https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif",
-  },
-  {
-    title: "Website Design & Development",
-    image: "https://res.cloudinary.com/dzwm5v9gy/image/upload/v1761918540/main-sample.png",
-    gif: "https://media.giphy.com/media/l0HlNaQ6gWfllcjDO/giphy.gif",
-  },
-  {
-    title: "eCommerce & SaaS Development",
-    image: "https://res.cloudinary.com/dzwm5v9gy/image/upload/v1761918539/cld-sample-4.jpg",
-    gif: "https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif",
-  },
-  {
-    title: "Application Development",
-    image: "https://res.cloudinary.com/dzwm5v9gy/image/upload/v1761918540/main-sample.png",
-    gif: "https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif",
-  },
-  {
-    title: "Cloud, DevOps & Server Management",
-    image: "https://res.cloudinary.com/dzwm5v9gy/image/upload/v1765214774/1duOVcilpl3cJsg3KzVgMJtYicM_vc81tz.avif",
-    gif: "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif",
-  },
-  {
-    title: "Branding, SEO & Digital Marketing",
-    image: "https://res.cloudinary.com/dzwm5v9gy/image/upload/v1761918539/cld-sample-4.jpg",
-    gif: "https://media.giphy.com/media/l41lFw057lAJQMwg0/giphy.gif",
-  },
+gsap.registerPlugin(ScrollTrigger);
+
+const SERVICES = [
+  { title: "UI/UX Design", image: "https://framerusercontent.com/images/xvbmP2RETgW6oOPW5kTmPh6busg.jpg" },
+  { title: "Website", image: "https://framerusercontent.com/images/BwCmxlMIwWfqxkz8nvxIQfKBgk.jpg" },
+  { title: "eCommerce", image: "https://framerusercontent.com/images/4WNOPai8HNpbkzXGrHQZwYWmibA.jpg" },
+  { title: "Applications", image: "https://framerusercontent.com/images/xYeTN1Bn52IZWANLkSiNFVPy0jY.jpg" },
+  { title: "Infrastructure", image: "https://framerusercontent.com/images/1QkHnDWCstFb6jXN6WFLV6yDZB0.jpg" },
+  { title: "Branding", image: "https://framerusercontent.com/images/36wvwfIbrnOBnFSzVzIZ4BEv9ms.jpeg" },
 ];
 
+/* =====================================================
+   TUNING CONTROLS (SAFE TO ADJUST)
+===================================================== */
+const getStep = () => {
+  const w = window.innerWidth;
+  if (w <= 468)  return 0;
+  if (w <= 768)  return 0;
+  if (w <= 1024) return 0;
+  if (w <= 1440) return 0;
+  return 5;
+};
+
+const getStartOffset = () => {
+  const w = window.innerWidth;
+  if (w <= 468)  return 0;
+  if (w <= 768)  return 20;
+  if (w <= 1024) return 20;
+  return 20;
+};
+
+const getEndOffset = () => {
+  const w = window.innerWidth;
+  if (w <= 468)  return 20;
+  if (w <= 768)  return 40;
+  if (w <= 1024) return 60;
+  return 100;
+};
+
 export default function Services() {
-  const gifRefs = useRef([]);
+  const sectionRef = useRef(null);
+  const imageWrapRef = useRef(null);
 
-  const handleMouseMove = (e, index) => {
-    const card = e.currentTarget.getBoundingClientRect();
-    const gif = gifRefs.current[index];
-    if (!gif) return;
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const items = gsap.utils.toArray(".nf9-services-item");
+      const images = gsap.utils.toArray(".nf9-services-image");
+      const imageWrap = imageWrapRef.current;
 
-    const x = e.clientX - card.left;
-    const y = e.clientY - card.top;
+      gsap.set(images, { opacity: 0, scale: 0.96 });
+      gsap.set(imageWrap, { autoAlpha: 1, y: 0 });
 
-    const rotateX = ((y - card.height / 2) / card.height) * -12;
-    const rotateY = ((x - card.width / 2) / card.width) * 12;
+      function activate(index) {
+        const sectionRect = sectionRef.current.getBoundingClientRect();
+        const itemRect = items[index].getBoundingClientRect();
 
-    gif.style.transform = `
-      translate(${x - card.width / 2}px, ${y - card.height / 2}px)
-      rotateX(${rotateX}deg)
-      rotateY(${rotateY}deg)
-      scale(1)
-    `;
-  };
+        const step = getStep();
+        const startOffset = getStartOffset();
+        const endOffset = getEndOffset();
+
+        let targetY =
+          itemRect.top -
+          sectionRect.top +
+          itemRect.height / 2 -
+          imageWrap.offsetHeight / 2;
+
+        /* STEP DRIFT */
+        targetY += index * step;
+
+        /* START ADJUSTMENT */
+        if (index === 0) targetY -= startOffset;
+
+        /* STOP ADJUSTMENT */
+        if (index === items.length - 1) targetY -= endOffset;
+
+        images.forEach((img, i) => {
+          gsap.to(img, {
+            opacity: i === index ? 1 : 0,
+            scale: i === index ? 1 : 0.96,
+            duration: 0.4,
+            ease: "power3.out",
+          });
+        });
+
+        items.forEach((el, i) => {
+          gsap.to(el, {
+            opacity: i === index ? 1 : 0.35,
+            duration: 0.3,
+          });
+        });
+
+        gsap.to(imageWrap, {
+          y: targetY,
+          x: window.innerWidth < 768 ? 14 : 40,
+          rotateX: -4,
+          rotateY: 3,
+          duration: 0.65,
+          ease: "power3.out",
+        });
+      }
+
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top top",
+        onEnter: () => activate(0),
+        onEnterBack: () => activate(0),
+      });
+
+      items.forEach((item, index) => {
+        ScrollTrigger.create({
+          trigger: item,
+          start: "top center",
+          end: "bottom center",
+          onEnter: () => activate(index),
+          onEnterBack: () => activate(index),
+        });
+      });
+
+      ScrollTrigger.refresh();
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section className="services">
-      <div className="services-header">
-        <h2>Our Services</h2>
-      </div>
+    <section className="nf9-services-section" ref={sectionRef}>
+      <div className="nf9-services-grid">
 
-      <div className="services-grid">
-        {services.map((item, index) => (
-          <div
-            className="service-card"
-            key={index}
-            onMouseMove={(e) => handleMouseMove(e, index)}
-          >
-            <div className="service-image">
-              <img src={item.image} alt={item.title} className="static-img" />
-            </div>
-
-            <img
-              ref={(el) => (gifRefs.current[index] = el)}
-              src={item.gif}
-              alt=""
-              className="hover-gif"
-            />
-
-            <span className="view-badge">VIEW</span>
-
-            <div className="service-info">
-              <h3>{item.title}</h3>
+        {/* IMAGE */}
+        <div className="nf9-services-image-col">
+          <div className="nf9-services-image-stage">
+            <div className="nf9-services-image-wrap" ref={imageWrapRef}>
+              {SERVICES.map((s, i) => (
+                <img
+                  key={i}
+                  src={s.image}
+                  alt={s.title}
+                  className="nf9-services-image"
+                />
+              ))}
             </div>
           </div>
-        ))}
-      </div>
+        </div>
 
-      <div className="services-button">
-        <button className="services-btn">See what we do</button>
+        {/* TEXT */}
+        <div className="nf9-services-content">
+          <div className="nf9-services-label">Our Services ↴</div>
+
+          <div className="nf9-services-list">
+            {SERVICES.map((s, i) => (
+              <h1 key={i} className="nf9-services-item">
+                {s.title}
+              </h1>
+            ))}
+            <div className="nf9-services-spacer" />
+          </div>
+        </div>
+
       </div>
     </section>
   );
 }
-

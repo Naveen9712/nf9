@@ -8,18 +8,11 @@
   --font-body: "Inter", sans-serif;
 }
 
-/* ================= BASE ================= */
-body {
-  background: var(--col1);
-  color: var(--col2);
-  font-family: var(--font-body);
-}
-
 /* ================= TOGETHER SECTION ================= */
 .together-section {
   background: var(--col1);
   color: var(--col2);
-  padding: 120px 18px 160px; /* reduced vertical padding */
+  padding: 150px 50px;
   position: relative;
   overflow: hidden;
 }
@@ -33,25 +26,21 @@ body {
   position: relative;
 }
 
-/* common image base */
 .together-wrapper img {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -24%); /* moved slightly UP */
+  transform: translate(-50%, -24%);
   border-radius: 18px;
   object-fit: cover;
-  display: block;
   will-change: transform, opacity;
   pointer-events: none;
 }
 
-/* ================= IMAGES ================= */
 .center-img {
   width: 380px;
   height: 450px;
   z-index: 30;
-  border-radius: 20px;
 }
 
 .side-img {
@@ -64,9 +53,10 @@ body {
 /* ================= TITLE ================= */
 .together-title {
   max-width: 1200px;
-  margin: 0 auto 0; /* pull text UP */
+  margin: 50px auto;
   text-align: center;
   line-height: 0.9;
+
 }
 
 .together-title h1 {
@@ -77,93 +67,78 @@ body {
   letter-spacing: -6px;
 }
 
-.together-title .dot {
+.dot {
   color: var(--accent);
 }
 
-/* ================= CTA ================= */
-.cta-framer {
+/* ==============================
+   FRAMER STYLE CTA (NO DOT)
+============================== */
+
+.framer-cta {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  position: relative;
+  gap: 10px;
+  margin-top: 20px;
+
   text-decoration: none;
-  cursor: pointer;
   color: var(--col2);
-  padding: 16px 0;
+
+  font-family: var(--font-heading);
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
-/* CTA text */
-.cta-text {
+/* TEXT */
+.cta-label {
   position: relative;
-  font-family: var(--font-body);
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  z-index: 2;
 }
 
-/* GET underline */
-.word-get {
-  position: relative;
-  display: inline-block;
-  padding-right: 6px;
-}
-
-.word-get::after {
-  content: "";
+/* LINE */
+.cta-line {
   position: absolute;
   left: 0;
-  bottom: -8px;
-  width: 100%;
+  bottom: -5px;
+  width: 48px;
   height: 2px;
   background: var(--col2);
-  transition: opacity 260ms ease;
+  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* full underline */
-.underline-full {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -8px;
-  height: 2px;
-  background: var(--col2);
-  transform-origin: left center;
-  transform: scaleX(0);
-  transition: transform 360ms cubic-bezier(.22,.9,.32,1);
-}
-
-/* arrow */
+/* ARROW */
 .cta-arrow {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: -10px;
-  color: var(--accent);
+  width: 25px;
+  height: 25px;
+  transform: rotate(45deg);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cta-arrow svg {
-  transform: rotate(-45deg);
-  transition: transform 360ms cubic-bezier(.22,.9,.32,1);
+  width: 100%;
+  height: 100%;
+  fill: var(--accent);
 }
 
-/* hover */
-.cta-framer:hover .underline-full {
-  transform: scaleX(1);
+/* HOVER */
+.framer-cta:hover .cta-line {
+  width: 100%;
 }
 
-.cta-framer:hover .word-get::after {
-  opacity: 0;
-}
-
-.cta-framer:hover .cta-arrow svg {
-  transform: translateY(4px) rotate(0deg);
+.framer-cta:hover .cta-arrow {
+  transform: translateX(6px) rotate(90deg);
 }
 
 /* ================= RESPONSIVE ================= */
 
 /* <= 1024px */
 @media (max-width: 1024px) {
+.together-title {
+  margin-top: 50px;
+}
   .center-img {
     width: 340px;
     height: 400px;
@@ -203,7 +178,7 @@ body {
   }
 
   .together-title {
-    margin-top: -40px;
+    margin-top: 50px;
   }
 
   .together-title h1 {
@@ -224,17 +199,13 @@ body {
 
   .center-img {
     width: 140px;
-    height: 160px;
+    height: 180px;
     transform: translate(-50%, -45%);
   }
 
   .side-img {
     width: 80px;
     height: 100px;
-  }
-
-  .together-title {
-    margin-top: -20px; /* BIG FIX: text moves UP */
   }
 
   .together-title h1 {
@@ -246,7 +217,6 @@ body {
     margin-top: -20px;
 
   }
-
   .cta-text {
     font-size: 14px;
   }

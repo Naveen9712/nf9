@@ -1,118 +1,320 @@
-
-/* ================= ROOT ================= */
 :root {
-  /* Colors */
-  --col1: #000000;
-  --col2: #ffffff;
-  --muted: rgba(255, 255, 255, 0.7);
-
-  /* Fonts (SYSTEM TOKENS) */
+  --text: #ffffff;
+  --muted: rgba(255,255,255,0.7);
   --font-heading: "Satoshi", sans-serif;
   --font-body: "Inter", sans-serif;
 }
 
-
 /* ================= SECTION ================= */
-.tr-section {
+.about-section {
   position: relative;
-  width: 100%;
-  min-height: 100svh;              /* mobile-safe viewport height */
-  display: grid;
-  place-items: center;             /* perfect center (x + y) */
+  min-height: 220vh;          /* 🔒 BIG SECTION */
+  background-color: black;
   overflow: hidden;
-  background: var(--col1);
+  color: var(--text);
+  isolation: isolate;
 }
 
-/* ================= BACKGROUND IMAGE ================= */
-.tr-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.35;
-}
 
-/* ================= OVERLAY ================= */
-.tr-overlay {
+/* ================= IMAGES ================= */
+.about-images {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    circle at center,
-    rgba(0, 0, 0, 0.1),
-    #000
-  );
   pointer-events: none;
 }
 
-/* ================= MAIN CONTAINER ================= */
-/* EXACTLY AS REQUESTED */
-.tr-inner {
-  position: relative;
+.about-image {
+  position: absolute;
+  border-radius: 18px;
+  overflow: hidden;
   z-index: 1;
+  filter: saturate(0.95);
+}
 
+.about-image img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== FRAMER IMAGE ORBIT ===== */
+
+/* Top Left */
+.img-1 {
+  width: 160px;
+  height: 220px;
+  top: 30%;
+  left: 2%;
+}
+
+/* Top Right */
+.img-2 {
+  width: 190px;
+  height: 250px;
+  top: 20%;
+  right: 40px;
+}
+
+/* Center Bottom (Hero Image) */
+.img-3 {
+  width: 240px;
+  height: 300px;
+  bottom: 8%;
+  left: 60%;
+  transform: translateX(-50%);
+  opacity: 0.85;
+}
+
+/* Bottom Right */
+.img-4 {
+  width: 160px;
+  height: 220px;
+  bottom: 40%;
+  right: 5%;
+}
+
+/* Bottom Left */
+.img-5 {
+  width: 180px;
+  height: 240px;
+  bottom: 20%;
+  left: 8%;
+}
+
+/* Top Center (Small) */
+.img-6 {
+  width: 160px;
+  height: 220px;
+  top: 15%;
+  left: 30%;
+  transform: translateX(-50%);
+  opacity: 0.9;
+}
+
+/* ================= CONTENT ================= */
+.about-content {
+  position: sticky;
+  top: 50%;
+  transform: translateY(-50%); /* 🎯 PERFECT vertical centering */
+
+  z-index: 10;
+  max-width: 860px;
   margin: 0 auto;
-  padding: 60px;
+  padding: 0 24px;
 
   text-align: center;
 }
 
-/* ================= LABEL ================= */
-.tr-label {
-  font-family: var(--font-heading);
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  margin-bottom: 30px;
-  color: var(--muted);
-}
-
-/* ================= HEADING ================= */
-.tr-heading {
+.about-label {
   font-family: var(--font-body);
-  color: var(--col2);
-
+  font-size: 28px;
   font-weight: 400;
-  font-size: clamp(32px, 5vw, 60px);
-  line-height: 1;
-  letter-spacing: -0.05em;
-
-  white-space: pre-wrap;
+  letter-spacing: 0.04em;
+  line-height: 34px;
+  color: var(--text);
+  margin-bottom: 40px;
 }
 
-/* ================= ANIMATION HELPERS ================= */
-.tr-word,
-.tr-char {
+.about-title {
+  font-family: var(--font-heading);
+  font-size: 90px;
+  font-weight: 500;
+  line-height: 100px;
+  margin-bottom: 40px;
+}
+
+/* ===== STEP TITLE ===== */
+.about-title.steps {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-title.steps span {
+  display: block;
+}
+
+/* NF9 SIGNATURE */
+.about-description .nf9-sign {
+  display: block;
+  margin-top: 24px;
+  font-weight: 500;
+}
+
+
+.about-description {
+  font-family: var(--font-body);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 35px;
+  color: var(--text);
+  margin-top: 50px;
+}
+
+/* Animation helpers */
+.about-title span,
+.about-description span {
   display: inline-block;
-  white-space: nowrap;
-  will-change: opacity, filter;
+  will-change: transform, opacity;
 }
 
-.tr-space {
-  display: inline-block;
-  white-space: pre;
+/* ================= 1024px ================= */
+@media (max-width: 1024px) {
+    .about-section {
+      min-height: 220vh;
+    }
+  
+    .about-title {
+      font-size: 80px;
+      line-height: 1.1;
+    }
+  
+    .about-description {
+      font-size: 18px;
+      line-height: 30px;
+    }
+
+  
+
+  /* ===== Images ===== */
+  .img-1 { width: 160px; height: 220px; top: 25%; left: 3%; }
+  .img-2 { width: 180px; height: 240px; top: 25%; right: 5%; }
+  .img-3 { width: 160px; height: 220px; top: 75%; left: 50%; transform: translateX(-50%); }
+  .img-4 { width: 120px; height: 180px; bottom: 16%; right: 20px; }
+  .img-5 { width: 140px; height: 200px; bottom: 18%; left: 20px; }
+  .img-6 { width: 140px; height: 200px; top: 20%; left: 40%; transform: translateX(-50%); }
 }
 
-/* ================= RESPONSIVE ================= */
+
 @media (max-width: 768px) {
-  .tr-inner {
-    padding: 40px 20px;
+    .about-label {
+      font-size: 18px;
+    }
+
+
+    .about-section {
+      min-height: 240vh;
+    }
+  
+    .about-title {
+      font-size: 36px;
+      line-height: 40px;
+    }
+  
+    .about-description {
+      font-size: 16px;
+    }
+  
+  
+
+  /* ===== Images (ALL SHOWN) ===== */
+  .img-1 {
+    width: 120px;
+    height: 180px;
+    top: 20%;
+    left: 2%;
   }
 
-  .tr-heading {
-    font-size: clamp(24px, 6vw, 40px);
+  .img-2 {
+    width: 160px;
+    height: 220px;
+    top: 20%;
+    right: 2%;
+  }
+
+  .img-6 {
+    width: 160px;
+    height: 220px;
+    top: 15%;
+    left: 40%;
+    transform: translateX(-50%);
+  }
+
+  .img-3 {
+    width: 200px;
+    height: 260px;
+    top: 75%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .img-4 {
+    width: 120px;
+    height: 180px;
+    bottom: 15%;
+    right: 2%;
+  }
+
+  .img-5 {
+    width: 140px;
+    height: 200px;
+    bottom: 20%;
+    left: 5%;
   }
 }
 
-@media (max-width: 480px) {
-  .tr-label {
-    font-size: 16px;
-    margin-bottom: 24px;
+
+@media (max-width: 468px) {
+    .about-section {
+      min-height: 200vh;
+    }
+
+    .about-label {
+      font-size: 18px;
+     }
+  
+    .about-title {
+      font-size: 36px;
+      line-height: 40px;
+    }
+  
+    .about-description {
+      font-size: 16px;
+      line-height: 1.6;
+  }
+  
+
+  /* ===== Images (Compact Orbit – unchanged logic) ===== */
+  .img-1 {
+    width: 100px;
+    height: 140px;
+    top: 18%;
+    left: 1%;
   }
 
-  .tr-heading {
-    font-size: clamp(20px, 7vw, 36px);
+  .img-2 {
+    width: 110px;
+    height: 150px;
+    top: 25%;
+    right: 10px;
+  }
+
+  .img-6 {
+    width: 120px;
+    height: 160px;
+    top: 12%;
+    left: 40%;
+    transform: translateX(-50%);
+  }
+
+  .img-3 {
+    width: 150px;
+    height: 190px;
+    top: 80%;
+    left: 40%;
+    transform: translateX(-50%);
+  }
+
+  .img-4 {
+    width: 100px;
+    height: 140px;
+    bottom: 18%;
+    right: 10px;
+  }
+
+  .img-5 {
+    width: 110px;
+    height: 150px;
+    bottom: 27%;
+    left: 3%;
   }
 }

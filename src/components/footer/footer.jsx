@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import "./footer.css";
 
 export default function Footer() {
@@ -21,12 +22,12 @@ export default function Footer() {
             <span className="nf9-plus">+</span>
             <p className="nf9-label">Navigation</p>
             <div className="nf9-social-row">
-            <a href="#">Home</a>
-            <a href="#">Services</a>
-            <a href="#">Our Work</a>
-            <a href="#">About NF9</a>
-            <a href="#">Careers</a>
-            <a href="#">Contact us</a>
+            <Link to="/">Home</Link>
+            <Link to="/services">Services</Link>
+            <a href="#services">Our Work</a>
+            <a href="#portfolio">About NF9</a>
+            <a href="#careers">Careers</a>
+            <Link to="/contact-us">Contact us</Link>
             </div>
           </div>
 
