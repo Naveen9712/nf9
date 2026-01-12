@@ -15,7 +15,7 @@ const Hero = () => {
           preload="metadata"
         >
           <source
-            src="https://res.cloudinary.com/dzwm5v9gy/video/upload/v1767013689/NF9_Hero_z7mh1v.mov"
+            src="https://nf9.in/wp-content/uploads/2026/01/NF9-Banner-.mov"
             type="video/mp4"
           />
         </video>
@@ -30,4 +30,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

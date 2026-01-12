@@ -1,6 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import "./together.css";
 
+const CONFIG = {
+  OUT_X: 420,
+  LEFT_OUT_Y: -70,
+  RIGHT_OUT_Y: 40,
+  LEFT_ROT: -18,
+  RIGHT_ROT: 18,
+  CENTER_SCALE: 1.08,
+};
+
 export default function Together() {
   const sectionRef = useRef(null);
   const leftRef = useRef(null);
@@ -13,15 +22,6 @@ export default function Together() {
     raf: null,
     visible: false,
   });
-
-  const CONFIG = {
-    OUT_X: 420,
-    LEFT_OUT_Y: -70,
-    RIGHT_OUT_Y: 40,
-    LEFT_ROT: -18,
-    RIGHT_ROT: 18,
-    CENTER_SCALE: 1.08,
-  };
 
   const lerp = (a, b, t) => a + (b - a) * t;
 
@@ -168,7 +168,7 @@ export default function Together() {
         </h1>
 
         {/* NEW CTA */}
-        <a href="/contact" className="framer-cta">
+        <a href="/contact-us" className="framer-cta">
           <span className="cta-label">GET STARTED TODAY</span>
           <span className="cta-line"></span>
           <span className="cta-arrow">

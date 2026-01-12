@@ -8,7 +8,7 @@
 /* ================= SECTION ================= */
 .about-section {
   position: relative;
-  min-height: 220vh;          /* 🔒 BIG SECTION */
+  min-height: 240vh;          /* 🔒 BIG SECTION */
   background-color: black;
   overflow: hidden;
   color: var(--text);
@@ -160,7 +160,7 @@
 /* ================= 1024px ================= */
 @media (max-width: 1024px) {
     .about-section {
-      min-height: 220vh;
+      min-height: 240vh;
     }
   
     .about-title {
@@ -255,7 +255,7 @@
 
 @media (max-width: 468px) {
     .about-section {
-      min-height: 200vh;
+      min-height: 240vh;
     }
 
     .about-label {

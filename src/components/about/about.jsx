@@ -107,10 +107,7 @@ const About = () => {
   
   
 
-  const splitWords = (text) =>
-    text.split(" ").map((word, i) => (
-      <span key={i}>&nbsp;{word}</span>
-    ));
+
 
   return (
     <section ref={sectionRef} id="about" className="about-section">

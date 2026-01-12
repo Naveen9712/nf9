@@ -22,12 +22,12 @@ export default function Footer() {
             <span className="nf9-plus">+</span>
             <p className="nf9-label">Navigation</p>
             <div className="nf9-social-row">
-            <Link to="/">Home</Link>
-            <Link to="/services">Services</Link>
-            <a href="#services">Our Work</a>
-            <a href="#portfolio">About NF9</a>
-            <a href="#careers">Careers</a>
-            <Link to="/contact-us">Contact us</Link>
+            <a href="/">Home</a>
+            <a href="/services">Servives Work</a>
+            <a href="">Our Work</a>
+            <a href="">About NF9</a>
+            <a href="">Careers</a>
+            <a href="/contact-us">Contact us</a>
             </div>
           </div>
 

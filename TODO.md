@@ -8,4 +8,4 @@
 - [x] Update src/main.jsx to wrap App with BrowserRouter
 - [x] Update src/App.jsx to set up nested routes: Home as parent, MainContent as index, ContactUs and ServicesPage as children
 - [x] Add navigation links in header and footer using React Router Link
-- [ ] Test the application to ensure routing and navigation work correctly
+- [x] Test the application to ensure routing and navigation work correctly

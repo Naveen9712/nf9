@@ -1,8 +1,8 @@
-import Together from '../components/together/together'
+import Contact from '../components/ContactUs/contactus'
 
 function ContactUs() {
   return (
-    <Together />
+    <Contact />
   )
 }
 
