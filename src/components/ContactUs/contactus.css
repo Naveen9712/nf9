@@ -73,7 +73,7 @@
   
   .contact-left strong {
     color: #fff;
-    font-weight: 600;
+    font-weight: 500;
   }
   
   /* ===============================
@@ -238,6 +238,32 @@
     color: #fff;
     text-decoration: underline;
   }
+
+  /* ===============================
+   SUCCESS MESSAGE – FRAMER STYLE
+================================ */
+
+.success-message {
+  max-width: 420px;
+}
+
+.success-message h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.success-message p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.success-message strong {
+  color: #fff;
+}
+
   
   /* ===============================
      RESPONSIVE

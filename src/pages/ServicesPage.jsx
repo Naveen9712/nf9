@@ -1,8 +1,8 @@
-import Services from '../components/services/services'
+import ServicesList from '../components/servicelist/servicelist'
 
 function ServicesPage() {
   return (
-    <Services />
+    <ServicesList />
   )
 }
 

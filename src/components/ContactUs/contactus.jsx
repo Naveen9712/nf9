@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./contactus.css";
 
 export default function ContactUs() {
   const sectionRef = useRef(null);
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -20,6 +21,11 @@ export default function ContactUs() {
 
     observer.observe(el);
   }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
 
   return (
     <section className="contact-main" ref={sectionRef}>
@@ -40,33 +46,63 @@ export default function ContactUs() {
 
         {/* RIGHT */}
         <div className="contact-right framer-reveal delay-3">
-          <form className="contact-form">
-            <div className="field framer-reveal delay-4">
-              <input type="text" placeholder="Your name *" required />
-              <span className="line"></span>
+          {!submitted ? (
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <div className="field framer-reveal delay-4">
+                <input type="text" placeholder="Your name *" required />
+                <span className="line"></span>
+              </div>
+
+              <div className="field framer-reveal delay-5">
+                <input type="email" placeholder="Email *" required />
+                <span className="line"></span>
+              </div>
+
+              {/* PHONE FIELD */}
+              <div className="field framer-reveal delay-6">
+                <input
+                  type="tel"
+                  placeholder="Phone number *"
+                  required
+                />
+                <span className="line"></span>
+              </div>
+
+              <div className="field framer-reveal delay-7">
+                <textarea
+                  placeholder="Your message *"
+                  required
+                ></textarea>
+                <span className="line"></span>
+              </div>
+
+              <button
+                className="submit-btn framer-reveal delay-8"
+                type="submit"
+              >
+                <span className="btn-text top">Submit</span>
+                <span className="btn-text bottom">Submit</span>
+                <span className="btn-dot"></span>
+              </button>
+
+              <p className="terms framer-reveal delay-9">
+                By submitting, you agree to our{" "}
+                <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.
+              </p>
+            </form>
+          ) : (
+            /* SUCCESS MESSAGE */
+            <div className="success-message framer-reveal delay-4">
+              <h3>Thank you for reaching out ✨</h3>
+              <p>
+                We’ve received your message.  
+                Our team will contact you shortly.
+                <br />
+                Welcome to <strong>NF9</strong> — where ideas turn into
+                beautiful digital experiences.
+              </p>
             </div>
-
-            <div className="field framer-reveal delay-5">
-              <input type="email" placeholder="Email *" required />
-              <span className="line"></span>
-            </div>
-
-            <div className="field framer-reveal delay-6">
-              <textarea placeholder="Your message"></textarea>
-              <span className="line"></span>
-            </div>
-
-            <button className="submit-btn framer-reveal delay-7" type="submit">
-              <span className="btn-text top">Submit</span>
-              <span className="btn-text bottom">Submit</span>
-              <span className="btn-dot"></span>
-            </button>
-
-            <p className="terms framer-reveal delay-8">
-              By submitting, you agree to our{" "}
-              <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.
-            </p>
-          </form>
+          )}
         </div>
       </div>
     </section>
