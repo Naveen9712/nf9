@@ -22,9 +22,41 @@ export default function ContactUs() {
     observer.observe(el);
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    
+    const formData = {
+      name: e.target[0].value,
+      email: e.target[1].value,
+      phone: e.target[2].value,
+      message: e.target[3].value
+    };
+  
+    try {
+      const apiUrl = import.meta.env.VITE_API_CONTACT_URL;
+      if (!apiUrl) {
+        throw new Error('API endpoint is not configured');
+      }
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+  
+      const data = await response.json();
+  
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        alert('Submission failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again.');
+    }
   };
 
   return (
