@@ -1,11 +1,5 @@
-# Create Pages and Routing Setup
-
-- [x] Install react-router-dom
-- [x] Create src/pages/Home.jsx with preloader, header, Outlet, footer
-- [x] Create src/pages/MainContent.jsx with hero, about, services, works, together, faq
-- [x] Create src/pages/ContactUs.jsx with Together component
-- [x] Create src/pages/ServicesPage.jsx with Services component
-- [x] Update src/main.jsx to wrap App with BrowserRouter
-- [x] Update src/App.jsx to set up nested routes: Home as parent, MainContent as index, ContactUs and ServicesPage as children
-- [x] Add navigation links in header and footer using React Router Link
-- [x] Test the application to ensure routing and navigation work correctly
+- [x] Implement servicelist.jsx with 6 services data, Framer Motion scroll animations for stacked cards
+- [x] Update servicelist.css for background text, stacking, and mobile responsiveness
+- [x] Test scroll animation on desktop and mobile (dev server running on localhost:5174/services)
+- [ ] Adjust animation parameters if needed
+- [ ] Replace placeholder images with actual ones if provided
