@@ -4,6 +4,9 @@ services:
     env: static
     buildCommand: npm run build
     staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_CONTACT_URL
+        value: https://trendyhomevibe.com/wp-json/nf9/v1/contact
     routes:
       - type: rewrite
         source: /*

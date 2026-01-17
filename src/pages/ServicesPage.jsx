@@ -1,8 +1,13 @@
-import ServicesList from '../components/servicelist/servicelist'
+import OurProcess from '../components/ourprocess/ourprocess'
+import OurTech from '../components/ourtech/ourtech'
+
 
 function ServicesPage() {
   return (
-    <ServicesList />
+    <div>
+      <OurProcess />
+      <OurTech />
+    </div>
   )
 }
 

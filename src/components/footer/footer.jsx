@@ -23,7 +23,7 @@ export default function Footer() {
             <p className="nf9-label">Navigation</p>
             <div className="nf9-social-row">
             <a href="/">Home</a>
-            <a href="/services">Servives Work</a>
+            <a href="/services">Services</a>
             <a href="">Our Work</a>
             <a href="">About NF9</a>
             <a href="">Careers</a>
