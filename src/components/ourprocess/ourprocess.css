@@ -1,73 +1,104 @@
-/* SECTION */
-.ourprocess-section {
+/* ================= SECTION ================= */
+.ourprocess {
     position: relative;
-    width: 100%;
     height: 100vh;
+    background: #0b0b0b;
     overflow: hidden;
-    background: #000;
   }
   
-  /* TRACK (horizontal row) */
+  /* ================= TRACK ================= */
   .ourprocess-track {
     display: flex;
     height: 100%;
-    width: 200vw; /* panels * 100 */
+    width: max-content;
   }
   
-  /* PANELS */
-  .process-panel {
+  /* ================= INTRO ================= */
+  .process-intro {
     width: 80vw;
     height: 100vh;
-    flex-shrink: 0;
-  
+    padding: 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 8vw;
+    background: #0b0b0b;
   }
   
-  /* INTRO */
-  .process-panel.intro {
-    background: #000;
+  .process-intro h1 {
+    font-size: 120px;
+    line-height: 0.9;
+    font-weight: 500;
     color: #fff;
   }
   
-  .process-panel.intro h1 {
-    font-size: clamp(48px, 8vw, 120px);
-    line-height: 1;
+  .process-intro p {
+    margin-top: 30px;
+    max-width: 420px;
+    font-size: 18px;
+    color: #9a9a9a;
   }
   
-  /* DARK */
-  .process-panel.dark {
-    background: #111;
-    color: #fff;
+  /* ================= CARDS ================= */
+  .process-card {
+    width: 50vw;
+    height: 100vh;
+    padding: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
   }
   
-  /* LIGHT */
-  .process-panel.light {
-    background: #f5f5f5;
+  /* alternating background like Framer */
+  .process-card:nth-child(even) {
+    background: #ffffff;
     color: #000;
   }
   
-  /* STEP NUMBER */
-  .step {
+  .process-card:nth-child(odd) {
+    background: #0b0b0b;
+    color: #fff;
+  }
+  
+  /* ================= META ================= */
+  .process-step {
     font-size: 14px;
-    letter-spacing: 2px;
-    opacity: 0.6;
-    margin-bottom: 20px;
+    letter-spacing: 1px;
+    opacity: 0.7;
   }
   
-  /* TITLES */
-  .process-panel h2 {
-    font-size: clamp(32px, 5vw, 64px);
-    margin-bottom: 20px;
+  .process-label {
+    font-size: 14px;
+    margin-top: 8px;
+    opacity: 0.5;
   }
   
-  /* TEXT */
-  .process-panel p {
-    max-width: 420px;
-    font-size: 16px;
-    line-height: 1.6;
-    opacity: 0.8;
+  /* ================= TITLE ================= */
+  .process-card h2 {
+    margin: 40px 0 20px;
+    font-size: 70px;
+    line-height: 0.95;
+    font-weight: 500;
+  }
+  
+  /* ================= DESC ================= */
+  .process-desc {
+    max-width: 360px;
+    font-size: 18px;
+    opacity: 0.75;
+  }
+  
+  /* ================= MOBILE ================= */
+  @media (max-width: 768px) {
+    .process-intro,
+    .process-card {
+      padding: 60px 30px;
+    }
+  
+    .process-intro h1,
+    .process-card h2 {
+      font-size: 56px;
+    }
   }
   

@@ -1,13 +1,12 @@
 import OurProcess from '../components/ourprocess/ourprocess'
-import OurTech from '../components/ourtech/ourtech'
-
+import TechStack from '../components/techstack/techstack'
 
 function ServicesPage() {
   return (
-    <div>
+    <>
       <OurProcess />
-      <OurTech />
-    </div>
+      <TechStack />
+    </>
   )
 }
 

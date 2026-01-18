@@ -5,6 +5,39 @@ import "./ourprocess.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const PROCESS = [
+  {
+    step: "01",
+    label: "Discovery",
+    title: "Understand\nThe Problem",
+    desc: "We deep dive into your business, users, and goals to define a clear direction before design or code."
+  },
+  {
+    step: "02",
+    label: "Strategy",
+    title: "Plan\nThe Experience",
+    desc: "Wireframes, flows, and structure designed to convert users and communicate clearly."
+  },
+  {
+    step: "03",
+    label: "Design",
+    title: "Visual\nIdentity",
+    desc: "Pixel-perfect UI with motion in mind. Clean, bold, and conversion-focused."
+  },
+  {
+    step: "04",
+    label: "Development",
+    title: "Build\nFast & Clean",
+    desc: "Modern frontend with smooth animations, optimized performance, and scalability."
+  },
+  {
+    step: "05",
+    label: "Launch",
+    title: "Test &\nDeploy",
+    desc: "QA, performance checks, and a smooth launch — ready to scale."
+  }
+];
+
 export default function OurProcess() {
   const sectionRef = useRef(null);
   const trackRef = useRef(null);
@@ -12,73 +45,55 @@ export default function OurProcess() {
   useEffect(() => {
     const section = sectionRef.current;
     const track = trackRef.current;
-
-    const panels = gsap.utils.toArray(".process-panel");
-
+  
+    const scrollWidth = track.scrollWidth - window.innerWidth;
+  
     gsap.to(track, {
-      xPercent: -100 * (panels.length - 1),
-      ease: "none",
+      x: -scrollWidth,
+      ease: "power1.out",          // ⬅️ smoother than linear
       scrollTrigger: {
         trigger: section,
-        pin: true,
-        scrub: 1.8,
         start: "top top",
-        end: () => `+=${section.offsetWidth}`,
-      },
+        end: () => `+=${scrollWidth * 0.5}`, // ⬅️ 15% faster
+        scrub: 0.5,                // ⬅️ faster response
+        pin: true,
+        anticipatePin: 1
+      }
     });
-
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
-    };
+  
+    return () => ScrollTrigger.killAll();
   }, []);
+  
 
   return (
-    <section className="ourprocess-section" ref={sectionRef}>
+    <section className="ourprocess" ref={sectionRef}>
       <div className="ourprocess-track" ref={trackRef}>
-        
-        {/* INTRO PANEL */}
-        <div className="process-panel intro">
+
+        {/* INTRO */}
+        <div className="process-intro">
           <h1>
-            Our <br /> Process
+            Our<br />Process
           </h1>
-        </div>
-
-        {/* STEP 01 */}
-        <div className="process-panel dark">
-          <span className="step">01</span>
-          <h2>Discovery</h2>
           <p>
-            We understand your business, goals, audience and competitors.
+            A structured approach that transforms ideas into high-impact digital products.
           </p>
         </div>
 
-        {/* STEP 02 */}
-        <div className="process-panel light">
-          <span className="step">02</span>
-          <h2>Strategy</h2>
-          <p>
-            We define structure, UX flows and content direction.
-          </p>
-        </div>
+        {/* CARDS */}
+        {PROCESS.map((item, index) => (
+          <div className="process-card" key={index}>
+            <span className="process-step">{item.step}</span>
+            <span className="process-label">{item.label}</span>
 
-        {/* STEP 03 */}
-        <div className="process-panel dark">
-          <span className="step">03</span>
-          <h2>Design</h2>
-          <p>
-            High-fidelity UI with motion-first thinking.
-          </p>
-        </div>
+            <h2>
+              {item.title.split("\n").map((line, i) => (
+                <span key={i}>{line}<br /></span>
+              ))}
+            </h2>
 
-        {/* STEP 04 */}
-        <div className="process-panel light">
-          <span className="step">04</span>
-          <h2>Build & Launch</h2>
-          <p>
-            Fast development, testing and launch.
-          </p>
-        </div>
-
+            <p className="process-desc">{item.desc}</p>
+          </div>
+        ))}
       </div>
     </section>
   );

@@ -5,7 +5,7 @@ const PROJECTS = [
   {
     title: "Tabasque",
     subtitle: "Classy cocktails for modern age",
-    image: "https://framerusercontent.com/images/atcXOmc4RccZDvf4CJnL76IfNwg.jpg",
+    image: "https://framerusercontent.com/images/UPqJOHQLdYtNuK2jee5437Lno.jpg",
     color: "#ffcc96",
   },
   {

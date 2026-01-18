@@ -1,4 +1,4 @@
-import "./ourtech.css";
+import "./techstack.css";
 
 const ICONS = [
   "https://via.placeholder.com/48",
@@ -10,6 +10,8 @@ const ICONS = [
   "https://via.placeholder.com/48",
   "https://via.placeholder.com/48",
 ];
+
+const duplicatedIcons = [...ICONS, ...ICONS, ...ICONS, ...ICONS, ...ICONS];
 
 export default function OurTech() {
   return (
@@ -43,7 +45,7 @@ export default function OurTech() {
         <div className="marquee marquee-left">
           <div className="marquee-mask">
             <div className="marquee-track">
-              {[...ICONS, ...ICONS, ...ICONS, ...ICONS, ...ICONS].map((icon, i) => (
+              {duplicatedIcons.map((icon, i) => (
                 <div className="icon-glass" key={`top-${i}`}>
                   <img src={icon} alt="" />
                 </div>
@@ -56,7 +58,7 @@ export default function OurTech() {
         <div className="marquee marquee-right">
           <div className="marquee-mask">
             <div className="marquee-track">
-              {[...ICONS, ...ICONS, ...ICONS, ...ICONS, ...ICONS].map((icon, i) => (
+              {duplicatedIcons.map((icon, i) => (
                 <div className="icon-glass" key={`bottom-${i}`}>
                   <img src={icon} alt="" />
                 </div>
