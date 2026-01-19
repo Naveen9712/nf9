@@ -1,7 +1,7 @@
 :root {
-  --bg: #000000;
+  --bg: #000;
   --text: #f7f7f7;
-  --muted: rgba(255,255,255,0.5);
+  --muted: rgba(255,255,255,.5);
 }
 
 /* ================= SECTION ================= */
@@ -15,21 +15,17 @@
 .nf9-projects-header h1 {
   font-size: clamp(48px, 8vw, 120px);
   letter-spacing: -0.04em;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .nf9-projects-header sup {
-  font-size: 0.50em;     /* 👈 controls number size */
-  line-height: 1;
-  vertical-align: top;  /* 👈 keeps it aligned nicely */
-  margin-left: 0;    /* 👈 space from "Projects" */
-  position: relative;
-  top: 40px;         /* 👈 move up/down */
+  font-size: 0.35em;
   opacity: 0.5;
+  display: inline-block;
+  transform: translateY(-0.9em); /* RootSquare style */
 }
 
-
-/* ================= DESKTOP LAYOUT ================= */
+/* ================= LAYOUT ================= */
 
 .nf9-layout {
   display: flex;
@@ -48,27 +44,46 @@
 .nf9-card {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
 }
 
-/* 🚨 SINGLE SOURCE OF TRUTH FOR HEIGHT */
 .nf9-image-wrap {
   position: relative;
   width: 100%;
-  height:650px;           /* ✅ SAME HEIGHT FOR ALL 3 */
+  height: 650px;
   border-radius: 28px;
   overflow: hidden;
 }
 
-/* IMAGE */
+/* ================= IMAGE EFFECT PIPELINE ================= */
+
 .nf9-image-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.45s cubic-bezier(.22,1,.36,1);
+
+  --scrollY: 0px;
+  --hoverX: 0px;
+  --hoverY: 0px;
+  --zoom: 1;
+
+  transform-origin: center; /* ✅ IMPORTANT FOR ZOOM FEEL */
+
+  transform:
+    translate3d(
+      var(--hoverX),
+      calc(var(--scrollY) + var(--hoverY)),
+      0
+    )
+    scale(var(--zoom));
+
+  transition:
+    transform 0.6s cubic-bezier(.22,1,.36,1);
 }
 
-/* ARROW */
+
+/* ================= ARROW ================= */
+
 .nf9-arrow {
   position: absolute;
   top: 18px;
@@ -88,7 +103,8 @@
   transform: scale(1);
 }
 
-/* INFO */
+/* ================= INFO ================= */
+
 .nf9-info .title {
   font-size: 26px;
 }
@@ -105,29 +121,12 @@
     padding: 100px 20px;
   }
 
-  .nf9-layout {
-    gap: 60px;
-  }
-
   .nf9-row-two {
     display: contents;
   }
 
-  .nf9-projects-header sup {
-    font-size: 40px;     /* 👈 controls number size */
-    line-height: 1;
-    vertical-align: top;  /* 👈 keeps it aligned nicely */
-    margin-left: 5px;    /* 👈 space from "Projects" */
-    position: relative;
-    top: 10px;         /* 👈 move up/down */
-    opacity: 0.5;
-  }
-  
-
-  /* 🔒 SAME HEIGHT, SAME WIDTH */
   .nf9-image-wrap {
     height: 500px;
-    border-radius: 24px;
   }
 
   .nf9-image-wrap img {
@@ -144,25 +143,5 @@
 
   .nf9-info .subtitle {
     font-size: 14px;
-  }
-}
-
-@media (max-width: 468px) {
-  .nf9-projects-header h1 {
-    font-size: 36px;
-    letter-spacing: -0.04em;
-    margin-bottom: 20px;
-  }
-  .nf9-projects-header sup {
-    font-size: 20px !important;
-    top: 0.5em !important;
-  }
-  .nf9-projects-header sup {
-    font-size: 0.28em;
-    top: -0.01em;
-  }
-  .nf9-image-wrap {
-    height: 300px;
-    border-radius: 22px;
   }
 }

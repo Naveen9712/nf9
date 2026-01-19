@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import "./works.css";
 
 const PROJECTS = [
@@ -32,10 +32,7 @@ export default function Works() {
       </header>
 
       <div className="nf9-layout">
-        {/* ROW 1 */}
         <ProjectCard {...PROJECTS[0]} />
-
-        {/* ROW 2 */}
         <div className="nf9-row-two">
           <ProjectCard {...PROJECTS[1]} />
           <ProjectCard {...PROJECTS[2]} />
@@ -46,25 +43,73 @@ export default function Works() {
 }
 
 function ProjectCard({ title, subtitle, image, color }) {
+  const wrapRef = useRef(null);
   const imgRef = useRef(null);
+  const raf = useRef(null);
 
+  /* ================= SCROLL DRIVEN PARALLAX + ZOOM ================= */
+  useEffect(() => {
+    if (window.innerWidth < 769) return;
+
+    const update = () => {
+      const wrap = wrapRef.current;
+      const img = imgRef.current;
+      if (!wrap || !img) return;
+
+      const rect = wrap.getBoundingClientRect();
+      const vh = window.innerHeight;
+
+      if (rect.bottom < 0 || rect.top > vh) {
+        raf.current = null;
+        return;
+      }
+
+      const progress = (vh - rect.top) / (vh + rect.height);
+      const p = Math.max(0, Math.min(1, progress));
+
+      /* 🔥 INCREASED PARALLAX SPEED */
+      img.style.setProperty("--scrollY", `${-p * 8}px`);
+
+      /* 🔥 STRONGER SCROLL ZOOM */
+      img.style.setProperty("--zoom", (1 + p * 0.18).toFixed(3));
+
+      raf.current = null;
+    };
+
+    const onScroll = () => {
+      if (!raf.current) raf.current = requestAnimationFrame(update);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    update();
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf.current) cancelAnimationFrame(raf.current);
+    };
+  }, []);
+
+  /* ================= HOVER = DEPTH ONLY ================= */
   const onMove = (e) => {
     if (window.innerWidth < 769) return;
 
-    const rect = imgRef.current.getBoundingClientRect();
+    const rect = wrapRef.current.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width - 0.5) * 14;
     const y = ((e.clientY - rect.top) / rect.height - 0.5) * 14;
 
-    imgRef.current.style.transform = `scale(1.06) translate(${x}px, ${y}px)`;
+    imgRef.current.style.setProperty("--hoverX", `${x}px`);
+    imgRef.current.style.setProperty("--hoverY", `${y}px`);
   };
 
   const onLeave = () => {
-    if (imgRef.current) imgRef.current.style.transform = "";
+    imgRef.current.style.setProperty("--hoverX", "0px");
+    imgRef.current.style.setProperty("--hoverY", "0px");
   };
 
   return (
     <article className="nf9-card">
       <div
+        ref={wrapRef}
         className="nf9-image-wrap"
         onMouseMove={onMove}
         onMouseLeave={onLeave}

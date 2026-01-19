@@ -1,0 +1,174 @@
+/* =========================
+   SECTION
+========================= */
+.social-follow-section {
+    width: 100%;
+    padding: 60px 30px;
+}
+  
+  /* =========================
+     CARD (NO CLIP ON IMAGE)
+  ========================= */
+  .social-follow-card {
+    position: relative;
+    width: 100%;
+    height: 599px;
+    overflow: visible; /* IMPORTANT */
+  }
+  
+  /* =========================
+     BACKGROUND (CLIPPED)
+  ========================= */
+  .social-follow-bg {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    border-radius: 20px;
+    z-index: 0;
+  }
+  
+  /* =========================
+     IMAGE (FLOATING, SAFE)
+  ========================= */
+  .social-follow-image {
+    position: absolute;
+    right: -50px;          /* horizontal overflow allowed */
+    top: 44%;              /* vertical lock */
+    transform: translateY(-50%);
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .social-follow-image img {
+    width: 880px;
+    max-width: none;
+    display: block;
+  }
+  
+  /* =========================
+     CONTENT
+  ========================= */
+  .social-follow-content {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    padding: 32px;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* =========================
+     TEXT
+  ========================= */
+  .social-follow-text h3 {
+    font-size: 48px;
+    line-height: 1.1;
+    letter-spacing: -0.07em;
+    font-weight: 400;
+    color: #fff;
+    max-width: 470px;
+  }
+  
+  .social-follow-text .muted {
+    color: rgba(255, 255, 255, 0.45);
+  }
+  
+  /* =========================
+     BUTTONS
+  ========================= */
+  .social-follow-actions {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  
+    padding: 12px 32px;
+    border-radius: 999px;
+    border: 1px solid #fff;
+    background: transparent;
+  
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: #fff;
+    text-decoration: none;
+  
+    transition: all 0.3s ease;
+  }
+  
+  .social-btn:hover {
+    background: #fff;
+    color: #000;
+  }
+  
+  /* =========================
+     TABLETS
+  ========================= */
+  @media (max-width: 768px) {
+    .social-follow-card {
+      height: auto;
+      padding-bottom: 420px; /* space for phone */
+    }
+    .social-follow-content {
+        justify-content: flex-start;
+      }
+
+      .social-follow-actions {
+        margin-top: 48px; /* pushes buttons down */
+      }
+  
+    .social-follow-text h3 {
+      font-size: 34px;
+    }
+  
+    .social-follow-image {
+      top: auto;
+      bottom: 0px;          /* move phone DOWN */
+      transform: none;
+      right: -70px;
+    }
+  
+    .social-follow-image img {
+      width: 620px;
+    }
+  }
+  
+  /* ======================================================
+     ✅ MOBILE FIX — 468px
+  ====================================================== */
+  @media (max-width: 468px) {
+
+    .social-follow-section {
+        width: 100%;
+        padding: 50px 10px;
+    }
+    .social-follow-card {
+      padding-bottom: 480px;
+    }
+  
+    .social-follow-actions {
+      flex-direction: column;
+      gap: 14px;
+    }
+  
+    .social-btn {
+      width: 100%;
+    }
+  
+    .social-follow-image {
+      right: 50%;
+      transform: translateX(50%);
+      bottom: 0px;
+    }
+  
+    .social-follow-image img {
+      width: 520px;
+    }
+  }
+  
