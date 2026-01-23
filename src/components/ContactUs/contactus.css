@@ -114,6 +114,22 @@
   .field textarea::placeholder {
     color: rgba(255, 255, 255, 0.4);
   }
+
+  /* Error state */
+  .field input.error,
+  .field textarea.error {
+    color: #ff6b6b;
+  }
+
+  .field input.error::placeholder,
+  .field textarea.error::placeholder {
+    color: rgba(255, 107, 107, 0.5);
+  }
+
+  .field input.error + .line,
+  .field textarea.error + .line {
+    background: #ff6b6b;
+  }
   
   /* Bottom underline */
   .field .line {
@@ -130,6 +146,47 @@
   .field input:focus + .line,
   .field textarea:focus + .line {
     background: #fff;
+  }
+
+  /* Error message */
+  .error-message {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #ff6b6b;
+    line-height: 1.4;
+  }
+
+  /* Phone input with country code */
+  .phone-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .country-code-select {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 12px 8px 12px 0;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffffff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 20px;
+    min-width: 80px;
+  }
+
+  .country-code-select option {
+    background: #000;
+    color: #fff;
+  }
+
+  .phone-input {
+    flex: 1;
   }
   
   /* ===============================
@@ -222,6 +279,25 @@
   .submit-btn:hover .btn-dot {
     transform: translateY(-50%) scale(1.8);
   }
+
+  .submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .submit-btn:disabled:hover .btn-text.bottom {
+    transform: translateY(-50%);
+    opacity: 1;
+  }
+
+  .submit-btn:disabled:hover .btn-text.top {
+    transform: translateY(-140%);
+    opacity: 0;
+  }
+
+  .submit-btn:disabled:hover .btn-dot {
+    transform: translateY(-50%) scale(1);
+  }
   
   
   
@@ -301,7 +377,25 @@
         font-size: 18px;
         line-height: 1.4;
         color: rgba(255, 255, 255, 0.65);
-      }
+    }
 
+    .phone-input-wrapper {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .country-code-select {
+      width: 100%;
+      min-width: auto;
+    }
+
+    .phone-input {
+      width: 100%;
+    }
+
+    .error-message {
+      font-size: 11px;
+    }
   }
   
